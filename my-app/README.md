@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OvenBreak To-Do List
+
+Starter Next.js workspace for an OvenBreak-themed to-do/list project.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies if needed:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Start editing the app in `app/page.tsx`. Project planning docs live in `docs/specs/`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Docs
 
-## Learn More
+- `AGENTS.md` - shared agent instructions for Codex and other coding assistants
+- `CLAUDE.md` - Claude-specific entry point
+- `CODEX.md` - Codex-specific entry point
+- `docs/specs/default-spec.md` - default project brief template
+- `docs/specs/product-spec.md` - product goals and feature scope
+- `docs/specs/ui-spec.md` - interface and visual direction
+- `docs/specs/data-model.md` - starter domain model
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev` - start the local development server
+- `npm run lint` - run ESLint
+- `npm run build` - build the production app
+- `npm run start` - run the built app
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes
 
-## Deploy on Vercel
+The sibling folder `../ovenbreak images` is intentionally out of scope for this setup pass. Do not depend on it until the project explicitly adopts those assets.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This app currently uses:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js 16.2.6
+- React 19.2.4
+- TypeScript
+- Tailwind CSS 4

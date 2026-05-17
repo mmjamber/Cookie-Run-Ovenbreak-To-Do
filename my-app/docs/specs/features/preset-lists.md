@@ -36,14 +36,14 @@ When a user chooses a preset:
 
 ## Requirements
 
-- Preset entry points should be visible from the Dashboard.
+- Preset entry points should be visible from the homepage.
 - Presets must respect all validation rules from `list-formats.md`.
 - Users must be able to name or rename preset-derived lists.
 - Preset-derived lists should persist like custom lists.
 
 ## Acceptance Criteria
 
-- [ ] Dashboard shows all four preset modes.
+- [ ] homepage shows all four preset modes.
 - [ ] Selecting a preset creates or opens a valid list.
 - [ ] Each preset initializes the correct format.
 - [ ] Preset-derived lists can be saved and resumed.

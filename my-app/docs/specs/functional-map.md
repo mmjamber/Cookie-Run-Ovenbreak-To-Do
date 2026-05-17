@@ -2,7 +2,7 @@
 
 ## Primary Navigation
 
-- Dashboard: overview of user lists and preset list entry points.
+- Homepage: overview of user lists and preset list entry points.
 - My Lists: all user-created and saved preset lists.
 - Cookies: cookie catalog.
 - Pets: pet catalog.
@@ -59,8 +59,8 @@
 
 | Page | Purpose | Key actions |
 | --- | --- | --- |
-| Dashboard | Starting point and quick overview | Create list, open preset, resume list |
-| My Lists | Manage saved lists | Create, rename, duplicate, delete, open |
+| homepage | Starting point and quick overview | Create list, open preset, resume list |
+| My Lists | Manage saved lists | Create, rename, delete, open |
 | List Detail | Work on one to-do list | Add items, edit targets, mark progress |
 | Cookies Catalog | Browse all cookies | Sort, search, add cookie, prompt paired pet |
 | Pets Catalog | Browse all pets | Sort, search, add pet |

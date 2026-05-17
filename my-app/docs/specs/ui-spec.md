@@ -6,7 +6,7 @@ The site should feel useful to active Cookie Run: Ovenbreak players: fast to sca
 
 ## Core Layout
 
-- Use a persistent top or side navigation with Dashboard, My Lists, Cookies, Pets, and Treasures.
+- Use a persistent top or side navigation with homepage, My Lists, Cookies, Pets, and Treasures.
 - The first screen should expose saved lists and preset mode entry points.
 - List detail pages should prioritize the user's upgrade targets over decorative content.
 - Mobile layouts should keep add/edit actions reachable and avoid wide tables.

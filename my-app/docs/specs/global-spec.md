@@ -19,7 +19,7 @@ The primary object is a user-made to-do list. A list contains either combis or f
 - Treasure: equipment item. Maximum level is 12.
 - Combi: a grouped set of items used together in a mode.
 - Relay cookie: secondary cookie in modes that support one.
-- Arena: fixed slot inside Guild Run or Champions League.
+- Arena: fixed slot inside Trophy Reace, Guild Run or Champions League.
 - Group: numbered collection of Breakout combis.
 - Target level: desired level the user wants the item to reach.
 
@@ -74,7 +74,7 @@ Users can create custom named lists. During creation, the user chooses one of th
 
 Lists belong to a local guest profile unless a future requirement explicitly adds accounts. When adding catalog items to a list, users should only see lists linked to the current local profile.
 
-Login and sign-in controls may appear in the website UI for visual planning, but they should be non-functional for now. Clicking Login, Log in, or Sign in should not start authentication, call a backend, or change the current local profile.
+Login and sign-in controls may appear in the website UI for visual planning, but they should be non-functional for now. Clicking Log in, or Sign in should not start authentication, call a backend, or change the current local profile.
 
 ## Catalog Rules
 
@@ -137,12 +137,12 @@ The frame should wrap the item image without adding a solid background color beh
 
 - Keep the project local and front-end based unless a future request explicitly changes this.
 - Do not add a backend, remote database, hosted account system, or network sync for now.
-- Keep Login, Log in, and Sign in controls aesthetic-only for now.
-- Do not use the sibling `../ovenbreak images` folder until asset ingestion is explicitly implemented.
+- Keep Log in, and Sign in controls aesthetic-only for now.
 - Do not assume live game data, accounts, cloud sync, or official API access.
 - Store user data locally in the browser unless a future persistence spec says otherwise.
 - Item target levels must never exceed their item type's absolute cap.
 - Item target levels must never exceed the current user-selected list or arena limit.
+- Do not generate images under any circumstance, only use available assets or CSS code for decorative purposes.
 
 ## Open Questions
 

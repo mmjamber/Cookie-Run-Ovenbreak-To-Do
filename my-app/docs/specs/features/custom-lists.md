@@ -13,8 +13,8 @@ As a player, I want to make multiple named leveling lists so I can track differe
 1. User opens Create Custom List.
 2. User enters a list name.
 3. User chooses a format: Trophy Race, Breakout, Guild Run, Champions League, or Free.
-4. If the format requires setup options, the app asks for them.
-5. App creates the list and opens the list detail page.
+4. If the format requires setup options, the website asks for them.
+5. The website creates the list and opens the list detail page.
 
 ## Setup Options
 
@@ -30,12 +30,12 @@ Breakout:
 Guild Run:
 
 - Creates 12 arenas.
-- Target set behavior depends on the Guild Run open question in `list-formats.md`.
+- Arena maximum target sets can be changed manually unless a future spec defines fixed arena limits.
 
 Champions League:
 
 - Creates 3 arenas.
-- User can choose target set per arena.
+- User can choose the maximum target set per arena.
 
 Free:
 
@@ -50,7 +50,14 @@ Users should be able to:
 - Delete a list.
 - Add allowed sections or combis.
 - Edit selected items.
-- Edit target levels where the format allows it.
+- Edit target levels in every format, within the current item, list, or arena maximum.
+- Edit arena maximum target sets where the format allows manual limit changes.
+
+Rules:
+
+- Duplicate list names are not allowed within the current local profile.
+- Creating, renaming, or duplicating a list must validate that the resulting name is unique.
+- Deleting a list requires confirmation.
 
 ## Acceptance Criteria
 
@@ -59,8 +66,5 @@ Users should be able to:
 - [ ] Format-specific setup is captured before list creation.
 - [ ] Created lists persist locally.
 - [ ] Users can have multiple lists with the same format.
-
-## Open Questions
-
-- Should duplicate list names be allowed?
-- Should deleting a list require confirmation or support undo?
+- [ ] Duplicate list names are blocked.
+- [ ] Deleting a list asks for confirmation.

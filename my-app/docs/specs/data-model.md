@@ -52,6 +52,29 @@ Rules:
 - When files share a leading number, smaller image dimensions are a heuristic for pet files and larger image dimensions are a heuristic for cookie files.
 - If the group contains more than 1 cookie candidate, more than 2 pet candidates, no clear cookie candidate, or otherwise cannot be classified confidently, mark the affected catalog items with `needsReview: true`.
 - Ambiguous groups must be flagged for review instead of silently guessed.
+- Items with `needsReview: true` should be listed in an admin/import report, not surfaced on public catalog pages.
+
+## Catalog Rarity Overrides
+
+Folder names can help infer rarity, but some pet files inside cookie rarity folders need explicit overrides.
+
+In `Cookies/Legendary`, these pet files are Legendary:
+
+- `0_Dreamcatcher`
+- `1_Windcatcher`
+- `2_Wave_Drop`
+- `3_Picky_Pyrotiger`
+- `4_Eternal_Eye_of_Darkness`
+- `5_Millennial_Jade_Deer`
+- `6_Wyrmfire_blade`
+- `7_Golden_wyrmguard`
+- `8_Continuum_Cog`
+- `9_Lotus_dragon_scale`
+- `10_Dragonheart_bat`
+- `11_Draconic_ambre`
+- `16_Somnionimbus`
+
+All other pet files in `Cookies/Legendary` should be treated as Epic unless another explicit override is added.
 
 ## User List
 
@@ -60,6 +83,7 @@ Represents one saved to-do list.
 | Field | Type | Notes |
 | --- | --- | --- |
 | `id` | `string` | Stable unique id |
+| `ownerId` | `string` | Local profile id that owns the list |
 | `name` | `string` | User-defined list name |
 | `format` | `ListFormat` | Determines allowed structure |
 | `source` | `"preset"` or `"custom"` | How the list was created |
@@ -67,6 +91,18 @@ Represents one saved to-do list.
 | `createdAt` | `string` | ISO timestamp |
 | `updatedAt` | `string` | ISO timestamp |
 | `sections` | `ListSection[]` | Format-specific contents |
+
+## Local Profile Scope
+
+To-do lists should be scoped to the current local profile. The project should remain local and front-end based unless stated otherwise.
+
+Rules:
+
+- The add-to-list picker only shows lists owned by the current local profile.
+- Local profile lists should remain available in browser storage.
+- Login and sign-in controls are aesthetic-only for now and should not alter `ownerId`.
+- Do not add backend accounts, remote sync, or server persistence unless a future requirement explicitly asks for it.
+- If a future login system is added, local profile lists should have a clear migration or import path.
 
 ## List Section
 
@@ -78,7 +114,7 @@ Sections allow each format to store combis, groups, arenas, or free items in one
 | `kind` | `"combis"` / `"group"` / `"arena"` / `"freeItems"` | Section role |
 | `label` | `string` | User-visible section name |
 | `position` | `number` | Display order |
-| `targetSet` | `TargetSet` or `null` | Arena formats only |
+| `targetSet` | `TargetSet` or `null` | Arena maximum target set |
 | `combis` | `Combi[]` | Empty for Free format |
 | `items` | `TodoItem[]` | Free format individual items |
 
@@ -104,15 +140,15 @@ Represents one selected catalog item inside a list.
 | `id` | `string` | Stable unique id for this list item |
 | `catalogItemId` | `string` | References catalog item |
 | `type` | `ItemType` | Duplicated for convenience |
-| `targetLevel` | `number` | Must respect format and item caps |
+| `targetLevel` | `number` | Editable user target; newly added items start at 1 and must respect item, list, and arena maximums |
 | `completed` | `boolean` | Manual tracking for initial implementation |
 
 ## Format Storage Mapping
 
 - Trophy Race: one `combis` section with 4 default combis, expandable to 50.
 - Breakout: up to 5 `group` sections, each with 3 to 15 numbered combis.
-- Guild Run: 12 fixed `arena` sections, each with one combi and a fixed or configured target set.
-- Champions League: 3 fixed `arena` sections, each with one combi and user-selected target set.
+- Guild Run: 12 fixed `arena` sections, each with one combi and a configured maximum target set.
+- Champions League: 3 fixed `arena` sections, each with one combi and user-selected maximum target set.
 - Free: one `freeItems` section with individual cookies, pets, and treasures.
 
 ## Persistence
@@ -122,12 +158,17 @@ Initial implementation should use browser local storage:
 - `catalogItems` can be static bundled data.
 - `userLists` should persist locally.
 - Use a versioned storage key so future migrations are possible.
+- Do not require a backend service for persistence.
+- Saving user to-do lists in browser local storage is the primary way to test the website locally.
 
 ## Validation Rules
 
 - Cookie target cannot exceed 15.
 - Pet target cannot exceed 15.
 - Treasure target cannot exceed 12.
+- Newly added cookies, pets, and treasures start with `targetLevel: 1`.
+- Target levels are always editable but cannot exceed the current item, list, or arena maximum.
+- In arena formats, the selected `targetSet` defines the maximum allowed target for that arena.
 - Treasure slots per combi cannot exceed 3.
 - Trophy Race combis cannot exceed 50.
 - Breakout groups cannot exceed 5.

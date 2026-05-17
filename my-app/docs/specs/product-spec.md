@@ -18,6 +18,9 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 
 ## Non-Goals For First Release
 
+- Backend implementation.
+- Remote database storage.
+- Functional login or sign-in.
 - Official account sync.
 - Live game API integration.
 - Automatic game-data updates.
@@ -30,14 +33,15 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 - Custom list creation with all five formats.
 - List detail views with valid slots and target levels.
 - Static catalog data structure with cookie, pet, and treasure pages.
-- Sorting by alphabetical order, rarity, and release date.
+- Catalog search, rarity filters, and alphabetical or release-date ordering within rarity groups.
 - Local persistence for user lists.
+- Aesthetic-only login/sign-in control.
 
 ## Success Criteria
 
 - A player can create a Trophy Race list with 4 default combis and add more up to 50.
 - A player can create a Breakout list with groups of 3 to 15 combis and up to 5 groups.
-- A player can create Guild Run and Champions League arena lists with target set rules.
+- A player can create Guild Run and Champions League arena lists with maximum target set rules.
 - A player can create a Free list with individually targeted cookies, pets, and treasures.
 - Catalog sorting behaves consistently with file-name-derived rules.
 

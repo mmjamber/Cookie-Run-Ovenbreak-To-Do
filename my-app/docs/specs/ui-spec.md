@@ -10,6 +10,7 @@ The site should feel useful to active Cookie Run: Ovenbreak players: fast to sca
 - The first screen should expose saved lists and preset mode entry points.
 - List detail pages should prioritize the user's upgrade targets over decorative content.
 - Mobile layouts should keep add/edit actions reachable and avoid wide tables.
+- Login or sign-in buttons may be shown for aesthetics, but clicking them should do nothing for now.
 
 ## List Detail UI
 
@@ -19,7 +20,7 @@ Each list detail page should show:
 - Overall progress summary.
 - Format-specific sections.
 - Add controls only where the format allows additions.
-- Clear target level labels per item.
+- Clear editable target level controls per item.
 - Empty slots for missing cookies, pets, relay cookies, or treasures.
 
 ## Combi UI
@@ -31,6 +32,7 @@ A combi should display:
 - Relay cookie slot when supported.
 - Three treasure slots.
 - Target levels on each slot.
+- Newly added items should display `Lv. 1` until the user changes the target.
 
 For formats without relay cookies, do not render an empty relay column.
 
@@ -39,9 +41,17 @@ For formats without relay cookies, do not render an empty relay column.
 Each catalog page should include:
 
 - Search field.
-- Sort control: alphabetical, rarity, release date.
+- Sort control: alphabetical or release date.
+- Rarity filters for Legendary, Epic, Rare, and Common.
 - Grid or dense list of items.
 - Item image, name, add action, and rarity frame where applicable.
+
+Catalog ordering:
+
+- Always show visible items by rarity order first: Legendary, Epic, Rare, Common.
+- The sort control changes item order inside the visible rarity groups.
+- The search field filters visible items by name.
+- Rarity filters hide or show selected rarity groups.
 
 Rarity display:
 
@@ -50,7 +60,7 @@ Rarity display:
 - Do not use a separate rarity text badge by default.
 - Do not place a solid colored background behind the item artwork.
 - Use brown for Common, blue for Rare, purple for Epic, and teal for Legendary.
-- Treasures should still use rarity data for sorting, with Legendary before Epic before Rare before Common.
+- Treasures should still use rarity data for ordering and filtering, with Legendary before Epic before Rare before Common.
 
 Cookie item add flow:
 

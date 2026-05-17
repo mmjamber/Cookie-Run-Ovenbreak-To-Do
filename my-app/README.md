@@ -18,7 +18,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Start editing the app in `app/page.tsx`. Project planning docs live in `docs/specs/`.
+Start editing the website in `app/page.tsx`. Project planning docs live in `docs/specs/`.
 
 ## Project Docs
 
@@ -34,14 +34,14 @@ Start editing the app in `app/page.tsx`. Project planning docs live in `docs/spe
 
 - `npm run dev` - start the local development server
 - `npm run lint` - run ESLint
-- `npm run build` - build the production app
-- `npm run start` - run the built app
+- `npm run build` - build the production website
+- `npm run start` - run the built website
 
 ## Notes
 
 The sibling folder `../ovenbreak images` is intentionally out of scope for this setup pass. Do not depend on it until the project explicitly adopts those assets.
 
-This app currently uses:
+This website currently uses:
 
 - Next.js 16.2.6
 - React 19.2.4

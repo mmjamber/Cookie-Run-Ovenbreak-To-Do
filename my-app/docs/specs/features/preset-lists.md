@@ -21,7 +21,7 @@ Presets give users a correctly structured starting point without requiring them 
 
 When a user chooses a preset:
 
-- The app creates a new list using that mode's format, or opens an existing saved preset-derived list if the UX chooses reusable presets.
+- The website creates a new list using that mode's format, or opens an existing saved preset-derived list if the UX chooses reusable presets.
 - The list receives a default name based on the mode.
 - The list contains the required default sections, combis, groups, or arenas.
 

@@ -25,6 +25,7 @@ This project uses Next.js 16.2.6. APIs, conventions, and file structure may diff
 
 - Keep changes scoped to the requested task.
 - Preserve user edits and do not revert unrelated changes.
+- If a requested change would overwrite or substantially rewrite a section the user appears to have manually edited, ask for permission before changing that section.
 - Prefer existing Next.js, React, Tailwind, and TypeScript patterns already in the website.
 - Update `docs/specs/` before large implementation work when requirements are unclear.
 - Keep generated folders such as `.next/`, `node_modules/`, and build output out of source changes.

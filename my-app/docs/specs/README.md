@@ -1,6 +1,6 @@
 # Cookie Run: Ovenbreak To-Do Specs
 
-This folder is the source of truth for the project. The app helps Cookie Run: Ovenbreak players build leveling to-do lists for cookies, pets, and treasures.
+This folder is the source of truth for the project. The website helps Cookie Run: Ovenbreak players build leveling to-do lists for cookies, pets, and treasures.
 
 ## Core Specs
 

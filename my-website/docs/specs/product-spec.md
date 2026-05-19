@@ -39,10 +39,10 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 
 ## Success Criteria
 
-- A player can create a Trophy Race lists with 4 default combis and add more up to 10.
-- A player can create a Breakout lists with groups of 3 to 15 combis and up to 5 groups.
+- A player can create a Trophy Race list with 4 default combis and add more up to 10.
+- A player can create a Breakout list with groups of 3 to 15 combis and up to 5 groups.
 - A player can create Guild Run and Champions League arena lists with maximum target set rules.
-- A player can create a Free lists with individually targeted cookies, pets, and treasures.
+- A player can create a Free list with individually targeted cookies, pets, and treasures.
 - Catalog sorting behaves consistently with file-name-derived rules.
 
 ## Related Specs

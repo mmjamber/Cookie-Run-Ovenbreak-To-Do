@@ -7,7 +7,6 @@
 - Cookies: cookie catalog.
 - Pets: pet catalog.
 - Treasures: treasure catalog.
-- Settings or Data: optional future page for import, export, and catalog management.
 
 ## Core User Flows
 

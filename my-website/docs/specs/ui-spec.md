@@ -4,6 +4,15 @@
 
 The site should feel useful to active Cookie Run: Ovenbreak players: fast to scan, easy to edit, and playful without burying the checklist workflow.
 
+## Visual Style
+
+- Use `color palette .png` in the project root as the website color palette reference.
+- Use a pink background with a diagonal white polka-dot CSS pattern as the default website background.
+- Default background CSS: `background-color: #f4bfd9; background-image: radial-gradient(circle, #ffffff 5px, transparent 5.5px), radial-gradient(circle, #ffffff 5px, transparent 5.5px); background-position: 0 0, 22px 22px; background-size: 44px 44px;`
+- Text should be white with a black border or outline unless a specific component spec says otherwise.
+- The black text outline should improve readability on bright artwork and colorful UI surfaces without making labels look heavy or blurry.
+- Any exception to the white-with-black-outline text rule must be stated explicitly in the relevant component or page spec.
+
 ## Core Layout
 
 - Use a persistent top or side navigation with homepage, My Lists, Cookies, Pets, and Treasures.
@@ -11,6 +20,43 @@ The site should feel useful to active Cookie Run: Ovenbreak players: fast to sca
 - List detail pages should prioritize the user's upgrade targets over decorative content.
 - Mobile layouts should keep add/edit actions reachable and avoid wide tables.
 - Login or sign-in buttons may be shown for aesthetics, but clicking them should do nothing for now.
+
+## List and Mode Cards
+
+Saved to-do lists and preset mode entry points should display as clickable cards.
+
+Desktop card layout:
+
+- Cards appear next to one another in a responsive grid.
+- Show a maximum of 4 cards per row.
+- Cards are vertical rounded rectangles.
+- Card corners should be rounded, but the card should still feel rectangular rather than pill-shaped.
+- The list or mode name appears at the top of the card, centered inside the rectangle.
+- The card image fills the visual body of the rectangle and should be centered intentionally, not left at the browser's default crop position.
+- Use the available mode artwork from `../ovenbreak images/illustrations/game modes`.
+- Images should use a consistent crop style across cards so the row feels even.
+- Cards should have visible hover, focus, and active states because the whole card is clickable.
+- When a saved to-do list card is hovered or keyboard-focused, show an edit icon button in the bottom-right corner.
+- The edit icon should appear over a subtle transparent gradient overlay so it remains visible on bright or busy artwork.
+- The overlay should be slight and should not hide the card artwork or make the card feel disabled.
+- The edit icon opens list management actions such as rename, duplicate, or delete.
+
+Mobile card layout:
+
+- Cards become horizontal rounded rectangles.
+- The list or mode name appears on the left side of the card.
+- The image appears on the right side and must be re-centered for the horizontal crop.
+- Keep the full card clickable.
+- Do not let the image push the text out of view or make card heights inconsistent.
+- On touch layouts where hover is unavailable, keep the edit icon visible or reveal it when the card receives focus.
+
+Mode artwork mapping:
+
+- Trophy Race: `Trophy Race 1.png` or `Trophy Race 2.png`
+- Breakout: `breakout.jpg`
+- Champions League: `Champions League.png`
+- Guild Run: `guild run.png`
+- Extra or future modes may use the `extra_*` images only when no more specific artwork exists.
 
 ## List Detail UI
 
@@ -89,6 +135,6 @@ Cookie item add flow:
 
 ## Visual Constraints
 
-- Do not use game assets until asset ingestion is explicitly implemented.
+- Use existing assets from the repository; do not generate images.
 - Avoid oversized landing-page style sections; this is a working tool.
 - Use compact cards or rows for repeated items.

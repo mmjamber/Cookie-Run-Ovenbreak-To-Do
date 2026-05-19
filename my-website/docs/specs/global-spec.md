@@ -2,15 +2,9 @@
 
 ## Product Summary
 
-Build a website for Cookie Run: Ovenbreak players who want to track which cookies, pets, and treasures need to be leveled up for specific game modes or custom goals.
+Cookie Run: Ovenbreak To-Do is organized around user-made to-do lists. A list contains either combis or free individual items, depending on its selected format.
 
-The primary object is a user-made to-do list. A list contains either combis or free individual items, depending on its selected format.
-
-## Audience
-
-- Cookie Run: Ovenbreak players planning upgrades for game modes.
-- Players who need several independent upgrade lists at once.
-- Players who want target levels to be visible per cookie, pet, and treasure.
+For product goals, audience, MVP scope, and success criteria, see `product-spec.md`.
 
 ## Core Vocabulary
 
@@ -19,7 +13,7 @@ The primary object is a user-made to-do list. A list contains either combis or f
 - Treasure: equipment item. Maximum level is 12.
 - Combi: a grouped set of items used together in a mode.
 - Relay cookie: secondary cookie in modes that support one.
-- Arena: fixed slot inside Trophy Reace, Guild Run or Champions League.
+- Arena: fixed slot inside Trophy Race, Guild Run, or Champions League.
 - Group: numbered collection of Breakout combis.
 - Target level: desired level the user wants the item to reach.
 

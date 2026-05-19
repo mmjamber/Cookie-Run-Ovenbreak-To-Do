@@ -39,7 +39,11 @@ When a user changes an arena maximum target set, they may only choose one of the
 
 Target levels are always editable by the user, but they cannot exceed the current item, list, or arena maximum. For example, if a Guild Run arena has cookie/pet max 7 and treasure max 5, targets in that arena cannot be set above those numbers unless the arena limit is changed manually.
 
-When an item is added to a to-do list, its target level starts at `Lv. 1`. The website assumes newly added cookies, pets, and treasures have not been maxed yet.
+When an item is added to a to-do list, its current level and target level both start at `Lv. 1`. The website assumes newly added cookies, pets, and treasures have not been maxed yet.
+
+Users track both current level and target level. An item is complete when its current level reaches its target level. If the user manually marks an item complete, the website should automatically set the current level to the item's target level.
+
+Progress controls are level-based only. Do not add separate completion controls for whole combis, groups, arenas, or list sections unless a future spec changes this.
 
 ## Supported List Formats
 
@@ -68,6 +72,8 @@ Users can create custom named lists. During creation, the user chooses one of th
 
 Lists belong to a local guest profile unless a future requirement explicitly adds accounts. When adding catalog items to a list, users should only see lists linked to the current local profile.
 
+A cookie, pet, or treasure can be added to multiple to-do lists at the same time.
+
 Login and sign-in controls may appear in the website UI for visual planning, but they should be non-functional for now. Clicking Log in, or Sign in should not start authentication, call a backend, or change the current local profile.
 
 ## Catalog Rules
@@ -77,6 +83,8 @@ The website needs dedicated catalog pages for:
 - Cookies
 - Pets
 - Treasures
+
+Catalog data comes from local asset files. Display names are derived from cleaned file names, rarity comes from folder structure plus explicit overrides, and release order comes from leading file-name numbers used internally only.
 
 Catalog sorting options:
 
@@ -88,6 +96,7 @@ File-name-derived sorting rules:
 
 - Alphabetical sorting ignores the leading `number_` portion of file names and sorts by the text after it.
 - Release date sorting uses the leading number at the beginning of image file names.
+- Leading file-name numbers are internal-only metadata for sorting, pairing, and import logic. They must never appear in the website UI.
 - Cookie and pet image files that share the same leading number are considered pairing candidates.
 - A cookie can have up to 2 paired pets.
 - Pet image files are generally smaller than cookie image files; use image dimensions as a classification heuristic.
@@ -134,13 +143,7 @@ The frame should wrap the item image without adding a solid background color beh
 - Keep Log in, and Sign in controls aesthetic-only for now.
 - Do not assume live game data, accounts, cloud sync, or official API access.
 - Store user data locally in the browser unless a future persistence spec says otherwise.
-- Item target levels must never exceed their item type's absolute cap.
-- Item target levels must never exceed the current user-selected list or arena limit.
+- Do not add list export, list sharing, public links, or shareable files.
+- Item current and target levels must never exceed their item type's absolute cap.
+- Item current and target levels must never exceed the current user-selected list or arena limit.
 - Do not generate images under any circumstance, only use available assets or CSS code for decorative purposes.
-
-## Open Questions
-
-- What catalog data source will provide item names, rarities, and release order?
-- Should users track current level in addition to target level?
-- Should completed status be manual, automatic from current level, or both?
-- Should lists be exportable or shareable?

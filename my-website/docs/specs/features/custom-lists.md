@@ -46,17 +46,17 @@ Free:
 Users should be able to:
 
 - Rename a list.
-- Duplicate a list.
 - Delete a list.
 - Add allowed sections or combis.
 - Edit selected items.
-- Edit target levels in every format, within the current item, list, or arena maximum.
+- Edit current and target levels in every format, within the current item, list, or arena maximum.
+- Manually mark items complete, which sets the item's current level to its target level.
 - Edit arena maximum target sets where the format allows manual limit changes.
 
 Rules:
 
-- Duplicate list names are not allowed within the current local profile.
-- Creating, renaming, or duplicating a list must validate that the resulting name is unique.
+- List names must be unique within the current local profile.
+- Creating or renaming a list must validate that the resulting name is unique.
 - Deleting a list requires confirmation.
 
 ## Acceptance Criteria
@@ -66,5 +66,5 @@ Rules:
 - [ ] Format-specific setup is captured before list creation.
 - [ ] Created lists persist locally.
 - [ ] Users can have multiple lists with the same format.
-- [ ] Duplicate list names are blocked.
+- [ ] Reused list names are blocked.
 - [ ] Deleting a list asks for confirmation.

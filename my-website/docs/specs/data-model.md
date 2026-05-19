@@ -20,7 +20,7 @@ Represents a cookie, pet, or treasure in the catalog.
 | `name` | `string` | Display name |
 | `rarity` | `Rarity` | Used by rarity sorting |
 | `imageFileName` | `string` | Original asset file name |
-| `releaseNumber` | `number` | Leading number from file name |
+| `releaseNumber` | `number` | Internal-only leading number from file name for sorting and pairing; never display on the website |
 | `sortName` | `string` | File name text after `number_`, normalized |
 | `pairedPetIds` | `string[]` | Cookies only, up to 2 pets inferred by shared leading number |
 | `pairedCookieId` | `string` or `null` | Pets only, inferred by shared leading number |
@@ -140,8 +140,9 @@ Represents one selected catalog item inside a list.
 | `id` | `string` | Stable unique id for this list item |
 | `catalogItemId` | `string` | References catalog item |
 | `type` | `ItemType` | Duplicated for convenience |
+| `currentLevel` | `number` | Editable user current level; newly added items start at 1 and must respect item, list, and arena maximums |
 | `targetLevel` | `number` | Editable user target; newly added items start at 1 and must respect item, list, and arena maximums |
-| `completed` | `boolean` | Manual tracking for initial implementation |
+| `completed` | `boolean` | True when `currentLevel >= targetLevel`; manually marking complete sets `currentLevel` to `targetLevel` |
 
 ## Format Storage Mapping
 
@@ -166,8 +167,10 @@ Initial implementation should use browser local storage:
 - Cookie target cannot exceed 15.
 - Pet target cannot exceed 15.
 - Treasure target cannot exceed 12.
-- Newly added cookies, pets, and treasures start with `targetLevel: 1`.
-- Target levels are always editable but cannot exceed the current item, list, or arena maximum.
+- Newly added cookies, pets, and treasures start with `currentLevel: 1` and `targetLevel: 1`.
+- Current and target levels are always editable but cannot exceed the current item, list, or arena maximum.
+- An item is complete when `currentLevel >= targetLevel`.
+- Manually marking an item complete sets `currentLevel` to `targetLevel`.
 - In arena formats, the selected `targetSet` defines the maximum allowed target for that arena.
 - Treasure slots per combi cannot exceed 3.
 - Trophy Race combis cannot exceed 50.

@@ -12,7 +12,7 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 
 - Let users create multiple named to-do lists.
 - Support the five required list formats.
-- Make target levels visible and format-correct.
+- Make current and target levels visible and format-correct.
 - Provide catalog pages for cookies, pets, and treasures.
 - Make it easy to add a cookie's paired pet when relevant, including cases where a cookie has 2 possible pets.
 
@@ -25,13 +25,14 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 - Live game API integration.
 - Automatic game-data updates.
 - Public sharing.
+- List export or shareable list files.
 - Asset ingestion from `../ovenbreak images` before a dedicated implementation task.
 
 ## MVP Scope
 
 - Homepage with preset mode entry points.
 - Custom list creation with all five formats.
-- List detail views with valid slots and target levels.
+- List detail views with valid slots, current levels, and target levels.
 - Static catalog data structure with cookie, pet, and treasure pages.
 - Catalog search, rarity filters, and alphabetical or release-date ordering within rarity groups.
 - Local persistence for user lists.

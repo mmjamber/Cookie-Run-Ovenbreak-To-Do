@@ -20,6 +20,7 @@ The site should feel useful to active Cookie Run: Ovenbreak players: fast to sca
 - List detail pages should prioritize the user's upgrade targets over decorative content.
 - Mobile layouts should keep add/edit actions reachable and avoid wide tables.
 - Login or sign-in buttons may be shown for aesthetics, but clicking them should do nothing for now.
+- Aesthetic-only login/sign-in buttons should be placed on the top-right side of the screen, usually in the persistent navigation/header area.
 
 ## List and Mode Cards
 
@@ -39,7 +40,7 @@ Desktop card layout:
 - When a saved to-do list card is hovered or keyboard-focused, show an edit icon button in the bottom-right corner.
 - The edit icon should appear over a subtle transparent gradient overlay so it remains visible on bright or busy artwork.
 - The overlay should be slight and should not hide the card artwork or make the card feel disabled.
-- The edit icon opens list management actions such as rename, duplicate, or delete.
+- The edit icon opens list management actions such as rename or delete.
 
 Mobile card layout:
 
@@ -66,8 +67,13 @@ Each list detail page should show:
 - Overall progress summary.
 - Format-specific sections.
 - Add controls only where the format allows additions.
+- Editable current level controls per item.
 - Clear editable target level controls per item.
 - Empty slots for missing cookies, pets, relay cookies, or treasures.
+- Items should be visually complete when current level reaches target level.
+- When an item's target is reached, show the reached target-level text in `#fc6fde`.
+- Progress controls should be level-only: current level, target level, and manual complete for individual items.
+- Do not show separate complete controls for whole combis, groups, arenas, or list sections.
 
 ## Combi UI
 
@@ -77,8 +83,10 @@ A combi should display:
 - Main cookie slot.
 - Relay cookie slot when supported.
 - Three treasure slots.
+- Current levels on each slot.
 - Target levels on each slot.
-- Newly added items should display `Lv. 1` until the user changes the target.
+- Newly added items should display current level `Lv. 1` and target level `Lv. 1` until the user changes them.
+- Users can manually mark an item complete; doing so sets the item's current level to its target level.
 
 For formats without relay cookies, do not render an empty relay column.
 
@@ -113,6 +121,16 @@ Cookie item add flow:
 - When 1 paired pet exists, prompt the user to add the pet too.
 - When 2 paired pets exist, prompt the user to choose which pet to add.
 - The prompt must allow Add cookie only, Add cookie with selected pet, and Cancel.
+- When adding cookies to a combi with main and relay cookie slots, users can select up to 2 cookies at once.
+- In 2-cookie selection mode, visually preserve selection order so it is clear which cookie will become main and which will become relay.
+- Show numbered selection icons on selected cookie cards: `1` for the main cookie selection and `2` for the relay cookie selection.
+- The numbered icons should stay visible while the cookies are selected and disappear when the selection is cleared.
+- The paired-pet prompt only applies to the first selected cookie in a 2-cookie selection.
+
+Treasure item add flow:
+
+- Users can select up to 3 treasures at once when adding treasures to a combi with enough treasure slots.
+- Treasure selection order does not matter.
 
 ## Empty States
 
@@ -122,7 +140,7 @@ Cookie item add flow:
 
 ## Error States
 
-- Invalid target level: show the allowed range.
+- Invalid current or target level: show the allowed range.
 - Incompatible item slot: explain what item type is allowed.
 - Format limit reached: explain the limit, such as 50 Trophy Race combis or 5 Breakout groups.
 
@@ -130,7 +148,7 @@ Cookie item add flow:
 
 - All controls must be keyboard reachable.
 - Catalog item images need useful alt text.
-- Completion state must not rely on color alone.
+- Completion state must not rely on color alone, even though reached target-level text uses `#fc6fde`.
 - Prompts and dialogs must have clear titles and focus handling.
 
 ## Visual Constraints

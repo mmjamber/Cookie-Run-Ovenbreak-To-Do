@@ -18,7 +18,8 @@ Each item should show:
 - Name.
 - Rarity frame for cookies and pets only.
 - Add action.
-- Optional release order metadata if useful.
+
+Catalog item cards must not show release numbers, leading file-name numbers, or other numeric ordering metadata.
 
 Cookie and pet rarity is shown visually through the CSS frame around the image, not through a text badge by default. Treasure rarity should not be shown visually in catalog item cards.
 
@@ -49,6 +50,7 @@ Rules:
 
 - Alphabetical order sorts by the file name text after the leading `number_`.
 - Release date order sorts by the leading number at the beginning of the image file name.
+- Leading file-name numbers are internal-only sorting and pairing metadata and must never be displayed on the website.
 - Rarity filters can hide any combination of Legendary, Epic, Rare, and Common items.
 - Treasure rarity is still used for ordering and filtering, so legendary treasures appear first by default even though treasure rarity is not shown visually.
 - Pet rarity may need explicit overrides when pet files are stored in cookie rarity folders.
@@ -60,13 +62,23 @@ Rules:
 
 Cookie and pet image files share a leading number when they are paired. A cookie can have up to 2 paired pets.
 
-When a user adds a cookie to a to-do list:
+When a user adds one cookie to a to-do list:
 
 1. The website checks for paired pets with the same leading number.
 2. If 1 paired pet exists, show a prompt.
 3. Prompt options are Add cookie only, Add cookie and pet, and Cancel.
 4. If 2 paired pets exist, show a prompt that lets the user choose Add cookie only, Add cookie with one selected pet, or Cancel.
 5. After the user chooses cookie-only or cookie-with-pet, open the add-to-list picker.
+
+When a destination combi supports both a main cookie and relay cookie, the user may select up to 2 cookies at once from the Cookies catalog:
+
+- Cookie click order matters.
+- The first selected cookie becomes the main cookie.
+- The second selected cookie becomes the relay cookie.
+- Selected cookie cards must show numbered selection icons so the user can see which cookie is first and which is second.
+- The paired-pet prompt is shown only for the first selected cookie.
+- The paired-pet prompt is not shown for the second or relay cookie.
+- If the destination combi does not support a relay cookie, only 1 cookie can be selected for that combi.
 
 Asset classification rules:
 
@@ -87,10 +99,12 @@ When a user tries to add a cookie, pet, or treasure from a catalog page, a small
 The picker should:
 
 - Show the available to-do lists linked to the current local profile.
-- Let the user choose which list to add the item to.
-- After a list is selected, show only compatible destination slots for that item and list format.
+- Let the user choose which list to add the selected item or items to.
+- After a list is selected, show only compatible destination slots for the selected item or items and list format.
 - For cookie-with-pet choices, show only destination lists and slots that can accept both the cookie and pet.
-- Explain when a list has no compatible slots for the selected item.
+- For 2-cookie selections, show only combis that can accept a main cookie and relay cookie.
+- For 3-treasure selections, show only combis or sections with enough compatible treasure slots.
+- Explain when a list has no compatible slots for the selected item or items.
 - Let the user cancel without changing any list.
 
 For cookies, the paired-pet prompt should happen before the destination list is chosen. The list picker should then filter or explain destinations based on the user's cookie-only or cookie-with-pet choice.
@@ -98,8 +112,13 @@ For cookies, the paired-pet prompt should happen before the destination list is 
 ## Item Destination Rules
 
 - Cookies can fill main cookie, relay cookie, or Free cookie slots.
+- Up to 2 cookies can be selected at the same time when the destination combi allows both a main cookie and relay cookie.
+- In 2-cookie selections, the first selected cookie fills the main cookie slot and the second selected cookie fills the relay cookie slot.
+- The paired-pet prompt only applies to the first selected cookie in a 2-cookie selection.
 - Pets can fill pet or Free pet slots.
 - Treasures can fill treasure or Free treasure slots.
+- Up to 3 treasures can be selected at the same time for combis that require treasure slots.
+- Treasure click order does not matter.
 - The website must prevent adding an item to an incompatible slot.
 
 ## Acceptance Criteria
@@ -112,6 +131,11 @@ For cookies, the paired-pet prompt should happen before the destination list is 
 - [ ] Alphabetical and release sorting follow file-name-derived rules.
 - [ ] Treasures are not visually framed by rarity.
 - [ ] Adding a cookie can prompt for 1 or 2 paired pets.
+- [ ] Users can select up to 2 cookies at once for combis that support main and relay cookies.
+- [ ] In 2-cookie selections, the first selected cookie becomes the main cookie and the second becomes the relay cookie.
+- [ ] Selected cookie cards show numbered icons for first and second selection order.
+- [ ] The paired-pet prompt is not shown for the second or relay cookie.
+- [ ] Users can select up to 3 treasures at once for combis with enough treasure slots.
 - [ ] Adding any catalog item opens a small list picker with current local profile lists.
 - [ ] Ambiguous cookie-pet file groups are flagged for review.
 - [ ] Asset import warnings appear in an admin/import report only.

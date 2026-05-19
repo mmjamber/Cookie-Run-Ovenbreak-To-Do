@@ -2,11 +2,13 @@
 
 ## Summary
 
-The website supports five to-do list formats. Each format determines structure, allowed additions, starting target levels, and maximum target limits.
+The website supports five to-do list formats. Each format determines structure, allowed additions, starting current and target levels, and maximum level limits.
 
-Target levels are always editable by the user. A target level cannot exceed the active maximum limit for that item slot. If the user changes an arena or list limit manually, the allowed target range updates to match the new limit.
+Current and target levels are always editable by the user. Neither level can exceed the active maximum limit for that item slot. If the user changes an arena or list limit manually, the allowed level range updates to match the new limit.
 
-When a cookie, pet, or treasure is added to a to-do list, its target level should start at `Lv. 1`. The website should assume that newly added items have not been maxed yet.
+When a cookie, pet, or treasure is added to a to-do list, its current level and target level should both start at `Lv. 1`. The website should assume that newly added items have not been maxed yet.
+
+An item is complete when its current level reaches its target level. Users can also manually mark an item complete; doing so sets the current level to the target level.
 
 ## Trophy Race Format
 
@@ -17,7 +19,7 @@ Combi structure:
 - 1 secondary relay cookie
 - 3 treasures
 
-Starting target levels and maximum limits:
+Starting levels and maximum limits:
 
 - Pet: starts at 1, max 15
 - Main cookie: starts at 1, max 15
@@ -39,7 +41,7 @@ Group structure:
 - A Breakout combi has 1 pet, 1 cookie, and 3 treasures.
 - No relay cookie.
 
-Starting target levels and maximum limits:
+Starting levels and maximum limits:
 
 - Pet: starts at 1, max 15
 - Cookie: starts at 1, max 15
@@ -65,7 +67,7 @@ Arena maximum limits:
 - Low: cookies and pets max 7, treasures max 5.
 - Mid: cookies and pets max 11, treasures max 9.
 - Full: cookies and pets max 15, treasures max 12.
-- Users can set item target levels below or equal to the arena maximums.
+- Users can set item current and target levels below or equal to the arena maximums.
 - Example: in Guild Run Arena 8, if the arena maximum is cookie/pet 7 and treasure 5, users cannot set cookie or pet targets above 7 or treasure targets above 5 unless the arena limit is changed manually.
 
 Rules:
@@ -87,7 +89,7 @@ Arena maximum limits:
 - Low: cookies and pets max 7, treasures max 5.
 - Mid: cookies and pets max 11, treasures max 9.
 - Full: cookies and pets max 15, treasures max 12.
-- Users can set item target levels below or equal to the selected arena maximums.
+- Users can set item current and target levels below or equal to the selected arena maximums.
 
 ## Free Format
 
@@ -99,19 +101,20 @@ Structure:
 - Users can add treasures independently.
 - Treasures appear alone and are not attached to combis.
 
-Target levels:
+Current and target levels:
 
-- Newly added items start at `Lv. 1`.
-- User sets the desired target level for every individual item.
-- Cookie and pet targets can be 1 to 15.
-- Treasure targets can be 1 to 12.
+- Newly added items start with current level `Lv. 1` and target level `Lv. 1`.
+- User sets the current and desired target level for every individual item.
+- Cookie and pet levels can be 1 to 15.
+- Treasure levels can be 1 to 12.
 
 ## Acceptance Criteria
 
 - [ ] Users can choose from all five formats when creating a custom list.
 - [ ] Each format enforces item slots and maximum counts.
-- [ ] Newly added cookies, pets, and treasures start at `Lv. 1`.
-- [ ] Target levels remain editable.
-- [ ] Target levels cannot exceed the current item, list, or arena maximum.
-- [ ] Free format allows individual target levels per item.
+- [ ] Newly added cookies, pets, and treasures start with current level `Lv. 1` and target level `Lv. 1`.
+- [ ] Current and target levels remain editable.
+- [ ] Current and target levels cannot exceed the current item, list, or arena maximum.
+- [ ] Free format allows individual current and target levels per item.
+- [ ] Manually marking an item complete sets its current level to its target level.
 - [ ] Invalid additions and invalid levels are blocked with clear messages.

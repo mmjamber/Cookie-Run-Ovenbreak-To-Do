@@ -5,7 +5,7 @@
 ```ts
 type ItemType = "cookie" | "pet" | "treasure";
 type Rarity = "legendary" | "epic" | "rare" | "common";
-type ListFormat = "trophyRace" | "breakout" | "guildRun" | "championsLeague" | "free";
+type ListFormat = "trophyRace" | "breakout" | "guildRun" | "championsLeague" | "none";
 type TargetSet = "low" | "mid" | "full";
 ```
 
@@ -106,17 +106,17 @@ Rules:
 
 ## List Section
 
-Sections allow each format to store combis, groups, arenas, or free items in one list.
+Sections allow each format to store combis, groups, arenas, or ungrouped items in one list.
 
 | Field | Type | Notes |
 | --- | --- | --- |
 | `id` | `string` | Stable unique id |
-| `kind` | `"combis"` / `"group"` / `"arena"` / `"freeItems"` | Section role |
+| `kind` | `"combis"` / `"group"` / `"arena"` / `"individualItems"` | Section role |
 | `label` | `string` | User-visible section name |
 | `position` | `number` | Display order |
 | `targetSet` | `TargetSet` or `null` | Arena maximum target set |
-| `combis` | `Combi[]` | Empty for Free format |
-| `items` | `TodoItem[]` | Free format individual items |
+| `combis` | `Combi[]` | Empty for None format |
+| `items` | `TodoItem[]` | None format individual items |
 
 ## Combi
 
@@ -150,7 +150,7 @@ Represents one selected catalog item inside a list.
 - Breakout: up to 5 `group` sections, each with 3 to 15 numbered combis.
 - Guild Run: 12 fixed `arena` sections, each with one combi and a configured maximum target set.
 - Champions League: 3 fixed `arena` sections, each with one combi and user-selected maximum target set.
-- Free: one `freeItems` section with individual cookies, pets, and treasures.
+- None: one `individualItems` section with individual cookies, pets, and treasures.
 
 ## Persistence
 

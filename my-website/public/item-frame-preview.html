@@ -15,6 +15,7 @@
 
       :root {
         --bg-pink: #f4bfd9;
+        --panel-blue: #9ddff0;
         --legendary: #20d7d4;
         --epic: #862894;
         --rare: #28719e;
@@ -46,11 +47,17 @@
         font-family: "CookieRun", Arial, sans-serif;
       }
 
+      .preview-panel {
+        width: min(100%, 1480px);
+        padding: 28px;
+        border-radius: 24px;
+        background: var(--panel-blue);
+      }
+
       .preview-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(150px, 210px));
         gap: 24px;
-        width: min(100%, 1440px);
       }
 
       .item-card {
@@ -162,114 +169,116 @@
     </style>
   </head>
   <body>
-    <main class="preview-grid" aria-label="Item frame preview">
-      <section class="item-card">
-        <div class="item-frame legendary">
-          <img
-            src="../../ovenbreak images/cookies/legendary/0_Moonlight_Cookie.webp"
-            alt="Moonlight Cookie"
-          />
-        </div>
-        <div>
-          <p class="item-name">Cookie</p>
-        </div>
-      </section>
+    <main class="preview-panel" aria-label="Item frame preview">
+      <div class="preview-grid">
+        <section class="item-card">
+          <div class="item-frame legendary">
+            <img
+              src="../../ovenbreak images/cookies/legendary/0_Moonlight_Cookie.webp"
+              alt="Moonlight Cookie"
+            />
+          </div>
+          <div>
+            <p class="item-name">Cookie</p>
+          </div>
+        </section>
 
-      <section class="item-card">
-        <div class="item-frame epic">
-          <img
-            src="../../ovenbreak images/cookies/epic/104_Playful_Herbert.webp"
-            alt="Playful Herbert"
-          />
-        </div>
-        <div>
-          <p class="item-name">Pet</p>
-        </div>
-      </section>
+        <section class="item-card">
+          <div class="item-frame epic">
+            <img
+              src="../../ovenbreak images/cookies/epic/104_Playful_Herbert.webp"
+              alt="Playful Herbert"
+            />
+          </div>
+          <div>
+            <p class="item-name">Pet</p>
+          </div>
+        </section>
 
-      <section class="item-card">
-        <div class="item-frame rare">
-          <img
-            src="../../ovenbreak images/cookies/rare/0_Zombie_Cookie.webp"
-            alt="Zombie Cookie"
-          />
-        </div>
-        <div>
-          <p class="item-name">Cookie</p>
-        </div>
-      </section>
+        <section class="item-card">
+          <div class="item-frame rare">
+            <img
+              src="../../ovenbreak images/cookies/rare/0_Zombie_Cookie.webp"
+              alt="Zombie Cookie"
+            />
+          </div>
+          <div>
+            <p class="item-name">Cookie</p>
+          </div>
+        </section>
 
-      <section class="item-card">
-        <div class="item-frame epic">
-          <img
-            src="../../ovenbreak images/cookies/epic/104_Bellflower_Cookie.webp"
-            alt="Bellflower Cookie"
-          />
-        </div>
-        <div>
-          <p class="item-name">Cookie</p>
-        </div>
-      </section>
+        <section class="item-card">
+          <div class="item-frame epic">
+            <img
+              src="../../ovenbreak images/cookies/epic/104_Bellflower_Cookie.webp"
+              alt="Bellflower Cookie"
+            />
+          </div>
+          <div>
+            <p class="item-name">Cookie</p>
+          </div>
+        </section>
 
-      <section class="item-card">
-        <div class="item-frame common">
-          <img
-            src="../../ovenbreak images/cookies/common/0_GingerBrave.webp"
-            alt="GingerBrave"
-          />
-        </div>
-        <div>
-          <p class="item-name">Cookie</p>
-        </div>
-      </section>
+        <section class="item-card">
+          <div class="item-frame common">
+            <img
+              src="../../ovenbreak images/cookies/common/0_GingerBrave.webp"
+              alt="GingerBrave"
+            />
+          </div>
+          <div>
+            <p class="item-name">Cookie</p>
+          </div>
+        </section>
 
-      <section class="item-card">
-        <div class="item-frame common">
-          <img
-            src="../../ovenbreak images/cookies/common/1_GingerBright.webp"
-            alt="GingerBright"
-          />
-        </div>
-        <div>
-          <p class="item-name">Cookie</p>
-        </div>
-      </section>
+        <section class="item-card">
+          <div class="item-frame common">
+            <img
+              src="../../ovenbreak images/cookies/common/1_GingerBright.webp"
+              alt="GingerBright"
+            />
+          </div>
+          <div>
+            <p class="item-name">Cookie</p>
+          </div>
+        </section>
 
-      <section class="item-card">
-        <div class="item-frame legendary">
-          <img
-            src="../../ovenbreak images/cookies/legendary/0_Dreamcatcher.webp"
-            alt="Dreamcatcher"
-          />
-        </div>
-        <div>
-          <p class="item-name">Pet</p>
-        </div>
-      </section>
+        <section class="item-card">
+          <div class="item-frame legendary">
+            <img
+              src="../../ovenbreak images/cookies/legendary/0_Dreamcatcher.webp"
+              alt="Dreamcatcher"
+            />
+          </div>
+          <div>
+            <p class="item-name">Pet</p>
+          </div>
+        </section>
 
-      <section class="item-card">
-        <div class="item-frame common">
-          <img
-            src="../../ovenbreak images/cookies/common/0_Choco_Drop.webp"
-            alt="Choco Drop"
-          />
-        </div>
-        <div>
-          <p class="item-name">Pet</p>
-        </div>
-      </section>
+        <section class="item-card">
+          <div class="item-frame common">
+            <img
+              src="../../ovenbreak images/cookies/common/0_Choco_Drop.webp"
+              alt="Choco Drop"
+            />
+          </div>
+          <div>
+            <p class="item-name">Pet</p>
+          </div>
+        </section>
 
-      <section class="item-card">
-        <div class="item-frame no-frame">
-          <img
-            src="../../ovenbreak images/treasures/legendary/0_Essence_of_conflagration.png"
-            alt="Essence of Conflagration"
-          />
-        </div>
-        <div>
-          <p class="item-name">Treasure</p>
-        </div>
-      </section>
+        <section class="item-card">
+          <div class="item-frame no-frame">
+            <img
+              src="../../ovenbreak images/treasures/legendary/0_Essence_of_conflagration.png"
+              alt="Essence of Conflagration"
+            />
+          </div>
+          <div>
+            <p class="item-name">Treasure</p>
+          </div>
+        </section>
+      </div>
     </main>
   </body>
 </html>

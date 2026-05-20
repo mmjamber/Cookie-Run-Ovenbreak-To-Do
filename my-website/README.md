@@ -26,7 +26,8 @@ Start editing the website in `app/page.tsx`. Project planning docs live in `docs
 - `CLAUDE.md` - Claude-specific entry point
 - `CODEX.md` - Codex-specific entry point
 - `docs/specs/default-spec.md` - default project brief template
-- `docs/specs/product-spec.md` - product goals and feature scope
+- `docs/specs/global-spec.md` - product goals and feature scope
+- `docs/specs/rules.md` - universal rules, terminology, and constraints
 - `docs/specs/ui-spec.md` - interface and visual direction
 - `docs/specs/data-model.md` - starter domain model
 

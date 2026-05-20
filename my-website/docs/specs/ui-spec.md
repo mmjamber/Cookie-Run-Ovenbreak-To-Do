@@ -156,3 +156,4 @@ Treasure item add flow:
 - Use existing assets from the repository; do not generate images.
 - Avoid oversized landing-page style sections; this is a working tool.
 - Use compact cards or rows for repeated items.
+- Keep HTML/component structure separate from CSS styling. Shared or durable UI should place styles in dedicated CSS files rather than inline `<style>` blocks or style-heavy markup.

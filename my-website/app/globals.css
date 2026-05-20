@@ -1,26 +1,304 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "CookieRun";
+  src: url("/fonts/CookieRun-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "CookieRun";
+  src: url("/fonts/CookieRun-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "CookieRun";
+  src: url("/fonts/CookieRun-Black.otf") format("opentype");
+  font-weight: 900;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --page-pink: #f7bfdc;
+  --dot: #ffffff;
+  --panel-blue: #cff5ff;
+  --bubble-pink: #f573bc;
+  --sun-yellow: #ffc433;
+  --mint: #69ddb0;
+  --text-fill: #ffffff;
+  --text-outline: #1e1b20;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100%;
+  margin: 0;
+  background-color: var(--page-pink);
+  background-image:
+    radial-gradient(circle, var(--dot) 5px, transparent 5.5px),
+    radial-gradient(circle, var(--dot) 5px, transparent 5.5px);
+  background-position:
+    0 0,
+    22px 22px;
+  background-size: 44px 44px;
+  color: #614c91;
+  font-family: "CookieRun", Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.site-shell {
+  width: min(930px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--panel-blue);
+}
+
+.hero {
+  position: relative;
+  height: 330px;
+  overflow: hidden;
+  background: #bdeefa;
+}
+
+.hero-background {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.hero .hero-title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: min(360px, 58%);
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+}
+
+.hero-nav {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  z-index: 2;
+  display: flex;
+  gap: 10px;
+}
+
+.hero-nav button {
+  min-width: 92px;
+  height: 28px;
+  border: 2px dashed rgb(255 255 255 / 0.86);
+  border-radius: 999px;
+  color: #ffffff;
+  font-family: "CookieRun", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  text-shadow: 0 1px 0 rgb(58 73 141 / 0.4);
+  cursor: default;
+}
+
+.hero-nav button:nth-child(1) {
+  background: #89d5e9;
+}
+
+.hero-nav button:nth-child(2) {
+  background: #e95dac;
+  text-shadow: 0 1px 0 #a83f7f;
+}
+
+.hero-nav button:nth-child(3) {
+  background: #ffc233;
+  text-shadow: 0 1px 0 #c7831e;
+}
+
+.sky-divider,
+.thin-divider {
+  height: 36px;
+  background: var(--panel-blue);
+}
+
+.pink-title,
+.mint-title {
+  display: grid;
+  place-items: center;
+  min-height: 82px;
+  text-align: center;
+}
+
+.pink-title {
+  background: var(--bubble-pink);
+}
+
+.mint-title {
+  min-height: 78px;
+  background: var(--mint);
+}
+
+h1,
+h2,
+.section-note,
+.catalog-label {
+  margin: 0;
+  color: var(--text-fill);
+  font-weight: 900;
+  letter-spacing: 0;
+  -webkit-text-stroke: 4px var(--text-outline);
+  paint-order: stroke fill;
+  text-shadow: none;
+}
+
+h1,
+h2 {
+  font-size: 25px;
+}
+
+.showcase-section {
+  padding: 18px 16px 34px;
+  background: var(--panel-blue);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.placeholder {
+  background: #c9c9c9;
+}
+
+.placeholder.tall {
+  min-height: 335px;
+}
+
+.section-note {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.gold-section {
+  min-height: 138px;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 104px;
+  background: var(--sun-yellow);
+}
+
+.gold-section h2 {
+  text-align: center;
+}
+
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 86px);
+  gap: 18px;
+}
+
+.placeholder.small {
+  width: 86px;
+  aspect-ratio: 1;
+}
+
+.catalog-section {
+  padding: 48px 28px 70px;
+  background: var(--panel-blue);
+}
+
+.catalog-board {
+  position: relative;
+  min-height: 285px;
+  padding: 36px 52px;
+  border: 2px solid #8bd4e8;
+  background-color: #dffbff;
+  background-image:
+    linear-gradient(#ffffff 5px, transparent 5px),
+    linear-gradient(90deg, #ffffff 5px, transparent 5px);
+  background-size: 34px 34px;
+}
+
+.catalog-grid {
+  width: 88%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 24px 26px;
+}
+
+.placeholder.tile {
+  aspect-ratio: 1;
+}
+
+.catalog-label {
+  position: absolute;
+  right: 28px;
+  bottom: 52px;
+  font-size: 14px;
+}
+
+@media (max-width: 760px) {
+  .site-shell {
+    width: 100%;
+  }
+
+  .hero {
+    height: 250px;
+  }
+
+  .hero .hero-title {
+    width: min(360px, 58%);
+  }
+
+  .hero-nav {
+    left: 12px;
+    right: 12px;
+    justify-content: center;
+  }
+
+  .hero-nav button {
+    min-width: 78px;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .placeholder.tall {
+    min-height: 220px;
+  }
+
+  .gold-section {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+  }
+
+  .mini-grid {
+    justify-content: center;
+  }
+
+  .catalog-board {
+    padding: 28px 24px 72px;
+  }
+
+  .catalog-grid {
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

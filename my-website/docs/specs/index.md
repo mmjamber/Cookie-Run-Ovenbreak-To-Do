@@ -17,10 +17,6 @@ This folder is the source of truth for the project. The website helps Cookie Run
 - `features/003-preset-lists.md` - Trophy Race, Breakout, Champions League, and Guild Run presets
 - `features/004-custom-lists.md` - user-created named lists
 
-## Template
-
-- `default-spec.md` - reusable template for future feature specs
-
 ## Working Rule
 
 If implementation changes behavior, update the relevant spec in the same task. If a requirement is ambiguous, add it to the relevant `Open Questions` section instead of inventing hidden behavior.

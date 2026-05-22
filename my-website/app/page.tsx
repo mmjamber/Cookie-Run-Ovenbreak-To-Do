@@ -1,8 +1,51 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
-const featureCards = Array.from({ length: 4 });
-const miniCards = Array.from({ length: 3 });
+const featureCards = [
+  {
+    name: "Trophy Race",
+    card: "/images/game-modes/trophy-race-card.png",
+    horizontal: "/images/game-modes/trophy-race-card-horizontal.png",
+  },
+  {
+    name: "Guild Run",
+    card: "/images/game-modes/guild-run-card.png",
+    horizontal: "/images/game-modes/guild-run-card-horizontal.png",
+  },
+  {
+    name: "Champions League",
+    card: "/images/game-modes/champions-league-card.png",
+    horizontal: "/images/game-modes/champions-league-card-horizontal.png",
+  },
+  {
+    name: "Breakout",
+    card: "/images/game-modes/breakout-card.jpg",
+    horizontal: "/images/game-modes/breakout-card-horizontal.png",
+  },
+];
+const newItems = [
+  {
+    name: "Red Velvet Cookie",
+    image: "/images/cookies/epic/195-red-velvet.png",
+    framed: true,
+  },
+  {
+    name: "Chonky Cake Wolf",
+    image: "/images/cookies/epic/195-chonky-cake-wolf.png",
+    framed: true,
+  },
+  {
+    name: "Twirling Timepiece",
+    image: "/images/treasures/epic/111-twirling-timepiece.png",
+    framed: false,
+  },
+];
 const gridCards = Array.from({ length: 14 });
+
+type FeatureCardStyle = CSSProperties & {
+  "--card-image": string;
+  "--wide-card-image": string;
+};
 
 export default function Home() {
   return (
@@ -29,30 +72,61 @@ export default function Home() {
         <nav className="hero-nav" aria-label="Main navigation">
           <button type="button">home</button>
           <button type="button">to-do</button>
-          <button type="button">catalog</button>
+          <button type="button">cookies</button>
         </nav>
       </section>
 
       <div className="sky-divider" />
 
       <section className="pink-title">
-        <h1>Trophy race</h1>
+        <h1>My Lists</h1>
       </section>
 
       <section className="showcase-section">
         <div className="feature-grid">
-          {featureCards.map((_, index) => (
-            <div className="placeholder tall" key={index} />
+          {featureCards.map((card) => (
+            <div
+              aria-label={card.name}
+              className="feature-card"
+              key={card.name}
+              role="img"
+              style={{
+                "--card-image": `url("${card.card}")`,
+                "--wide-card-image": `url("${card.horizontal}")`,
+              } as FeatureCardStyle}
+            >
+              <span className="feature-card-title">{card.name}</span>
+            </div>
           ))}
         </div>
-        <p className="section-note">Trophy race</p>
+        <p className="section-note">
+          <span className="see-more-icon" aria-hidden="true">
+            &gt;
+          </span>
+          see more
+        </p>
       </section>
 
       <section className="gold-section">
-        <h2>Trophy race</h2>
+        <h2>New:</h2>
         <div className="mini-grid">
-          {miniCards.map((_, index) => (
-            <div className="placeholder small" key={index} />
+          {newItems.map((item) => (
+            <div
+              className={
+                item.framed
+                  ? "item-frame epic mini-item"
+                  : "treasure-mini"
+              }
+              key={item.name}
+            >
+              <Image
+                src={item.image}
+                alt={item.name}
+                width={136}
+                height={136}
+                unoptimized
+              />
+            </div>
           ))}
         </div>
       </section>
@@ -60,7 +134,7 @@ export default function Home() {
       <div className="thin-divider" />
 
       <section className="mint-title">
-        <h2>Trophy race</h2>
+        <h2>Recent additions</h2>
       </section>
 
       <section className="catalog-section">
@@ -70,7 +144,12 @@ export default function Home() {
               <div className="placeholder tile" key={index} />
             ))}
           </div>
-          <p className="catalog-label">Trophy race</p>
+          <p className="catalog-label">
+            <span className="see-more-icon" aria-hidden="true">
+              &gt;
+            </span>
+            see more
+          </p>
         </div>
       </section>
     </main>

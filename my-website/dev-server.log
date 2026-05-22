@@ -1,0 +1,14 @@
+
+> my-website@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.178.150:3000
+✓ Ready in 1037ms
+Creating turbopack project {
+  dir: 'C:\\Users\\Reirei\\Desktop\\ovenbreak to-do list\\my-website',
+  testMode: true
+}
+
+ GET / 200 in 3.0s (next.js: 2.6s, application-code: 347ms)

@@ -26,6 +26,7 @@
   --sun-yellow: #ffc433;
   --mint: #69ddb0;
   --epic: #862894;
+  --epic-frame-bg: #be74c9;
   --text-fill: #ffffff;
   --text-outline: #1e1b20;
 }
@@ -238,12 +239,13 @@ h2 {
 }
 
 .gold-section {
-  min-height: 138px;
+  min-height: 210px;
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
+  grid-template-columns: max-content max-content;
   align-items: center;
+  justify-content: center;
   gap: 24px;
-  padding: 20px 104px;
+  padding: 24px 72px;
   background: var(--sun-yellow);
 }
 
@@ -251,10 +253,43 @@ h2 {
   text-align: center;
 }
 
-.mini-grid {
+.item-grid {
   display: grid;
-  grid-template-columns: repeat(3, 86px);
+  grid-template-columns: repeat(2, 114px) 132px;
+  align-items: start;
   gap: 18px;
+}
+
+.new-item-card {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 8px;
+}
+
+.framed-new-item {
+  width: 114px;
+}
+
+.treasure-new-item {
+  width: 132px;
+}
+
+.treasure-new-item .new-item-name {
+  margin-top: 4px;
+}
+
+.new-item-name {
+  width: 100%;
+  margin: 0;
+  color: var(--text-fill);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+  text-align: center;
+  -webkit-text-stroke: 3px var(--text-outline);
+  paint-order: stroke fill;
 }
 
 .placeholder.small {
@@ -271,10 +306,13 @@ h2 {
   border: 8px solid transparent;
   border-radius: 22px;
   background: transparent;
+  background-clip: padding-box;
+  overflow: hidden;
 }
 
 .item-frame.epic {
   border-color: var(--epic);
+  background-color: var(--epic-frame-bg);
 }
 
 .item-frame img {
@@ -285,32 +323,44 @@ h2 {
   object-fit: contain;
 }
 
-.mini-item {
-  width: 86px;
-  height: 86px;
+.standard-item {
+  width: 114px;
+  height: 114px;
   border-width: 5px;
-  border-radius: 13px;
+  border-radius: 18px;
 }
 
-.mini-item img {
-  max-width: 78px;
-  max-height: 78px;
+.cookie-frame img {
+  width: auto;
+  height: 102px;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  transform: translateY(4px);
 }
 
-.treasure-mini {
-  display: grid;
-  place-items: center;
-  width: 86px;
-  height: 86px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  overflow: visible;
-}
-
-.treasure-mini img {
-  max-width: 86px;
+.pet-frame img {
+  justify-self: center;
+  align-self: center;
+  width: auto;
+  height: auto;
+  max-width: 96px;
   max-height: 86px;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+}
+
+.pet-frame.compact-fit img {
+  max-width: 84px;
+  max-height: 76px;
+}
+
+.treasure-item {
+  width: auto;
+  height: 110px;
+  max-width: none;
+  max-height: none;
   object-fit: contain;
 }
 
@@ -332,23 +382,27 @@ h2 {
 }
 
 .catalog-grid {
-  width: 88%;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(5, 132px);
+  justify-items: center;
+  align-items: start;
   gap: 24px 26px;
 }
 
 .placeholder.tile {
-  aspect-ratio: 1;
+  width: 114px;
+  height: 114px;
 }
 
 .catalog-label {
-  position: absolute;
-  right: 28px;
-  bottom: 52px;
+  position: static;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
+  width: 100%;
+  margin-top: 28px;
   font-size: 14px;
   font-weight: 400;
 }
@@ -412,20 +466,25 @@ h2 {
   }
 
   .gold-section {
-    grid-template-columns: 1fr;
-    padding: 24px 20px;
+    grid-template-columns: max-content max-content;
+    gap: 12px;
+    justify-content: start;
+    overflow-x: auto;
+    padding: 24px 12px;
   }
 
-  .mini-grid {
-    justify-content: center;
+  .item-grid {
+    grid-template-columns: repeat(2, 114px) 132px;
+    gap: 12px;
   }
 
   .catalog-board {
-    padding: 28px 24px 72px;
+    padding: 28px 24px;
   }
 
   .catalog-grid {
     width: 100%;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 132px);
+    overflow-x: auto;
   }
 }

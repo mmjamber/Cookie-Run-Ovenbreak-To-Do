@@ -25,14 +25,79 @@ const featureCards = [
 ];
 const newItems = [
   {
+    name: "Agar Agar Cookie",
+    image: "/images/cookies/epic/194-agar-agar-cookie.webp",
+    framed: true,
+    itemType: "cookie",
+  },
+  {
+    name: "Agarlotl",
+    image: "/images/cookies/epic/194-agarlotl.webp",
+    framed: true,
+    itemType: "pet",
+  },
+  {
+    name: "Dread Grasp of Darkness",
+    image: "/images/treasures/legendary/8-dread-grasp-of-darkness.png",
+    framed: false,
+  },
+];
+const recentItems = [
+  {
     name: "Red Velvet Cookie",
     image: "/images/cookies/epic/195-red-velvet.png",
     framed: true,
+    itemType: "cookie",
   },
   {
     name: "Chonky Cake Wolf",
     image: "/images/cookies/epic/195-chonky-cake-wolf.png",
     framed: true,
+    itemType: "pet",
+  },
+  {
+    name: "Angel Chiffon Cookie",
+    image: "/images/cookies/epic/192-angel-chiffon-cookie.webp",
+    framed: true,
+    itemType: "cookie",
+  },
+  {
+    name: "Bread Fairy",
+    image: "/images/cookies/epic/192-bread-fairy.webp",
+    framed: true,
+    itemType: "pet",
+    fit: "compact",
+  },
+  {
+    name: "Doughy Rolling Pin",
+    image: "/images/treasures/epic/112-doughy-rolling-pin.png",
+    framed: false,
+  },
+  {
+    name: "Entremet Cookie",
+    image: "/images/cookies/epic/193-entremet-cookie.webp",
+    framed: true,
+    itemType: "cookie",
+  },
+  {
+    name: "Meowsuring Cup",
+    image: "/images/cookies/epic/193-meowsuring-cup.webp",
+    framed: true,
+    itemType: "pet",
+    fit: "compact",
+  },
+  {
+    name: "Dark Fondue Cookie",
+    image: "/images/cookies/epic/190-dark-fondue-cookie.webp",
+    framed: true,
+    itemType: "cookie",
+  },
+  {
+    name: "Stick-E Cheese",
+    image: "/images/cookies/epic/190-stick-e-cheese.webp",
+    framed: true,
+    itemType: "pet",
+    fit: "compact",
   },
   {
     name: "Twirling Timepiece",
@@ -40,7 +105,6 @@ const newItems = [
     framed: false,
   },
 ];
-const gridCards = Array.from({ length: 14 });
 
 type FeatureCardStyle = CSSProperties & {
   "--card-image": string;
@@ -109,25 +173,40 @@ export default function Home() {
 
       <section className="gold-section">
         <h2>New:</h2>
-        <div className="mini-grid">
-          {newItems.map((item) => (
-            <div
-              className={
-                item.framed
-                  ? "item-frame epic mini-item"
-                  : "treasure-mini"
-              }
-              key={item.name}
-            >
-              <Image
-                src={item.image}
-                alt={item.name}
-                width={136}
-                height={136}
-                unoptimized
-              />
-            </div>
-          ))}
+        <div className="item-grid">
+          {newItems.map((item) =>
+            item.framed ? (
+              <div className="new-item-card framed-new-item" key={item.name}>
+                <div
+                  className={`item-frame epic standard-item ${item.itemType}-frame`}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={136}
+                    height={136}
+                    unoptimized
+                  />
+                </div>
+                <p className="new-item-name">{item.name}</p>
+              </div>
+            ) : (
+              <div
+                className="new-item-card treasure-new-item"
+                key={item.name}
+              >
+                <Image
+                  className="treasure-item"
+                  src={item.image}
+                  alt={item.name}
+                  width={136}
+                  height={136}
+                  unoptimized
+                />
+                <p className="new-item-name">{item.name}</p>
+              </div>
+            ),
+          )}
         </div>
       </section>
 
@@ -140,15 +219,45 @@ export default function Home() {
       <section className="catalog-section">
         <div className="catalog-board">
           <div className="catalog-grid">
-            {gridCards.map((_, index) => (
-              <div className="placeholder tile" key={index} />
-            ))}
+            {recentItems.map((item) =>
+              item.framed ? (
+                <div className="new-item-card framed-new-item" key={item.name}>
+                  <div
+                    className={`item-frame epic standard-item ${item.itemType}-frame ${item.fit ? `${item.fit}-fit` : ""}`}
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      width={136}
+                      height={136}
+                      unoptimized
+                    />
+                  </div>
+                  <p className="new-item-name">{item.name}</p>
+                </div>
+              ) : (
+                <div
+                  className="new-item-card treasure-new-item"
+                  key={item.name}
+                >
+                  <Image
+                    className="treasure-item"
+                    src={item.image}
+                    alt={item.name}
+                    width={136}
+                    height={136}
+                    unoptimized
+                  />
+                  <p className="new-item-name">{item.name}</p>
+                </div>
+              ),
+            )}
           </div>
           <p className="catalog-label">
             <span className="see-more-icon" aria-hidden="true">
               &gt;
             </span>
-            see more
+            see all
           </p>
         </div>
       </section>

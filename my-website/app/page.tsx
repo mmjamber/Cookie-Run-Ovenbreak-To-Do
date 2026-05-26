@@ -261,6 +261,14 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      <footer className="site-footer">
+        <p>
+          Textual content is available under Creative Commons
+          Attribution-ShareAlike unless otherwise noted. © 2019-2026 CookieRun.
+          CookieRun is a trademark of DEVSISTERS.
+        </p>
+      </footer>
     </main>
   );
 }

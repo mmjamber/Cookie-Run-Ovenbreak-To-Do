@@ -365,7 +365,7 @@ h2 {
 }
 
 .catalog-section {
-  padding: 48px 28px 70px;
+  padding: 48px 28px 140px;
   background: var(--panel-blue);
 }
 
@@ -405,6 +405,25 @@ h2 {
   margin-top: 28px;
   font-size: 14px;
   font-weight: 400;
+}
+
+.site-footer {
+  min-height: 172px;
+  display: grid;
+  place-items: center;
+  padding: 36px 48px;
+  background: #82d8eb;
+}
+
+.site-footer p {
+  max-width: 720px;
+  margin: 0;
+  color: #ffffff;
+  font-family: "CookieRun", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: center;
 }
 
 .see-more-icon {
@@ -486,5 +505,9 @@ h2 {
     width: 100%;
     grid-template-columns: repeat(3, 132px);
     overflow-x: auto;
+  }
+
+  .site-footer {
+    padding: 28px 20px;
   }
 }

@@ -11,3 +11,5 @@ Creating turbopack project {
   testMode: true
 }
 
+ GET / 200 in 1531ms (next.js: 1369ms, application-code: 162ms)
+ GET / 200 in 190ms (next.js: 16ms, application-code: 174ms)

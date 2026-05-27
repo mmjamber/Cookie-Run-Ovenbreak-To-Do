@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" width="420" height="420" role="img" aria-label="Curved black frame with gray outline">
+  <path
+    fill="#8d8d8b"
+    d="M 78 0
+       H 342
+       C 394 0 420 26 420 78
+       V 342
+       C 420 394 394 420 342 420
+       H 78
+       C 26 420 0 394 0 342
+       V 78
+       C 0 26 26 0 78 0 Z"
+  />
+  <path
+    fill="#000"
+    d="M 84 10
+       H 336
+       C 385 10 410 35 410 84
+       V 336
+       C 410 385 385 410 336 410
+       H 84
+       C 35 410 10 385 10 336
+       V 84
+       C 10 35 35 10 84 10 Z"
+  />
+  <path
+    fill="#fff"
+    d="M 88 22
+       H 332
+       C 373 22 398 47 398 88
+       V 332
+       C 398 373 373 398 332 398
+       H 88
+       C 47 398 22 373 22 332
+       V 88
+       C 22 47 47 22 88 22 Z"
+  />
+</svg>

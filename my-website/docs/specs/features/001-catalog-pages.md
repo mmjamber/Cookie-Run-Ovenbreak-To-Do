@@ -23,14 +23,14 @@ Catalog item cards must not show release numbers, leading file-name numbers, or 
 
 Cookie and pet rarity is shown visually through the CSS frame around the image, not through a text badge by default. Treasure rarity should not be shown visually in catalog item cards.
 
-Frame colors:
+Frame colors and fills:
 
-- Common: brown.
-- Rare: blue.
-- Epic: purple.
-- Legendary: teal.
+- Common: `#9a633d` outer frame with `#d39b73` fill.
+- Rare: `#28719e` outer frame with `#72b9df` fill.
+- Epic: `#862894` outer frame with `#be74c9` fill.
+- Legendary: `#16cbbb` outer frame with oversized clipped yellow/teal/purple diagonal gradient fill.
 
-The frame may use the shared item-card frame fill behind cookie or pet artwork. Treasures should not use rarity frames.
+The frame should use the shared item-card construction: a real outer frame color and an oversized inner fill layer clipped by the rounded frame. Treasures should not use rarity frames.
 
 ## Search, Sorting, And Filters
 

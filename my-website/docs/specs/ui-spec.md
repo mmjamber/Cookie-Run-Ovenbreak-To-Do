@@ -38,8 +38,14 @@ Every page must use the same outer shell as the current homepage unless a page s
   - bubble pink: `#f573bc`
   - sun yellow: `#ffc433`
   - mint: `#69ddb0`
+  - legendary frame border: `#16cbbb`
+  - legendary frame fill: oversized clipped diagonal gradient from yellow to teal to purple
   - epic frame border: `#862894`
   - epic frame fill: `#be74c9`
+  - rare frame border: `#28719e`
+  - rare frame fill: `#72b9df`
+  - common frame border: `#9a633d`
+  - common frame fill: `#d39b73`
   - outlined text fill: `#ffffff`
   - outlined text stroke: `#1e1b20`
 
@@ -153,8 +159,13 @@ Framed cookie and pet images:
 - Standard item frame size: `114px` by `114px`.
 - Standard item frame border: `5px`.
 - Standard item frame radius: `18px`.
-- Epic frame border color: `#862894`.
-- Epic frame fill color: `#be74c9`.
+- Framed items must use a real outer frame color with an oversized inner fill layer clipped by the rounded frame.
+- The inner fill layer must use `inset: 5px`, `border-radius: 13px`, and `transform: scale(1.35)` for standard item frames.
+- Legendary frame border color: `#16cbbb`.
+- Legendary frame fill: diagonal gradient, `135deg`, from `hsl(55deg 90% 67%)` to `hsl(173deg 87% 59%)` to `hsl(286deg 100% 61%)`.
+- Epic frame border color: `#862894`; Epic frame fill color: `#be74c9`.
+- Rare frame border color: `#28719e`; Rare frame fill color: `#72b9df`.
+- Common frame border color: `#9a633d`; Common frame fill color: `#d39b73`.
 - Frame content is centered with CSS grid.
 - Frame overflow is hidden.
 - Cookie images inside standard frames: `height: 102px`, `width: auto`, `max-width: none`, `max-height: none`, `object-fit: contain`, transform `translateY(4px)`.
@@ -238,8 +249,8 @@ Rarity display:
 - Show cookie and pet rarity through a CSS frame around the item image.
 - Do not show treasure rarity visually.
 - Do not use a separate rarity text badge by default.
-- Use the shared item-card frame fill behind cookie and pet artwork where the frame design requires it.
-- Use brown for Common, blue for Rare, purple for Epic, and teal for Legendary.
+- Use the shared item-card frame construction and rarity colors for cookie and pet artwork.
+- Use Common brown, Rare blue, Epic purple, and Legendary teal/gradient according to the Shared Item Cards section.
 - Treasures should still use rarity data for ordering and filtering, with Legendary before Epic before Rare before Common.
 
 Cookie item add flow:

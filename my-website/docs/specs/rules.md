@@ -129,12 +129,12 @@ Cookie and pet rarity should be visible through a CSS frame around the item imag
 
 | Cookie/pet rarity | Frame color |
 | --- | --- |
-| Legendary | Teal |
-| Epic | Purple |
-| Rare | Blue |
-| Common | Brown |
+| Legendary | `#16cbbb` outer frame with oversized clipped yellow/teal/purple diagonal gradient fill |
+| Epic | `#862894` outer frame with `#be74c9` fill |
+| Rare | `#28719e` outer frame with `#72b9df` fill |
+| Common | `#9a633d` outer frame with `#d39b73` fill |
 
-The frame should wrap the item image and may use the shared item-card frame fill behind cookie or pet artwork. Treasures should not use these frames.
+The frame should wrap the item image with a real outer frame color and an oversized inner fill layer clipped by the rounded frame. Treasures should not use these frames.
 
 ## Constraints
 

@@ -12,6 +12,7 @@ type FramedItem = {
   image: string;
   framed: true;
   itemType: "cookie" | "pet";
+  rarity: "legendary" | "epic" | "rare" | "common";
   fit?: "compact";
 };
 
@@ -57,12 +58,14 @@ const newItems: CatalogItem[] = [
     image: "/images/cookies/epic/194-agar-agar-cookie.webp",
     framed: true,
     itemType: "cookie",
+    rarity: "epic",
   },
   {
     name: "Agarlotl",
     image: "/images/cookies/epic/194-agarlotl.webp",
     framed: true,
     itemType: "pet",
+    rarity: "epic",
   },
   {
     name: "Dread Grasp of Darkness",
@@ -77,24 +80,28 @@ const recentItems: CatalogItem[] = [
     image: "/images/cookies/epic/195-red-velvet.png",
     framed: true,
     itemType: "cookie",
+    rarity: "epic",
   },
   {
     name: "Chonky Cake Wolf",
     image: "/images/cookies/epic/195-chonky-cake-wolf.png",
     framed: true,
     itemType: "pet",
+    rarity: "epic",
   },
   {
     name: "Angel Chiffon Cookie",
     image: "/images/cookies/epic/192-angel-chiffon-cookie.webp",
     framed: true,
     itemType: "cookie",
+    rarity: "epic",
   },
   {
     name: "Bread Fairy",
     image: "/images/cookies/epic/192-bread-fairy.webp",
     framed: true,
     itemType: "pet",
+    rarity: "epic",
     fit: "compact",
   },
   {
@@ -107,12 +114,14 @@ const recentItems: CatalogItem[] = [
     image: "/images/cookies/epic/193-entremet-cookie.webp",
     framed: true,
     itemType: "cookie",
+    rarity: "epic",
   },
   {
     name: "Meowsuring Cup",
     image: "/images/cookies/epic/193-meowsuring-cup.webp",
     framed: true,
     itemType: "pet",
+    rarity: "epic",
     fit: "compact",
   },
   {
@@ -120,12 +129,14 @@ const recentItems: CatalogItem[] = [
     image: "/images/cookies/epic/190-dark-fondue-cookie.webp",
     framed: true,
     itemType: "cookie",
+    rarity: "epic",
   },
   {
     name: "Stick-E Cheese",
     image: "/images/cookies/epic/190-stick-e-cheese.webp",
     framed: true,
     itemType: "pet",
+    rarity: "epic",
     fit: "compact",
   },
   {
@@ -157,7 +168,7 @@ function ItemCard({ item }: { item: CatalogItem }) {
   return (
     <div className="new-item-card framed-new-item">
       <div
-        className={`item-frame epic standard-item ${item.itemType}-frame${fitClass}`}
+        className={`item-frame ${item.rarity} standard-item ${item.itemType}-frame${fitClass}`}
       >
         <Image
           src={item.image}

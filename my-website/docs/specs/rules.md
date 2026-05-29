@@ -134,7 +134,7 @@ Cookie and pet rarity should be visible through a CSS frame around the item imag
 | Rare | Blue |
 | Common | Brown |
 
-The frame should wrap the item image without adding a solid background color behind the cookie or pet artwork. Treasures should not use these frames.
+The frame should wrap the item image and may use the shared item-card frame fill behind cookie or pet artwork. Treasures should not use these frames.
 
 ## Constraints
 

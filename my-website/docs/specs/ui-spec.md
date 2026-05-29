@@ -8,19 +8,89 @@ The site should feel useful to active Cookie Run: Ovenbreak players: fast to sca
 
 - Use `color palette .png` in the project root as the website color palette reference.
 - Use a pink background with a diagonal white polka-dot CSS pattern as the default website background.
-- Default background CSS: `background-color: #f4bfd9; background-image: radial-gradient(circle, #ffffff 5px, transparent 5.5px), radial-gradient(circle, #ffffff 5px, transparent 5.5px); background-position: 0 0, 22px 22px; background-size: 44px 44px;`
+- Default background CSS: `background-color: #f7bfdc; background-image: radial-gradient(circle, #ffffff 5px, transparent 5.5px), radial-gradient(circle, #ffffff 5px, transparent 5.5px); background-position: 0 0, 22px 22px; background-size: 44px 44px;`
 - Text should be white with a black border or outline unless a specific component spec says otherwise.
 - The black text outline should improve readability on bright artwork and colorful UI surfaces without making labels look heavy or blurry.
 - Any exception to the white-with-black-outline text rule must be stated explicitly in the relevant component or page spec.
 
 ## Core Layout
 
-- Use a persistent top or side navigation with homepage, My Lists, Cookies, Pets, and Treasures.
+- Use the shared page shell, hero banner, navigation buttons, and footer on every page.
+- Use a persistent top navigation inside the shared hero banner with homepage, to-do, cookies, pets, and treasures as the site grows.
 - The first screen should expose saved lists and preset mode entry points.
 - List detail pages should prioritize the user's upgrade targets over decorative content.
 - Mobile layouts should keep add/edit actions reachable and avoid wide tables.
 - Login or sign-in buttons may be shown for aesthetics, but clicking them should do nothing for now.
 - Aesthetic-only login/sign-in buttons should be placed on the top-right side of the screen, usually in the persistent navigation/header area.
+
+## Shared Page Shell
+
+Every page must use the same outer shell as the current homepage unless a page spec explicitly says otherwise.
+
+- Body background: `#f7bfdc` with the two-layer white polka-dot pattern: `radial-gradient(circle, #ffffff 5px, transparent 5.5px)` at `0 0` and `22px 22px`, with `44px 44px` background size.
+- Main website panel: centered, `width: min(930px, 100%)`, `min-height: 100vh`, background `#cff5ff`.
+- On mobile, the main panel remains `width: 100%`.
+- Use CookieRun fonts globally: regular `400`, bold `700`, black `900`.
+- All ordinary form controls inherit the site font.
+- Shared color tokens from the homepage:
+  - page pink: `#f7bfdc`
+  - panel blue: `#cff5ff`
+  - bubble pink: `#f573bc`
+  - sun yellow: `#ffc433`
+  - mint: `#69ddb0`
+  - epic frame border: `#862894`
+  - epic frame fill: `#be74c9`
+  - outlined text fill: `#ffffff`
+  - outlined text stroke: `#1e1b20`
+
+## Shared Hero Banner
+
+Every page must start with the homepage hero banner unless a page spec explicitly says otherwise.
+
+- Hero container: `position: relative`, `height: 330px`, `overflow: hidden`, background fallback `#bdeefa`.
+- Mobile hero height at `max-width: 760px`: `250px`.
+- Hero background image: `/images/homepage-banner-current.png`.
+- Hero background display: fill the hero, `object-fit: cover`, `object-position: center top`.
+- Title image: `/images/title.png`.
+- Title image placement: absolute center, `left: 50%`, `top: 50%`, `transform: translate(-50%, -50%)`, `z-index: 1`, `height: auto`, `object-fit: contain`.
+- Title image size: desktop `width: min(460px, 72%)`; mobile at `max-width: 760px` `width: min(420px, 78%)`.
+- Hero title alt text should be `CookieRun OvenBreak`.
+
+## Shared Hero Navigation
+
+The hero navigation buttons must keep the same position, size, typography, and colors across pages.
+
+- Nav position: absolute inside the hero, `right: 10px`, `bottom: 8px`, `z-index: 2`.
+- Nav layout: flex row with `gap: 10px`.
+- Mobile nav at `max-width: 760px`: `left: 12px`, `right: 12px`, centered with `justify-content: center`.
+- Button size: desktop `min-width: 92px`, `height: 28px`; mobile `min-width: 78px`, `height: 28px`.
+- Button shape: `border-radius: 999px`.
+- Button border: `2px dashed rgb(255 255 255 / 0.86)`.
+- Button text: CookieRun regular `400`, white `#ffffff`, no letter spacing changes.
+- Buttons are aesthetic navigation controls first; inactive or placeholder buttons may use `cursor: default` until routes exist.
+- Current homepage button colors:
+  - first button: background `#e95dac`, text-shadow `0 1px 0 #a83f7f`
+  - second button: background `#89d5e9`, text-shadow `0 1px 0 rgb(58 73 141 / 0.4)`
+  - third button: background `#ffc233`, text-shadow `0 1px 0 #c7831e`
+
+## Shared Footer
+
+Every page must include the same footer message and panel at the bottom.
+
+- Footer container: `min-height: 172px`, display grid, centered content, padding `36px 48px`, background `#82d8eb`.
+- Mobile footer padding at `max-width: 760px`: `28px 20px`.
+- Footer text: max width `720px`, margin `0`, color `#ffffff`, CookieRun regular `400`, font size `14px`, line-height `1.45`, centered.
+- Footer message:
+  `Textual content is available under Creative Commons Attribution-ShareAlike unless otherwise noted. © 2019-2026 CookieRun. CookieRun is a trademark of DEVSISTERS.`
+
+## Shared Typography
+
+Use homepage typography for matching UI pieces across every page.
+
+- Main section headings use `h1` or `h2`, CookieRun black `900`, font size `25px`, fill `#ffffff`, `-webkit-text-stroke: 4px #1e1b20`, `paint-order: stroke fill`, no text shadow, margin `0`, letter spacing `0`.
+- Item names for cookies, pets, and treasures use CookieRun regular `400`, font size `14px`, line-height `1.08`, fill `#ffffff`, `-webkit-text-stroke: 3px #1e1b20`, `paint-order: stroke fill`, centered, width `100%`, `overflow-wrap: anywhere`.
+- Small labels such as `see more` and `see all` use the outlined text style, font size `14px` to `15px`, regular `400`, centered inline-flex layout.
+- Do not use browser-default fonts or unoutlined dark text for item names or section headings unless a page spec explicitly says so.
 
 ## List and Mode Cards
 
@@ -32,7 +102,11 @@ Desktop card layout:
 - Show a maximum of 4 cards per row.
 - Cards are vertical rounded rectangles.
 - Card corners should be rounded, but the card should still feel rectangular rather than pill-shaped.
+- Match the homepage feature-card style by default: `border-radius: 8px`, `border: 2px solid #6d229b`, `overflow: hidden`, background image centered and covering the card.
+- Homepage mode-card desktop height uses `min-height: 335px`.
 - The list or mode name appears at the top of the card, centered inside the rectangle.
+- Mode-card title typography: CookieRun black `900`, font size `16px`, line-height `1.08`, fill `#ffffff`, `-webkit-text-stroke: 4px #1e1b20`, centered, `padding-top: 12px`, max width `calc(100% - 18px)`.
+- Mode-card title should sit above a subtle top gradient overlay: height `78px`, from `rgb(30 27 32 / 0.45)` to transparent.
 - The card image fills the visual body of the rectangle and should be centered intentionally, not left at the browser's default crop position.
 - Use the available mode artwork from `../ovenbreak images/illustrations/game modes`.
 - Images should use a consistent crop style across cards so the row feels even.
@@ -45,7 +119,11 @@ Desktop card layout:
 Mobile card layout:
 
 - Cards become horizontal rounded rectangles.
+- Homepage mode-card mobile breakpoint is `max-width: 930px`.
+- Mobile mode cards use the horizontal artwork variant where available, `height: 105px`, `min-height: 0`, `background-size: cover`, and `background-position: center`.
 - The list or mode name appears on the left side of the card.
+- Mobile mode-card title uses font size `18px`, left text alignment, `padding-left: 18px`, and no top padding.
+- Mobile mode-card overlay height is `58px`.
 - The image appears on the right side and must be re-centered for the horizontal crop.
 - Keep the full card clickable.
 - Do not let the image push the text out of view or make card heights inconsistent.
@@ -58,6 +136,54 @@ Mode artwork mapping:
 - Champions League: `Champions League.png`
 - Guild Run: `guild run.png`
 - Extra or future modes may use the `extra_*` images only when no more specific artwork exists.
+
+## Shared Item Cards
+
+Use the homepage item-card sizing whenever cookies, pets, or treasures are shown as standalone visual items.
+
+- Item card wrapper: display grid, centered content, top aligned, gap `8px`.
+- Framed cookie or pet card width: `114px`.
+- Treasure card width: `132px`.
+- Treasure names may use a top margin of `4px` when displayed under the treasure image.
+- Item grids should center their items and avoid horizontal overflow on mobile.
+
+Framed cookie and pet images:
+
+- Use rarity frames for cookies and pets.
+- Standard item frame size: `114px` by `114px`.
+- Standard item frame border: `5px`.
+- Standard item frame radius: `18px`.
+- Epic frame border color: `#862894`.
+- Epic frame fill color: `#be74c9`.
+- Frame content is centered with CSS grid.
+- Frame overflow is hidden.
+- Cookie images inside standard frames: `height: 102px`, `width: auto`, `max-width: none`, `max-height: none`, `object-fit: contain`, transform `translateY(4px)`.
+- Pet images inside standard frames: centered, `width: auto`, `height: auto`, `max-width: 96px`, `max-height: 86px`, `object-fit: contain`, `object-position: center`, no transform.
+- Compact pet fit: `max-width: 84px`, `max-height: 76px`.
+
+Treasure images:
+
+- Treasures do not use visual rarity frames.
+- Treasure image display: `height: 110px`, `width: auto`, `max-width: none`, `max-height: none`, `object-fit: contain`.
+- Treasure rarity may still be used for sorting and filtering, but should not change the displayed frame style.
+
+Homepage item grid patterns:
+
+- New section desktop: yellow panel `#ffc433`, `min-height: 210px`, grid with heading beside items, `grid-template-columns: max-content max-content`, centered, gap `24px`, padding `24px 72px`.
+- New item grid desktop: `repeat(2, 114px) 132px`, gap `18px`.
+- New section mobile at `max-width: 760px`: heading stacks above items, `grid-template-columns: 1fr`, centered, gap `18px`, padding `24px 16px 30px`.
+- New item grid mobile at `max-width: 760px`: width `min(100%, 404px)`, three columns, gap `14px`.
+- New item grid small mobile at `max-width: 430px`: width `min(100%, 278px)`, two columns, gap `16px 12px`; the treasure spans both columns.
+
+Recent/catalog board pattern:
+
+- Desktop catalog section padding: `48px 28px 140px`, background `#cff5ff`.
+- Desktop board: `min-height: 285px`, padding `36px 52px`, border `2px solid #8bd4e8`, background `#dffbff`, white grid pattern with 5px lines and `34px 34px` background size.
+- Desktop catalog grid: five `132px` columns, gap `24px 26px`, centered items.
+- Mobile catalog section at `max-width: 760px`: side padding removed so the grid-pattern board reaches both screen edges.
+- Mobile board: padding `28px 18px`, no left or right border; keep only top and bottom border.
+- Mobile catalog grid: three equal columns with gap `24px 12px`.
+- Small mobile at `max-width: 430px`: board side padding `14px`; catalog grid becomes two equal columns with gap `24px 12px`.
 
 ## List Detail UI
 
@@ -112,7 +238,7 @@ Rarity display:
 - Show cookie and pet rarity through a CSS frame around the item image.
 - Do not show treasure rarity visually.
 - Do not use a separate rarity text badge by default.
-- Do not place a solid colored background behind the item artwork.
+- Use the shared item-card frame fill behind cookie and pet artwork where the frame design requires it.
 - Use brown for Common, blue for Rare, purple for Epic, and teal for Legendary.
 - Treasures should still use rarity data for ordering and filtering, with Legendary before Epic before Rare before Common.
 

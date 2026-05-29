@@ -3,7 +3,7 @@
 ## Primary Navigation
 
 - Homepage: overview of user lists and preset list entry points.
-- My Lists: all user-created and saved preset lists.
+- To-do: all user-created and saved preset lists.
 - Cookies: cookie catalog.
 - Pets: pet catalog.
 - Treasures: treasure catalog.
@@ -67,7 +67,7 @@ Rules:
 | Page | Purpose | Key actions |
 | --- | --- | --- |
 | homepage | Starting point and quick overview | Create list, open preset, resume list |
-| My Lists | Manage saved lists | Create, rename, delete, open |
+| To-do | Manage saved lists | Create, rename, delete, open |
 | List Detail | Work on one to-do list | Add items, edit levels, mark progress |
 | Cookies Catalog | Browse all cookies | Sort, search, add 1 or 2 cookies, prompt paired pet |
 | Pets Catalog | Browse all pets | Sort, search, add pet |

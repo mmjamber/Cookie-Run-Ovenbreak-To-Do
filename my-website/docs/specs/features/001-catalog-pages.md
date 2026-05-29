@@ -30,7 +30,7 @@ Frame colors:
 - Epic: purple.
 - Legendary: teal.
 
-The frame should not add a background color behind the cookie or pet artwork. Treasures should not use rarity frames.
+The frame may use the shared item-card frame fill behind cookie or pet artwork. Treasures should not use rarity frames.
 
 ## Search, Sorting, And Filters
 

@@ -183,24 +183,20 @@ h2 {
   gap: 18px;
 }
 
-.feature-card,
-.placeholder {
-  border-radius: 8px;
-  background-color: #c9c9c9;
-  overflow: hidden;
-}
-
 .feature-card {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   border: 2px solid #6d229b;
+  border-radius: 8px;
   min-height: 335px;
+  background-color: #c9c9c9;
   background-image: var(--card-image);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
 .feature-card::before {
@@ -290,11 +286,6 @@ h2 {
   text-align: center;
   -webkit-text-stroke: 3px var(--text-outline);
   paint-order: stroke fill;
-}
-
-.placeholder.small {
-  width: 86px;
-  aspect-ratio: 1;
 }
 
 .item-frame {
@@ -388,11 +379,6 @@ h2 {
   justify-items: center;
   align-items: start;
   gap: 24px 26px;
-}
-
-.placeholder.tile {
-  width: 114px;
-  height: 114px;
 }
 
 .catalog-label {

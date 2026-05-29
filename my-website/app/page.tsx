@@ -1,7 +1,34 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 
-const featureCards = [
+type FeatureCard = {
+  name: string;
+  card: string;
+  horizontal: string;
+};
+
+type FramedItem = {
+  name: string;
+  image: string;
+  framed: true;
+  itemType: "cookie" | "pet";
+  fit?: "compact";
+};
+
+type TreasureItem = {
+  name: string;
+  image: string;
+  framed: false;
+};
+
+type CatalogItem = FramedItem | TreasureItem;
+
+type FeatureCardStyle = CSSProperties & {
+  "--card-image": string;
+  "--wide-card-image": string;
+};
+
+const featureCards: FeatureCard[] = [
   {
     name: "Trophy Race",
     card: "/images/game-modes/trophy-race-card.png",
@@ -23,7 +50,8 @@ const featureCards = [
     horizontal: "/images/game-modes/breakout-card-horizontal.png",
   },
 ];
-const newItems = [
+
+const newItems: CatalogItem[] = [
   {
     name: "Agar Agar Cookie",
     image: "/images/cookies/epic/194-agar-agar-cookie.webp",
@@ -42,7 +70,8 @@ const newItems = [
     framed: false,
   },
 ];
-const recentItems = [
+
+const recentItems: CatalogItem[] = [
   {
     name: "Red Velvet Cookie",
     image: "/images/cookies/epic/195-red-velvet.png",
@@ -106,10 +135,42 @@ const recentItems = [
   },
 ];
 
-type FeatureCardStyle = CSSProperties & {
-  "--card-image": string;
-  "--wide-card-image": string;
-};
+function ItemCard({ item }: { item: CatalogItem }) {
+  if (!item.framed) {
+    return (
+      <div className="new-item-card treasure-new-item">
+        <Image
+          className="treasure-item"
+          src={item.image}
+          alt={item.name}
+          width={136}
+          height={136}
+          unoptimized
+        />
+        <p className="new-item-name">{item.name}</p>
+      </div>
+    );
+  }
+
+  const fitClass = item.fit ? ` ${item.fit}-fit` : "";
+
+  return (
+    <div className="new-item-card framed-new-item">
+      <div
+        className={`item-frame epic standard-item ${item.itemType}-frame${fitClass}`}
+      >
+        <Image
+          src={item.image}
+          alt={item.name}
+          width={136}
+          height={136}
+          unoptimized
+        />
+      </div>
+      <p className="new-item-name">{item.name}</p>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -174,39 +235,9 @@ export default function Home() {
       <section className="gold-section">
         <h2>New:</h2>
         <div className="item-grid">
-          {newItems.map((item) =>
-            item.framed ? (
-              <div className="new-item-card framed-new-item" key={item.name}>
-                <div
-                  className={`item-frame epic standard-item ${item.itemType}-frame`}
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    width={136}
-                    height={136}
-                    unoptimized
-                  />
-                </div>
-                <p className="new-item-name">{item.name}</p>
-              </div>
-            ) : (
-              <div
-                className="new-item-card treasure-new-item"
-                key={item.name}
-              >
-                <Image
-                  className="treasure-item"
-                  src={item.image}
-                  alt={item.name}
-                  width={136}
-                  height={136}
-                  unoptimized
-                />
-                <p className="new-item-name">{item.name}</p>
-              </div>
-            ),
-          )}
+          {newItems.map((item) => (
+            <ItemCard item={item} key={item.name} />
+          ))}
         </div>
       </section>
 
@@ -219,39 +250,9 @@ export default function Home() {
       <section className="catalog-section">
         <div className="catalog-board">
           <div className="catalog-grid">
-            {recentItems.map((item) =>
-              item.framed ? (
-                <div className="new-item-card framed-new-item" key={item.name}>
-                  <div
-                    className={`item-frame epic standard-item ${item.itemType}-frame ${item.fit ? `${item.fit}-fit` : ""}`}
-                  >
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      width={136}
-                      height={136}
-                      unoptimized
-                    />
-                  </div>
-                  <p className="new-item-name">{item.name}</p>
-                </div>
-              ) : (
-                <div
-                  className="new-item-card treasure-new-item"
-                  key={item.name}
-                >
-                  <Image
-                    className="treasure-item"
-                    src={item.image}
-                    alt={item.name}
-                    width={136}
-                    height={136}
-                    unoptimized
-                  />
-                  <p className="new-item-name">{item.name}</p>
-                </div>
-              ),
-            )}
+            {recentItems.map((item) => (
+              <ItemCard item={item} key={item.name} />
+            ))}
           </div>
           <p className="catalog-label">
             <span className="see-more-icon" aria-hidden="true">

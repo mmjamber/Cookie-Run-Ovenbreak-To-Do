@@ -88,7 +88,7 @@ select {
   left: 50%;
   top: 50%;
   z-index: 1;
-  width: min(360px, 58%);
+  width: min(460px, 72%);
   height: auto;
   transform: translate(-50%, -50%);
   object-fit: contain;
@@ -457,7 +457,7 @@ h2 {
   }
 
   .hero .hero-title {
-    width: min(360px, 58%);
+    width: min(420px, 78%);
   }
 
   .hero-nav {
@@ -471,29 +471,61 @@ h2 {
   }
 
   .gold-section {
-    grid-template-columns: max-content max-content;
-    gap: 12px;
-    justify-content: start;
-    overflow-x: auto;
-    padding: 24px 12px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    justify-items: center;
+    padding: 24px 16px 30px;
   }
 
   .item-grid {
-    grid-template-columns: repeat(2, 114px) 132px;
-    gap: 12px;
+    width: min(100%, 404px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: center;
+    gap: 14px;
+  }
+
+  .catalog-section {
+    padding-inline: 0;
   }
 
   .catalog-board {
-    padding: 28px 24px;
+    padding: 28px 18px;
+    border-right: 0;
+    border-left: 0;
   }
 
   .catalog-grid {
     width: 100%;
-    grid-template-columns: repeat(3, 132px);
-    overflow-x: auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px 12px;
   }
 
   .site-footer {
     padding: 28px 20px;
+  }
+}
+
+@media (max-width: 430px) {
+  .gold-section {
+    padding-inline: 14px;
+  }
+
+  .item-grid {
+    width: min(100%, 278px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 12px;
+  }
+
+  .treasure-new-item {
+    grid-column: 1 / -1;
+  }
+
+  .catalog-board {
+    padding-inline: 14px;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 12px;
   }
 }

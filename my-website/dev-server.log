@@ -5,11 +5,11 @@
 ▲ Next.js 16.2.6 (Turbopack)
 - Local:         http://localhost:3000
 - Network:       http://192.168.178.150:3000
-✓ Ready in 461ms
+✓ Ready in 692ms
 Creating turbopack project {
   dir: 'C:\\Users\\Reirei\\Desktop\\ovenbreak to-do list\\my-website',
   testMode: true
 }
 
- GET / 200 in 1531ms (next.js: 1369ms, application-code: 162ms)
- GET / 200 in 190ms (next.js: 16ms, application-code: 174ms)
+○ Compiling / ...
+ GET / 200 in 4.1s (next.js: 3.5s, application-code: 574ms)

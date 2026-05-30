@@ -191,10 +191,12 @@ Recent/catalog board pattern:
 - Desktop catalog section padding: `48px 28px 140px`, background `#cff5ff`.
 - Desktop board: `min-height: 285px`, padding `36px 52px`, border `2px solid #8bd4e8`, background `#dffbff`, white grid pattern with 5px lines and `34px 34px` background size.
 - Desktop catalog grid: five `132px` columns, gap `24px 26px`, centered items.
+- Wide mobile/tablet catalog grid at `801px` to `930px` on coarse-pointer/touch screens: keep five `132px` columns, center the column group with `width: max-content`, `max-width: 100%`, and `margin-inline: auto`; use board side padding `18px` and gap `24px 10px` so the row fits cleanly.
 - Mobile catalog section at `max-width: 760px`: side padding removed so the grid-pattern board reaches both screen edges.
 - Mobile board: padding `28px 18px`, no left or right border; keep only top and bottom border.
-- Mobile catalog grid: three equal columns with gap `24px 12px`.
-- Small mobile at `max-width: 430px`: board side padding `14px`; catalog grid becomes two equal columns with gap `24px 12px`.
+- Mobile catalog grid at `max-width: 760px`: four equal columns with gap `24px 12px`.
+- Mobile catalog grid under `500px`: three equal columns with gap `24px 12px`.
+- Small mobile under `400px`: board side padding `14px`; catalog grid becomes two equal columns with gap `24px 12px`.
 
 ## List Detail UI
 

@@ -467,6 +467,20 @@ h2 {
   transform-origin: 50% 55%;
 }
 
+@media (min-width: 801px) and (max-width: 930px) and (hover: none) and (pointer: coarse) {
+  .catalog-board {
+    padding-inline: 18px;
+  }
+
+  .catalog-grid {
+    width: max-content;
+    max-width: 100%;
+    margin-inline: auto;
+    grid-template-columns: repeat(5, 132px);
+    gap: 24px 10px;
+  }
+}
+
 @media (max-width: 930px) {
   .feature-grid {
     grid-template-columns: 1fr;
@@ -531,7 +545,7 @@ h2 {
 
   .catalog-grid {
     width: 100%;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 24px 12px;
   }
 
@@ -586,14 +600,21 @@ h2 {
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 500px) {
+  .catalog-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px 12px;
+  }
+}
+
+@media (max-width: 400px) {
   .catalog-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px 12px;
   }
 }
 
-@media (max-width: 430px) and (hover: none) and (pointer: coarse) {
+@media (max-width: 400px) and (hover: none) and (pointer: coarse) {
   .gold-section {
     padding-inline: 14px;
   }

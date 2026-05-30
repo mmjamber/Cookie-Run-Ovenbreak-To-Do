@@ -39,7 +39,7 @@ When a user chooses a preset:
 ## Requirements
 
 - Preset entry points should be visible from the homepage.
-- Presets must respect all validation rules from `002-list-formats.md`.
+- Presets must respect all validation rules from `F002-list-formats.md`.
 - Users must be able to name or rename preset-derived lists.
 - Users can manually change Breakout preset groups and group sizes after creation, within Breakout format limits.
 - Preset-derived lists should persist like custom lists.

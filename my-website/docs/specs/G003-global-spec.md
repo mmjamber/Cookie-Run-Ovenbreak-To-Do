@@ -48,6 +48,6 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 
 ## Related Specs
 
-- `rules.md` for universal rules and terminology.
-- `functional-map.md` for navigation and user flows.
-- `features/002-list-formats.md` for detailed format constraints.
+- `G002-rules.md` for universal rules and terminology.
+- `G004-functional-map.md` for navigation and user flows.
+- `features/F002-list-formats.md` for detailed format constraints.

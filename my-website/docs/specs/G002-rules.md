@@ -4,7 +4,7 @@
 
 Cookie Run: Ovenbreak To-Do is organized around user-made to-do lists. A list contains either combis or ungrouped individual items, depending on its selected format.
 
-For product goals, audience, MVP scope, and success criteria, see `global-spec.md`.
+For product goals, audience, MVP scope, and success criteria, see `G003-global-spec.md`.
 
 ## Core Vocabulary
 
@@ -39,7 +39,7 @@ When a user changes an arena maximum target set, they may only choose one of the
 
 Target levels are always editable by the user, but they cannot exceed the current item, list, or arena maximum. For example, if a Guild Run arena has cookie/pet max 7 and treasure max 5, targets in that arena cannot be set above those numbers unless the arena limit is changed manually.
 
-When an item is added to a to-do list, its current level and target level both start at `Lv. 1`. The website assumes newly added cookies, pets, and treasures have not been maxed yet.
+When an item is added to a to-do list, its current level starts at `Lv. 1`. Its target level should automatically match the maximum allowed by the current item slot, list format, combi, or arena target set. For example, a full-cap combi should default cookie and pet targets to `Lv. 15` and treasure targets to `Lv. 12`; a low-cap arena should default cookie and pet targets to `Lv. 7` and treasure targets to `Lv. 5`. The website should assume that newly added items have not been leveled yet, but that the user's goal is the format-appropriate target.
 
 Users track both current level and target level. An item is complete when its current level reaches its target level. If the user manually marks an item complete, the website should automatically set the current level to the item's target level.
 

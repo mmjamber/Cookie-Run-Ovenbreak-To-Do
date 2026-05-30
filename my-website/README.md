@@ -25,11 +25,12 @@ Start editing the website in `app/page.tsx`. Project planning docs live in `docs
 - `AGENTS.md` - shared agent instructions for Codex and other coding assistants
 - `CLAUDE.md` - Claude-specific entry point
 - `CODEX.md` - Codex-specific entry point
-- `docs/specs/index.md` - index of project specs
-- `docs/specs/global-spec.md` - product goals and feature scope
-- `docs/specs/rules.md` - universal rules, terminology, and constraints
-- `docs/specs/ui-spec.md` - interface and visual direction
-- `docs/specs/data-model.md` - starter domain model
+- `docs/specs/G001-index.md` - index of project specs and naming rules
+- `docs/specs/G002-rules.md` - universal rules, terminology, and constraints
+- `docs/specs/G003-global-spec.md` - product goals and feature scope
+- `docs/specs/G004-functional-map.md` - pages, user flows, and feature areas
+- `docs/specs/G005-data-model.md` - starter domain model
+- `docs/specs/G006-ui-spec.md` - interface and visual direction
 
 ## Scripts
 

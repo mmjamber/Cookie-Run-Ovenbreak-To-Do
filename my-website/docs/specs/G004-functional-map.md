@@ -47,7 +47,7 @@
 3. A small picker tab opens with to-do lists linked to the current local profile.
 4. User chooses a destination list.
 5. User chooses a compatible slot.
-6. The website adds the item or items with current level `Lv. 1` and target level `Lv. 1`, then lets the user edit levels within the current item, list, or arena maximum.
+6. The website adds the item or items with current level `Lv. 1` and target level set to the maximum allowed by the destination slot, combi, list format, or arena target set, then lets the user edit levels within the current item, list, or arena maximum.
 
 ### Track Progress
 

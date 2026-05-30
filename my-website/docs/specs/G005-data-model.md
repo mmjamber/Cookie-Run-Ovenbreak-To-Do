@@ -141,7 +141,7 @@ Represents one selected catalog item inside a list.
 | `catalogItemId` | `string` | References catalog item |
 | `type` | `ItemType` | Duplicated for convenience |
 | `currentLevel` | `number` | Editable user current level; newly added items start at 1 and must respect item, list, and arena maximums |
-| `targetLevel` | `number` | Editable user target; newly added items start at 1 and must respect item, list, and arena maximums |
+| `targetLevel` | `number` | Editable user target; newly added items default to the maximum allowed by the current item slot, list format, combi, or arena target set |
 | `completed` | `boolean` | True when `currentLevel >= targetLevel`; manually marking complete sets `currentLevel` to `targetLevel` |
 
 ## Format Storage Mapping
@@ -167,7 +167,8 @@ Initial implementation should use browser local storage:
 - Cookie target cannot exceed 15.
 - Pet target cannot exceed 15.
 - Treasure target cannot exceed 12.
-- Newly added cookies, pets, and treasures start with `currentLevel: 1` and `targetLevel: 1`.
+- Newly added cookies, pets, and treasures start with `currentLevel: 1`.
+- Newly added item `targetLevel` defaults to the maximum allowed by the current item slot, list format, combi, or arena target set.
 - Current and target levels are always editable but cannot exceed the current item, list, or arena maximum.
 - An item is complete when `currentLevel >= targetLevel`.
 - Manually marking an item complete sets `currentLevel` to `targetLevel`.

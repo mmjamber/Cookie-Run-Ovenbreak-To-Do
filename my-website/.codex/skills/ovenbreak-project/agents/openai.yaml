@@ -1,0 +1,4 @@
+interface:
+  display_name: "OvenBreak Project"
+  short_description: "Build the OvenBreak to-do app consistently"
+  default_prompt: "Use $ovenbreak-project to implement the next OvenBreak to-do feature from the project specs."

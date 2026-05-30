@@ -21,7 +21,104 @@
           22px 22px;
         background-size: 44px 44px;
       }
+
+      .top-banner {
+        --banner-height: 56px;
+        --scallop-width: 56px;
+        --scallop-gap: 0px;
+        --outline: #8b6fb2;
+        --white: #ffffff;
+        --mint: #6edfaf;
+        --yellow: #ffc23c;
+        --pink: #e463a6;
+        --purple: #d1a2f1;
+        --blue: #78bfd4;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        height: var(--banner-height);
+        display: flex;
+        gap: var(--scallop-gap);
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .banner-piece {
+        flex: 0 0 var(--scallop-width);
+        height: calc(var(--banner-height) - 2px);
+        box-sizing: border-box;
+        border-radius: 0 0 999px 999px;
+        border: 3px solid var(--outline);
+        border-top: 0;
+        background: var(--white);
+      }
+
+      .banner-piece:nth-child(10n + 2) {
+        background: var(--mint);
+      }
+
+      .banner-piece:nth-child(10n + 4) {
+        background: var(--yellow);
+      }
+
+      .banner-piece:nth-child(10n + 6) {
+        background: var(--pink);
+      }
+
+      .banner-piece:nth-child(10n + 8) {
+        background: var(--purple);
+      }
+
+      .banner-piece:nth-child(10n) {
+        background: var(--blue);
+      }
     </style>
   </head>
-  <body></body>
+  <body>
+    <div class="top-banner" aria-hidden="true">
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+      <span class="banner-piece"></span>
+    </div>
+  </body>
 </html>

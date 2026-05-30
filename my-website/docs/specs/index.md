@@ -20,3 +20,5 @@ This folder is the source of truth for the project. The website helps Cookie Run
 ## Working Rule
 
 If implementation changes behavior, update the relevant spec in the same task. If a requirement is ambiguous, add it to the relevant `Open Questions` section instead of inventing hidden behavior.
+
+New feature specs must use the next zero-padded numeric prefix in `features/`, such as `005-new-feature.md`, so the list stays ordered.

@@ -29,6 +29,7 @@ This project uses Next.js 16.2.6. APIs, conventions, and file structure may diff
 - Prefer existing Next.js, React, Tailwind, and TypeScript patterns already in the website.
 - Keep HTML/component structure and CSS styling in separate files; avoid inline `<style>` blocks and style-heavy markup unless a file is explicitly a throwaway preview.
 - Update `docs/specs/` before large implementation work when requirements are unclear.
+- Name new feature specs in `docs/specs/features/` with the next zero-padded numeric prefix, such as `005-new-feature.md`.
 - Keep generated folders such as `.next/`, `node_modules/`, and build output out of source changes.
 
 ## Product Direction

@@ -17,6 +17,7 @@ This folder is the source of truth for the project. The website helps Cookie Run
 - `features/F002-list-formats.md` - the five supported to-do list formats
 - `features/F003-preset-lists.md` - Trophy Race, Breakout, Champions League, and Guild Run presets
 - `features/F004-custom-lists.md` - user-created named lists
+- `features/F005-homepage-list-cards.md` - latest four homepage to-do list cards and default card behavior
 
 ## Naming Rule
 

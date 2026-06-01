@@ -20,8 +20,11 @@ The site should feel useful to active Cookie Run: Ovenbreak players: fast to sca
 - The first screen should expose saved lists and preset mode entry points.
 - List detail pages should prioritize the user's upgrade targets over decorative content.
 - Mobile layouts should keep add/edit actions reachable and avoid wide tables.
-- Login or sign-in buttons may be shown for aesthetics, but clicking them should do nothing for now.
-- Aesthetic-only login/sign-in buttons should be placed on the top-right side of the screen, usually in the persistent navigation/header area.
+- Login and sign-in buttons should be shown for aesthetics, but clicking them should do nothing for now.
+- Aesthetic-only login/sign-in buttons should appear in the right corner of the screen, usually in the persistent navigation/header area.
+- The sign-in button should appear first, with the log-in button immediately to its right.
+- The sign-in button should match the visual style of the current `home` button.
+- The log-in button should match the visual style of the current `to-do` button.
 
 ## Shared Page Shell
 
@@ -79,6 +82,17 @@ The hero navigation buttons must keep the same position, size, typography, and c
   - second button: background `#89d5e9`, text-shadow `0 1px 0 rgb(58 73 141 / 0.4)`
   - third button: background `#ffc233`, text-shadow `0 1px 0 #c7831e`
 
+## Aesthetic Account Buttons
+
+Every page should include two aesthetic-only account buttons in the right corner of the screen:
+
+- Button order: `sign in`, then `log in` to its right.
+- Button behavior: both buttons are non-functional for now and must not start authentication, call a backend, or change the local profile.
+- Button style: both buttons use the same size, border, border radius, typography, and white text treatment as the shared hero navigation buttons.
+- `sign in` uses the same pink background and text shadow as the `home` button.
+- `log in` uses the same blue background and text shadow as the `to-do` button.
+- The two account buttons should stay visually grouped together and should not replace the main navigation buttons.
+
 ## Shared Footer
 
 Every page must include the same footer message and panel at the bottom.
@@ -101,6 +115,8 @@ Use homepage typography for matching UI pieces across every page.
 ## List and Mode Cards
 
 Saved to-do lists and preset mode entry points should display as clickable cards.
+
+Homepage card selection behavior is defined in `features/F005-homepage-list-cards.md`; this section defines the shared visual treatment for those cards.
 
 Desktop card layout:
 

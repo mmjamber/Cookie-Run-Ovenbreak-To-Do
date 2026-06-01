@@ -36,7 +36,7 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 - Static catalog data structure with cookie, pet, and treasure pages.
 - Catalog search, rarity filters, and alphabetical or release-date ordering within rarity groups.
 - Local persistence for user lists.
-- Aesthetic-only login/sign-in control.
+- Aesthetic-only sign-in and log-in controls.
 
 ## Success Criteria
 

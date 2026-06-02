@@ -230,6 +230,8 @@ Each list detail page should show:
 - Progress controls should be level-only: current level, target level, and manual complete for individual items.
 - Do not show separate complete controls for whole combis, groups, arenas, or list sections.
 
+Empty list and empty slot visuals are specified in `features/F006-empty-list-layouts.md`. That spec is the source of truth for the add-option artwork, empty combi layouts, group/arena grids, and replacement behavior when a user chooses an item.
+
 ## Combi UI
 
 A combi should display:

@@ -17,8 +17,8 @@ Add-option slot artwork:
 
 Combi layout references:
 
-- Combi with relay: `combi cookie 1 + relay preview.png`
-- Combi without relay: `combi cookie no relay preview.png`
+- Combi type 1: `combi cookie 1 + relay preview.png`
+- Combi type 2: `combi cookie no relay preview.png`
 
 Mode group layout references:
 
@@ -74,14 +74,14 @@ If the user accepts a paired-pet addition, replace both the clicked cookie add-o
 
 ## Combi Layouts
 
-Combis with relay should follow `combi cookie 1 + relay preview.png`:
+Combi type 1 should follow `combi cookie 1 + relay preview.png`:
 
 - Three treasure add slots sit across the top.
 - The pet add slot sits to the left of the main cookie.
 - The main cookie add slot is the central, largest slot.
 - The relay cookie add slot sits at the lower right and uses the relay artwork, including the small `2` marker.
 
-Combis without relay should follow `combi cookie no relay preview.png`:
+Combi type 2 should follow `combi cookie no relay preview.png`:
 
 - Three treasure add slots sit across the top.
 - The pet add slot sits to the left of the main cookie.
@@ -92,7 +92,7 @@ Combis without relay should follow `combi cookie no relay preview.png`:
 
 Trophy Race:
 
-- Show the default empty combis using the relay combi layout.
+- Show the default empty combis using the combi type 1 layout.
 - Label combis as arenas or slots according to the Trophy Race list UI.
 - Use the `trophy race-champions league preview.png` spacing and alternating panel treatment as the visual reference.
 - Users may add more combis until the Trophy Race maximum is reached.
@@ -100,7 +100,7 @@ Trophy Race:
 Breakout:
 
 - Show groups as named sections, such as `Group 1` and `Group 2`.
-- Each group contains a grid of no-relay combis.
+- Each group contains a grid of combi type 2 entries.
 - Use `preview breakout groups.png` as the visual reference for group spacing, group headings, alternating combi backgrounds, and multi-row wrapping.
 - Each combi in a Breakout group has one pet slot, one main cookie slot, and three treasure slots.
 - The small flag marker at the bottom-right of each Breakout combi should show that combi's number within its group.
@@ -110,31 +110,41 @@ Breakout:
 Guild Run:
 
 - Show exactly 12 arena sections by default.
-- Each arena uses the relay combi layout.
+- Each arena uses the combi type 1 layout.
 - Use `guild run preview.png` as the visual reference for the 12-arena grid, arena labels, and alternating panel backgrounds.
 - Users cannot add or remove Guild Run arenas.
 
 Champions League:
 
 - Show exactly 3 arena sections by default.
-- Each arena uses the relay combi layout.
+- Each arena uses the combi type 1 layout.
 - Use `trophy race-champions league preview.png` as the visual reference for arena spacing, labels, and alternating panel backgrounds.
 - Users cannot add or remove Champions League arenas.
 
 None:
 
-- None-format lists do not use combis, arenas, or groups.
-- Empty None lists should show individual add actions for cookies, pets, and treasures rather than the combi preview layouts.
-- Cookie-pet pairing still applies when the user adds a cookie and chooses to add its paired pet as an individual item.
+- None-format lists start with no default combis, arenas, groups, or items.
+- When the user clicks the None-list add action, ask whether to add `combi type 1 (with relay)`, `combi type 2 (without relay)`, cookie, pet, or treasure.
+- If the user chooses combi type 1, insert an empty combi type 1 block using `combi cookie 1 + relay preview.png`.
+- If the user chooses combi type 2, insert an empty combi type 2 block using `combi cookie no relay preview.png`.
+- If the user chooses cookie, open the cookie picker and ask whether to add the paired pet when the chosen cookie has 1 or 2 paired pets.
+- If the user chooses pet, open the pet picker and add only the selected pet; do not show an extra prompt.
+- If the user chooses treasure, ask whether to add 1 treasure or a set of 3 treasures, then open the treasure picker with the selected limit.
+- Individual cookie, pet, treasure, and treasure-set entries should use the existing add-option artwork and replacement sizing rules.
+- Combi entries in None lists should use the same add-option artwork and replacement sizing rules as mode combis.
 
 ## Acceptance Criteria
 
-- [ ] Empty Trophy Race lists display relay combi slots using the specified add-option artwork.
-- [ ] Empty Breakout lists display groups of no-relay combis using the specified add-option artwork.
+- [ ] Empty Trophy Race lists display combi type 1 slots using the specified add-option artwork.
+- [ ] Empty Breakout lists display groups of combi type 2 entries using the specified add-option artwork.
 - [ ] Breakout combis show numbered flag markers, restarting from `1` in each group.
-- [ ] Empty Guild Run lists display 12 relay-layout arenas.
-- [ ] Empty Champions League lists display 3 relay-layout arenas.
-- [ ] Empty None lists do not render combi layouts.
+- [ ] Empty Guild Run lists display 12 combi type 1 arenas.
+- [ ] Empty Champions League lists display 3 combi type 1 arenas.
+- [ ] Empty None lists start blank except for the list add action.
+- [ ] None-list add action asks whether to add `combi type 1 (with relay)`, `combi type 2 (without relay)`, cookie, pet, or treasure.
+- [ ] None-list combi type 1 uses the combi type 1 layout.
+- [ ] None-list combi type 2 uses the combi type 2 layout.
+- [ ] None-list treasure adds ask whether to add 1 treasure or 3 treasures.
 - [ ] Clicking any add-option artwork opens the correct catalog or picker for that slot type.
 - [ ] The chosen item returns to the originating list slot.
 - [ ] Chosen item art replaces the add-option art without changing the slot footprint.

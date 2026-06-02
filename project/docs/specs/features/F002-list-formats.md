@@ -12,7 +12,7 @@ An item is complete when its current level reaches its target level. Users can a
 
 ## Trophy Race Format
 
-Combi structure:
+Combi structure: combi type 1.
 
 - 1 pet
 - 1 main cookie
@@ -38,8 +38,7 @@ Group structure:
 
 - A list contains groups.
 - Each group contains numbered combis.
-- A Breakout combi has 1 pet, 1 cookie, and 3 treasures.
-- No relay cookie.
+- A Breakout combi is combi type 2.
 
 Starting levels and target defaults:
 
@@ -59,7 +58,7 @@ Arena structure:
 
 - Exactly 12 arenas.
 - Users cannot add arenas.
-- Each arena has 1 pet, 1 main cookie, 1 relay cookie, and 3 treasures.
+- Each arena uses combi type 1.
 
 Arena maximum limits:
 
@@ -82,7 +81,7 @@ Arena structure:
 
 - Exactly 3 arenas.
 - Users cannot add arenas.
-- Each arena has 1 pet, 1 main cookie, 1 relay cookie, and 3 treasures.
+- Each arena uses combi type 1.
 
 Arena maximum limits:
 
@@ -97,11 +96,13 @@ Arena maximum limits:
 
 Structure:
 
-- No combis.
-- Users can add cookies with or without their pet.
-- Users can add pets independently.
-- Users can add treasures independently.
-- Treasures appear alone and are not attached to combis.
+- No default combis.
+- Users can add flexible entries: combi type 1, combi type 2, one cookie, one pet, one treasure, or one treasure set of three.
+- Combi type 1 and combi type 2 are defined in `G002-rules.md`.
+- Individual cookies can be added with or without their paired pet.
+- Individual pets are added alone.
+- Individual treasures can be added alone or as a set of 3 treasures.
+- Treasure sets appear grouped together but are not attached to a combi unless the user chose a combi entry.
 
 Current and target levels:
 
@@ -109,6 +110,15 @@ Current and target levels:
 - User sets the current and desired target level for every individual item.
 - Cookie and pet levels can be 1 to 15.
 - Treasure levels can be 1 to 12.
+
+Add flow:
+
+1. When the user clicks add on a None-format list, ask whether to add `combi type 1 (with relay)`, `combi type 2 (without relay)`, cookie, pet, or treasure.
+2. If the user chooses combi type 1, add an empty combi type 1 block using the shared combi type 1 layout.
+3. If the user chooses combi type 2, add an empty combi type 2 block using the shared combi type 2 layout.
+4. If the user chooses cookie, open the cookie picker and ask whether to add the paired pet when the chosen cookie has pairing candidates.
+5. If the user chooses pet, open the pet picker and add only the selected pet.
+6. If the user chooses treasure, ask whether to add 1 treasure or a set of 3 treasures, then open the treasure picker with the chosen selection limit.
 
 ## Acceptance Criteria
 
@@ -119,5 +129,6 @@ Current and target levels:
 - [ ] Current and target levels remain editable.
 - [ ] Current and target levels cannot exceed the current item, list, or arena maximum.
 - [ ] None format allows individual current and target levels per item.
+- [ ] None format supports user-added combi type 1 entries, combi type 2 entries, individual cookies, individual pets, individual treasures, and 3-treasure sets.
 - [ ] Manually marking an item complete sets its current level to its target level.
 - [ ] Invalid additions and invalid levels are blocked with clear messages.

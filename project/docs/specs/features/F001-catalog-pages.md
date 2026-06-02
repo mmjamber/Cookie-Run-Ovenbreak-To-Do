@@ -118,6 +118,8 @@ For cookies, the paired-pet prompt should happen before the destination list is 
 - Pets can fill pet or None-format pet slots.
 - Treasures can fill treasure or None-format treasure slots.
 - Up to 3 treasures can be selected at the same time for combis that require treasure slots.
+- None-format lists can also create a new destination before choosing catalog items: `combi type 1 (with relay)`, `combi type 2 (without relay)`, individual cookie, individual pet, individual treasure, or 3-treasure set.
+- When adding a treasure from a None-format list add flow, ask whether the destination is 1 treasure or a set of 3 treasures before opening the treasure picker.
 - Treasure click order does not matter.
 - The website must prevent adding an item to an incompatible slot.
 

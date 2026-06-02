@@ -245,7 +245,7 @@ A combi should display:
 - Newly added items should display current level `Lv. 1` and a target level that automatically matches the maximum allowed by the current slot, combi, list format, or arena target set until the user changes it.
 - Users can manually mark an item complete; doing so sets the item's current level to its target level.
 
-For formats without relay cookies, do not render an empty relay column.
+For combi type 2, do not render an empty relay column.
 
 ## Catalog UI
 

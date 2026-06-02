@@ -59,6 +59,16 @@
 5. User chooses a compatible slot.
 6. The website adds the item or items with current level `Lv. 1` and target level set to the maximum allowed by the destination slot, combi, list format, or arena target set, then lets the user edit levels within the current item, list, or arena maximum.
 
+### Add Entry To None List
+
+1. User opens a None-format list and chooses its add action.
+2. The website asks whether to add `combi type 1 (with relay)`, `combi type 2 (without relay)`, cookie, pet, or treasure.
+3. If the user chooses combi type 1, the website inserts an empty combi type 1 block.
+4. If the user chooses combi type 2, the website inserts an empty combi type 2 block.
+5. If the user chooses cookie, the website opens the cookie picker and still prompts for a paired pet when pairing candidates exist.
+6. If the user chooses pet, the website opens the pet picker and adds only the chosen pet.
+7. If the user chooses treasure, the website asks whether to add 1 treasure or a set of 3 treasures, then opens the treasure picker with the chosen selection limit.
+
 ### Track Progress
 
 1. User opens a list.

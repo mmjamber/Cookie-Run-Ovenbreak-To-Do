@@ -39,7 +39,8 @@ Champions League:
 
 None:
 
-- Creates an empty individual item list.
+- Creates an empty flexible list with no default combis or items.
+- The list detail add action asks whether to add `combi type 1 (with relay)`, `combi type 2 (without relay)`, cookie, pet, or treasure.
 
 ## Management Actions
 

@@ -106,7 +106,7 @@ Rules:
 
 ## List Section
 
-Sections allow each format to store combis, groups, arenas, or ungrouped items in one list.
+Sections allow each format to store combis, groups, arenas, or ungrouped items in one list. None-format lists can mix individual items and user-added combi sections.
 
 | Field | Type | Notes |
 | --- | --- | --- |
@@ -115,8 +115,10 @@ Sections allow each format to store combis, groups, arenas, or ungrouped items i
 | `label` | `string` | User-visible section name |
 | `position` | `number` | Display order |
 | `targetSet` | `TargetSet` or `null` | Arena maximum target set |
-| `combis` | `Combi[]` | Empty for None format |
-| `items` | `TodoItem[]` | None format individual items |
+| `combis` | `Combi[]` | Format combis or user-added None-format combi blocks |
+| `items` | `TodoItem[]` | None format individual items or grouped treasure sets |
+
+For None-format 3-treasure sets, keep the three `TodoItem` records grouped in the same section or parent entry so the UI can display them as one chosen set rather than three unrelated loose treasures.
 
 ## Combi
 
@@ -150,7 +152,7 @@ Represents one selected catalog item inside a list.
 - Breakout: up to 5 `group` sections, each with 3 to 15 numbered combis.
 - Guild Run: 12 fixed `arena` sections, each with one combi and a configured maximum target set.
 - Champions League: 3 fixed `arena` sections, each with one combi and user-selected maximum target set.
-- None: one `individualItems` section with individual cookies, pets, and treasures.
+- None: one or more flexible sections that can store individual cookies, pets, treasures, 3-treasure sets, combi type 1 entries, and combi type 2 entries.
 
 ## Persistence
 

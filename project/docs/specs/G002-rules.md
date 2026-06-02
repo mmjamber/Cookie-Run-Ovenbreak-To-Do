@@ -2,7 +2,7 @@
 
 ## Product Summary
 
-Cookie Run: Ovenbreak To-Do is organized around user-made to-do lists. A list contains either combis or ungrouped individual items, depending on its selected format.
+Cookie Run: Ovenbreak To-Do is organized around user-made to-do lists. A list contains combis, groups, arenas, ungrouped individual items, or a flexible mix of user-added entries depending on its selected format.
 
 For product goals, audience, MVP scope, and success criteria, see `G003-global-spec.md`.
 
@@ -12,6 +12,8 @@ For product goals, audience, MVP scope, and success criteria, see `G003-global-s
 - Pet: companion item. Maximum level is 15.
 - Treasure: equipment item. Maximum level is 12.
 - Combi: a grouped set of items used together in a mode.
+- Combi type 1: a combi with 1 pet, 1 main cookie, 1 relay cookie, and 3 treasures.
+- Combi type 2: a combi with 1 pet, 1 main cookie, and 3 treasures; no relay cookie.
 - Relay cookie: secondary cookie in modes that support one.
 - Arena: fixed slot inside Trophy Race, Guild Run, or Champions League.
 - Group: numbered collection of Breakout combis.

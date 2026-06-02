@@ -6,7 +6,7 @@ The site should feel useful to active Cookie Run: Ovenbreak players: fast to sca
 
 ## Visual Style
 
-- Use `color palette .png` in the project root as the website color palette reference.
+- Use the shared color tokens in this spec as the website palette reference. If a palette image is added later, keep it under `assets/`.
 - Use a pink background with a diagonal white polka-dot CSS pattern as the default website background.
 - Default background CSS: `background-color: #f7bfdc; background-image: radial-gradient(circle, #ffffff 5px, transparent 5.5px), radial-gradient(circle, #ffffff 5px, transparent 5.5px); background-position: 0 0, 22px 22px; background-size: 44px 44px;`
 - Text should be white with a black border or outline unless a specific component spec says otherwise.
@@ -130,7 +130,7 @@ Desktop card layout:
 - Mode-card title typography: CookieRun black `900`, font size `16px`, line-height `1.08`, fill `#ffffff`, `-webkit-text-stroke: 4px #1e1b20`, centered, `padding-top: 12px`, max width `calc(100% - 18px)`.
 - Mode-card title should sit above a subtle top gradient overlay: height `78px`, from `rgb(30 27 32 / 0.45)` to transparent.
 - The card image fills the visual body of the rectangle and should be centered intentionally, not left at the browser's default crop position.
-- Use the available mode artwork from `../ovenbreak images/illustrations/game modes`.
+- Use the available source mode artwork from `assets/ovenbreak images/illustrations/game modes`, copying selected runtime images into `public/images/game-modes/`.
 - Images should use a consistent crop style across cards so the row feels even.
 - Cards should have visible hover, focus, and active states because the whole card is clickable.
 - When a saved to-do list card is hovered or keyboard-focused, show an edit icon button in the bottom-right corner.

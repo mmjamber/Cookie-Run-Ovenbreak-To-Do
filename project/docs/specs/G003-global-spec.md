@@ -26,7 +26,7 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 - Automatic game-data updates.
 - Public sharing.
 - List export or shareable list files.
-- Asset ingestion from `../ovenbreak images` before a dedicated implementation task.
+- Automated asset ingestion from `assets/ovenbreak images` into runtime-safe `public/` paths before a dedicated implementation task.
 
 ## MVP Scope
 

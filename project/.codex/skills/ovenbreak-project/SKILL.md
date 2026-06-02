@@ -25,7 +25,7 @@ Read `AGENTS.md` first, then use `docs/specs/G001-index.md` to find the relevant
 - Treat login/sign-in controls as aesthetic-only for now.
 - Store user lists in browser local storage with a versioned key when persistence is implemented.
 - Use existing repository assets and CSS. Do not generate images for this project.
-- Do not depend on `../ovenbreak images` until a task explicitly adopts or imports those assets.
+- Keep source/raw OvenBreak artwork in `assets/ovenbreak images`; copy runtime dependencies into `public/` before referencing them from the app.
 
 ## Feature Workflow
 

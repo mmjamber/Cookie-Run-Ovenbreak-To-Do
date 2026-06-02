@@ -41,7 +41,7 @@ Start editing the website in `app/page.tsx`. Project planning docs live in `docs
 
 ## Notes
 
-The sibling folder `../ovenbreak images` is intentionally out of scope for this setup pass. Do not depend on it until the project explicitly adopts those assets.
+Runtime assets used by the website live in `public/`. Source/raw OvenBreak images and working art files live in `assets/ovenbreak images/` and should be copied or imported into `public/` before the app depends on them at runtime.
 
 This website currently uses:
 

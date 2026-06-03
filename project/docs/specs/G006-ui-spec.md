@@ -157,7 +157,10 @@ Mode artwork mapping:
 - Breakout: `breakout.jpg`
 - Champions League: `Champions League.png`
 - Guild Run: `guild run.png`
+- None / No mode: `none-card.png` for desktop cards and `none-card-horizontal.png` for horizontal mobile cards.
 - Extra or future modes may use the `extra_*` images only when no more specific artwork exists.
+
+None-format list cards must always use the None / No mode artwork. Their visible card title must be exactly `No mode` and must use the same title placement, typography, outline, and responsive behavior as the other list and mode cards.
 
 ## Shared Item Cards
 

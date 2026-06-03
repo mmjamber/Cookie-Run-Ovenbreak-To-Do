@@ -43,6 +43,8 @@ Default cards are not regenerated after the user has saved or deleted lists. Del
 - Cards should display the list or preset name.
 - Cards should make it clear which list will open.
 - The homepage should not show more than four cards in this area.
+- Saved None-format list cards should display the title `No mode` exactly, regardless of the list's user-defined name.
+- Saved None-format list cards must use `none-card.png` on desktop and `none-card-horizontal.png` for horizontal/mobile cards.
 - If future list metadata supports progress summaries, homepage cards may show a compact progress indicator, but the card's main purpose is opening the list.
 
 ## Acceptance Criteria
@@ -56,3 +58,4 @@ Default cards are not regenerated after the user has saved or deleted lists. Del
 - [ ] Selecting a saved list card opens that list's detail page.
 - [ ] Selecting a default card creates or opens the matching preset-derived list.
 - [ ] Default cards and saved list cards use the same shared card styling.
+- [ ] None-format saved list cards use the No mode artwork and display `No mode` exactly.

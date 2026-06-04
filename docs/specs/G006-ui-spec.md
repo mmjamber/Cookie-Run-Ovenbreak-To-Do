@@ -235,6 +235,8 @@ Each list detail page should show:
 
 Empty list and empty slot visuals are specified in `features/F006-empty-list-layouts.md`. That spec is the source of truth for the add-option artwork, empty combi layouts, group/arena grids, and replacement behavior when a user chooses an item.
 
+When a user clicks an add-option item from a list detail view, open the matching catalog page in list-selection mode. The catalog page should visibly indicate that the user is selecting for a specific list slot, provide a cancel/back action, and return the selected item to the originating list detail view.
+
 ## Combi UI
 
 A combi should display:
@@ -292,6 +294,15 @@ Treasure item add flow:
 - Users can select up to 3 treasures at once when adding treasures to a combi with enough treasure slots.
 - Treasure selection order does not matter.
 
+List-origin selection mode:
+
+- When opened from a list detail add-option item, the catalog uses Select actions instead of ordinary Add actions.
+- Show the destination in compact UI, such as the list name and slot type, without covering catalog controls.
+- Keep search, sort, and rarity filters available while selecting.
+- Provide a cancel/back action that returns to the originating list detail view without changing the list.
+- Disable, hide, or explain items that are incompatible with the selected destination.
+- Detailed selection-mode behavior is defined in `technical/T003-list-selection-routing.md`.
+
 ## Empty States
 
 - No lists: offer Create Custom List and preset list shortcuts.
@@ -302,7 +313,7 @@ Treasure item add flow:
 
 - Invalid current or target level: show the allowed range.
 - Incompatible item slot: explain what item type is allowed.
-- Format limit reached: explain the limit, such as 50 Trophy Race combis or 5 Breakout groups.
+- Format limit reached: explain the limit, such as 10 Trophy Race combis or 6 Breakout groups.
 
 ## Accessibility
 

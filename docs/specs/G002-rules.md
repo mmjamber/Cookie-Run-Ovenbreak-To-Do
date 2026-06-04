@@ -94,23 +94,7 @@ Catalog sorting options:
 - Release date
 - Rarity filters
 
-File-name-derived sorting rules:
-
-- Alphabetical sorting ignores the leading `number_` portion of file names and sorts by the text after it.
-- Release date sorting uses the leading number at the beginning of image file names.
-- Leading file-name numbers are internal-only metadata for sorting, pairing, and import logic. They must never appear in the website UI.
-- Cookie and pet image files that share the same leading number are considered pairing candidates.
-- A cookie can have up to 2 paired pets.
-- Pet image files are generally smaller than cookie image files; use image dimensions as a classification heuristic.
-- File groups that cannot be classified confidently must be flagged for review instead of guessed silently.
-
-Catalog display-name cleanup rules:
-
-- When deriving a cookie, pet, or treasure name from an image file name, remove the leading number that appears before the first `_`.
-- Convert every `_` after the first `_` into a space.
-- Remove any exact lowercase `bg` text from the derived display name. Do not remove other casing such as `BG`.
-- Preserve numbers that do not appear at the beginning of the file name before the first `_`.
-- Example: `123_example_2_bg.png` becomes `example 2`.
+Catalog derivation rules are defined in `technical/T001-catalog-import-and-derived-data.md`.
 
 ## Rarity Sort Order
 
@@ -144,8 +128,8 @@ The frame should wrap the item image with a real outer frame color and an oversi
 - Do not add a backend, remote database, hosted account system, or network sync for now.
 - Keep Log in, and Sign in controls aesthetic-only for now.
 - Do not assume live game data, accounts, cloud sync, or official API access.
-- Store user data locally in the browser unless a future persistence spec says otherwise.
+- Store user data locally in the browser according to `technical/T002-local-storage-and-data-architecture.md` unless a future persistence spec says otherwise.
 - Do not add list export, list sharing, public links, or shareable files.
 - Item current and target levels must never exceed their item type's absolute cap.
 - Item current and target levels must never exceed the current user-selected list or arena limit.
-- Do not generate images under any circumstance, only use available assets or CSS code for decorative purposes.
+- Do not generate images under any circumstance; use available assets and the runtime asset rules in `technical/T004-runtime-assets-and-ui-implementation.md`.

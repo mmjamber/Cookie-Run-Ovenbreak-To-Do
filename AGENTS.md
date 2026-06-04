@@ -31,8 +31,8 @@ This project uses Next.js 16.2.6. APIs, conventions, and file structure may diff
 - Update `docs/specs/` before large implementation work when requirements are unclear.
 - Spec file names use `G` for general specs, `F` for feature specs, `T` for technical specs, and `US` for user-story specs.
 - Name new feature specs in `docs/specs/features/` with the next `F`-prefixed zero-padded numeric prefix, such as `F005-new-feature.md`.
-- Name new technical specs with the next `T`-prefixed zero-padded numeric prefix, such as `T001-storage-architecture.md`.
-- Name new user-story specs with the next `US`-prefixed zero-padded numeric prefix, such as `US001-create-custom-list.md`.
+- Name new technical specs in `docs/specs/technical/` with the next `T`-prefixed zero-padded numeric prefix, such as `T001-storage-architecture.md`.
+- Name new user-story specs in `docs/specs/user-stories/` with the next `US`-prefixed zero-padded numeric prefix, such as `US001-create-custom-list.md`.
 - Keep generated folders such as `.next/`, `node_modules/`, and build output out of source changes.
 
 ## Product Direction

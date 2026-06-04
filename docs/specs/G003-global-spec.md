@@ -26,7 +26,7 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 - Automatic game-data updates.
 - Public sharing.
 - List export or shareable list files.
-- Automated asset ingestion from `assets/ovenbreak images` into runtime-safe `public/` paths before a dedicated implementation task.
+- Automatic asset updates before a dedicated implementation task.
 
 ## MVP Scope
 
@@ -41,7 +41,7 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 ## Success Criteria
 
 - A player can create a Trophy Race list with 4 default combis and add more up to 10.
-- A player can create a Breakout list with groups of 3 to 15 combis and up to 5 groups.
+- A player can create a Breakout list with groups of 3 to 15 combis and up to 6 groups.
 - A player can create Guild Run and Champions League arena lists with maximum target set rules.
 - A player can create a None list with individually targeted cookies, pets, and treasures.
 - Catalog sorting behaves consistently with file-name-derived rules.
@@ -51,3 +51,5 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 - `G002-rules.md` for universal rules and terminology.
 - `G004-functional-map.md` for navigation and user flows.
 - `features/F002-list-formats.md` for detailed format constraints.
+- `technical/T001-catalog-import-and-derived-data.md` for catalog data derivation.
+- `technical/T002-local-storage-and-data-architecture.md` for local data persistence.

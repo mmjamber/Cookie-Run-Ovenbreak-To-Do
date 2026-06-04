@@ -116,9 +116,9 @@ Add flow:
 1. When the user clicks add on a None-format list, ask whether to add `combi type 1 (with relay)`, `combi type 2 (without relay)`, cookie, pet, or treasure.
 2. If the user chooses combi type 1, add an empty combi type 1 block using the shared combi type 1 layout.
 3. If the user chooses combi type 2, add an empty combi type 2 block using the shared combi type 2 layout.
-4. If the user chooses cookie, open the cookie picker and ask whether to add the paired pet when the chosen cookie has pairing candidates.
-5. If the user chooses pet, open the pet picker and add only the selected pet.
-6. If the user chooses treasure, ask whether to add 1 treasure or a set of 3 treasures, then open the treasure picker with the chosen selection limit.
+4. If the user chooses cookie, open the Cookies catalog in list-selection mode and ask whether to add the paired pet when the chosen cookie has pairing candidates.
+5. If the user chooses pet, open the Pets catalog in list-selection mode and add only the selected pet.
+6. If the user chooses treasure, ask whether to add 1 treasure or a set of 3 treasures, then open the Treasures catalog in list-selection mode with the chosen amount.
 
 ## Acceptance Criteria
 

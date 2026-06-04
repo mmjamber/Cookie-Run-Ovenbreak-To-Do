@@ -2,7 +2,7 @@
 
 ## Summary
 
-The website has separate pages for cookies, pets, and treasures. Users can browse, sort, and add catalog items to compatible to-do lists.
+The website has separate pages for cookies, pets, and treasures. Users can browse, sort, and add catalog items to compatible to-do lists. When a user starts from an add-option item inside a list detail view, the matching catalog page also acts as the item selector for that specific list slot.
 
 ## Pages
 
@@ -19,18 +19,11 @@ Each item should show:
 - Rarity frame for cookies and pets only.
 - Add action.
 
-Catalog item cards must not show release numbers, leading file-name numbers, or other numeric ordering metadata.
+Catalog item cards must not show hidden ordering numbers or other internal catalog metadata.
 
-Cookie and pet rarity is shown visually through the CSS frame around the image, not through a text badge by default. Treasure rarity should not be shown visually in catalog item cards.
+Cookie and pet rarity is shown visually through the frame around the image, not through a text badge by default. Treasure rarity should not be shown visually in catalog item cards.
 
-Frame colors and fills:
-
-- Common: `#9a633d` outer frame with `#d39b73` fill.
-- Rare: `#28719e` outer frame with `#72b9df` fill.
-- Epic: `#862894` outer frame with `#be74c9` fill.
-- Legendary: `#16cbbb` outer frame with oversized clipped yellow/teal/purple diagonal gradient fill.
-
-The frame should use the shared item-card construction: a real outer frame color and an oversized inner fill layer clipped by the rounded frame. Treasures should not use rarity frames.
+Shared catalog visuals are defined in `G006-ui-spec.md`.
 
 ## Search, Sorting, And Filters
 
@@ -48,23 +41,19 @@ Default ordering:
 
 Rules:
 
-- Alphabetical order sorts by the file name text after the leading `number_`.
-- Release date order sorts by the leading number at the beginning of the image file name.
-- Leading file-name numbers are internal-only sorting and pairing metadata and must never be displayed on the website.
+- Alphabetical order sorts visible item names alphabetically within each rarity group.
+- Release Date order sorts visible items by their catalog release order within each rarity group.
 - Rarity filters can hide any combination of Legendary, Epic, Rare, and Common items.
 - Treasure rarity is still used for ordering and filtering, so legendary treasures appear first by default even though treasure rarity is not shown visually.
-- Pet rarity may need explicit overrides when pet files are stored in cookie rarity folders.
-- Display names derived from image files remove the leading number and first `_`, convert every remaining `_` into a space, and remove exact lowercase `bg` text.
-- Other casing, such as `BG`, should not be removed by the `bg` rule.
-- Numbers that appear later in the file name must be preserved.
+- Detailed catalog data rules are defined in `../technical/T001-catalog-import-and-derived-data.md`.
 
 ## Cookie-Pet Pairing
 
-Cookie and pet image files share a leading number when they are paired. A cookie can have up to 2 paired pets.
+Some cookies have paired pets. A cookie can have up to 2 paired pets.
 
 When a user adds one cookie to a to-do list:
 
-1. The website checks for paired pets with the same leading number.
+1. The website checks for paired pets.
 2. If 1 paired pet exists, show a prompt.
 3. Prompt options are Add cookie only, Add cookie and pet, and Cancel.
 4. If 2 paired pets exist, show a prompt that lets the user choose Add cookie only, Add cookie with one selected pet, or Cancel.
@@ -79,18 +68,6 @@ When a destination combi supports both a main cookie and relay cookie, the user 
 - The paired-pet prompt is shown only for the first selected cookie.
 - The paired-pet prompt is not shown for the second or relay cookie.
 - If the destination combi does not support a relay cookie, only 1 cookie can be selected for that combi.
-
-Asset classification rules:
-
-- Smaller image dimensions are a heuristic for pet files.
-- Larger image dimensions are a heuristic for cookie files.
-- Groups with unclear classification, more than 1 cookie candidate, or more than 2 pet candidates must be flagged for review.
-- Asset import warnings should appear in an admin/import report, not on public catalog pages.
-
-Rarity override rule:
-
-- In `Cookies/Legendary`, only these pet files are Legendary: `0_Dreamcatcher`, `1_Windcatcher`, `2_Wave_Drop`, `3_Picky_Pyrotiger`, `4_Eternal_Eye_of_Darkness`, `5_Millennial_Jade_Deer`, `6_Wyrmfire_blade`, `7_Golden_wyrmguard`, `8_Continuum_Cog`, `9_Lotus_dragon_scale`, `10_Dragonheart_bat`, `11_Draconic_ambre`, and `16_Somnionimbus`.
-- Other pet files in `Cookies/Legendary` should be treated as Epic.
 
 ## Add-To-List Picker
 
@@ -109,6 +86,27 @@ The picker should:
 
 For cookies, the paired-pet prompt should happen before the destination list is chosen. The list picker should then filter or explain destinations based on the user's cookie-only or cookie-with-pet choice.
 
+## List-Origin Catalog Selection
+
+When a user clicks an add-option item from a list detail view, the website should open the correct catalog page in list-selection mode:
+
+- Cookie and relay-cookie add-option items open the Cookies catalog.
+- Pet add-option items open the Pets catalog.
+- Treasure add-option items open the Treasures catalog.
+
+The catalog page should remember which list slot the user is filling and how to return to that list. Detailed selection-mode behavior is defined in `../technical/T003-list-selection-routing.md`.
+
+In list-selection mode:
+
+- Catalog browse, search, sort, and rarity filter behavior remains available.
+- Compatible item cards show a Select action instead of the ordinary Add action.
+- Incompatible items should be disabled, hidden, or explained.
+- The page shows a clear cancel/back action that returns to the originating list detail view without changing the list.
+- After selection is confirmed, the website returns to the originating list detail view and fills the preserved destination slot or slots.
+- The catalog page must not open the add-to-list picker, because the destination is already known.
+
+Cookie paired-pet behavior still applies in list-selection mode when selecting a main cookie. If the user accepts a paired-pet addition, the paired pet fills the same combi's compatible empty pet slot when one exists. Relay-cookie selection must not trigger the paired-pet prompt.
+
 ## Item Destination Rules
 
 - Cookies can fill main cookie, relay cookie, or None-format cookie slots.
@@ -119,7 +117,7 @@ For cookies, the paired-pet prompt should happen before the destination list is 
 - Treasures can fill treasure or None-format treasure slots.
 - Up to 3 treasures can be selected at the same time for combis that require treasure slots.
 - None-format lists can also create a new destination before choosing catalog items: `combi type 1 (with relay)`, `combi type 2 (without relay)`, individual cookie, individual pet, individual treasure, or 3-treasure set.
-- When adding a treasure from a None-format list add flow, ask whether the destination is 1 treasure or a set of 3 treasures before opening the treasure picker.
+- When adding a treasure from a None-format list add flow, ask whether the destination is 1 treasure or a set of 3 treasures before opening the Treasures catalog in list-selection mode.
 - Treasure click order does not matter.
 - The website must prevent adding an item to an incompatible slot.
 
@@ -130,7 +128,7 @@ For cookies, the paired-pet prompt should happen before the destination list is 
 - [ ] Each page always orders visible items by rarity first: Legendary, Epic, Rare, Common.
 - [ ] Each page supports Alphabetical and Release Date sort options.
 - [ ] Each page has rarity filters that can hide selected rarities.
-- [ ] Alphabetical and release sorting follow file-name-derived rules.
+- [ ] Alphabetical and release sorting follow catalog data rules.
 - [ ] Treasures are not visually framed by rarity.
 - [ ] Adding a cookie can prompt for 1 or 2 paired pets.
 - [ ] Users can select up to 2 cookies at once for combis that support main and relay cookies.
@@ -139,6 +137,6 @@ For cookies, the paired-pet prompt should happen before the destination list is 
 - [ ] The paired-pet prompt is not shown for the second or relay cookie.
 - [ ] Users can select up to 3 treasures at once for combis with enough treasure slots.
 - [ ] Adding any catalog item opens a small list picker with current local profile lists.
-- [ ] Ambiguous cookie-pet file groups are flagged for review.
-- [ ] Asset import warnings appear in an admin/import report only.
+- [ ] Clicking an add-option item from a list detail view opens the correct catalog page in list-selection mode.
+- [ ] Catalog pages in list-selection mode show Select actions and return the selected item to the originating list slot.
 - [ ] Users can choose a destination list and compatible slot.

@@ -41,7 +41,7 @@
 1. User opens the Cookies page.
 2. User selects 1 cookie, or up to 2 cookies when the destination combi supports a main cookie and relay cookie.
 3. If 2 cookies are selected, the selection order is preserved: the first selected cookie is the main cookie and the second selected cookie is the relay cookie.
-4. The website detects whether the first selected cookie has 1 or 2 pets with the same leading file number.
+4. The website detects whether the first selected cookie has 1 or 2 paired pets.
 5. The website prompts whether to add a paired pet for the first selected cookie.
 6. If there are 2 paired pets for the first selected cookie, the user chooses which pet to add.
 7. The website does not show the paired-pet prompt for the second or relay cookie.
@@ -59,15 +59,25 @@
 5. User chooses a compatible slot.
 6. The website adds the item or items with current level `Lv. 1` and target level set to the maximum allowed by the destination slot, combi, list format, or arena target set, then lets the user edit levels within the current item, list, or arena maximum.
 
+### Add Item From List Detail
+
+1. User opens a saved or preset-derived list detail view.
+2. User clicks an add-option item in an empty cookie, relay cookie, pet, or treasure slot.
+3. The website opens the matching catalog page in list-selection mode: Cookies, Pets, or Treasures.
+4. The catalog page remembers which list slot the user is filling and how to return to the list.
+5. User browses, searches, sorts, or filters the catalog while the page shows Select actions for compatible items.
+6. User selects an item or an allowed multi-item set for that destination.
+7. The website returns to the originating list detail view and fills the clicked slot or slots with the selected item or items.
+
 ### Add Entry To None List
 
 1. User opens a None-format list and chooses its add action.
 2. The website asks whether to add `combi type 1 (with relay)`, `combi type 2 (without relay)`, cookie, pet, or treasure.
 3. If the user chooses combi type 1, the website inserts an empty combi type 1 block.
 4. If the user chooses combi type 2, the website inserts an empty combi type 2 block.
-5. If the user chooses cookie, the website opens the cookie picker and still prompts for a paired pet when pairing candidates exist.
-6. If the user chooses pet, the website opens the pet picker and adds only the chosen pet.
-7. If the user chooses treasure, the website asks whether to add 1 treasure or a set of 3 treasures, then opens the treasure picker with the chosen selection limit.
+5. If the user chooses cookie, the website opens the Cookies catalog in list-selection mode and still prompts for a paired pet when pairing candidates exist.
+6. If the user chooses pet, the website opens the Pets catalog in list-selection mode and adds only the chosen pet.
+7. If the user chooses treasure, the website asks whether to add 1 treasure or a set of 3 treasures, then opens the Treasures catalog in list-selection mode with the chosen amount.
 
 ### Track Progress
 

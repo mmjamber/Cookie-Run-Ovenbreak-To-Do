@@ -122,7 +122,6 @@ Import warnings must not appear on public catalog pages. Public catalog pages sh
 
 ## Related Specs
 
-- `features/F001-catalog-pages.md` for user-facing catalog behavior.
 - `../features/F001-catalog-pages.md` for user-facing catalog behavior.
 - `../G002-rules.md` for universal product rules.
-- `../G006-ui-spec.md` for catalog presentation.
+- `../user-interface/UI004-catalog-item-cards.md` for catalog presentation.

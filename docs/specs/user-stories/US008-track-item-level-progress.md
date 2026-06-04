@@ -8,7 +8,8 @@ As a player, I want to edit current and target levels and mark items complete so
 
 - `../features/F002-list-formats.md`
 - `../G002-rules.md`
-- `../G006-ui-spec.md`
+- `../user-interface/UI005-list-detail-and-combi-layouts.md`
+- `../user-interface/UI007-accessibility.md`
 
 ## Scenario
 
@@ -34,4 +35,3 @@ As a player, I want to edit current and target levels and mark items complete so
 
 - Separate completion controls for whole combis, groups, arenas, or list sections.
 - Automatic game account progress sync.
-

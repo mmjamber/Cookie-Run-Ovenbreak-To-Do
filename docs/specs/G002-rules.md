@@ -76,7 +76,7 @@ Lists belong to a local guest profile unless a future requirement explicitly add
 
 A cookie, pet, or treasure can be added to multiple to-do lists at the same time.
 
-Login and sign-in controls should appear in the website UI for visual planning, but they should be non-functional for now. Clicking Log in, or Sign in should not start authentication, call a backend, or change the current local profile. For exact placement and visual styling, see `G006-ui-spec.md`.
+Login and sign-in controls should appear in the website UI for visual planning, but they should be non-functional for now. Clicking Log in, or Sign in should not start authentication, call a backend, or change the current local profile. For exact placement and visual styling, see `user-interface/UI002-page-shell-and-navigation.md`.
 
 ## Catalog Rules
 

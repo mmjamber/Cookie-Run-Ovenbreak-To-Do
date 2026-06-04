@@ -23,7 +23,7 @@ Catalog item cards must not show hidden ordering numbers or other internal catal
 
 Cookie and pet rarity is shown visually through the frame around the image, not through a text badge by default. Treasure rarity should not be shown visually in catalog item cards.
 
-Shared catalog visuals are defined in `G006-ui-spec.md`.
+Shared catalog visuals are defined in `../user-interface/UI004-catalog-item-cards.md`.
 
 ## Search, Sorting, And Filters
 

@@ -9,7 +9,7 @@ This folder is the source of truth for the project. The website helps Cookie Run
 - `G003-global-spec.md` - product goals, audience, MVP scope, and success criteria
 - `G004-functional-map.md` - pages, user flows, and feature areas
 - `G005-data-model.md` - high-level entities and relationships
-- `G006-ui-spec.md` - layout, interaction, and catalog/list UI guidance
+- `G006-ui-index.md` - index of user interface specs and boundaries
 
 ## Feature Specs
 
@@ -19,6 +19,16 @@ This folder is the source of truth for the project. The website helps Cookie Run
 - `features/F004-custom-lists.md` - user-created named lists
 - `features/F005-homepage-list-cards.md` - latest four homepage to-do list cards and default card behavior
 - `features/F006-empty-list-layouts.md` - empty list, combi, group, arena, and add-slot visuals
+
+## User Interface Specs
+
+- `user-interface/UI001-global-visual-style.md` - visual direction, palette, typography, and global text treatment
+- `user-interface/UI002-page-shell-and-navigation.md` - shared page shell, hero banner, navigation, account buttons, and footer
+- `user-interface/UI003-homepage-and-list-cards.md` - saved list cards, preset mode cards, artwork mapping, and responsive card behavior
+- `user-interface/UI004-catalog-item-cards.md` - catalog item cards, rarity frames, catalog grids, and catalog selection UI
+- `user-interface/UI005-list-detail-and-combi-layouts.md` - list detail pages, combi UI, progress controls, and slot presentation
+- `user-interface/UI006-empty-states-and-errors.md` - empty states, invalid inputs, incompatible slots, and format-limit feedback
+- `user-interface/UI007-accessibility.md` - keyboard reachability, alt text, non-color state cues, and prompt/dialog accessibility
 
 ## User Story Specs
 
@@ -45,9 +55,10 @@ This folder is the source of truth for the project. The website helps Cookie Run
 Use these prefixes for spec files:
 
 - `G` for general specs, such as `G001-index.md`.
-- `F` for feature specs, such as `features/F005-new-feature.md`.
-- `T` for technical specs under `technical/`, such as `technical/T001-storage-architecture.md`.
-- `US` for user-story specs under `user-stories/`, such as `user-stories/US001-create-custom-list.md`.
+- `F` for feature specs, such as `features/F006-empty-list-layouts.md`.
+- `UI` for user interface specs under `user-interface/`, such as `user-interface/UI001-global-visual-style.md`.
+- `T` for technical specs under `technical/`, such as `technical/T002-local-storage-and-data-architecture.md`.
+- `US` for user-story specs under `user-stories/`, such as `user-stories/US002-create-custom-list.md`.
 
 When creating a new spec, use the next zero-padded numeric prefix for that spec type so each list stays ordered.
 

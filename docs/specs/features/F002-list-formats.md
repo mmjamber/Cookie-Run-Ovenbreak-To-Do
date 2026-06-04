@@ -98,7 +98,7 @@ Structure:
 
 - No default combis.
 - Users can add flexible entries: combi type 1, combi type 2, one cookie, one pet, one treasure, or one treasure set of three.
-- Combi type 1 and combi type 2 are defined in `G002-rules.md`.
+- Combi type 1 and combi type 2 are defined in `../G002-rules.md`.
 - Individual cookies can be added with or without their paired pet.
 - Individual pets are added alone.
 - Individual treasures can be added alone or as a set of 3 treasures.

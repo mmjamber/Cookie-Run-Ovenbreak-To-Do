@@ -39,7 +39,7 @@ Default cards are not regenerated after the user has saved or deleted lists. Del
 
 ## Display Requirements
 
-- Cards should use the visual rules in `G006-ui-spec.md`.
+- Cards should use the visual rules in `../user-interface/UI003-homepage-and-list-cards.md`.
 - Cards should display the list or preset name.
 - Cards should make it clear which list will open.
 - The homepage should not show more than four cards in this area.

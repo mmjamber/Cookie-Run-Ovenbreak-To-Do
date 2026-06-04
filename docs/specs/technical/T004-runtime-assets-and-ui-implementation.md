@@ -81,6 +81,7 @@ Use stable sizing and fitting rules, such as `object-fit` and `object-position`,
 
 ## Related Specs
 
-- `../G006-ui-spec.md` for visual design rules.
+- `../G006-ui-index.md` for the UI index.
+- `../user-interface/UI001-global-visual-style.md` for visual design rules.
 - `../features/F005-homepage-list-cards.md` for card behavior.
 - `../features/F006-empty-list-layouts.md` for empty list behavior.

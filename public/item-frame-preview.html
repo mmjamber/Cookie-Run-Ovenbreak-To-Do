@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Item Frame Preview</title>
+    <style>
+      @font-face {
+        font-family: "CookieRun";
+        src: url("../fonts/CookieRun-Black.otf") format("opentype");
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      :root {
+        --page-pink: #f7bfdc;
+        --dot: #ffffff;
+        --panel-blue: #cff5ff;
+        --board-blue: #dffbff;
+        --board-line: #ffffff;
+        --legendary: #16cbbb;
+        --legendary-frame-bg: linear-gradient(
+          135deg,
+          hsl(55deg 90% 67%) 0%,
+          hsl(173deg 87% 59%) 48%,
+          hsl(286deg 100% 61%) 100%
+        );
+        --epic: #862894;
+        --epic-frame-bg: #be74c9;
+        --rare: #28719e;
+        --rare-frame-bg: #72b9df;
+        --common: #9a633d;
+        --common-frame-bg: #d39b73;
+        --scallop-outline: #8b6fb2;
+        --scallop-white: #ffffff;
+        --scallop-mint: #6edfaf;
+        --scallop-yellow: #ffc23c;
+        --scallop-pink: #e463a6;
+        --scallop-purple: #d1a2f1;
+        --scallop-blue: #78bfd4;
+        --text-fill: #ffffff;
+        --text-outline: #1e1b20;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        padding: 32px;
+        background-color: var(--page-pink);
+        background-image:
+          radial-gradient(circle, var(--dot) 5px, transparent 5.5px),
+          radial-gradient(circle, var(--dot) 5px, transparent 5.5px);
+        background-position:
+          0 0,
+          22px 22px;
+        background-size: 44px 44px;
+        font-family: "CookieRun", Arial, sans-serif;
+      }
+
+      .preview-panel {
+        width: min(100%, 930px);
+        padding: 48px 28px 140px;
+        background: var(--panel-blue);
+      }
+
+      .scallop-strip-preview {
+        height: 56px;
+        display: flex;
+        align-items: flex-start;
+        margin: 0 0 28px;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .scallop-piece {
+        flex: 0 0 56px;
+        height: 56px;
+        border: 3px solid var(--scallop-outline);
+        border-top: 0;
+        border-radius: 0 0 999px 999px;
+        background: var(--scallop-white);
+      }
+
+      .scallop-piece:nth-child(10n + 2) {
+        background: var(--scallop-mint);
+      }
+
+      .scallop-piece:nth-child(10n + 4) {
+        background: var(--scallop-yellow);
+      }
+
+      .scallop-piece:nth-child(10n + 6) {
+        background: var(--scallop-pink);
+      }
+
+      .scallop-piece:nth-child(10n + 8) {
+        background: var(--scallop-purple);
+      }
+
+      .scallop-piece:nth-child(10n) {
+        background: var(--scallop-blue);
+      }
+
+      .preview-board {
+        min-height: 285px;
+        padding: 36px 52px;
+        border: 2px solid #8bd4e8;
+        background-color: var(--board-blue);
+        background-image:
+          linear-gradient(var(--board-line) 5px, transparent 5px),
+          linear-gradient(90deg, var(--board-line) 5px, transparent 5px);
+        background-size: 34px 34px;
+      }
+
+      .preview-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 132px);
+        justify-content: center;
+        justify-items: center;
+        align-items: start;
+        gap: 24px 26px;
+      }
+
+      .item-card {
+        display: grid;
+        justify-items: center;
+        align-content: start;
+        gap: 8px;
+        width: 114px;
+      }
+
+      .item-frame {
+        display: grid;
+        place-items: center;
+        position: relative;
+        width: 114px;
+        height: 114px;
+        border: 5px solid transparent;
+        border-radius: 18px;
+        background: var(--frame-border);
+        overflow: hidden;
+      }
+
+      .item-frame::before {
+        content: "";
+        position: absolute;
+        inset: 5px;
+        z-index: 0;
+        border-radius: 13px;
+        background: var(--frame-fill);
+        transform: scale(1.35);
+        pointer-events: none;
+      }
+
+      .item-frame.legendary {
+        --frame-border: var(--legendary);
+        --frame-fill: var(--legendary-frame-bg);
+        border-color: var(--legendary);
+      }
+
+      .item-frame.rare {
+        --frame-border: var(--rare);
+        --frame-fill: var(--rare-frame-bg);
+        border-color: var(--rare);
+      }
+
+      .item-frame.epic {
+        --frame-border: var(--epic);
+        --frame-fill: var(--epic-frame-bg);
+        border-color: var(--epic);
+      }
+
+      .item-frame.common {
+        --frame-border: var(--common);
+        --frame-fill: var(--common-frame-bg);
+        border-color: var(--common);
+      }
+
+      .item-frame img {
+        position: relative;
+        z-index: 1;
+        max-width: 136px;
+        max-height: 136px;
+        object-fit: contain;
+      }
+
+      .cookie-frame img {
+        width: auto;
+        height: 102px;
+        max-width: none;
+        max-height: none;
+        object-fit: contain;
+        transform: translateY(4px);
+      }
+
+      .pet-frame img {
+        justify-self: center;
+        align-self: center;
+        width: auto;
+        height: auto;
+        max-width: 96px;
+        max-height: 86px;
+        object-fit: contain;
+        object-position: center;
+        transform: none;
+      }
+
+      .item-name {
+        width: 100%;
+        margin: 0;
+        color: var(--text-fill);
+        font-size: 14px;
+        font-weight: 900;
+        line-height: 1.08;
+        overflow-wrap: anywhere;
+        text-align: center;
+        -webkit-text-stroke: 3px var(--text-outline);
+        paint-order: stroke fill;
+      }
+
+      @media (max-width: 760px) {
+        body {
+          padding: 0;
+        }
+
+        .preview-panel {
+          width: 100%;
+          padding: 48px 0 140px;
+        }
+
+        .preview-board {
+          padding: 28px 18px;
+          border-right: 0;
+          border-left: 0;
+        }
+
+        .preview-grid {
+          width: 100%;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 24px 12px;
+        }
+      }
+
+      @media (max-width: 430px) {
+        .preview-board {
+          padding-inline: 14px;
+        }
+
+        .preview-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 24px 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="preview-panel" aria-label="Item frame preview">
+      <div class="scallop-strip-preview" aria-hidden="true">
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+        <span class="scallop-piece"></span>
+      </div>
+
+      <div class="preview-board">
+        <div class="preview-grid">
+          <section class="item-card">
+            <div class="item-frame legendary cookie-frame">
+              <img
+                src="/images/item-frame-preview/legendary-cookie.webp"
+                alt="Moonlight Cookie"
+              />
+            </div>
+            <p class="item-name">Legendary Cookie</p>
+          </section>
+
+          <section class="item-card">
+            <div class="item-frame rare cookie-frame">
+              <img
+                src="/images/item-frame-preview/rare-cookie.webp"
+                alt="Zombie Cookie"
+              />
+            </div>
+            <p class="item-name">Rare Cookie</p>
+          </section>
+
+          <section class="item-card">
+            <div class="item-frame common cookie-frame">
+              <img
+                src="/images/item-frame-preview/common-cookie.webp"
+                alt="GingerBrave"
+              />
+            </div>
+            <p class="item-name">Common Cookie</p>
+          </section>
+
+          <section class="item-card">
+            <div class="item-frame epic cookie-frame">
+              <img
+                src="/images/item-frame-preview/epic-cookie.webp"
+                alt="Bellflower Cookie"
+              />
+            </div>
+            <p class="item-name">Epic Cookie</p>
+          </section>
+
+          <section class="item-card">
+            <div class="item-frame legendary pet-frame">
+              <img
+                src="/images/item-frame-preview/legendary-pet.webp"
+                alt="Dreamcatcher"
+              />
+            </div>
+            <p class="item-name">Legendary Pet</p>
+          </section>
+
+          <section class="item-card">
+            <div class="item-frame rare pet-frame">
+              <img
+                src="/images/item-frame-preview/rare-pet.webp"
+                alt="Brain Gum"
+              />
+            </div>
+            <p class="item-name">Rare Pet</p>
+          </section>
+
+          <section class="item-card">
+            <div class="item-frame common pet-frame">
+              <img
+                src="/images/item-frame-preview/common-pet.webp"
+                alt="Choco Drop"
+              />
+            </div>
+            <p class="item-name">Common Pet</p>
+          </section>
+
+          <section class="item-card">
+            <div class="item-frame epic pet-frame">
+              <img
+                src="/images/item-frame-preview/epic-pet.webp"
+                alt="Playful Herbert"
+              />
+            </div>
+            <p class="item-name">Epic Pet</p>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

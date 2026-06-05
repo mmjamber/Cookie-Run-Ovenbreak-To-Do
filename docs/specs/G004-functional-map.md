@@ -2,7 +2,7 @@
 
 ## Primary Navigation
 
-- Homepage: overview of up to four of the user's latest to-do lists, with default preset list shortcuts only before any saved list state exists.
+- Homepage: `My Lists` overview of the first four cards from the To-do page's current user-controlled order.
 - To-do: all user-created and saved preset lists.
 - Cookies: cookie catalog.
 - Pets: pet catalog.
@@ -29,12 +29,12 @@
 ### Resume From Homepage
 
 1. User opens the homepage.
-2. The website shows the user's latest four saved to-do lists when available.
-3. If one to three saved lists exist, the website shows only those saved lists.
-4. If every saved list has been deleted, the website shows no cards under `My Lists`.
-5. Before any saved list state exists, the website shows the four default to-do list cards.
-6. User selects a saved list card to open its list detail view.
-7. User selects a default card to create or open the matching preset-derived list.
+2. For a new local user or guest profile, the website has generated four default preset-derived list cards in the To-do page order.
+3. The website shows the first four cards from the To-do page's current list order under homepage `My Lists`.
+4. If one to three saved lists exist, the website shows only those saved lists in To-do page order.
+5. If every saved list has been deleted, the website shows one add-list card under `My Lists`.
+6. User selects a list card to open its list detail view.
+7. User can reorganize saved lists on the To-do page, and the homepage mirrors the first four lists in that order.
 
 ### Add Cookie From Catalog
 
@@ -96,7 +96,7 @@ Rules:
 
 | Page | Purpose | Key actions |
 | --- | --- | --- |
-| homepage | Starting point and quick overview | Resume latest list, open default preset, create list |
+| homepage | Starting point and quick overview | Resume ordered list, open default preset, create list |
 | To-do | Manage saved lists | Create, rename, delete, open |
 | List Detail | Work on one to-do list | Add items, edit levels, mark progress |
 | Cookies Catalog | Browse all cookies | Sort, search, add 1 or 2 cookies, prompt paired pet |
@@ -108,7 +108,7 @@ Rules:
 - List creation and management
 - Format-specific list builders
 - Preset game mode lists
-- Homepage latest-list cards
+- Homepage list cards
 - Catalog browsing and sorting
 - Cookie-pet pairing
 - Local persistence
@@ -119,7 +119,7 @@ Rules:
 The recommended first implementation slice:
 
 1. Static catalog schema with sample data.
-2. Homepage list cards for up to the latest four saved lists, with Trophy Race, Breakout, Champions League, and Guild Run as the default cards only before any saved list state exists.
+2. Generate Trophy Race, Guild Run, Champions League, and Breakout preset-derived lists for new local user and guest profiles, then show homepage list cards by mirroring the first four cards in To-do page order.
 3. Preset list creation and list detail views for the four default lists.
 4. Local storage persistence.
 5. Catalog pages with sorting.

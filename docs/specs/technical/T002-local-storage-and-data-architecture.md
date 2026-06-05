@@ -24,6 +24,7 @@ type UserList = {
   format: ListFormat;
   source: "preset" | "custom";
   mode: ListFormat | null;
+  order: number;
   createdAt: string;
   updatedAt: string;
   sections: ListSection[];
@@ -38,6 +39,12 @@ Rules:
 - `updatedAt` should change after meaningful activity such as creation, rename, item edits, level edits, or manual completion updates.
 - Preset-derived lists should use `source: "preset"`.
 - Custom lists should use `source: "custom"`.
+- `order` stores the user-controlled display order for the To-do page.
+- Homepage `My Lists` cards use the first four lists by ascending `order`, matching the To-do page.
+- Reordering lists should update `order` without requiring changes to `updatedAt`.
+- New local user and guest profiles should initialize `userLists` with the four default preset-derived lists.
+- Generated default preset-derived lists are stored as regular `UserList` records and may be edited, renamed, deleted, and reordered.
+- After a profile is initialized, deleted default preset-derived lists must not be regenerated automatically.
 
 ## Local Profile Scope
 
@@ -127,6 +134,7 @@ Rules:
 
 - `catalogItems` can be static bundled data.
 - `userLists` should persist locally.
+- Profile initialization state should persist locally so generated default preset-derived lists are created once per local user or guest profile, not recreated after deletion.
 - Use a versioned storage key so future migrations are possible.
 - Saving user to-do lists in browser local storage is the primary way to test the website locally.
 - Do not require a backend service for persistence.
@@ -155,4 +163,4 @@ Rules:
 - `../features/F002-list-formats.md` for format behavior.
 - `../features/F003-preset-lists.md` for preset behavior.
 - `../features/F004-custom-lists.md` for custom list behavior.
-- `../features/F005-homepage-list-cards.md` for latest-list ordering behavior.
+- `../features/F005-homepage-list-cards.md` for homepage list-card selection behavior.

@@ -63,6 +63,7 @@ Rules:
 
 - Keep HTML/component structure separate from CSS styling.
 - Shared UI should reuse existing CSS patterns where possible.
+- Homepage `My Lists` cards and To-do page cards should be implemented as shared list-card UI using the same source list records.
 - Ordinary form controls should inherit the site font.
 - Do not use browser-default fonts for item names or section headings unless a page spec explicitly says so.
 

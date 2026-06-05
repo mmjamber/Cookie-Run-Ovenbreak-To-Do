@@ -1,10 +1,10 @@
-# UI Spec: Homepage And List Cards
+# UI Spec: Shared Homepage And To-Do List Cards
 
 ## Purpose
 
-Saved to-do lists and preset mode entry points should display as clickable cards.
+Saved to-do lists should display as clickable cards. The homepage `My Lists` section and the To-do page use the same list-card visual treatment and source list records.
 
-Homepage card selection behavior is defined in `../features/F005-homepage-list-cards.md`; this spec defines the shared visual treatment for those cards.
+Homepage card selection behavior is defined in `../features/F005-homepage-list-cards.md`; this spec defines the shared visual treatment for To-do cards and the mirrored homepage cards.
 
 ## Desktop Card Layout
 
@@ -13,10 +13,10 @@ Homepage card selection behavior is defined in `../features/F005-homepage-list-c
 - Cards are vertical rounded rectangles.
 - Card corners should be rounded, but the card should still feel rectangular rather than pill-shaped.
 - Match the homepage feature-card style by default: `border-radius: 8px`, `border: 2px solid #6d229b`, `overflow: hidden`, background image centered and covering the card.
-- Homepage mode-card desktop height uses `min-height: 335px`.
+- Shared list-card desktop height uses `min-height: 335px`.
 - The list or mode name appears at the top of the card, centered inside the rectangle.
-- Mode-card title typography: CookieRun black `900`, font size `16px`, line-height `1.08`, fill `#ffffff`, `-webkit-text-stroke: 4px #1e1b20`, centered, `padding-top: 12px`, max width `calc(100% - 18px)`.
-- Mode-card title should sit above a subtle top gradient overlay: height `78px`, from `rgb(30 27 32 / 0.45)` to transparent.
+- List-card title typography: CookieRun black `900`, font size `16px`, line-height `1.08`, fill `#ffffff`, `-webkit-text-stroke: 4px #1e1b20`, centered, `padding-top: 12px`, max width `calc(100% - 18px)`.
+- List-card title should sit above a subtle top gradient overlay: height `78px`, from `rgb(30 27 32 / 0.45)` to transparent.
 - The card image fills the visual body of the rectangle and should be centered intentionally, not left at the browser's default crop position.
 - Use the available source mode artwork from `assets/ovenbreak images/illustrations/game modes`, copying selected runtime images into `public/images/game-modes/`.
 - Images should use a consistent crop style across cards so the row feels even.
@@ -26,14 +26,23 @@ Homepage card selection behavior is defined in `../features/F005-homepage-list-c
 - The overlay should be slight and should not hide the card artwork or make the card feel disabled.
 - The edit icon opens list management actions such as rename or delete.
 
+## Add-List Card
+
+- When the current profile has no saved lists, show an add-list card in the shared list-card area.
+- The add-list card uses the same desktop and mobile card shape, dimensions, border, corner radius, hover, focus, and active treatment as regular list cards.
+- The add-list card has no image or artwork.
+- A plus sign appears centered in the card.
+- The plus sign should be large enough to read as the primary action without adding explanatory text inside the card.
+- Selecting the add-list card starts the create-list flow.
+
 ## Mobile Card Layout
 
 - Cards become horizontal rounded rectangles.
-- Homepage mode-card mobile breakpoint is `max-width: 930px`.
-- Mobile mode cards use the horizontal artwork variant where available, `height: 105px`, `min-height: 0`, `background-size: cover`, and `background-position: center`.
+- Shared list-card mobile breakpoint is `max-width: 930px`.
+- Mobile list cards use the horizontal artwork variant where available, `height: 105px`, `min-height: 0`, `background-size: cover`, and `background-position: center`.
 - The list or mode name appears on the left side of the card.
-- Mobile mode-card title uses font size `18px`, left text alignment, `padding-left: 18px`, and no top padding.
-- Mobile mode-card overlay height is `58px`.
+- Mobile list-card title uses font size `18px`, left text alignment, `padding-left: 18px`, and no top padding.
+- Mobile list-card overlay height is `58px`.
 - The image appears on the right side and must be re-centered for the horizontal crop.
 - Keep the full card clickable.
 - Do not let the image push the text out of view or make card heights inconsistent.

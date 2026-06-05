@@ -2,7 +2,8 @@
 
 ## Empty States
 
-- No lists: offer Create Custom List and preset list shortcuts.
+- No lists after profile initialization: show the shared add-list card where a regular list card would appear.
+- New local user or guest profile: generated default preset-derived list cards appear in the To-do page order, and homepage `My Lists` mirrors the first four cards.
 - Empty combi slot: show an add action for the required item type.
 - Empty catalog: explain whether no data exists or filters removed all results.
 

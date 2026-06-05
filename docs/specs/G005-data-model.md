@@ -44,10 +44,13 @@ Saved lists represent the user's leveling goals. A saved list has:
 - A selected list format.
 - Preset or custom origin.
 - Local profile ownership.
+- User-controlled display order on the To-do page.
 - Format-specific sections.
 - Saved item selections and progress.
 
 Saved list field shapes, section shapes, combi shapes, and browser persistence rules are defined in `technical/T002-local-storage-and-data-architecture.md`.
+
+Every new local user or guest profile starts with four generated default preset-derived saved lists. These generated defaults are regular saved lists in the same To-do page order as custom lists.
 
 ## Level And Completion Data
 

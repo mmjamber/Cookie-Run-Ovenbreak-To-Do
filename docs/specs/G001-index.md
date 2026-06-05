@@ -17,7 +17,7 @@ This folder is the source of truth for the project. The website helps Cookie Run
 - `features/F002-list-formats.md` - the five supported to-do list formats
 - `features/F003-preset-lists.md` - Trophy Race, Breakout, Champions League, and Guild Run presets
 - `features/F004-custom-lists.md` - user-created named lists
-- `features/F005-homepage-list-cards.md` - latest four homepage to-do list cards and default card behavior
+- `features/F005-homepage-list-cards.md` - homepage to-do list cards, To-do order mirroring, and default card behavior
 - `features/F006-empty-list-layouts.md` - empty list, combi, group, arena, and add-slot visuals
 
 ## User Interface Specs
@@ -32,7 +32,7 @@ This folder is the source of truth for the project. The website helps Cookie Run
 
 ## User Story Specs
 
-- `user-stories/US001-view-homepage-list-cards.md` - homepage latest-list and default-card behavior
+- `user-stories/US001-view-homepage-list-cards.md` - homepage ordered-list and default-card behavior
 - `user-stories/US002-create-custom-list.md` - creating named custom lists
 - `user-stories/US003-start-preset-list.md` - starting or reopening preset-derived lists
 - `user-stories/US004-browse-catalog-items.md` - browsing, searching, sorting, and filtering catalogs

@@ -4,7 +4,7 @@
 
 - Use the shared page shell, hero banner, navigation buttons, and footer on every page.
 - Use a persistent top navigation inside the shared hero banner with homepage, to-do, cookies, pets, and treasures as the site grows.
-- The first screen should expose saved lists and preset mode entry points.
+- The first screen should expose homepage `My Lists`, which mirrors the first four cards from the To-do page order.
 - List detail pages should prioritize the user's upgrade targets over decorative content.
 - Mobile layouts should keep add/edit actions reachable and avoid wide tables.
 - Login and sign-in buttons should be shown for aesthetics, but clicking them should do nothing for now.

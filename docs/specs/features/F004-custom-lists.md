@@ -47,6 +47,7 @@ None:
 Users should be able to:
 
 - Rename a list.
+- Reorder saved lists in the To-do page list order.
 - Delete a list.
 - Add allowed sections or combis.
 - Edit selected items.
@@ -58,6 +59,8 @@ Rules:
 
 - List names must be unique within the current local profile.
 - Creating or renaming a list must validate that the resulting name is unique.
+- Reordering saved lists updates the To-do page order and the homepage's mirrored first-four list cards.
+- Generated default preset-derived lists participate in the same rename, delete, and reorder behavior as custom lists.
 - Deleting a list requires confirmation.
 
 ## Acceptance Criteria

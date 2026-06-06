@@ -18,7 +18,7 @@ Users organize those items into saved to-do lists. A list uses one of five forma
 - Champions League.
 - None.
 
-Each list contains the sections and item slots needed for its format. Those sections may represent combis, groups, arenas, individual items, or flexible None-format entries.
+Each list contains the sections and add-item slots needed for its format. Those sections may represent combis, groups, arenas, individual items, or flexible None-format entries.
 
 ## Catalog Items
 
@@ -50,7 +50,9 @@ Saved lists represent the user's leveling goals. A saved list has:
 
 Saved list field shapes, section shapes, combi shapes, and browser persistence rules are defined in `technical/T002-local-storage-and-data-architecture.md`.
 
-Every new local user or guest profile starts with four generated default preset-derived saved lists. These generated defaults are regular saved lists in the same To-do page order as custom lists.
+Every new local user or guest profile starts with four generated default preset-derived saved lists. Preset-derived lists and custom lists use the same saved-list model, To-do page order, and management behavior; the distinction is only how the list was created.
+
+Custom lists may start with an auto-filled default name based on the selected format, including `No mode` for None-format lists, but the saved `name` remains user-editable and is the name shown on list cards.
 
 ## Level And Completion Data
 
@@ -62,11 +64,13 @@ Each selected item tracks:
 
 Newly added items start at level 1 and default their target to the maximum allowed by the destination list context. Users can edit current and target levels within the applicable limits.
 
+Deleting a selected catalog item removes that item's progress data from its slot, but it does not remove the surrounding combi or free item block. The emptied add-item slot returns to its empty state and shows the matching add-option artwork again.
+
 Detailed validation rules are defined in `technical/T002-local-storage-and-data-architecture.md`.
 
 ## Catalog Selection Context
 
-When a user fills an empty slot from a list detail page, the catalog needs enough context to return the chosen item to the correct list slot.
+When a user fills an empty add-item slot from a list detail page, the catalog needs enough context to return the chosen item to the correct compatible add-item slot.
 
 Selection-mode routing and compatibility rules are defined in `technical/T003-list-selection-routing.md`.
 

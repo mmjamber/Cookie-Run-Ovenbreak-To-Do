@@ -6,13 +6,15 @@ The website supports five to-do list formats. Each format determines structure, 
 
 Current and target levels are always editable by the user. Neither level can exceed the active maximum limit for that item slot. If the user changes an arena or list limit manually, the allowed level range updates to match the new limit.
 
-When a cookie, pet, or treasure is added to a to-do list, its current level should start at `Lv. 1`. Its target level should automatically match the maximum allowed by the destination slot, combi, list format, or arena target set. The website should assume that newly added items have not been leveled yet, but that the user's goal is the format-appropriate target.
+When a cookie, pet, or treasure is added to a to-do list, its current level should start at `Lv. 1`. Its target level should automatically match the maximum allowed by the destination add-item slot, combi, list format, or arena target set. The website should assume that newly added items have not been leveled yet, but that the user's goal is the format-appropriate target.
 
 An item is complete when its current level reaches its target level. Users can also manually mark an item complete; doing so sets the current level to the target level.
 
 ## Trophy Race Format
 
 Combi structure: combi type 1.
+
+Trophy Race may label its combi slots as arenas in the UI, but it is not an arena-format list. Trophy Race arenas do not have low, mid, or full arena target sets. Newly added Trophy Race items use full max targets for their item type.
 
 - 1 pet
 - 1 main cookie
@@ -28,7 +30,8 @@ Starting levels and target defaults:
 
 Rules:
 
-- Default combi count is 4.
+- During custom list setup, the user chooses the starting Trophy Race arena count from 1 to 10.
+- Preset-derived Trophy Race lists start with 4 arena-labeled combis.
 - Users can add combis.
 - Maximum combi count is 10.
 
@@ -62,7 +65,7 @@ Arena structure:
 
 Arena maximum limits:
 
-- Users choose each arena's maximum target set from low, mid, or full.
+- During setup, users choose each arena's maximum target set from low, mid, or full.
 - Low: cookies and pets max 7, treasures max 5.
 - Mid: cookies and pets max 11, treasures max 9.
 - Full: cookies and pets max 15, treasures max 12.
@@ -73,7 +76,7 @@ Arena maximum limits:
 Rules:
 
 - The initial spec requires 12 arenas by default.
-- Guild Run arena maximum target sets can be changed manually by the user unless a future spec defines fixed arena limits.
+- Guild Run arena maximum target sets are chosen during setup and can be changed manually later unless a future spec defines fixed arena limits.
 
 ## Champions League Format
 
@@ -97,12 +100,12 @@ Arena maximum limits:
 Structure:
 
 - No default combis.
-- Users can add flexible entries: combi type 1, combi type 2, one cookie, one pet, one treasure, or one treasure set of three.
+- Users can add flexible entries: combi type 1, combi type 2, one cookie, one pet, or one treasure.
 - Combi type 1 and combi type 2 are defined in `../G002-rules.md`.
 - Individual cookies can be added with or without their paired pet.
 - Individual pets are added alone.
-- Individual treasures can be added alone or as a set of 3 treasures.
-- Treasure sets appear grouped together but are not attached to a combi unless the user chose a combi entry.
+- Individual treasures are added one at a time.
+- If the user wants to add up to 3 treasures at once, they must add or use a combi entry and choose treasures for that combi's treasure slots.
 
 Current and target levels:
 
@@ -118,17 +121,17 @@ Add flow:
 3. If the user chooses combi type 2, add an empty combi type 2 block using the shared combi type 2 layout.
 4. If the user chooses cookie, open the Cookies catalog in list-selection mode and ask whether to add the paired pet when the chosen cookie has pairing candidates.
 5. If the user chooses pet, open the Pets catalog in list-selection mode and add only the selected pet.
-6. If the user chooses treasure, ask whether to add 1 treasure or a set of 3 treasures, then open the Treasures catalog in list-selection mode with the chosen amount.
+6. If the user chooses treasure, open the Treasures catalog in single-selection mode for one individual treasure entry.
 
 ## Acceptance Criteria
 
 - [ ] Users can choose from all five formats when creating a custom list.
-- [ ] Each format enforces item slots and maximum counts.
+- [ ] Each format enforces add-item slots and maximum counts.
 - [ ] Newly added cookies, pets, and treasures start with current level `Lv. 1`.
-- [ ] Newly added item target levels automatically match the destination slot, combi, list format, or arena target set.
+- [ ] Newly added item target levels automatically match the destination add-item slot, combi, list format, or arena target set.
 - [ ] Current and target levels remain editable.
 - [ ] Current and target levels cannot exceed the current item, list, or arena maximum.
 - [ ] None format allows individual current and target levels per item.
-- [ ] None format supports user-added combi type 1 entries, combi type 2 entries, individual cookies, individual pets, individual treasures, and 3-treasure sets.
+- [ ] None format supports user-added combi type 1 entries, combi type 2 entries, individual cookies, individual pets, and individual treasures.
 - [ ] Manually marking an item complete sets its current level to its target level.
 - [ ] Invalid additions and invalid levels are blocked with clear messages.

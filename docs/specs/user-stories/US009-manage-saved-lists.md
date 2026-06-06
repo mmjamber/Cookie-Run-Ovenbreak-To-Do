@@ -23,7 +23,7 @@ As a player, I want to rename, reorder, and delete lists so my saved list area s
 - [ ] Users can rename saved lists.
 - [ ] Users can reorganize the saved-list order shown on the To-do page.
 - [ ] The homepage mirrors the first four lists in the To-do page's current order.
-- [ ] Generated default preset-derived lists can be edited, renamed, deleted, and reordered like regular saved lists.
+- [ ] Generated default preset-derived lists can be edited, renamed, deleted, and reordered with the same controls as custom saved lists.
 - [ ] List names must remain unique within the current local profile.
 - [ ] Empty list names are blocked.
 - [ ] Users can delete saved lists.

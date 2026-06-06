@@ -29,7 +29,7 @@ Homepage card selection behavior is defined in `../features/F005-homepage-list-c
 ## Add-List Card
 
 - When the current profile has no saved lists, show an add-list card in the shared list-card area.
-- The add-list card uses the same desktop and mobile card shape, dimensions, border, corner radius, hover, focus, and active treatment as regular list cards.
+- The add-list card uses the same desktop and mobile card shape, dimensions, border, corner radius, hover, focus, and active treatment as saved list cards.
 - The add-list card has no image or artwork.
 - A plus sign appears centered in the card.
 - The plus sign should be large enough to read as the primary action without adding explanatory text inside the card.
@@ -57,7 +57,7 @@ Homepage card selection behavior is defined in `../features/F005-homepage-list-c
 - None / No mode: `none-card.png` for desktop cards and `none-card-horizontal.png` for horizontal mobile cards.
 - Extra or future modes may use the `extra_*` images only when no more specific artwork exists.
 
-None-format list cards must always use the None / No mode artwork. Their visible card title must be exactly `No mode` and must use the same title placement, typography, outline, and responsive behavior as the other list and mode cards.
+None-format list cards must always use the None / No mode artwork. Their visible card title is the saved list name, which defaults to `No mode` when Add list auto-fills an empty name field for the None format. If the user edits or renames the list, the card title should show the edited saved name with the same title placement, typography, outline, and responsive behavior as the other list and mode cards.
 
 ## Related Specs
 

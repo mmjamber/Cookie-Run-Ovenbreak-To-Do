@@ -26,12 +26,11 @@ As a player, I want to add flexible entries to a None-format list so I can track
 - [ ] Choosing combi type 2 inserts an empty combi type 2 block.
 - [ ] Choosing cookie opens the Cookies catalog in list-selection mode.
 - [ ] Choosing pet opens the Pets catalog in list-selection mode.
-- [ ] Choosing treasure asks whether to add 1 treasure or a set of 3 treasures.
+- [ ] Choosing treasure opens the Treasures catalog in single-selection mode for one individual treasure entry.
 - [ ] Individual entries allow current and target level tracking.
-- [ ] Treasure sets appear grouped as one chosen set.
+- [ ] Adding up to 3 treasures at once is available only from treasure slots inside a combi entry.
 
 ## Out Of Scope
 
-- Attaching individual treasure sets to an existing combi unless the user chose a combi entry.
+- Adding multi-treasure standalone entries outside a combi.
 - Adding unsupported entry types.
-

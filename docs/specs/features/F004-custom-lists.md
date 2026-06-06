@@ -10,18 +10,30 @@ As a player, I want to make multiple named leveling lists so I can track differe
 
 ## Create Flow
 
-1. User opens Create Custom List.
-2. User enters a list name.
+1. User opens Add list.
+2. User enters a list name or leaves the name field blank while choosing a format.
 3. User chooses a format: Trophy Race, Breakout, Guild Run, Champions League, or None.
-4. If the format requires setup options, the website asks for them.
-5. The website creates the list and opens the list detail page.
+4. If the name field is empty, the website auto-fills the list name with the chosen format's default name.
+5. The user can keep or edit any auto-filled name.
+6. If the format requires setup options, the website asks for them.
+7. The website creates the list and opens the list detail page only after the list has a valid name.
+
+## Name Behavior
+
+- A custom list cannot be saved without a non-empty name.
+- Selecting any format auto-fills an empty name field with the matching default name.
+- Default auto-filled names are `Trophy Race`, `Breakout`, `Guild Run`, `Champions League`, and `No mode` for None.
+- Format selection must not overwrite a name the user has already typed.
+- Auto-filled names remain editable before saving.
+- Auto-filled names follow the same uniqueness validation as manually entered names.
 
 ## Setup Options
 
 Trophy Race:
 
-- Default to 4 combis.
-- No required setup unless the UI allows choosing an initial count.
+- User chooses the starting arena count from 1 to 10.
+- This arena count is the only required Trophy Race setup choice.
+- Trophy Race may label combis as arenas, but it does not ask for arena target sets during setup.
 
 Breakout:
 
@@ -30,7 +42,8 @@ Breakout:
 Guild Run:
 
 - Creates 12 arenas.
-- Arena maximum target sets can be changed manually unless a future spec defines fixed arena limits.
+- User chooses the maximum target set for each arena during setup.
+- Arena maximum target sets can be changed manually later unless a future spec defines fixed arena limits.
 
 Champions League:
 
@@ -57,6 +70,7 @@ Users should be able to:
 
 Rules:
 
+- A custom list requires a non-empty name before it can be saved.
 - List names must be unique within the current local profile.
 - Creating or renaming a list must validate that the resulting name is unique.
 - Reordering saved lists updates the To-do page order and the homepage's mirrored first-four list cards.
@@ -66,8 +80,14 @@ Rules:
 ## Acceptance Criteria
 
 - [ ] A custom list requires a non-empty name.
+- [ ] Selecting any format auto-fills an empty name field with that format's default name.
+- [ ] Selecting None auto-fills an empty name field with `No mode`.
+- [ ] Format selection does not overwrite a user-entered name.
+- [ ] Auto-filled names can still be edited before saving.
 - [ ] A custom list requires one selected format.
 - [ ] Format-specific setup is captured before list creation.
+- [ ] Trophy Race setup captures a starting arena count from 1 to 10.
+- [ ] Guild Run setup captures a maximum target set for each of its 12 arenas.
 - [ ] Created lists persist locally.
 - [ ] Users can have multiple lists with the same format.
 - [ ] Reused list names are blocked.

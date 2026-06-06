@@ -2,7 +2,7 @@
 
 ## Summary
 
-When a user opens a new or empty to-do list, the list should already show the correct visual structure for its format. Empty slots are shown with add-option artwork, and users fill those slots by clicking the artwork and choosing a catalog item.
+When a user opens a new or empty to-do list, the list should already show the correct visual structure for its format. Empty add-item slots are shown with their matching add-option PNG from `assets/ovenbreak images/add cookies/`, and users fill those slots by clicking the artwork and choosing a catalog item. Once a slot is filled, its empty add-option artwork disappears and the chosen catalog item artwork takes its place.
 
 Detailed artwork references are defined in `../technical/T004-runtime-assets-and-ui-implementation.md`.
 
@@ -10,20 +10,26 @@ Detailed artwork references are defined in `../technical/T004-runtime-assets-and
 
 Empty list screens use the project's add-option artwork and shared combi layout references.
 
-## Empty Slot Behavior
+## Empty Add-Item Slot Behavior
 
-Every empty slot is an interactive add target. When the user clicks an add-option item from a list detail view, the website should open the matching catalog page in list-selection mode rather than opening a separate generic picker page:
+Every empty add-item slot is an interactive add target. When the user clicks add-option artwork from a list detail view, the website should open the matching catalog page in list-selection mode rather than opening a separate generic picker page:
 
-- Clicking an empty main cookie slot opens the Cookies catalog for that main cookie slot.
-- Clicking an empty relay cookie slot opens the Cookies catalog for that relay slot.
-- Clicking an empty pet slot opens the Pets catalog for that pet slot.
-- Clicking an empty treasure slot opens the Treasures catalog for that treasure slot.
+- Clicking an empty `add cookie` slot opens the Cookies catalog for that main cookie slot.
+- Clicking an empty `relay` slot opens the Cookies catalog for that relay slot.
+- Clicking an empty `add pet` slot opens the Pets catalog for that pet slot.
+- Clicking an empty `add treasure` slot opens the Treasures catalog for that treasure slot.
 
 In list-selection mode, the catalog page should keep its normal browse, search, sort, and filter controls, but item cards should show a Select action for compatible items instead of the ordinary add-to-list action. The page should also show a clear cancel/back action that returns to the originating list detail view without changing the list.
 
 The catalog page should remember which list slot the user is filling and how to return to the list. Detailed selection-mode behavior is defined in `../technical/T003-list-selection-routing.md`.
 
 After the user selects an item from the catalog page, return them to the originating list detail view and replace only the selected add-option artwork with the chosen item artwork unless the user also chooses an automatic paired-pet addition.
+
+When a filled catalog item is deleted from a list item block, the slot becomes empty again and the matching add-option artwork returns. Deleting one item must not remove the surrounding combi block, free item block, or any other items in that block.
+
+If the list detail view was opened from an ordinary catalog add-to-list dialog, the selected catalog item is already pending and the list detail page acts as the compatible-slot picker. In that pending placement mode, clicking a compatible empty add-item slot fills that slot instead of opening the catalog. The picker should offer every compatible empty add-item slot in the chosen list, including slots across multiple combis, groups, arenas, or None-format entries. Incompatible or already-filled slots must not be replaced automatically.
+
+Multi-item selection is available only when the user is filling treasure slots in a combi-format destination. In that case, the Treasures catalog may let the user select up to 3 treasures at once when enough compatible empty treasure slots exist in the same combi. Selected treasure cards must show numbered badges `1`, `2`, and `3`; those numbers define the placement order for the combi's empty treasure slots.
 
 ## Replacement Sizing
 
@@ -36,14 +42,16 @@ Chosen item artwork should occupy the same visual footprint as the add-option ar
 
 Do not let a chosen item resize the combi, move neighboring slots, or change the group grid.
 
+Add-option artwork and chosen catalog item artwork are mutually exclusive in a single add-item slot: show the add-option artwork only while the slot is empty, show the catalog item artwork only while the slot is filled, and restore the add-option artwork if the catalog item is deleted.
+
 ## Cookie And Paired-Pet Flow
 
-When a user chooses a cookie from an empty list slot, the paired-pet behavior still applies:
+When a user chooses a cookie from an empty add-item slot, the paired-pet behavior still applies:
 
-- If the chosen cookie has 1 paired pet, prompt the user to add that pet to the same combi's empty pet slot.
-- If the chosen cookie has 2 paired pets, prompt the user to choose which paired pet to add to the same combi's empty pet slot.
+- If the chosen cookie has 1 paired pet, prompt the user to add that pet to the same combi's empty `add pet` slot.
+- If the chosen cookie has 2 paired pets, prompt the user to choose which paired pet to add to the same combi's empty `add pet` slot.
 - The prompt must include cookie-only, cookie-with-selected-pet, and cancel choices.
-- Automatic paired-pet addition is available only when the destination combi has an empty compatible pet slot.
+- Automatic paired-pet addition is available only when the destination combi has an empty compatible `add pet` slot.
 - If the pet slot is already filled, do not replace it automatically. Let the user add or replace pets only through an explicit pet-slot action.
 - The paired-pet prompt applies to the main cookie choice. It does not apply to a relay cookie choice.
 
@@ -69,8 +77,10 @@ Combi type 2 should follow the shared combi type 2 visual reference:
 
 Trophy Race:
 
-- Show the default empty combis using the combi type 1 layout.
+- Show the user-selected number of empty arena-labeled combis using the combi type 1 layout.
 - Label combis as arenas or slots according to the Trophy Race list UI.
+- Trophy Race arena labels are visual/list labels only; they do not use Guild Run or Champions League arena target-set controls.
+- Trophy Race item targets default to full max levels: cookies and pets `Lv. 15`, treasures `Lv. 12`.
 - Use the shared Trophy Race and Champions League visual reference for spacing and alternating panel treatment.
 - Users may add more combis until the Trophy Race maximum is reached.
 
@@ -106,13 +116,13 @@ None:
 - If the user chooses combi type 2, insert an empty combi type 2 block.
 - If the user chooses cookie, open the Cookies catalog in list-selection mode and ask whether to add the paired pet when the chosen cookie has 1 or 2 paired pets.
 - If the user chooses pet, open the Pets catalog in list-selection mode and add only the selected pet; do not show an extra prompt.
-- If the user chooses treasure, ask whether to add 1 treasure or a set of 3 treasures, then open the Treasures catalog in list-selection mode with the selected amount.
-- Individual cookie, pet, treasure, and treasure-set entries should use the existing add-option artwork and replacement sizing rules.
+- If the user chooses treasure, open the Treasures catalog in single-selection mode for one individual treasure entry.
+- Individual cookie, pet, and treasure entries should use the existing add-option artwork and replacement sizing rules.
 - Combi entries in None lists should use the same add-option artwork and replacement sizing rules as mode combis.
 
 ## Acceptance Criteria
 
-- [ ] Empty Trophy Race lists display combi type 1 slots using the specified add-option artwork.
+- [ ] Empty Trophy Race lists display the user-selected number of combi type 1 arena slots using the specified add-option artwork.
 - [ ] Empty Breakout lists display groups of combi type 2 entries using the specified add-option artwork.
 - [ ] Breakout combis show numbered flag markers, restarting from `1` in each group.
 - [ ] Empty Guild Run lists display 12 combi type 1 arenas.
@@ -121,10 +131,13 @@ None:
 - [ ] None-list add action asks whether to add `combi type 1 (with relay)`, `combi type 2 (without relay)`, cookie, pet, or treasure.
 - [ ] None-list combi type 1 uses the combi type 1 layout.
 - [ ] None-list combi type 2 uses the combi type 2 layout.
-- [ ] None-list treasure adds ask whether to add 1 treasure or 3 treasures.
+- [ ] None-list individual treasure adds open the Treasures catalog in single-selection mode.
+- [ ] Combi treasure adds are the only multi-selection flow and show selected treasures numbered `1`, `2`, and `3`.
 - [ ] Clicking any add-option artwork from a list detail view opens the correct catalog page in list-selection mode for that slot type.
 - [ ] Catalog pages in list-selection mode show Select actions for compatible items and remember the originating list slot.
 - [ ] The chosen item returns to the originating list slot.
 - [ ] Chosen item art replaces the add-option art without changing the slot footprint.
-- [ ] Choosing a main cookie can also add a paired pet to the same combi's empty pet slot.
+- [ ] Filled slots hide their add-option artwork.
+- [ ] Deleting a filled catalog item restores the matching add-option artwork for that slot.
+- [ ] Choosing a main cookie can also add a paired pet to the same combi's empty `add pet` slot.
 - [ ] Relay cookie choices do not trigger paired-pet prompts.

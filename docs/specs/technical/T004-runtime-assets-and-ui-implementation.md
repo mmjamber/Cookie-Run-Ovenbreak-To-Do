@@ -20,14 +20,14 @@ Rules:
 
 ## Empty List Runtime Assets
 
-Source add-option artwork lives under `assets/ovenbreak images/add cookies/`.
+Source add-option artwork lives under `assets/ovenbreak images/add cookies/`. Every add-item slot must use the matching PNG from this folder for its empty-slot artwork.
 
-Add-option slot artwork:
+Add-option artwork for add-item slots:
 
-- Main cookie slot: `add cookie.png`
-- Pet slot: `add pet.png`
-- Relay cookie slot: `add relay.png`
-- Treasure slot: `add treasure.png`
+- `add cookie` slot: `add cookie.png`
+- `add pet` slot: `add pet.png`
+- `relay` slot: `add relay.png`
+- `add treasure` slot: `add treasure.png`
 
 Combi layout references:
 
@@ -67,16 +67,18 @@ Rules:
 - Ordinary form controls should inherit the site font.
 - Do not use browser-default fonts for item names or section headings unless a page spec explicitly says so.
 
-## Replacement Sizing
+## Replacement And Restoration Sizing
 
 When a user replaces add-option artwork with a chosen item:
 
 - The chosen item artwork must occupy the same visual footprint as the add-option artwork it replaces.
-- A chosen main cookie replaces the main cookie add slot at the same slot size and position.
-- A chosen relay cookie replaces the relay cookie add slot at the same slot size and position.
-- A chosen pet replaces the pet add slot at the same slot size and position.
-- A chosen treasure replaces the treasure add slot at the same slot size and position.
+- A chosen main cookie replaces the `add cookie` slot at the same slot size and position.
+- A chosen relay cookie replaces the `relay` slot at the same slot size and position.
+- A chosen pet replaces the `add pet` slot at the same slot size and position.
+- A chosen treasure replaces the `add treasure` slot at the same slot size and position.
 - Chosen item artwork must not resize the combi, move neighboring slots, or change the group grid.
+- The add-option artwork must not remain visible behind or beside the chosen item artwork while the slot is filled.
+- If the chosen catalog item is deleted, restore the matching add-option artwork in that same slot using the same slot size and position.
 
 Use stable sizing and fitting rules, such as `object-fit` and `object-position`, so item art fits inside the existing slot footprint.
 

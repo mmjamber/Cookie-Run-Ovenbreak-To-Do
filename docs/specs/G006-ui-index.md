@@ -13,7 +13,7 @@ The site should feel useful to active Cookie Run: Ovenbreak players: fast to sca
 - `user-interface/UI003-homepage-and-list-cards.md` - saved list cards, preset mode cards, artwork mapping, and responsive card behavior
 - `user-interface/UI004-catalog-item-cards.md` - catalog item cards, rarity frames, catalog grids, and catalog selection UI
 - `user-interface/UI005-list-detail-and-combi-layouts.md` - list detail pages, combi UI, progress controls, and slot presentation
-- `user-interface/UI006-empty-states-and-errors.md` - empty states, invalid inputs, incompatible slots, and format-limit feedback
+- `user-interface/UI006-empty-states-and-errors.md` - empty states, invalid inputs, incompatible add-item slots, and format-limit feedback
 - `user-interface/UI007-accessibility.md` - keyboard reachability, alt text, non-color state cues, and prompt/dialog accessibility
 
 ## Boundaries

@@ -15,9 +15,17 @@ For product goals, audience, MVP scope, and success criteria, see `G003-global-s
 - Combi type 1: a combi with 1 pet, 1 main cookie, 1 relay cookie, and 3 treasures.
 - Combi type 2: a combi with 1 pet, 1 main cookie, and 3 treasures; no relay cookie.
 - Relay cookie: secondary cookie in modes that support one.
-- Arena: fixed slot inside Trophy Race, Guild Run, or Champions League.
+- Arena: a labeled mode slot or section used by Trophy Race, Guild Run, or Champions League.
+- Arena-format list: a Guild Run or Champions League list whose fixed arena sections each have a low, mid, or full target set.
+- Trophy Race arena: an arena-labeled combi slot in a Trophy Race list. Trophy Race arenas use full combi targets and do not have arena-specific target sets. When creating a custom Trophy Race list, the only required setup choice is how many arena-labeled combis to start with, up to 10.
 - Group: numbered collection of Breakout combis.
 - Target level: desired level the user wants the item to reach.
+- Add item: the action of placing a catalog cookie, pet, or treasure into a saved list. This is separate from Add list, which creates a new saved list.
+- Add-item slot: an empty slot in a list detail view that can receive a catalog item. Add-item slots are shown with add-option artwork such as `add cookie`, `relay`, `add pet`, or `add treasure`. Each add-item slot type is linked to its matching PNG file in `assets/ovenbreak images/add cookies/`.
+- Compatible add-item slot: an empty add-item slot whose type accepts the selected item. Cookies can go only in `add cookie` or `relay` slots, pets can go only in `add pet` slots, and treasures can go only in `add treasure` slots.
+- Compatible-slot picker: the list-detail placement state used after an ordinary catalog add-to-list dialog. It lets the user choose any compatible empty add-item slot in the chosen list, across all available combis, groups, arenas, or None-format entries.
+- List item block: one visible block inside a list detail view that contains add-item slots or filled catalog items. Combi blocks contain combi slots; free item blocks contain standalone None-format cookie, pet, or treasure entries.
+- Options toggle: a top-right control on every list item block. Opening it shows item-management actions for that block, including deleting any filled catalog item in the block.
 
 ## Global Level Caps
 
@@ -30,6 +38,7 @@ For product goals, audience, MVP scope, and success criteria, see `G003-global-s
 ## Shared Target Sets
 
 Guild Run and Champions League use these target sets as arena maximum limits.
+Trophy Race does not use these arena target sets; Trophy Race arena-labeled combis default to full max targets.
 
 | Set name | Cookie max | Pet max | Treasure max |
 | --- | ---: | ---: | ---: |
@@ -41,7 +50,7 @@ When a user changes an arena maximum target set, they may only choose one of the
 
 Target levels are always editable by the user, but they cannot exceed the current item, list, or arena maximum. For example, if a Guild Run arena has cookie/pet max 7 and treasure max 5, targets in that arena cannot be set above those numbers unless the arena limit is changed manually.
 
-When an item is added to a to-do list, its current level starts at `Lv. 1`. Its target level should automatically match the maximum allowed by the current item slot, list format, combi, or arena target set. For example, a full-cap combi should default cookie and pet targets to `Lv. 15` and treasure targets to `Lv. 12`; a low-cap arena should default cookie and pet targets to `Lv. 7` and treasure targets to `Lv. 5`. The website should assume that newly added items have not been leveled yet, but that the user's goal is the format-appropriate target.
+When an item is added to a to-do list, its current level starts at `Lv. 1`. Its target level should automatically match the maximum allowed by the current add-item slot, list format, combi, or arena target set. For example, a full-cap combi should default cookie and pet targets to `Lv. 15` and treasure targets to `Lv. 12`; a low-cap arena should default cookie and pet targets to `Lv. 7` and treasure targets to `Lv. 5`. The website should assume that newly added items have not been leveled yet, but that the user's goal is the format-appropriate target.
 
 Users track both current level and target level. An item is complete when its current level reaches its target level. If the user manually marks an item complete, the website should automatically set the current level to the item's target level.
 
@@ -72,6 +81,8 @@ Presets should follow each mode's list format, but users still need to fill in t
 
 Users can create custom named lists. During creation, the user chooses one of the five supported formats. After creation, the list must enforce the rules of that format.
 
+When a user chooses a format while the list name field is empty, the website should auto-fill the name with that format's default name. The None format uses `No mode` as its default auto-filled name. Auto-filled names remain editable before saving.
+
 Lists belong to a local guest profile unless a future requirement explicitly adds accounts. When adding catalog items to a list, users should only see lists linked to the current local profile.
 
 A cookie, pet, or treasure can be added to multiple to-do lists at the same time.
@@ -93,6 +104,8 @@ Catalog sorting options:
 - Alphabetical
 - Release date
 - Rarity filters
+
+Catalog item selection is single-item by default. The only multi-selection flow is adding treasures to a combi-format treasure destination with enough compatible empty treasure slots. In that flow, users may select up to 3 treasures at once, and selected treasure cards must show numbered badges `1`, `2`, and `3`.
 
 Catalog derivation rules are defined in `technical/T001-catalog-import-and-derived-data.md`.
 

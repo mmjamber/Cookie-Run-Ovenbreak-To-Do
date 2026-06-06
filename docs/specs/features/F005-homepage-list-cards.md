@@ -27,7 +27,7 @@ For every new local user or guest profile, the website generates four default pr
 - If the user deletes a saved list, remove its card from the homepage and do not create a default card to fill the empty space.
 - If the user deletes every saved list, show one add-list card under `My Lists` instead of recreating default cards or leaving the area empty.
 - The default Trophy Race, Guild Run, Champions League, and Breakout cards are generated list records for new local users and guests, not homepage-only placeholders.
-- Once generated, default preset-derived lists behave like regular saved lists: users can edit, rename, delete, and reorder them.
+- Once generated, default preset-derived lists share the same saved-list behavior as custom lists: users can edit, rename, delete, and reorder them.
 - Selecting a default preset-derived list card opens that list.
 - When a saved list card is selected, it should open that saved list's detail view.
 - When the add-list card is selected, it should start the create-list flow defined in `F004-custom-lists.md`.
@@ -36,7 +36,7 @@ For every new local user or guest profile, the website generates four default pr
 
 The four default cards are generated as real preset-derived lists for every new local user or guest profile. They appear on the To-do page first, and homepage `My Lists` shows them only because they are the first four cards in the shared To-do order.
 
-Default preset-derived lists are regular list cards after creation. Users can edit their contents, rename them, delete them, and rearrange them during To-do card order reorganization.
+Default preset-derived lists use the same list-card behavior as custom lists after creation. Users can edit their contents, rename them, delete them, and rearrange them during To-do card order reorganization.
 
 Default preset-derived lists are not regenerated after the profile has been initialized. Deletion is intentional: if a user deletes those lists, the homepage should not recreate them to fill empty card slots.
 
@@ -51,7 +51,7 @@ When deletion leaves the user with no saved lists at all, the shared list-card a
 - Homepage list cards must use the same card component and source list records as the To-do page cards.
 - Homepage list cards should preserve the same relative order shown on the To-do page.
 - The add-list card should use the visual rules in `../user-interface/UI003-homepage-and-list-cards.md`.
-- Saved None-format list cards should display the title `No mode` exactly, regardless of the list's user-defined name.
+- Saved None-format list cards should display the saved list name. Newly created None-format lists default to the auto-filled name `No mode`, but users may edit that name before saving or later rename the list.
 - Saved None-format list cards must use `none-card.png` on desktop and `none-card-horizontal.png` for horizontal/mobile cards.
 - If future list metadata supports progress summaries, homepage cards may show a compact progress indicator, but the card's main purpose is opening the list.
 
@@ -65,10 +65,10 @@ When deletion leaves the user with no saved lists at all, the shared list-card a
 - [ ] Reorganizing saved lists on the To-do page changes which lists appear on the homepage and in what order.
 - [ ] After deleting every saved list, one add-list card appears under `My Lists`.
 - [ ] Deleted default preset-derived lists are not regenerated after the profile has been initialized.
-- [ ] Default preset-derived list cards can be edited, renamed, deleted, and reordered like regular saved-list cards.
+- [ ] Default preset-derived list cards can be edited, renamed, deleted, and reordered with the same controls as custom saved-list cards.
 - [ ] Selecting a saved list card opens that list's detail page.
 - [ ] Selecting a default preset-derived list card opens that list's detail page.
 - [ ] Selecting the add-list card starts the create-list flow.
 - [ ] Default cards and saved list cards use the same shared card styling.
-- [ ] The add-list card uses the same card shape as regular cards, has no image, and shows a plus sign centered in the card.
-- [ ] None-format saved list cards use the No mode artwork and display `No mode` exactly.
+- [ ] The add-list card uses the same card shape as saved list cards, has no image, and shows a plus sign centered in the card.
+- [ ] None-format saved list cards use the No mode artwork and display the saved list name.

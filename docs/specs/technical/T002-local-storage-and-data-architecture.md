@@ -175,6 +175,18 @@ Deleting a catalog item from a list item block removes only the `TodoItem` from 
 - Other items in the same block remain unchanged.
 - The deleted item's current level, target level, and completion state are discarded with that `TodoItem`.
 
+## Item Replacement
+
+Replacing a filled catalog item through an explicit `Switch?` action removes only the `TodoItem` in that slot and writes a new `TodoItem` for the selected catalog item.
+
+Rules:
+
+- Replacement is allowed only for compatible filled slots.
+- The replaced item's current level, target level, and completion state are discarded.
+- The new item starts with `currentLevel: 1`.
+- The new item's `targetLevel` defaults to the maximum allowed by the destination add-item slot, list format, combi, or arena target set.
+- Other items in the same combi or free item block remain unchanged unless the user is completing an explicit cookie-with-pet placement that also targets a compatible pet slot.
+
 ## Format Storage Mapping
 
 - Trophy Race: one `combis` section with the user-selected number of Trophy Race arenas, from 1 to 10. Each arena is stored as a combi type 1 entry. Preset-derived Trophy Race lists start with 4 empty arenas. These arenas use full max targets and do not store low, mid, or full arena target sets.

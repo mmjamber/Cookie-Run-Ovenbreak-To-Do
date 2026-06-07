@@ -87,28 +87,29 @@ Ordinary catalog add flow:
 - The dialog shows destination lists from the current local profile.
 - The dialog has an Add button that opens the chosen list detail view in pending placement mode.
 - The dialog does not choose the final add-item slot.
-- For clicked cookies with 1 paired pet, the dialog offers Add cookie only, Add cookie and pet, and Cancel choices.
-- For clicked cookies with 2 paired pets, the dialog lets the user choose Add cookie only, Add cookie with one selected pet, or Cancel.
+- For clicked cookies with 1 paired pet, the dialog offers Add cookie only, Add cookie and pet, and Cancel choices. Add cookie and pet is checked by default unless the destination is already known to be `relay`.
+- For clicked cookies with 2 paired pets, the dialog lets the user choose Add cookie only, Add cookie with one selected pet, or Cancel. Add cookie with one selected pet is checked by default unless the destination is already known to be `relay`.
 - In pending placement mode, the list detail page acts as the compatible-slot picker.
-- The compatible-slot picker shows compatible empty add-item slots across the chosen list, including multiple combis, groups, arenas, or None-format entries.
+- The compatible-slot picker shows compatible empty slots and compatible filled slots across the chosen list, including multiple combis, groups, arenas, or None-format entries.
 - Slot compatibility follows add-item slot type: cookies use `add cookie` or `relay`, pets use `add pet`, and treasures use `add treasure`.
-- Incompatible or filled slots should be disabled, hidden, or explained.
+- Incompatible slots should be disabled, hidden, or explained.
+- Compatible filled slots expose replacement only through the `Switch?` affordance: desktop hover grays out the filled item and overlays `Switch?`; mobile tap/click reveals the same state.
 
 List-origin cookie selection mode:
 
 - Users select one cookie at a time.
 - `add cookie` and `relay` slots are filled through separate slot actions.
 - Selected cookie cards do not need numbered selection icons because cookie multi-selection is not supported.
-- Relay-cookie selection must not trigger the paired-pet prompt.
+- Relay-cookie selection must not trigger the paired-pet prompt and should default to cookie only.
 
 List-origin treasure selection mode:
 
 - Treasure selection is the only catalog flow that supports multiple selected items.
-- Users can select up to 3 treasures at once only when adding treasures to a combi-format destination with enough compatible empty treasure slots.
+- Users can select up to 3 treasures at once only when adding treasures to a combi-format destination with enough compatible empty or explicitly switched treasure slots.
 - Show numbered selection icons on selected treasure cards: `1`, `2`, and `3`.
 - The numbered icons should stay visible while the treasures are selected and disappear when the selection is cleared.
 - If a selected treasure is deselected before confirmation, renumber the remaining selected treasures from `1`.
-- Treasure selection order determines the placement order for the destination combi's empty treasure slots.
+- Treasure selection order determines the placement order for the destination combi's selected empty or explicitly switched treasure slots.
 
 List-origin selection mode:
 

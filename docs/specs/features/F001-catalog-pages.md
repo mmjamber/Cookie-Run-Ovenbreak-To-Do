@@ -55,12 +55,12 @@ When a user adds one cookie to a to-do list:
 
 1. The website checks for paired pets.
 2. The add-to-list dialog opens.
-3. If 1 paired pet exists, the dialog offers Add cookie only, Add cookie and pet, and Cancel.
-4. If 2 paired pets exist, the dialog lets the user choose Add cookie only, Add cookie with one selected pet, or Cancel.
+3. If 1 paired pet exists, the dialog offers Add cookie only, Add cookie and pet, and Cancel. Add cookie and pet is checked by default unless the destination is already known to be a `relay` slot.
+4. If 2 paired pets exist, the dialog lets the user choose Add cookie only, Add cookie with one selected pet, or Cancel. Add cookie with one selected pet is checked by default unless the destination is already known to be a `relay` slot.
 5. The user chooses a destination list in the same dialog and clicks Add.
 6. The website opens the chosen list detail view in pending placement mode so the user can choose a compatible empty slot or explicitly switch a compatible filled slot in the compatible-slot picker.
 
-In list-selection mode, cookie selections are always one cookie at a time. An `add cookie` slot and a `relay` slot are filled through separate slot actions. The paired-pet prompt is shown only when the user is filling an `add cookie` slot with an available compatible `add pet` slot. Relay-cookie selection must not trigger the paired-pet prompt.
+In list-selection mode, cookie selections are always one cookie at a time. An `add cookie` slot and a `relay` slot are filled through separate slot actions. The paired-pet prompt is shown only when the user is filling an `add cookie` slot with an available compatible `add pet` slot. Relay-cookie selection must not trigger the paired-pet prompt and is treated as Add cookie only.
 
 ## Add-To-List Dialog
 
@@ -71,6 +71,7 @@ The dialog should:
 - Show the available to-do lists linked to the current local profile.
 - Let the user choose which list to add the clicked item to.
 - For clicked cookies with paired pets, let the user choose cookie only or cookie with one selected paired pet.
+- Check the cookie-with-pet option by default unless the destination is already known to be `relay`; known `relay` destinations default to cookie only.
 - Show an Add button that confirms the selected list and optional paired-pet choice.
 - Explain when a list has no compatible placement slots for the selected item or item pair.
 - Let the user cancel without changing any list.
@@ -85,8 +86,10 @@ In pending placement mode:
 - Incompatible slots are disabled, hidden, or explained.
 - On desktop, hovering a compatible filled slot grays out the current item and overlays `Switch?`; on mobile, tapping or clicking the filled slot reveals the same grayed-out `Switch?` state.
 - Activating `Switch?` replaces the filled slot's current item with the selected catalog item.
-- If the user chose cookie with pet, the list detail page only allows placement targets that can add the cookie and paired pet together.
-- Confirmed placement replaces the chosen add-option artwork or switched catalog item artwork with the selected item artwork. Cookie-with-pet placement also fills an empty compatible pet slot or replaces an explicitly switched compatible pet slot in the same completed action.
+- If the user chose cookie with pet, the list detail page allows placement targets that can add the cookie and paired pet together, plus compatible `relay` targets that receive only the cookie.
+- If the user leaves cookie with pet checked but chooses a `relay` destination, ignore the paired-pet choice and add only the cookie to the relay slot.
+- If the user activates `Switch?` on a compatible cookie slot in a combi where the selected cookie's linked pet is already present, and cookie with pet was checked, open a `With pet?` dialog with `Yes` and `No` choices before completing placement.
+- Confirmed placement replaces the chosen add-option artwork or switched catalog item artwork with the selected item artwork. Non-relay cookie-with-pet placement also fills an empty compatible pet slot or replaces an explicitly switched compatible pet slot in the same completed action.
 - The user can cancel or go back without changing the list.
 
 ## List-Origin Catalog Selection
@@ -108,14 +111,19 @@ In list-selection mode:
 - After selection is confirmed, the website returns to the originating list detail view and fills the preserved destination add-item slot or slots.
 - The catalog page must not open the add-to-list dialog, because the destination is already known.
 
-Cookie paired-pet behavior still applies in list-selection mode when selecting a main cookie. If the user accepts a paired-pet addition, the paired pet fills the same combi's compatible empty pet slot when one exists. Relay-cookie selection must not trigger the paired-pet prompt.
+Cookie paired-pet behavior still applies in list-selection mode when selecting a main cookie. If the user accepts a paired-pet addition, the paired pet fills the same combi's compatible empty pet slot when one exists, or replaces a compatible filled pet slot only when the user explicitly activates that slot's `Switch?` affordance. Relay-cookie selection must not trigger the paired-pet prompt.
+
+If the selected cookie's linked pet is already present in the destination combi and the user activates `Switch?` on a compatible cookie slot while cookie with pet is selected, show a `With pet?` dialog:
+
+- `Yes` switches the cookie and keeps the linked pet included in the placement.
+- `No` switches only the cookie and leaves the pet slot unchanged.
 
 Treasure selection is the only list-selection mode that can select multiple catalog items at once:
 
 - Multiple selection is available only when the user is adding treasures to a combi-format destination with enough compatible treasure slots, whether empty or explicitly switched.
 - The user may select 1, 2, or 3 treasures at once.
 - Each selected treasure card must show a numbered selection badge: `1`, `2`, or `3`.
-- The numbered badges show the selection order and the placement order for the destination combi's empty treasure slots.
+- The numbered badges show the selection order and the placement order for the destination combi's selected empty or explicitly switched treasure slots.
 - If the user deselects a treasure before confirming, the remaining selected treasures are renumbered from `1`.
 
 ## Item Destination Rules
@@ -140,6 +148,9 @@ Treasure selection is the only list-selection mode that can select multiple cata
 - [ ] Alphabetical and release sorting follow catalog data rules.
 - [ ] Treasures are not visually framed by rarity.
 - [ ] Adding a cookie can prompt for 1 or 2 paired pets.
+- [ ] Cookie-with-pet is checked by default unless the destination is known to be `relay`.
+- [ ] Known `relay` destinations default to cookie only and ignore checked paired-pet choices.
+- [ ] Switching a compatible cookie slot where the selected cookie's linked pet is already present asks `With pet?` before completing placement.
 - [ ] Cookies are selected one at a time in both ordinary catalog mode and list-selection mode.
 - [ ] The paired-pet prompt is not shown for relay-cookie selection.
 - [ ] Users can select up to 3 treasures at once only when adding treasures to a combi-format destination with enough compatible empty or explicitly switched treasure slots.

@@ -45,11 +45,11 @@
 1. User opens the Cookies page.
 2. User clicks one cookie item.
 3. The website opens an add-to-list dialog with to-do lists linked to the current local profile.
-4. If the clicked cookie has paired pets, the dialog lets the user choose cookie only, cookie with one selected paired pet, or cancel.
+4. If the clicked cookie has paired pets, the dialog lets the user choose cookie only, cookie with one selected paired pet, or cancel. Cookie with pet is checked by default unless the destination is already known to be `relay`.
 5. User chooses the destination list and clicks Add.
 6. The website opens the chosen list detail view in pending placement mode, using the compatible-slot picker.
 7. User chooses any compatible empty slot, or explicitly chooses `Switch?` on a compatible filled slot, in that list. Cookies can be placed only in `add cookie` or `relay` slots, including compatible slots across multiple combis, groups, arenas, or None-format entries.
-8. If the user chose cookie with pet, the website only allows placement targets that can add the cookie and paired pet together, then fills empty compatible slots or replaces explicitly switched compatible slots in one completed action.
+8. If the user chose cookie with pet, the website allows placement targets that can add the cookie and paired pet together, plus compatible `relay` targets that receive only the cookie. It then fills empty compatible slots or replaces explicitly switched compatible slots in one completed action.
 9. The website adds or replaces the selected item or items with current level `Lv. 1` and target level set to the maximum allowed by the destination add-item slot, combi, list format, or arena target set, then lets the user edit levels within the current item, list, or arena maximum.
 
 ### Add Pet Or Treasure From Catalog

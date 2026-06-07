@@ -109,7 +109,7 @@ Catalog sorting options:
 - Release date
 - Rarity filters
 
-Catalog item selection is single-item by default. The only multi-selection flow is adding treasures to a combi-format treasure destination with enough compatible empty treasure slots. In that flow, users may select up to 3 treasures at once, and selected treasure cards must show numbered badges `1`, `2`, and `3`.
+Catalog item selection is single-item by default. The only multi-selection flow is adding treasures to a combi-format treasure destination with enough compatible empty or explicitly switched treasure slots. In that flow, users may select up to 3 treasures at once, and selected treasure cards must show numbered badges `1`, `2`, and `3`.
 
 Catalog derivation rules are defined in `technical/T001-catalog-import-and-derived-data.md`.
 

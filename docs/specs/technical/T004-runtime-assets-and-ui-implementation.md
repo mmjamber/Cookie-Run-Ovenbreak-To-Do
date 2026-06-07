@@ -82,6 +82,13 @@ When a user replaces add-option artwork with a chosen item:
 
 Use stable sizing and fitting rules, such as `object-fit` and `object-position`, so item art fits inside the existing slot footprint.
 
+When a compatible filled slot exposes the `Switch?` replacement affordance:
+
+- The filled item artwork should gray out without changing its slot size or position.
+- The `Switch?` text should overlay the filled item within the same slot footprint.
+- Showing or hiding `Switch?` must not resize the combi, move neighboring slots, or change the group grid.
+- Incompatible filled slots must not show the `Switch?` overlay.
+
 ## Related Specs
 
 - `../G006-ui-index.md` for the UI index.

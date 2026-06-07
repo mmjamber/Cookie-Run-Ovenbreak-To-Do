@@ -27,9 +27,11 @@ After the user selects an item from the catalog page, return them to the origina
 
 When a filled catalog item is deleted from a list item block, the slot becomes empty again and the matching add-option artwork returns. Deleting one item must not remove the surrounding combi block, free item block, or any other items in that block.
 
-If the list detail view was opened from an ordinary catalog add-to-list dialog, the selected catalog item is already pending and the list detail page acts as the compatible-slot picker. In that pending placement mode, clicking a compatible empty add-item slot fills that slot instead of opening the catalog. The picker should offer every compatible empty add-item slot in the chosen list, including slots across multiple combis, groups, arenas, or None-format entries. Incompatible or already-filled slots must not be replaced automatically.
+If the list detail view was opened from an ordinary catalog add-to-list dialog, the selected catalog item is already pending and the list detail page acts as the compatible-slot picker. In that pending placement mode, clicking a compatible empty add-item slot fills that slot instead of opening the catalog. The picker should offer every compatible empty slot in the chosen list, including slots across multiple combis, groups, arenas, or None-format entries.
 
-Multi-item selection is available only when the user is filling treasure slots in a combi-format destination. In that case, the Treasures catalog may let the user select up to 3 treasures at once when enough compatible empty treasure slots exist in the same combi. Selected treasure cards must show numbered badges `1`, `2`, and `3`; those numbers define the placement order for the combi's empty treasure slots.
+Compatible filled slots can be replaced only through the explicit `Switch?` affordance. On desktop, hovering a compatible filled slot grays out the current item and overlays `Switch?`. On mobile, tapping or clicking a compatible filled slot reveals the same grayed-out `Switch?` state. Activating `Switch?` replaces the filled slot's current item with the pending item. Incompatible filled slots must not show `Switch?`, and no filled slot may be replaced silently.
+
+Multi-item selection is available only when the user is filling treasure slots in a combi-format destination. In that case, the Treasures catalog may let the user select up to 3 treasures at once when enough compatible empty or explicitly switched treasure slots exist in the same combi. Selected treasure cards must show numbered badges `1`, `2`, and `3`; those numbers define the placement order for the selected treasure slots.
 
 ## Replacement Sizing
 
@@ -50,12 +52,15 @@ When a user chooses a cookie from an empty add-item slot, the paired-pet behavio
 
 - If the chosen cookie has 1 paired pet, prompt the user to add that pet to the same combi's empty `add pet` slot.
 - If the chosen cookie has 2 paired pets, prompt the user to choose which paired pet to add to the same combi's empty `add pet` slot.
+- The add-cookie-with-pet option is checked by default for main cookie slots because it is the most commonly picked option.
 - The prompt must include cookie-only, cookie-with-selected-pet, and cancel choices.
-- Automatic paired-pet addition is available only when the destination combi has an empty compatible `add pet` slot.
-- If the pet slot is already filled, do not replace it automatically. Let the user add or replace pets only through an explicit pet-slot action.
-- The paired-pet prompt applies to the main cookie choice. It does not apply to a relay cookie choice.
+- Automatic paired-pet addition is available only when the destination combi has an empty compatible `add pet` slot or the user explicitly chooses `Switch?` on a compatible filled pet slot.
+- If the pet slot is already filled, do not replace it without an explicit `Switch?` action.
+- The paired-pet prompt applies to the main cookie choice. It does not apply to a relay cookie choice; relay destinations default to cookie only.
 
-If the user accepts a paired-pet addition, replace both the clicked cookie add-option artwork and the same combi's pet add-option artwork in one completed action.
+If the user accepts a paired-pet addition for a main cookie destination, replace both the clicked cookie add-option artwork and the same combi's compatible pet slot artwork in one completed action. If a paired-pet choice reaches a relay destination, ignore the paired pet and add only the relay cookie.
+
+If the user activates `Switch?` on a compatible cookie slot in a combi where the selected cookie's linked pet is already present, and add cookie with pet was selected, show a `With pet?` dialog before completing the switch. `Yes` switches the cookie and keeps the linked pet included in the placement. `No` switches only the cookie and leaves the pet slot unchanged.
 
 ## Combi Layouts
 
@@ -143,7 +148,11 @@ None:
 - [ ] Catalog pages in list-selection mode show Select actions for compatible items and remember the originating list slot.
 - [ ] The chosen item returns to the originating list slot.
 - [ ] Chosen item art replaces the add-option art without changing the slot footprint.
+- [ ] Compatible filled slots expose a `Switch?` affordance on desktop hover or mobile tap/click.
+- [ ] Activating `Switch?` replaces only that filled slot's current item.
 - [ ] Filled slots hide their add-option artwork.
 - [ ] Deleting a filled catalog item restores the matching add-option artwork for that slot.
 - [ ] Choosing a main cookie can also add a paired pet to the same combi's empty `add pet` slot.
+- [ ] Main cookie paired-pet prompts check the add-cookie-with-pet option by default.
+- [ ] Relay cookie destinations default to cookie only and ignore checked paired-pet choices.
 - [ ] Relay cookie choices do not trigger paired-pet prompts.

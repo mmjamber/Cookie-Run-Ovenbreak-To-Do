@@ -17,7 +17,7 @@ For product goals, audience, MVP scope, and success criteria, see `G003-global-s
 - Relay cookie: secondary cookie in modes that support one.
 - Arena: a labeled mode slot or section used by Trophy Race, Guild Run, or Champions League.
 - Arena-format list: a Guild Run or Champions League list whose fixed arena sections each have a low, mid, or full target set.
-- Trophy Race arena: an arena-labeled combi slot in a Trophy Race list. Trophy Race arenas use full combi targets and do not have arena-specific target sets. When creating a custom Trophy Race list, the only required setup choice is how many arena-labeled combis to start with, up to 10.
+- Trophy Race arena: an arena-labeled combi slot in a Trophy Race list. Trophy Race arenas use full combi targets and do not have arena-specific target sets. When creating a user generated Trophy Race list, the only required setup choice is how many arena-labeled combis to start with, up to 10.
 - Group: numbered collection of Breakout combis.
 - Target level: desired level the user wants the item to reach.
 - Add item: the action of placing a catalog cookie, pet, or treasure into a saved list. This is separate from Add list, which creates a new saved list.
@@ -77,9 +77,9 @@ The website should provide preset to-do lists for these game modes:
 
 Presets should follow each mode's list format, but users still need to fill in the specific cookies, pets, treasures, and target choices where applicable.
 
-## Custom Lists
+## User Generated Lists
 
-Users can create custom named lists. During creation, the user chooses one of the five supported formats. After creation, the list must enforce the rules of that format.
+Users can create user generated named lists. During creation, the user chooses one of the five supported formats. After creation, the list must enforce the rules of that format.
 
 When a user chooses a format while the list name field is empty, the website should auto-fill the name with that format's default name. The None format uses `No mode` as its default auto-filled name. Auto-filled names remain editable before saving.
 

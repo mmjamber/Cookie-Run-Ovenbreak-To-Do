@@ -30,7 +30,7 @@ Starting levels and target defaults:
 
 Rules:
 
-- During custom list setup, the user chooses the starting Trophy Race arena count from 1 to 10.
+- During user generated list setup, the user chooses the starting Trophy Race arena count from 1 to 10.
 - Preset-derived Trophy Race lists start with 4 arena-labeled combis.
 - Users can add combis.
 - Maximum combi count is 10.
@@ -125,7 +125,7 @@ Add flow:
 
 ## Acceptance Criteria
 
-- [ ] Users can choose from all five formats when creating a custom list.
+- [ ] Users can choose from all five formats when creating a user generated list.
 - [ ] Each format enforces add-item slots and maximum counts.
 - [ ] Newly added cookies, pets, and treasures start with current level `Lv. 1`.
 - [ ] Newly added item target levels automatically match the destination add-item slot, combi, list format, or arena target set.

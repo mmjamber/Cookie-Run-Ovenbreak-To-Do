@@ -22,7 +22,7 @@ type UserList = {
   ownerId: string;
   name: string;
   format: ListFormat;
-  source: "preset" | "custom";
+  source: "preset" | "userGenerated";
   mode: ListFormat | null;
   order: number;
   createdAt: string;
@@ -38,21 +38,21 @@ Rules:
 - `createdAt` and `updatedAt` should be ISO timestamps.
 - `updatedAt` should change after meaningful activity such as creation, rename, item additions, item deletions, item edits, level edits, or manual completion updates.
 - Preset-derived lists should use `source: "preset"`.
-- Custom lists should use `source: "custom"`.
+- User generated lists should use `source: "userGenerated"`.
 - `order` stores the user-controlled display order for the To-do page.
 - Homepage `My Lists` cards use the first four lists by ascending `order`, matching the To-do page.
 - Reordering lists should update `order` without requiring changes to `updatedAt`.
 - New local user and guest profiles should initialize `userLists` with the four default preset-derived lists.
-- Generated default preset-derived lists are stored as `UserList` records and may be edited, renamed, deleted, and reordered with the same controls as custom lists.
+- Generated default preset-derived lists are stored as `UserList` records and may be edited, renamed, deleted, and reordered with the same controls as user generated lists.
 - After a profile is initialized, deleted default preset-derived lists must not be regenerated automatically.
 
-## Preset-Derived And Custom Lists
+## Preset-Derived And User Generated Lists
 
-The distinction between preset-derived lists and custom lists is origin metadata:
+The distinction between preset-derived lists and user generated lists is origin metadata:
 
 - `source: "preset"` means the list was generated during new profile initialization from one of the default modes.
-- `source: "custom"` means the user created the list through Add list.
-- `mode` stores the associated mode for preset-derived lists and is `null` for custom None-format or personal lists without a preset mode.
+- `source: "userGenerated"` means the user created the list through Add list.
+- `mode` stores the associated mode for preset-derived lists and is `null` for user generated None-format or personal lists without a preset mode.
 - Both sources use the same `UserList` shape, persistence, list detail screens, card behavior, ordering, rename, delete, and edit rules.
 
 ## List Name Defaults
@@ -208,7 +208,7 @@ Rules:
 - In Guild Run and Champions League arena formats, the selected `targetSet` defines the maximum allowed target for that arena.
 - Treasure slots per combi must remain exactly 3 positions, each containing either `null` or one treasure `TodoItem`.
 - Trophy Race combis cannot exceed 10.
-- Trophy Race custom-list setup must choose a starting arena count from 1 to 10.
+- Trophy Race user generated list setup must choose a starting arena count from 1 to 10.
 - Breakout groups cannot exceed 6.
 - Breakout group size must be between 3 and 15 combis.
 - Guild Run has exactly 12 arenas.
@@ -219,5 +219,5 @@ Rules:
 - `../G005-data-model.md` for the high-level data model overview.
 - `../features/F002-list-formats.md` for format behavior.
 - `../features/F003-preset-lists.md` for preset behavior.
-- `../features/F004-custom-lists.md` for custom list behavior.
+- `../features/F004-user-generated-lists.md` for user generated list behavior.
 - `../features/F005-homepage-list-cards.md` for homepage list-card selection behavior.

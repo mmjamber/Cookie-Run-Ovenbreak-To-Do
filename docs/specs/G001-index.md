@@ -16,7 +16,7 @@ This folder is the source of truth for the project. The website helps Cookie Run
 - `features/F001-catalog-pages.md` - cookies, pets, treasures, sorting, and cookie-pet pairing prompt
 - `features/F002-list-formats.md` - the five supported to-do list formats
 - `features/F003-preset-lists.md` - Trophy Race, Breakout, Champions League, and Guild Run presets
-- `features/F004-custom-lists.md` - user-created named lists
+- `features/F004-user-generated-lists.md` - user generated named lists
 - `features/F005-homepage-list-cards.md` - homepage to-do list cards, To-do order mirroring, and default card behavior
 - `features/F006-empty-list-layouts.md` - empty list, combi, group, arena, and add-item slot visuals
 
@@ -33,7 +33,7 @@ This folder is the source of truth for the project. The website helps Cookie Run
 ## User Story Specs
 
 - `user-stories/US001-view-homepage-list-cards.md` - homepage ordered-list and default-card behavior
-- `user-stories/US002-create-custom-list.md` - creating named custom lists
+- `user-stories/US002-create-user-generated-list.md` - creating named user generated lists
 - `user-stories/US003-start-preset-list.md` - opening generated preset-derived lists
 - `user-stories/US004-browse-catalog-items.md` - browsing, searching, sorting, and filtering catalogs
 - `user-stories/US005-add-item-from-catalog-to-list.md` - adding catalog items to compatible add-item slots
@@ -59,7 +59,7 @@ Use these prefixes for spec files:
 - `F` for feature specs, such as `features/F006-empty-list-layouts.md`.
 - `UI` for user interface specs under `user-interface/`, such as `user-interface/UI001-global-visual-style.md`.
 - `T` for technical specs under `technical/`, such as `technical/T002-local-storage-and-data-architecture.md`.
-- `US` for user-story specs under `user-stories/`, such as `user-stories/US002-create-custom-list.md`.
+- `US` for user-story specs under `user-stories/`, such as `user-stories/US002-create-user-generated-list.md`.
 
 When creating a new spec, use the next zero-padded numeric prefix for that spec type so each list stays ordered.
 

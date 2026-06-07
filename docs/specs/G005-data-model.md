@@ -42,7 +42,7 @@ Saved lists represent the user's leveling goals. A saved list has:
 
 - A user-visible name.
 - A selected list format.
-- Preset or custom origin.
+- Preset or user generated origin.
 - Local profile ownership.
 - User-controlled display order on the To-do page.
 - Format-specific sections.
@@ -50,9 +50,9 @@ Saved lists represent the user's leveling goals. A saved list has:
 
 Saved list field shapes, section shapes, combi shapes, and browser persistence rules are defined in `technical/T002-local-storage-and-data-architecture.md`.
 
-Every new local user or guest profile starts with four generated default preset-derived saved lists. Preset-derived lists and custom lists use the same saved-list model, To-do page order, and management behavior; the distinction is only how the list was created.
+Every new local user or guest profile starts with four generated default preset-derived saved lists. Preset-derived lists and user generated lists use the same saved-list model, To-do page order, and management behavior; the distinction is only how the list was created.
 
-Custom lists may start with an auto-filled default name based on the selected format, including `No mode` for None-format lists, but the saved `name` remains user-editable and is the name shown on list cards.
+User generated lists may start with an auto-filled default name based on the selected format, including `No mode` for None-format lists, but the saved `name` remains user-editable and is the name shown on list cards.
 
 ## Level And Completion Data
 

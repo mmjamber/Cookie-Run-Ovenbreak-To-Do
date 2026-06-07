@@ -31,7 +31,7 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 ## MVP Scope
 
 - Homepage `My Lists` section that mirrors the first four cards from the To-do page order, including generated default preset-derived lists for new local user and guest profiles.
-- Custom list creation with all five formats.
+- User generated list creation with all five formats.
 - List detail views with valid slots, current levels, and target levels.
 - Static catalog data structure with cookie, pet, and treasure pages.
 - Catalog search, rarity filters, and alphabetical or release-date ordering within rarity groups.

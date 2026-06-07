@@ -6,7 +6,7 @@ As a player, I want to rename, reorder, and delete lists so my saved list area s
 
 ## Source Specs
 
-- `../features/F004-custom-lists.md`
+- `../features/F004-user-generated-lists.md`
 - `../features/F005-homepage-list-cards.md`
 
 ## Scenario
@@ -23,7 +23,7 @@ As a player, I want to rename, reorder, and delete lists so my saved list area s
 - [ ] Users can rename saved lists.
 - [ ] Users can reorganize the saved-list order shown on the To-do page.
 - [ ] The homepage mirrors the first four lists in the To-do page's current order.
-- [ ] Generated default preset-derived lists can be edited, renamed, deleted, and reordered with the same controls as custom saved lists.
+- [ ] Generated default preset-derived lists can be edited, renamed, deleted, and reordered with the same controls as user generated saved lists.
 - [ ] List names must remain unique within the current local profile.
 - [ ] Empty list names are blocked.
 - [ ] Users can delete saved lists.

@@ -14,7 +14,7 @@ As a player, I want to open generated preset mode lists so I do not have to set 
 1. The user chooses an existing Trophy Race, Breakout, Champions League, or Guild Run preset-derived list.
 2. The website opens the existing preset-derived list.
 3. If the preset-derived list has been deleted or otherwise does not exist after profile initialization, the website does not recreate it.
-4. The user can create a new custom list with the same format through Add list if they want that mode again.
+4. The user can create a new user generated list with the same format through Add list if they want that mode again.
 5. The user fills in items and edits levels within the preset format rules.
 
 ## Acceptance Criteria
@@ -25,8 +25,8 @@ As a player, I want to open generated preset mode lists so I do not have to set 
 - [ ] Deleted preset-derived lists are not recreated by preset selection.
 - [ ] Each preset initializes the correct format and default structure.
 - [ ] Preset-derived lists can be renamed.
-- [ ] Preset-derived lists can be deleted and reordered with the same controls as custom saved lists.
-- [ ] Preset-derived lists persist like custom lists.
+- [ ] Preset-derived lists can be deleted and reordered with the same controls as user generated saved lists.
+- [ ] Preset-derived lists persist like user generated lists.
 
 ## Out Of Scope
 

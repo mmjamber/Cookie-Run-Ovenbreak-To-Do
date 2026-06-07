@@ -6,7 +6,7 @@ As a player, I want to create a named list with a chosen format so I can track a
 
 ## Source Specs
 
-- `../features/F004-custom-lists.md`
+- `../features/F004-user-generated-lists.md`
 - `../features/F002-list-formats.md`
 
 ## Scenario
@@ -22,13 +22,13 @@ As a player, I want to create a named list with a chosen format so I can track a
 
 ## Acceptance Criteria
 
-- [ ] A custom list requires a non-empty name.
+- [ ] A user generated list requires a non-empty name.
 - [ ] The selected name must be unique within the current local profile.
 - [ ] Selecting any format auto-fills an empty name field with that format's default name.
 - [ ] Selecting None auto-fills an empty name field with `No mode`.
 - [ ] Format selection does not overwrite an existing user-entered name.
 - [ ] Auto-filled names remain editable before saving.
-- [ ] A custom list requires one selected format.
+- [ ] A user generated list requires one selected format.
 - [ ] Format-specific setup is captured before creation.
 - [ ] Trophy Race setup captures a starting arena count from 1 to 10.
 - [ ] Guild Run setup captures a maximum target set for each of its 12 arenas.
@@ -37,5 +37,5 @@ As a player, I want to create a named list with a chosen format so I can track a
 
 ## Out Of Scope
 
-- Sharing custom lists.
-- Importing custom lists from another profile or account.
+- Sharing user generated lists.
+- Importing user generated lists from another profile or account.

@@ -1,4 +1,4 @@
-# Feature Spec: Custom Lists
+# Feature Spec: User Generated Lists
 
 ## Summary
 
@@ -20,7 +20,7 @@ As a player, I want to make multiple named leveling lists so I can track differe
 
 ## Name Behavior
 
-- A custom list cannot be saved without a non-empty name.
+- A user generated list cannot be saved without a non-empty name.
 - Selecting any format auto-fills an empty name field with the matching default name.
 - Default auto-filled names are `Trophy Race`, `Breakout`, `Guild Run`, `Champions League`, and `No mode` for None.
 - Format selection must not overwrite a name the user has already typed.
@@ -70,21 +70,21 @@ Users should be able to:
 
 Rules:
 
-- A custom list requires a non-empty name before it can be saved.
+- A user generated list requires a non-empty name before it can be saved.
 - List names must be unique within the current local profile.
 - Creating or renaming a list must validate that the resulting name is unique.
 - Reordering saved lists updates the To-do page order and the homepage's mirrored first-four list cards.
-- Generated default preset-derived lists participate in the same rename, delete, and reorder behavior as custom lists.
+- Generated default preset-derived lists participate in the same rename, delete, and reorder behavior as user generated lists.
 - Deleting a list requires confirmation.
 
 ## Acceptance Criteria
 
-- [ ] A custom list requires a non-empty name.
+- [ ] A user generated list requires a non-empty name.
 - [ ] Selecting any format auto-fills an empty name field with that format's default name.
 - [ ] Selecting None auto-fills an empty name field with `No mode`.
 - [ ] Format selection does not overwrite a user-entered name.
 - [ ] Auto-filled names can still be edited before saving.
-- [ ] A custom list requires one selected format.
+- [ ] A user generated list requires one selected format.
 - [ ] Format-specific setup is captured before list creation.
 - [ ] Trophy Race setup captures a starting arena count from 1 to 10.
 - [ ] Guild Run setup captures a maximum target set for each of its 12 arenas.

@@ -18,7 +18,7 @@ For every new local user or guest profile, the website generates one preset-deri
 - Let players start a mode-specific list quickly.
 - Apply the correct structure and limits for each game mode.
 - Keep preset lists editable where the format allows item selection.
-- Let default preset-derived lists be edited, renamed, deleted, and reordered with the same controls as custom saved lists.
+- Let default preset-derived lists be edited, renamed, deleted, and reordered with the same controls as user generated saved lists.
 
 ## Preset Behavior
 
@@ -26,7 +26,7 @@ When a user chooses a preset:
 
 - If the current profile has that preset-derived list, choosing the preset opens the existing saved preset-derived list.
 - If that preset-derived list was deleted or otherwise does not exist after profile initialization, choosing the preset must not recreate it.
-- If a deleted preset-derived list is unavailable, the user can create a new custom list with the same format through Add list.
+- If a deleted preset-derived list is unavailable, the user can create a new user generated list with the same format through Add list.
 - The generated list receives a default name based on the mode.
 - The list contains the required default sections, combis, groups, or arenas.
 
@@ -51,9 +51,9 @@ When a new local user or guest profile is initialized:
 - Preset-derived list cards should be visible from the homepage when they are among the first four cards in the To-do page order.
 - Presets must respect all validation rules from `F002-list-formats.md`.
 - Users must be able to name or rename preset-derived lists.
-- Users must be able to delete and reorder generated default preset-derived lists with the same controls as custom saved lists.
+- Users must be able to delete and reorder generated default preset-derived lists with the same controls as user generated saved lists.
 - Users can manually change Breakout preset groups and group sizes after creation, within Breakout format limits.
-- Preset-derived lists should persist like custom lists.
+- Preset-derived lists should persist like user generated lists.
 
 ## Acceptance Criteria
 

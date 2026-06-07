@@ -137,4 +137,4 @@ The recommended first implementation slice:
 3. Preset-derived list detail views for the four default lists.
 4. Local storage persistence.
 5. Catalog pages with sorting.
-6. Custom list creation after the default preset list workflow is working.
+6. User generated list creation after the default preset list workflow is working.

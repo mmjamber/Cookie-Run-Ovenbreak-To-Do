@@ -27,7 +27,8 @@ As a player, I want to edit current and target levels and mark items complete so
 - [ ] Users can edit current and target levels.
 - [ ] Cookie and pet levels cannot exceed `Lv. 15`.
 - [ ] Treasure levels cannot exceed `Lv. 12`.
-- [ ] Arena target sets limit item targets in Guild Run and Champions League.
+- [ ] User-selected arena target sets limit item targets in Guild Run.
+- [ ] Fixed low, mid, and full arena target sets limit item targets in Champions League.
 - [ ] Manually marking an item complete sets current level to target level.
 - [ ] Completion state does not rely on color alone.
 

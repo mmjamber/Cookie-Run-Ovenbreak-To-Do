@@ -22,8 +22,8 @@ For product goals, audience, MVP scope, and success criteria, see `G003-global-s
 - Target level: desired level the user wants the item to reach.
 - Add item: the action of placing a catalog cookie, pet, or treasure into a saved list. This is separate from Add list, which creates a new saved list.
 - Add-item slot: an empty slot in a list detail view that can receive a catalog item. Add-item slots are shown with add-option artwork such as `add cookie`, `relay`, `add pet`, or `add treasure`. Each add-item slot type is linked to its matching PNG file in `assets/ovenbreak images/add cookies/`.
-- Compatible add-item slot: an empty add-item slot whose type accepts the selected item. Cookies can go only in `add cookie` or `relay` slots, pets can go only in `add pet` slots, and treasures can go only in `add treasure` slots.
-- Compatible-slot picker: the list-detail placement state used after an ordinary catalog add-to-list dialog. It lets the user choose any compatible empty add-item slot in the chosen list, across all available combis, groups, arenas, or None-format entries.
+- Compatible placement slot: an empty or filled list slot whose type accepts the selected item. Cookies can go only in `add cookie` or `relay` slots, pets can go only in `add pet` slots, and treasures can go only in `add treasure` slots.
+- Compatible-slot picker: the list-detail placement state used after an ordinary catalog add-to-list dialog. It lets the user choose any compatible empty slot, or explicitly replace a compatible filled slot through the `Switch?` affordance, across all available combis, groups, arenas, or None-format entries.
 - List item block: one visible block inside a list detail view that contains add-item slots or filled catalog items. Combi blocks contain combi slots; free item blocks contain standalone None-format cookie, pet, or treasure entries.
 - Options toggle: a top-right control on every list item block. Opening it shows item-management actions for that block, including deleting any filled catalog item in the block.
 
@@ -46,7 +46,7 @@ Trophy Race does not use these arena target sets; Trophy Race arenas always defa
 | Mid cap | 11 | 11 | 9 |
 | Full cap | 15 | 15 | 12 |
 
-When a user changes an arena maximum target set, they may only choose one of these three shared sets.
+When a user changes an editable arena maximum target set, they may only choose one of these three shared sets.
 
 Champions League always uses fixed arena target sets: Arena 1 uses low, Arena 2 uses mid, and Arena 3 uses full. Guild Run target sets differ by user need, so the user must choose the target set for each Guild Run arena before items can be added to that arena.
 

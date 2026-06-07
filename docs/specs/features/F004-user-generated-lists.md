@@ -33,7 +33,7 @@ Trophy Race:
 
 - User chooses the starting arena count from 1 to 10.
 - This arena count is the only required Trophy Race setup choice.
-- Trophy Race may label combis as arenas, but it does not ask for arena target sets during setup.
+- Trophy Race creates arenas using the combi type 1 layout, but it does not ask for arena target sets during setup.
 
 Breakout:
 
@@ -68,6 +68,7 @@ Users should be able to:
 - Edit current and target levels in every format, within the current item, list, or arena maximum.
 - Manually mark items complete, which sets the item's current level to its target level.
 - Edit arena maximum target sets where the format allows manual limit changes.
+- Fill every item slot manually; no list is created with preselected cookies, pets, treasures, or premade combis.
 
 Rules:
 
@@ -90,6 +91,7 @@ Rules:
 - [ ] Trophy Race setup captures a starting arena count from 1 to 10.
 - [ ] Guild Run setup captures a maximum target set for each of its 12 arenas.
 - [ ] Champions League setup uses fixed low, mid, and full arena target sets without asking the user to choose them.
+- [ ] Created lists start with empty add-item slots and no preselected catalog items.
 - [ ] Created lists persist locally.
 - [ ] Users can have multiple lists with the same format.
 - [ ] Reused list names are blocked.

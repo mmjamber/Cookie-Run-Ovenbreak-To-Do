@@ -79,10 +79,10 @@ Trophy Race:
 
 - Show the user-selected number of empty Trophy Race arenas using the combi type 1 layout.
 - Label each entry as an arena according to the Trophy Race list UI.
-- Trophy Race arena labels are visual/list labels only; they do not use Guild Run or Champions League arena target-set controls.
+- Trophy Race entries are arenas in the list UI, but they do not use Guild Run or Champions League arena target-set controls.
 - Trophy Race item targets default to full max levels: cookies and pets `Lv. 15`, treasures `Lv. 12`.
 - Use the shared Trophy Race and Champions League visual reference for spacing and alternating panel treatment.
-- Users may add more combis until the Trophy Race maximum is reached.
+- Users may add more arenas until the Trophy Race maximum is reached.
 
 Breakout:
 

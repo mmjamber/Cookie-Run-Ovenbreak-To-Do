@@ -19,6 +19,8 @@ Arena structure:
 - Trophy Race arenas do not have low, mid, or full arena target-set controls.
 - Newly added Trophy Race items use full max targets for their item type.
 
+Each arena contains:
+
 - 1 pet
 - 1 main cookie
 - 1 secondary relay cookie
@@ -97,8 +99,8 @@ Arena maximum limits:
 - Low: cookies and pets max 7, treasures max 5.
 - Mid: cookies and pets max 11, treasures max 9.
 - Full: cookies and pets max 15, treasures max 12.
-- Newly added items start with current level 1 and target level equal to the selected arena maximum for that item type.
-- Users can set item current and target levels below or equal to the selected arena maximums.
+- Newly added items start with current level 1 and target level equal to the fixed arena maximum for that item type.
+- Users can set item current and target levels below or equal to the fixed arena maximums.
 
 ## None Format
 
@@ -134,6 +136,9 @@ Add flow:
 - [ ] Each format enforces add-item slots and maximum counts.
 - [ ] Newly added cookies, pets, and treasures start with current level `Lv. 1`.
 - [ ] Newly added item target levels automatically match the destination add-item slot, combi, list format, or arena target set.
+- [ ] Trophy Race and Breakout target levels default to full max targets.
+- [ ] Champions League uses fixed low, mid, and full arena target sets in arena order.
+- [ ] Guild Run requires user-selected arena target sets before items can be added to those arenas.
 - [ ] Current and target levels remain editable.
 - [ ] Current and target levels cannot exceed the current item, list, or arena maximum.
 - [ ] None format allows individual current and target levels per item.

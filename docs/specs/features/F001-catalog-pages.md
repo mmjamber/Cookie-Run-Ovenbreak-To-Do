@@ -58,7 +58,7 @@ When a user adds one cookie to a to-do list:
 3. If 1 paired pet exists, the dialog offers Add cookie only, Add cookie and pet, and Cancel.
 4. If 2 paired pets exist, the dialog lets the user choose Add cookie only, Add cookie with one selected pet, or Cancel.
 5. The user chooses a destination list in the same dialog and clicks Add.
-6. The website opens the chosen list detail view in pending placement mode so the user can choose a compatible empty add-item slot in the compatible-slot picker.
+6. The website opens the chosen list detail view in pending placement mode so the user can choose a compatible empty slot or explicitly switch a compatible filled slot in the compatible-slot picker.
 
 In list-selection mode, cookie selections are always one cookie at a time. An `add cookie` slot and a `relay` slot are filled through separate slot actions. The paired-pet prompt is shown only when the user is filling an `add cookie` slot with an available compatible `add pet` slot. Relay-cookie selection must not trigger the paired-pet prompt.
 
@@ -72,19 +72,21 @@ The dialog should:
 - Let the user choose which list to add the clicked item to.
 - For clicked cookies with paired pets, let the user choose cookie only or cookie with one selected paired pet.
 - Show an Add button that confirms the selected list and optional paired-pet choice.
-- Explain when a list has no compatible empty add-item slots for the selected item or item pair.
+- Explain when a list has no compatible placement slots for the selected item or item pair.
 - Let the user cancel without changing any list.
 
 The dialog must not ask the user to choose the final slot. After the user clicks Add, the website opens the chosen list detail view in pending placement mode, where the list detail page acts as the compatible-slot picker.
 
 In pending placement mode:
 
-- Compatible empty add-item slots are available as placement targets across the entire chosen list, including multiple combis, groups, arenas, or None-format entries.
+- Compatible empty slots are available as placement targets across the entire chosen list, including multiple combis, groups, arenas, or None-format entries.
+- Compatible filled slots can also be used as replacement targets only through an explicit `Switch?` affordance.
 - Slot compatibility is based on add-item slot type: cookies can go only in `add cookie` or `relay` slots, pets can go only in `add pet` slots, and treasures can go only in `add treasure` slots.
-- Incompatible or filled slots are disabled, hidden, or explained.
-- The user chooses which compatible empty add-item slot to replace with the selected catalog item.
+- Incompatible slots are disabled, hidden, or explained.
+- On desktop, hovering a compatible filled slot grays out the current item and overlays `Switch?`; on mobile, tapping or clicking the filled slot reveals the same grayed-out `Switch?` state.
+- Activating `Switch?` replaces the filled slot's current item with the selected catalog item.
 - If the user chose cookie with pet, the list detail page only allows placement targets that can add the cookie and paired pet together.
-- Confirmed placement replaces the chosen add-option artwork with the selected item artwork. Cookie-with-pet placement also fills the compatible empty pet slot or grouped entry in the same completed action.
+- Confirmed placement replaces the chosen add-option artwork or switched catalog item artwork with the selected item artwork. Cookie-with-pet placement also fills an empty compatible pet slot or replaces an explicitly switched compatible pet slot in the same completed action.
 - The user can cancel or go back without changing the list.
 
 ## List-Origin Catalog Selection
@@ -110,7 +112,7 @@ Cookie paired-pet behavior still applies in list-selection mode when selecting a
 
 Treasure selection is the only list-selection mode that can select multiple catalog items at once:
 
-- Multiple selection is available only when the user is adding treasures to a combi-format destination with enough compatible empty treasure slots.
+- Multiple selection is available only when the user is adding treasures to a combi-format destination with enough compatible treasure slots, whether empty or explicitly switched.
 - The user may select 1, 2, or 3 treasures at once.
 - Each selected treasure card must show a numbered selection badge: `1`, `2`, or `3`.
 - The numbered badges show the selection order and the placement order for the destination combi's empty treasure slots.
@@ -122,7 +124,7 @@ Treasure selection is the only list-selection mode that can select multiple cata
 - Cookies are selected one at a time, even when the destination combi has both main and relay cookie slots.
 - Pets can fill `add pet` or None-format pet add-item slots.
 - Treasures can fill `add treasure` or None-format treasure add-item slots.
-- Up to 3 treasures can be selected at the same time only when adding treasures to a combi-format destination.
+- Up to 3 treasures can be selected at the same time only when adding treasures to a combi-format destination with enough compatible empty or explicitly switched treasure slots.
 - Selected treasure cards show numbered badges `1`, `2`, and `3` to make the selected set and placement order obvious.
 - None-format lists can also create a new destination before choosing catalog items: `combi type 1 (with relay)`, `combi type 2 (without relay)`, individual cookie, individual pet, or individual treasure.
 - When adding an individual treasure from a None-format list add flow, open the Treasures catalog in single-selection mode.
@@ -140,11 +142,11 @@ Treasure selection is the only list-selection mode that can select multiple cata
 - [ ] Adding a cookie can prompt for 1 or 2 paired pets.
 - [ ] Cookies are selected one at a time in both ordinary catalog mode and list-selection mode.
 - [ ] The paired-pet prompt is not shown for relay-cookie selection.
-- [ ] Users can select up to 3 treasures at once only when adding treasures to a combi-format destination with enough empty treasure slots.
+- [ ] Users can select up to 3 treasures at once only when adding treasures to a combi-format destination with enough compatible empty or explicitly switched treasure slots.
 - [ ] Selected treasure cards show numbered icons `1`, `2`, and `3` for selection and placement order.
 - [ ] Clicking any ordinary catalog item opens an add-to-list dialog with current local profile lists.
 - [ ] The add-to-list dialog captures the destination list and optional paired-pet choice for cookies, but not the final slot.
 - [ ] Clicking Add in the dialog opens the chosen list detail view in pending placement mode.
 - [ ] Clicking an add-item slot from a list detail view opens the correct catalog page in list-selection mode.
 - [ ] Catalog pages in list-selection mode show Select actions and return the selected item to the originating list slot.
-- [ ] In pending placement mode, users choose which compatible empty add-item slot receives the selected catalog item from any compatible combi, group, arena, or None-format entry in the chosen list.
+- [ ] In pending placement mode, users choose which compatible empty slot receives the selected catalog item, or explicitly switch a compatible filled slot, from any compatible combi, group, arena, or None-format entry in the chosen list.

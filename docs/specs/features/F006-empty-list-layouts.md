@@ -88,6 +88,8 @@ Trophy Race:
 - Trophy Race item targets default to full max levels: cookies and pets `Lv. 15`, treasures `Lv. 12`.
 - Use the shared Trophy Race and Champions League visual reference for spacing and alternating panel treatment.
 - Users may add more arenas until the Trophy Race maximum is reached.
+- Users may delete arenas as long as at least 1 Trophy Race arena remains.
+- Deleting a Trophy Race arena removes that arena's filled items and progress data.
 
 Breakout:
 
@@ -105,6 +107,7 @@ Guild Run:
 - Show exactly 12 arena sections by default.
 - Each arena uses the combi type 1 layout.
 - Each arena must show or collect its user-selected low, mid, or full target set before items can be added to that arena.
+- When collecting a Guild Run arena target set, show the selectable caps as `7/7/5`, `11/11/9`, and `15/15/12` instead of low, mid, and full.
 - Use the shared Guild Run visual reference for the 12-arena grid, arena labels, and alternating panel backgrounds.
 - Users cannot add or remove Guild Run arenas.
 
@@ -131,11 +134,13 @@ None:
 ## Acceptance Criteria
 
 - [ ] Empty Trophy Race lists display the user-selected number of combi type 1 arena slots using the specified add-option artwork.
+- [ ] Trophy Race arenas can be added or deleted within the 1 to 10 arena count limits.
 - [ ] Empty Breakout lists display groups of combi type 2 entries using the specified add-option artwork.
 - [ ] Trophy Race and Breakout empty slots use full max target defaults when filled.
 - [ ] Breakout combis show numbered flag markers, restarting from `1` in each group.
 - [ ] Empty Guild Run lists display 12 combi type 1 arenas.
 - [ ] Guild Run arenas require user-selected target sets before items can be added to those arenas.
+- [ ] Guild Run arena target-set controls show numeric cap labels: `7/7/5`, `11/11/9`, and `15/15/12`.
 - [ ] Empty Champions League lists display 3 combi type 1 arenas.
 - [ ] Champions League arenas use fixed low, mid, and full target sets in arena order.
 - [ ] Empty None lists start blank except for the list add action.

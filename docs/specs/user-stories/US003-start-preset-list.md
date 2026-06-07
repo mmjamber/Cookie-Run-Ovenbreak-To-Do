@@ -15,7 +15,7 @@ As a player, I want to open generated preset mode lists so I do not have to set 
 2. The website opens the existing preset-derived list.
 3. If the preset-derived list has been deleted or otherwise does not exist after profile initialization, the website does not recreate it.
 4. The user can create a new user generated list with the same format through Add list if they want that mode again.
-5. If the preset-derived list is Guild Run, the user sets the arena target sets before adding items to any unset arena.
+5. If the preset-derived list is Guild Run, the user sets the arena target sets before adding items to any unset arena. The target-set choices are displayed as `7/7/5`, `11/11/9`, and `15/15/12`.
 6. The user fills in empty add-item slots and edits levels within the preset format rules.
 
 ## Acceptance Criteria
@@ -29,6 +29,7 @@ As a player, I want to open generated preset mode lists so I do not have to set 
 - [ ] Trophy Race and Breakout preset-derived lists use full max targets.
 - [ ] Champions League preset-derived lists initialize Arena 1 as low, Arena 2 as mid, and Arena 3 as full.
 - [ ] Guild Run preset-derived lists require the user to set arena target sets before adding items to those arenas.
+- [ ] Guild Run preset-derived target-set choices are displayed as `7/7/5`, `11/11/9`, and `15/15/12`.
 - [ ] Preset-derived lists can be renamed.
 - [ ] Preset-derived lists can be deleted and reordered with the same controls as user generated saved lists.
 - [ ] Preset-derived lists persist like user generated lists.

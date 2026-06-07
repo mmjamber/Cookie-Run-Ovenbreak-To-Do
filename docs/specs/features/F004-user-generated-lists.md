@@ -43,7 +43,8 @@ Guild Run:
 
 - Creates 12 arenas.
 - User chooses the maximum target set for each arena during setup.
-- Arena maximum target sets can be changed manually later unless a future spec defines fixed arena limits.
+- The website labels those setup choices as `7/7/5`, `11/11/9`, and `15/15/12`, while the saved target set still maps to low, mid, or full.
+- Arena maximum target sets can be changed later only to low, mid, or full unless a future spec defines fixed arena limits.
 
 Champions League:
 
@@ -64,10 +65,12 @@ Users should be able to:
 - Reorder saved lists in the To-do page list order.
 - Delete a list.
 - Add allowed sections or combis.
+- Delete allowed sections or combis.
 - Edit selected items.
-- Edit current and target levels in every format, within the current item, list, or arena maximum.
+- Edit current levels in every format, within the current item, list, or arena maximum.
+- Edit target levels directly only in None-format lists, within the item type's absolute maximum.
 - Manually mark items complete, which sets the item's current level to its target level.
-- Edit arena maximum target sets where the format allows manual limit changes.
+- Change Guild Run arena target sets to low, mid, or full.
 - Fill every item slot manually; no list is created with preselected cookies, pets, treasures, or premade combis.
 
 Rules:
@@ -77,6 +80,7 @@ Rules:
 - Creating or renaming a list must validate that the resulting name is unique.
 - Reordering saved lists updates the To-do page order and the homepage's mirrored first-four list cards.
 - Generated default preset-derived lists participate in the same rename, delete, and reorder behavior as user generated lists.
+- Trophy Race arenas can be added or deleted after list creation, but the arena count must stay between 1 and 10.
 - Deleting a list requires confirmation.
 
 ## Acceptance Criteria
@@ -90,6 +94,7 @@ Rules:
 - [ ] Format-specific setup is captured before list creation.
 - [ ] Trophy Race setup captures a starting arena count from 1 to 10.
 - [ ] Guild Run setup captures a maximum target set for each of its 12 arenas.
+- [ ] Guild Run setup shows cap choices as `7/7/5`, `11/11/9`, and `15/15/12`.
 - [ ] Champions League setup uses fixed low, mid, and full arena target sets without asking the user to choose them.
 - [ ] Created lists start with empty add-item slots and no preselected catalog items.
 - [ ] Created lists persist locally.

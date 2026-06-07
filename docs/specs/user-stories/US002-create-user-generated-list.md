@@ -33,6 +33,7 @@ As a player, I want to create a named list with a chosen format so I can track a
 - [ ] Format-specific setup is captured before creation.
 - [ ] Trophy Race setup captures a starting arena count from 1 to 10.
 - [ ] Guild Run setup captures a maximum target set for each of its 12 arenas.
+- [ ] Guild Run setup displays target-set choices as `7/7/5`, `11/11/9`, and `15/15/12`.
 - [ ] Champions League uses fixed low, mid, and full arena target sets without asking the user to choose them.
 - [ ] Created lists start with empty add-item slots and no preselected catalog items.
 - [ ] The created list opens in the correct detail layout.

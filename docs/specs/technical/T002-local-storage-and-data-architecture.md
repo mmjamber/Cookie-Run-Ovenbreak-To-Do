@@ -14,6 +14,8 @@ type ListFormat = "trophyRace" | "breakout" | "guildRun" | "championsLeague" | "
 type TargetSet = "low" | "mid" | "full";
 ```
 
+`TargetSet` values are internal storage values. User-facing cap selection controls must label these values as `7/7/5`, `11/11/9`, and `15/15/12` in pet cap / cookie cap / treasure cap order.
+
 ## User List
 
 ```ts
@@ -36,7 +38,7 @@ Rules:
 - `id` must be stable and unique.
 - `ownerId` identifies the current local profile.
 - `createdAt` and `updatedAt` should be ISO timestamps.
-- `updatedAt` should change after meaningful activity such as creation, rename, item additions, item deletions, item edits, level edits, or manual completion updates.
+- `updatedAt` should change after meaningful activity such as creation, rename, item additions, item deletions, item edits, level edits, section or arena additions, section or arena deletions, or manual completion updates.
 - Preset-derived lists should use `source: "preset"`.
 - User generated lists should use `source: "userGenerated"`.
 - `order` stores the user-controlled display order for the To-do page.
@@ -161,6 +163,8 @@ Rules:
 - `catalogItemId` references a catalog item.
 - `currentLevel` starts at 1 for newly added items.
 - `targetLevel` defaults to the maximum allowed by the destination add-item slot, list format, combi, or arena target set.
+- `targetLevel` is directly user-editable only for None-format lists.
+- In Trophy Race, Breakout, Champions League, and Guild Run, `targetLevel` follows the list format or arena target set.
 - `completed` is true when `currentLevel >= targetLevel`.
 - Manually marking an item complete sets `currentLevel` to `targetLevel`.
 
@@ -189,7 +193,7 @@ Rules:
 
 ## Format Storage Mapping
 
-- Trophy Race: one `combis` section with the user-selected number of Trophy Race arenas, from 1 to 10. Each arena is stored as a combi type 1 entry. Preset-derived Trophy Race lists start with 4 empty arenas. These arenas use full max targets and do not store low, mid, or full arena target sets.
+- Trophy Race: one `combis` section with the user-selected number of Trophy Race arenas, from 1 to 10. Each arena is stored as a combi type 1 entry. Preset-derived Trophy Race lists start with 4 empty arenas. Users can add or delete Trophy Race arenas after creation, but the arena count must stay between 1 and 10. These arenas use full max targets and do not store low, mid, or full arena target sets.
 - Breakout: up to 6 `group` sections, each with 3 to 15 numbered combis. Preset-derived Breakout lists start with 2 editable groups: Group 1 has 3 empty combis and Group 2 has 10 empty combis. Breakout always uses full max targets.
 - Guild Run: 12 fixed `arena` sections, each with one empty combi and an arena target set that must be chosen by the user. Generated Guild Run preset-derived lists should initialize arena `targetSet` values as `null` until the user chooses them.
 - Champions League: 3 fixed `arena` sections, each with one empty combi. Arena 1 stores `targetSet: "low"`, Arena 2 stores `targetSet: "mid"`, and Arena 3 stores `targetSet: "full"`.
@@ -217,18 +221,23 @@ Rules:
 - Treasure target cannot exceed 12.
 - Newly added cookies, pets, and treasures start with `currentLevel: 1`.
 - Newly added item `targetLevel` defaults to the maximum allowed by the current add-item slot, list format, combi, or arena target set.
-- Current and target levels are always editable but cannot exceed the current item, list, or arena maximum.
+- Current levels are editable in every format but cannot exceed the current item, list, or arena maximum.
+- Target levels are directly editable only in None-format lists and cannot exceed the item type's absolute cap.
+- Trophy Race target levels must equal full max targets.
+- Breakout target levels must equal full max targets.
 - An item is complete when `currentLevel >= targetLevel`.
 - Manually marking an item complete sets `currentLevel` to `targetLevel`.
-- In Guild Run arena formats, the selected `targetSet` defines the maximum allowed target for that arena.
-- In Champions League, fixed arena target sets define the maximum allowed target for each arena: Arena 1 low, Arena 2 mid, and Arena 3 full.
+- In Guild Run arena formats, the selected `targetSet` defines the target levels for that arena. Users edit Guild Run targets only by changing the arena `targetSet` to low, mid, or full.
+- In Champions League, fixed arena target sets define the target levels for each arena: Arena 1 low, Arena 2 mid, and Arena 3 full.
 - Items cannot be added to a Guild Run arena while `targetSet` is `null`.
 - Treasure slots per combi must remain exactly 3 positions, each containing either `null` or one treasure `TodoItem`.
 - Trophy Race arenas cannot exceed 10.
+- Trophy Race arena deletion cannot reduce the list below 1 arena.
+- Deleting a Trophy Race arena removes that stored combi and discards any `TodoItem` values in its slots.
 - Trophy Race user generated list setup must choose a starting arena count from 1 to 10.
 - Breakout groups cannot exceed 6.
 - Breakout group size must be between 3 and 15 combis.
-- Breakout target levels cannot exceed full max targets.
+- Breakout target levels are fixed to full max targets.
 - Guild Run has exactly 12 arenas.
 - Champions League has exactly 3 arenas.
 

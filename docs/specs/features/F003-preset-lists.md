@@ -57,7 +57,7 @@ When a new local user or guest profile is initialized:
 - Users must be able to name or rename preset-derived lists.
 - Users must be able to delete and reorder generated default preset-derived lists with the same controls as user generated saved lists.
 - Users can manually change Breakout preset groups and group sizes after creation, within Breakout format limits.
-- Users must choose target sets for Guild Run arenas before adding items to those arenas.
+- Users must choose target sets for Guild Run arenas before adding items to those arenas. The user-facing choices are labeled `7/7/5`, `11/11/9`, and `15/15/12`.
 - Preset-derived lists should persist like user generated lists.
 
 ## Acceptance Criteria
@@ -71,4 +71,5 @@ When a new local user or guest profile is initialized:
 - [ ] Trophy Race and Breakout preset-derived lists use full max targets.
 - [ ] Champions League preset-derived lists initialize Arena 1 as low, Arena 2 as mid, and Arena 3 as full.
 - [ ] Guild Run preset-derived lists require the user to set arena target sets.
+- [ ] Guild Run preset-derived target-set choices are displayed as `7/7/5`, `11/11/9`, and `15/15/12`.
 - [ ] Preset-derived lists can be saved, resumed, edited, renamed, deleted, and reordered.

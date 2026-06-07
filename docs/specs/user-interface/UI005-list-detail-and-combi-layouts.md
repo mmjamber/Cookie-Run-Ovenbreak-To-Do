@@ -9,13 +9,15 @@ Each list detail page should show:
 - Format-specific sections.
 - Add controls only where the format allows additions.
 - Editable current level controls per item.
-- Clear editable target level controls per item.
+- Clear target level displays per item, with editable target controls only where the format allows them.
 - Empty add-item slots for missing cookies, pets, relay cookies, or treasures.
 - Items should be visually complete when current level reaches target level.
 - When an item's target is reached, show the reached target-level text in `#fc6fde`.
-- Progress controls should be level-only: current level, target level, and manual complete for individual items.
+- Progress controls should be level-only: current level, target level, format-allowed target settings, and manual complete for individual items.
 - Do not show separate complete controls for whole combis, groups, arenas, or list sections.
 - Every list item block must have an options toggle at the top-right side of the block. This applies to combi blocks and free item blocks.
+
+Direct per-item target level controls appear only in None-format lists. Guild Run uses arena target-set controls for low, mid, and full targets, but the user-facing choices must be labeled `7/7/5`, `11/11/9`, and `15/15/12` in pet cap / cookie cap / treasure cap order. Trophy Race, Breakout, and Champions League show format-controlled target levels without direct per-item target editing.
 
 Empty list and empty add-item slot visuals are specified in `../features/F006-empty-list-layouts.md`. That spec is the source of truth for the add-option artwork, empty combi layouts, group/arena grids, and replacement behavior when a user chooses an item.
 
@@ -53,7 +55,7 @@ A combi should display:
 - Three treasure slots.
 - Current levels on each slot.
 - Target levels on each slot.
-- Newly added items should display current level `Lv. 1` and a target level that automatically matches the maximum allowed by the current add-item slot, combi, list format, or arena target set until the user changes it.
+- Newly added items should display current level `Lv. 1` and a target level that automatically matches the maximum allowed by the current add-item slot, combi, list format, or arena target set. Target levels change only through None-format target edits or Guild Run arena target-set changes.
 - Users can manually mark an item complete; doing so sets the item's current level to its target level.
 
 For combi type 2, do not render an empty relay column.

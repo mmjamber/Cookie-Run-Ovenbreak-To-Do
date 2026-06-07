@@ -64,7 +64,7 @@ Each selected item tracks:
 - Target level.
 - Completion state.
 
-Newly added items start at level 1 and default their target to the maximum allowed by the destination list context. Users can edit current and target levels within the applicable limits.
+Newly added items start at level 1 and default their target to the maximum allowed by the destination list context. Users can edit current levels within the applicable limits. Target levels are directly editable only in None-format lists; other formats derive targets from their fixed mode rules or, for Guild Run, from the user-selected arena target set.
 
 Deleting a selected catalog item removes that item's progress data from its slot, but it does not remove the surrounding combi or free item block. The emptied add-item slot returns to its empty state and shows the matching add-option artwork again.
 

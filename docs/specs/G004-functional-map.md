@@ -18,16 +18,16 @@
 4. If the name field is empty, the website auto-fills the list name with the selected format's default name: Trophy Race, Breakout, Guild Run, Champions League, or `No mode` for None.
 5. The user can keep or edit any auto-filled name before saving.
 6. Format selection does not overwrite a name the user already typed.
-7. If the format requires setup choices, such as Trophy Race arena count, Breakout group size, or Guild Run arena target sets, the website asks for them. Champions League does not ask for arena target sets because its three arenas are always low, mid, and full in order.
+7. If the format requires setup choices, such as Trophy Race arena count, Breakout group size, or Guild Run arena target sets, the website asks for them. Guild Run cap choices are shown as `7/7/5`, `11/11/9`, and `15/15/12`. Champions League does not ask for arena target sets because its three arenas are always low, mid, and full in order.
 8. After the list has a valid name, selected format, and required setup choices, the website creates the empty saved list with the correct structure and opens its list detail page.
-9. From the list detail page, the user adds cookies, pets, treasures, combis, groups, or arenas as allowed by the selected format.
+9. From the list detail page, the user adds cookies, pets, treasures, combis, groups, or arenas as allowed by the selected format, and deletes allowed sections or arenas where the format permits it.
 
 ### Use Preset List
 
 1. User opens a saved preset-derived list for a mode.
 2. The website opens the existing saved preset-derived list.
-3. If the list is Guild Run and one or more arena target sets are unset, the website asks the user to set each Guild Run arena target before items can be added to those arenas.
-4. User fills in empty add-item slots and edits current and target levels within the current format limits.
+3. If the list is Guild Run and one or more arena target sets are unset, the website asks the user to set each Guild Run arena target before items can be added to those arenas, using `7/7/5`, `11/11/9`, and `15/15/12` as the selectable labels.
+4. User fills in empty add-item slots and edits current levels plus any format-allowed target settings.
 5. User tracks needed upgrades from the list detail view.
 
 ### Resume From Homepage
@@ -50,7 +50,7 @@
 6. The website opens the chosen list detail view in pending placement mode, using the compatible-slot picker.
 7. User chooses any compatible empty slot, or explicitly chooses `Switch?` on a compatible filled slot, in that list. Cookies can be placed only in `add cookie` or `relay` slots, including compatible slots across multiple combis, groups, arenas, or None-format entries.
 8. If the user chose cookie with pet, the website allows placement targets that can add the cookie and paired pet together, plus compatible `relay` targets that receive only the cookie. It then fills empty compatible slots or replaces explicitly switched compatible slots in one completed action.
-9. The website adds or replaces the selected item or items with current level `Lv. 1` and target level set to the maximum allowed by the destination add-item slot, combi, list format, or arena target set, then lets the user edit levels within the current item, list, or arena maximum.
+9. The website adds or replaces the selected item or items with current level `Lv. 1` and target level set to the maximum allowed by the destination add-item slot, combi, list format, or arena target set, then lets the user edit current levels and any format-allowed target settings within the current item, list, or arena maximum.
 
 ### Add Pet Or Treasure From Catalog
 
@@ -60,7 +60,7 @@
 4. User chooses the destination list and clicks Add.
 5. The website opens the chosen list detail view in pending placement mode, using the compatible-slot picker.
 6. User chooses any compatible empty slot, or explicitly chooses `Switch?` on a compatible filled slot, in that list. Pets can be placed only in `add pet` slots, and treasures can be placed only in `add treasure` slots, including compatible slots across multiple combis, groups, arenas, or None-format entries.
-7. The website adds or replaces the item with current level `Lv. 1` and target level set to the maximum allowed by the destination add-item slot, combi, list format, or arena target set, then lets the user edit levels within the current item, list, or arena maximum.
+7. The website adds or replaces the item with current level `Lv. 1` and target level set to the maximum allowed by the destination add-item slot, combi, list format, or arena target set, then lets the user edit current levels and any format-allowed target settings within the current item, list, or arena maximum.
 
 ### Add Item From List Detail
 
@@ -106,7 +106,7 @@ Rules:
 - Default preset-derived lists are generated once for new local user and guest profiles. If the user deletes one, it stays deleted.
 - Default preset-derived lists contain empty add-item slots only. No default list contains preselected cookies, pets, treasures, or premade recommended combis.
 - The same cookie, pet, or treasure can be added to multiple lists at the same time.
-- Progress controls are level-based only: current level, target level, and manual complete by setting current level to target level.
+- Progress controls are level-based only: current level, target level, format-allowed target settings, and manual complete by setting current level to target level.
 
 ## Page Map
 

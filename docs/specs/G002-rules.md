@@ -40,7 +40,9 @@ For product goals, audience, MVP scope, and success criteria, see `G003-global-s
 Guild Run and Champions League use these target sets as arena maximum limits.
 Trophy Race does not use these arena target sets; Trophy Race arenas always default to full max targets. Breakout also always uses full max targets.
 
-| Set name | Cookie max | Pet max | Treasure max |
+The specs may refer to these sets as low, mid, and full. On the website, any user-facing control that lets the user select one of these cap sets must show the numeric cap label instead of the words low, mid, or full. Numeric labels use pet cap / cookie cap / treasure cap order: `7/7/5`, `11/11/9`, and `15/15/12`.
+
+| Set name | Pet max | Cookie max | Treasure max |
 | --- | ---: | ---: | ---: |
 | Low cap | 7 | 7 | 5 |
 | Mid cap | 11 | 11 | 9 |
@@ -50,7 +52,7 @@ When a user changes an editable arena maximum target set, they may only choose o
 
 Champions League always uses fixed arena target sets: Arena 1 uses low, Arena 2 uses mid, and Arena 3 uses full. Guild Run target sets differ by user need, so the user must choose the target set for each Guild Run arena before items can be added to that arena.
 
-Target levels are always editable by the user, but they cannot exceed the current item, list, or arena maximum. For example, if a Guild Run arena has cookie/pet max 7 and treasure max 5, targets in that arena cannot be set above those numbers unless the arena limit is changed manually.
+Current levels are editable by the user in every format. Target levels are directly editable only in None-format lists, where they cannot exceed the item type's absolute cap. Trophy Race and Breakout targets are fixed to full max values. Champions League targets are fixed by arena order: Arena 1 low, Arena 2 mid, and Arena 3 full. Guild Run targets are editable only by changing each arena's target set to low, mid, or full.
 
 When an item is added to a to-do list, its current level starts at `Lv. 1`. Its target level should automatically match the maximum allowed by the current add-item slot, list format, combi, or arena target set. For example, a full-cap combi should default cookie and pet targets to `Lv. 15` and treasure targets to `Lv. 12`; a low-cap arena should default cookie and pet targets to `Lv. 7` and treasure targets to `Lv. 5`. The website should assume that newly added items have not been leveled yet, but that the user's goal is the format-appropriate target.
 
@@ -148,5 +150,6 @@ The frame should wrap the item image with a real outer frame color and an oversi
 - Store user data locally in the browser according to `technical/T002-local-storage-and-data-architecture.md` unless a future persistence spec says otherwise.
 - Do not add list export, list sharing, public links, or shareable files.
 - Item current and target levels must never exceed their item type's absolute cap.
-- Item current and target levels must never exceed the current user-selected list or arena limit.
+- Item current levels must never exceed the current user-selected list or arena limit.
+- Item target levels must follow the active format rule: fixed full targets for Trophy Race and Breakout, fixed arena targets for Champions League, user-selected arena target sets for Guild Run, or directly editable per-item targets for None-format lists.
 - Do not generate images under any circumstance; use available assets and the runtime asset rules in `technical/T004-runtime-assets-and-ui-implementation.md`.

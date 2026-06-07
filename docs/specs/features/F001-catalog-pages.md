@@ -31,7 +31,7 @@ All three catalog pages should include:
 
 - Search bar.
 - Sort control with Alphabetical and Release Date options.
-- Rarity filters that let users hide or show specific rarities.
+- A button labeled `Hide rarity` that opens rarity visibility options.
 
 Default ordering:
 
@@ -43,7 +43,12 @@ Rules:
 
 - Alphabetical order sorts visible item names alphabetically within each rarity group.
 - Release Date order sorts visible items by their catalog release order within each rarity group.
-- Rarity filters can hide any combination of Legendary, Epic, Rare, and Common items.
+- The `Hide rarity` button opens a panel below the button.
+- The panel starts with the text `Hide:` on the far left.
+- Checkbox options appear on one horizontal line, not as a vertical list.
+- Cookie and pet catalogs show `Legendary`, `Epic`, `Rare`, and `Common` checkbox options.
+- Treasure catalogs show `Legendary`, `Epic`, and `Rare` checkbox options and must not show a `Common` option.
+- Checked rarity options are hidden from the visible catalog results.
 - Treasure rarity is still used for ordering and filtering, so legendary treasures appear first by default even though treasure rarity is not shown visually.
 - Detailed catalog data rules are defined in `../technical/T001-catalog-import-and-derived-data.md`.
 
@@ -104,7 +109,7 @@ The catalog page should remember which list slot the user is filling and how to 
 
 In list-selection mode:
 
-- Catalog browse, search, sort, and rarity filter behavior remains available.
+- Catalog browse, search, sort, and `Hide rarity` behavior remains available.
 - Compatible item cards show a Select action instead of the ordinary Add action.
 - Incompatible items should be disabled, hidden, or explained.
 - The page shows a clear cancel/back action that returns to the originating list detail view without changing the list.
@@ -144,7 +149,10 @@ Treasure selection is the only list-selection mode that can select multiple cata
 - [ ] Each page has a search bar.
 - [ ] Each page always orders visible items by rarity first: Legendary, Epic, Rare, Common.
 - [ ] Each page supports Alphabetical and Release Date sort options.
-- [ ] Each page has rarity filters that can hide selected rarities.
+- [ ] Each page has a button labeled `Hide rarity` that opens a horizontal panel of rarity checkboxes.
+- [ ] The `Hide rarity` panel shows `Hide:` on the far left.
+- [ ] Cookie and pet catalogs can hide `Legendary`, `Epic`, `Rare`, and `Common`.
+- [ ] Treasure catalogs can hide `Legendary`, `Epic`, and `Rare`, and do not show `Common`.
 - [ ] Alphabetical and release sorting follow catalog data rules.
 - [ ] Treasures are not visually framed by rarity.
 - [ ] Adding a cookie can prompt for 1 or 2 paired pets.

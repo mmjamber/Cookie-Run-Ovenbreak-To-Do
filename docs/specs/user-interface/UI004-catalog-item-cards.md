@@ -61,7 +61,7 @@ Each catalog page should include:
 
 - Search field.
 - Sort control: alphabetical or release date.
-- Rarity filters for Legendary, Epic, Rare, and Common.
+- A button labeled `Hide rarity` for opening rarity visibility options.
 - Grid or dense list of items.
 - Item image, name, add action, and rarity frame where applicable.
 
@@ -70,7 +70,13 @@ Catalog ordering:
 - Always show visible items by rarity order first: Legendary, Epic, Rare, Common.
 - The sort control changes item order inside the visible rarity groups.
 - The search field filters visible items by name.
-- Rarity filters hide or show selected rarity groups.
+- The `Hide rarity` button opens a panel directly under the button.
+- The panel spans across the catalog page's main panel.
+- The panel shows `Hide:` on the far left.
+- The rarity checkbox options appear on the same horizontal line as `Hide:`, not as a vertical list.
+- Cookie and pet catalogs show `Legendary`, `Epic`, `Rare`, and `Common` checkbox options.
+- Treasure catalogs show `Legendary`, `Epic`, and `Rare` checkbox options and omit `Common`.
+- Checked rarity options are hidden from the visible catalog groups.
 
 Rarity display:
 
@@ -115,7 +121,7 @@ List-origin selection mode:
 
 - When opened from a list detail add-item slot, the catalog uses Select actions instead of ordinary Add actions.
 - Show the destination in compact UI, such as the list name and slot type, without covering catalog controls.
-- Keep search, sort, and rarity filters available while selecting.
+- Keep search, sort, and the `Hide rarity` button available while selecting.
 - Provide a cancel/back action that returns to the originating list detail view without changing the list.
 - Disable, hide, or explain items that are incompatible with the selected destination.
 - Detailed selection-mode behavior is defined in `../technical/T003-list-selection-routing.md`.

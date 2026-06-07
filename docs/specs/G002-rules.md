@@ -107,7 +107,7 @@ Catalog sorting options:
 
 - Alphabetical
 - Release date
-- Rarity filters
+- `Hide rarity` button
 
 Catalog item selection is single-item by default. The only multi-selection flow is adding treasures to a combi-format treasure destination with enough compatible empty or explicitly switched treasure slots. In that flow, users may select up to 3 treasures at once, and selected treasure cards must show numbered badges `1`, `2`, and `3`.
 
@@ -122,7 +122,7 @@ Catalog pages should always order visible items by rarity from highest to lowest
 3. Rare
 4. Common
 
-The sort control should only choose Alphabetical or Release Date ordering within the visible rarity groups. Users should be able to hide or show individual rarities with filters.
+The sort control should only choose Alphabetical or Release Date ordering within the visible rarity groups. Users should be able to hide or show individual rarities through a button labeled `Hide rarity`. The `Hide rarity` button opens a horizontal panel under the button. Cookie and pet catalogs include `Legendary`, `Epic`, `Rare`, and `Common` checkbox options; treasure catalogs include `Legendary`, `Epic`, and `Rare` only.
 
 Rarity should come from catalog metadata or explicit importer overrides. Do not rely only on folder names when pet files are stored inside cookie rarity folders.
 

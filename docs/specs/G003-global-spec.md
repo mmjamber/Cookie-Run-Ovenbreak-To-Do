@@ -34,7 +34,7 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 - User generated list creation with all five formats.
 - List detail views with valid slots, current levels, and target levels.
 - Static catalog data structure with cookie, pet, and treasure pages.
-- Catalog search, rarity filters, and alphabetical or release-date ordering within rarity groups.
+- Catalog search, a `Hide rarity` button, and alphabetical or release-date ordering within rarity groups.
 - Local persistence for user lists.
 - Aesthetic-only sign-in and log-in controls.
 

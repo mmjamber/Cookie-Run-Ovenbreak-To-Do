@@ -48,7 +48,8 @@ Guild Run:
 Champions League:
 
 - Creates 3 arenas.
-- User can choose the maximum target set per arena.
+- Arena 1 uses low targets, Arena 2 uses mid targets, and Arena 3 uses full targets.
+- Champions League does not ask the user to choose arena target sets.
 
 None:
 
@@ -88,6 +89,7 @@ Rules:
 - [ ] Format-specific setup is captured before list creation.
 - [ ] Trophy Race setup captures a starting arena count from 1 to 10.
 - [ ] Guild Run setup captures a maximum target set for each of its 12 arenas.
+- [ ] Champions League setup uses fixed low, mid, and full arena target sets without asking the user to choose them.
 - [ ] Created lists persist locally.
 - [ ] Users can have multiple lists with the same format.
 - [ ] Reused list names are blocked.

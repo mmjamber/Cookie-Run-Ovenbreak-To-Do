@@ -16,9 +16,10 @@ As a player, I want to create a named list with a chosen format so I can track a
 3. The user chooses Trophy Race, Breakout, Guild Run, Champions League, or None.
 4. If the name field is empty, the website fills the name field with the selected format's default name.
 5. If the user chooses None, the website fills the empty name field with `No mode`.
-6. The user can edit the auto-filled name before saving.
-7. The website asks for any format-specific setup choices.
-8. The website creates the list and opens its detail view only after the list has a valid name.
+6. If the user chooses Trophy Race, Breakout, Guild Run, or Champions League, the website fills the empty name field with the corresponding default name: `Trophy Race`, `Breakout`, `Guild Run`, or `Champions League`.
+7. The user can edit the auto-filled name before saving.
+8. The website asks for any format-specific setup choices.
+9. The website creates the list and opens its detail view only after the list has a valid name.
 
 ## Acceptance Criteria
 

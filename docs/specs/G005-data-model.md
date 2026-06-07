@@ -54,6 +54,8 @@ Every new local user or guest profile starts with four generated default preset-
 
 User generated lists may start with an auto-filled default name based on the selected format, including `No mode` for None-format lists, but the saved `name` remains user-editable and is the name shown on list cards.
 
+Default preset-derived lists store the required sections, combis, arenas, groups, and empty add-item slots for their format, but they never store selected catalog items at creation. Cookies, pets, treasures, and any recommended combis are always added by the user later.
+
 ## Level And Completion Data
 
 Each selected item tracks:

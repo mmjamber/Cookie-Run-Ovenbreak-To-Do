@@ -18,7 +18,7 @@
 4. If the name field is empty, the website auto-fills the list name with the selected format's default name: Trophy Race, Breakout, Guild Run, Champions League, or `No mode` for None.
 5. The user can keep or edit any auto-filled name before saving.
 6. Format selection does not overwrite a name the user already typed.
-7. If the format requires setup choices, such as Trophy Race arena count, Breakout group size, or Guild Run and Champions League arena target sets, the website asks for them.
+7. If the format requires setup choices, such as Trophy Race arena count, Breakout group size, or Guild Run arena target sets, the website asks for them. Champions League does not ask for arena target sets because its three arenas are always low, mid, and full in order.
 8. After the list has a valid name, selected format, and required setup choices, the website creates the empty saved list with the correct structure and opens its list detail page.
 9. From the list detail page, the user adds cookies, pets, treasures, combis, groups, or arenas as allowed by the selected format.
 
@@ -26,8 +26,9 @@
 
 1. User opens a saved preset-derived list for a mode.
 2. The website opens the existing saved preset-derived list.
-3. User fills in items and edits current and target levels within the current format limits.
-4. User tracks needed upgrades from the list detail view.
+3. If the list is Guild Run and one or more arena target sets are unset, the website asks the user to set each Guild Run arena target before items can be added to those arenas.
+4. User fills in empty add-item slots and edits current and target levels within the current format limits.
+5. User tracks needed upgrades from the list detail view.
 
 ### Resume From Homepage
 
@@ -103,6 +104,7 @@
 Rules:
 
 - Default preset-derived lists are generated once for new local user and guest profiles. If the user deletes one, it stays deleted.
+- Default preset-derived lists contain empty add-item slots only. No default list contains preselected cookies, pets, treasures, or premade recommended combis.
 - The same cookie, pet, or treasure can be added to multiple lists at the same time.
 - Progress controls are level-based only: current level, target level, and manual complete by setting current level to target level.
 

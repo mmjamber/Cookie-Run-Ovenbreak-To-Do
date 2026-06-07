@@ -18,10 +18,12 @@ As a player, I want the homepage `My Lists` section to mirror the first cards fr
 5. If the user currently has no lists, such as after deleting the generated default lists, the homepage shows an add-list card instead of a saved list card.
 6. The user selects a card.
 7. The website opens the matching list or starts the create-list flow from the add-list card.
+8. If the user selects `See more`, the website navigates to the To-do page where the user can view saved lists beyond the four shown on the homepage.
 
 ## Acceptance Criteria
 
 - [ ] The homepage card area never shows more than four cards.
+- [ ] The `See more` button navigates to the To-do page and does not reveal additional list cards directly on the homepage.
 - [ ] The homepage `My Lists` section and To-do page use the same ordered list data and shared card behavior instead of separate card collections.
 - [ ] Every new local user or guest profile starts with four generated default preset-derived lists.
 - [ ] Generated default preset-derived list cards use the same card behavior as user generated list cards and can be edited, renamed, deleted, and reordered.
@@ -31,7 +33,6 @@ As a player, I want the homepage `My Lists` section to mirror the first cards fr
 - [ ] The add-list card uses the same card shape as saved list cards, has no image, and shows a plus sign centered in the card.
 - [ ] Selecting a saved list card opens that list detail view.
 - [ ] Selecting the add-list card starts the create-list flow.
-- [ ] None-format saved list cards use the No mode artwork and display the saved list name, which defaults to `No mode` unless edited.
 
 ## Out Of Scope
 

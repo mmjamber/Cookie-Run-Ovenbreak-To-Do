@@ -77,8 +77,8 @@ Combi type 2 should follow the shared combi type 2 visual reference:
 
 Trophy Race:
 
-- Show the user-selected number of empty arena-labeled combis using the combi type 1 layout.
-- Label combis as arenas or slots according to the Trophy Race list UI.
+- Show the user-selected number of empty Trophy Race arenas using the combi type 1 layout.
+- Label each entry as an arena according to the Trophy Race list UI.
 - Trophy Race arena labels are visual/list labels only; they do not use Guild Run or Champions League arena target-set controls.
 - Trophy Race item targets default to full max levels: cookies and pets `Lv. 15`, treasures `Lv. 12`.
 - Use the shared Trophy Race and Champions League visual reference for spacing and alternating panel treatment.
@@ -88,6 +88,7 @@ Breakout:
 
 - Show groups as named sections, such as `Group 1` and `Group 2`.
 - Each group contains a grid of combi type 2 entries.
+- Breakout item targets default to full max levels: cookies and pets `Lv. 15`, treasures `Lv. 12`.
 - Use the shared Breakout visual reference for group spacing, group headings, alternating combi backgrounds, and multi-row wrapping.
 - Each combi in a Breakout group has one pet slot, one main cookie slot, and three treasure slots.
 - The small flag marker at the bottom-right of each Breakout combi should show that combi's number within its group.
@@ -98,6 +99,7 @@ Guild Run:
 
 - Show exactly 12 arena sections by default.
 - Each arena uses the combi type 1 layout.
+- Each arena must show or collect its user-selected low, mid, or full target set before items can be added to that arena.
 - Use the shared Guild Run visual reference for the 12-arena grid, arena labels, and alternating panel backgrounds.
 - Users cannot add or remove Guild Run arenas.
 
@@ -105,6 +107,7 @@ Champions League:
 
 - Show exactly 3 arena sections by default.
 - Each arena uses the combi type 1 layout.
+- Arena 1 uses low targets, Arena 2 uses mid targets, and Arena 3 uses full targets.
 - Use the shared Trophy Race and Champions League visual reference for arena spacing, labels, and alternating panel backgrounds.
 - Users cannot add or remove Champions League arenas.
 
@@ -124,9 +127,12 @@ None:
 
 - [ ] Empty Trophy Race lists display the user-selected number of combi type 1 arena slots using the specified add-option artwork.
 - [ ] Empty Breakout lists display groups of combi type 2 entries using the specified add-option artwork.
+- [ ] Trophy Race and Breakout empty slots use full max target defaults when filled.
 - [ ] Breakout combis show numbered flag markers, restarting from `1` in each group.
 - [ ] Empty Guild Run lists display 12 combi type 1 arenas.
+- [ ] Guild Run arenas require user-selected target sets before items can be added to those arenas.
 - [ ] Empty Champions League lists display 3 combi type 1 arenas.
+- [ ] Champions League arenas use fixed low, mid, and full target sets in arena order.
 - [ ] Empty None lists start blank except for the list add action.
 - [ ] None-list add action asks whether to add `combi type 1 (with relay)`, `combi type 2 (without relay)`, cookie, pet, or treasure.
 - [ ] None-list combi type 1 uses the combi type 1 layout.

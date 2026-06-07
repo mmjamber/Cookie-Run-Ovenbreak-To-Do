@@ -17,7 +17,7 @@ For product goals, audience, MVP scope, and success criteria, see `G003-global-s
 - Relay cookie: secondary cookie in modes that support one.
 - Arena: a labeled mode slot or section used by Trophy Race, Guild Run, or Champions League.
 - Arena-format list: a Guild Run or Champions League list whose fixed arena sections each have a low, mid, or full target set.
-- Trophy Race arena: an arena-labeled combi slot in a Trophy Race list. Trophy Race arenas use full combi targets and do not have arena-specific target sets. When creating a user generated Trophy Race list, the only required setup choice is how many arena-labeled combis to start with, up to 10.
+- Trophy Race arena: a Trophy Race mode arena using the combi type 1 layout. Trophy Race arenas always use full max targets and do not have low, mid, or full arena target-set controls. When creating a user generated Trophy Race list, the only required setup choice is how many arenas to start with, up to 10.
 - Group: numbered collection of Breakout combis.
 - Target level: desired level the user wants the item to reach.
 - Add item: the action of placing a catalog cookie, pet, or treasure into a saved list. This is separate from Add list, which creates a new saved list.
@@ -38,7 +38,7 @@ For product goals, audience, MVP scope, and success criteria, see `G003-global-s
 ## Shared Target Sets
 
 Guild Run and Champions League use these target sets as arena maximum limits.
-Trophy Race does not use these arena target sets; Trophy Race arena-labeled combis default to full max targets.
+Trophy Race does not use these arena target sets; Trophy Race arenas always default to full max targets. Breakout also always uses full max targets.
 
 | Set name | Cookie max | Pet max | Treasure max |
 | --- | ---: | ---: | ---: |
@@ -47,6 +47,8 @@ Trophy Race does not use these arena target sets; Trophy Race arena-labeled comb
 | Full cap | 15 | 15 | 12 |
 
 When a user changes an arena maximum target set, they may only choose one of these three shared sets.
+
+Champions League always uses fixed arena target sets: Arena 1 uses low, Arena 2 uses mid, and Arena 3 uses full. Guild Run target sets differ by user need, so the user must choose the target set for each Guild Run arena before items can be added to that arena.
 
 Target levels are always editable by the user, but they cannot exceed the current item, list, or arena maximum. For example, if a Guild Run arena has cookie/pet max 7 and treasure max 5, targets in that arena cannot be set above those numbers unless the arena limit is changed manually.
 
@@ -76,6 +78,8 @@ The website should provide preset to-do lists for these game modes:
 - Guild Run
 
 Presets should follow each mode's list format, but users still need to fill in the specific cookies, pets, treasures, and target choices where applicable.
+
+Preset-derived lists must never include preselected cookies, pets, treasures, or premade recommended combis. They start with the required empty add-item slots for their format, and the user fills every item slot manually.
 
 ## User Generated Lists
 

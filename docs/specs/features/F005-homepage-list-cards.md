@@ -31,6 +31,7 @@ For every new local user or guest profile, the website generates four default pr
 - Selecting a default preset-derived list card opens that list.
 - When a saved list card is selected, it should open that saved list's detail view.
 - When the add-list card is selected, it should start the create-list flow defined in `F004-user-generated-lists.md`.
+- When the `See more` button is selected, it should navigate to the To-do page; it must not expand the homepage `My Lists` section or reveal additional list cards directly on the homepage.
 
 ## Default List Behavior
 
@@ -58,6 +59,7 @@ When deletion leaves the user with no saved lists at all, the shared list-card a
 ## Acceptance Criteria
 
 - [ ] The homepage card area contains no more than four cards.
+- [ ] The `See more` button opens the To-do page and does not show more than four list cards on the homepage.
 - [ ] For every new local user or guest profile, the website generates the four default preset-derived lists in the To-do page.
 - [ ] Homepage `My Lists` renders the first four cards from the same ordered list data used by the To-do page.
 - [ ] With saved lists, the homepage shows the first lists from the To-do page's current user-controlled order.

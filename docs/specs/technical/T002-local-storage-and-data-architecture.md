@@ -44,6 +44,7 @@ Rules:
 - Reordering lists should update `order` without requiring changes to `updatedAt`.
 - New local user and guest profiles should initialize `userLists` with the four default preset-derived lists.
 - Generated default preset-derived lists are stored as `UserList` records and may be edited, renamed, deleted, and reordered with the same controls as user generated lists.
+- Generated default preset-derived lists should store empty add-item slots only; all `TodoItem` slot values should start as `null`.
 - After a profile is initialized, deleted default preset-derived lists must not be regenerated automatically.
 
 ## Preset-Derived And User Generated Lists
@@ -96,7 +97,9 @@ type ListSection = {
 Rules:
 
 - Sections store combis, groups, arenas, or ungrouped items depending on list format.
-- Trophy Race arena labels are stored as combis, not `arena` sections, because Trophy Race does not use per-arena target sets.
+- Trophy Race arenas are stored as combis inside a `combis` section, not `arena` sections, because Trophy Race does not use low, mid, or full arena target-set controls.
+- Guild Run arena sections may temporarily store `targetSet: null` until the user chooses the arena's low, mid, or full target set. Items cannot be added to a Guild Run arena while its `targetSet` is `null`.
+- Champions League arena sections must store fixed target sets by `position`: Arena 1 `targetSet: "low"`, Arena 2 `targetSet: "mid"`, and Arena 3 `targetSet: "full"`.
 - None-format lists can mix individual items and user-added combi sections.
 - None-format individual item entries are stored as free item blocks so the block can remain after its item is deleted.
 - None-format individual treasure entries store one free item block each. Multi-treasure selection is represented only by filling treasure slots inside a `Combi`.
@@ -174,10 +177,10 @@ Deleting a catalog item from a list item block removes only the `TodoItem` from 
 
 ## Format Storage Mapping
 
-- Trophy Race: one `combis` section with the user-selected number of arena-labeled combis, from 1 to 10. Preset-derived Trophy Race lists start with 4 arena-labeled combis. These combis use full max targets and do not store arena target sets.
-- Breakout: up to 6 `group` sections, each with 3 to 15 numbered combis.
-- Guild Run: 12 fixed `arena` sections, each with one combi and a user-selected maximum target set.
-- Champions League: 3 fixed `arena` sections, each with one combi and a user-selected maximum target set.
+- Trophy Race: one `combis` section with the user-selected number of arena-labeled combis, from 1 to 10. Preset-derived Trophy Race lists start with 4 empty arenas. These combis use full max targets and do not store low, mid, or full arena target sets.
+- Breakout: up to 6 `group` sections, each with 3 to 15 numbered combis. Preset-derived Breakout lists start with 2 editable groups: Group 1 has 3 empty combis and Group 2 has 10 empty combis. Breakout always uses full max targets.
+- Guild Run: 12 fixed `arena` sections, each with one empty combi and a user-selected maximum target set. Generated Guild Run preset-derived lists should initialize arena `targetSet` values as `null` until the user chooses them.
+- Champions League: 3 fixed `arena` sections, each with one empty combi. Arena 1 stores `targetSet: "low"`, Arena 2 stores `targetSet: "mid"`, and Arena 3 stores `targetSet: "full"`.
 - None: one or more flexible sections that can store individual cookies, pets, treasures, combi type 1 entries, and combi type 2 entries.
 
 ## Persistence
@@ -205,12 +208,15 @@ Rules:
 - Current and target levels are always editable but cannot exceed the current item, list, or arena maximum.
 - An item is complete when `currentLevel >= targetLevel`.
 - Manually marking an item complete sets `currentLevel` to `targetLevel`.
-- In Guild Run and Champions League arena formats, the selected `targetSet` defines the maximum allowed target for that arena.
+- In Guild Run arena formats, the selected `targetSet` defines the maximum allowed target for that arena.
+- In Champions League, fixed arena target sets define the maximum allowed target for each arena: Arena 1 low, Arena 2 mid, and Arena 3 full.
+- Items cannot be added to a Guild Run arena while `targetSet` is `null`.
 - Treasure slots per combi must remain exactly 3 positions, each containing either `null` or one treasure `TodoItem`.
 - Trophy Race combis cannot exceed 10.
 - Trophy Race user generated list setup must choose a starting arena count from 1 to 10.
 - Breakout groups cannot exceed 6.
 - Breakout group size must be between 3 and 15 combis.
+- Breakout target levels cannot exceed full max targets.
 - Guild Run has exactly 12 arenas.
 - Champions League has exactly 3 arenas.
 

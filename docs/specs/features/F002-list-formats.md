@@ -12,9 +12,12 @@ An item is complete when its current level reaches its target level. Users can a
 
 ## Trophy Race Format
 
-Combi structure: combi type 1.
+Arena structure:
 
-Trophy Race may label its combi slots as arenas in the UI, but it is not an arena-format list. Trophy Race arenas do not have low, mid, or full arena target sets. Newly added Trophy Race items use full max targets for their item type.
+- A Trophy Race list contains arenas.
+- Each Trophy Race arena uses the combi type 1 layout.
+- Trophy Race arenas do not have low, mid, or full arena target-set controls.
+- Newly added Trophy Race items use full max targets for their item type.
 
 - 1 pet
 - 1 main cookie
@@ -31,9 +34,9 @@ Starting levels and target defaults:
 Rules:
 
 - During user generated list setup, the user chooses the starting Trophy Race arena count from 1 to 10.
-- Preset-derived Trophy Race lists start with 4 arena-labeled combis.
-- Users can add combis.
-- Maximum combi count is 10.
+- Preset-derived Trophy Race lists start with 4 empty arenas.
+- Users can add arenas.
+- Maximum arena count is 10.
 
 ## Breakout Format
 
@@ -51,6 +54,7 @@ Starting levels and target defaults:
 
 Rules:
 
+- Breakout always uses full max targets and does not have per-group or per-combi target-set controls.
 - User chooses group size from 3 to 15 combis.
 - Each combi is assigned a number from 1 to the chosen group size.
 - A list can contain up to 6 groups.
@@ -65,18 +69,19 @@ Arena structure:
 
 Arena maximum limits:
 
-- During setup, users choose each arena's maximum target set from low, mid, or full.
+- Users choose each arena's maximum target set from low, mid, or full.
 - Low: cookies and pets max 7, treasures max 5.
 - Mid: cookies and pets max 11, treasures max 9.
 - Full: cookies and pets max 15, treasures max 12.
 - Newly added items start with current level 1 and target level equal to the selected arena maximum for that item type.
 - Users can set item current and target levels below or equal to the arena maximums.
+- A Guild Run arena must have a user-selected target set before items can be added to that arena.
 - Example: in Guild Run Arena 8, if the arena maximum is cookie/pet 7 and treasure 5, users cannot set cookie or pet targets above 7 or treasure targets above 5 unless the arena limit is changed manually.
 
 Rules:
 
 - The initial spec requires 12 arenas by default.
-- Guild Run arena maximum target sets are chosen during setup and can be changed manually later unless a future spec defines fixed arena limits.
+- Guild Run arena maximum target sets are always chosen by the user and can be changed manually later unless a future spec defines fixed arena limits.
 
 ## Champions League Format
 
@@ -88,7 +93,7 @@ Arena structure:
 
 Arena maximum limits:
 
-- Users choose each arena's maximum target set from low, mid, or full.
+- Champions League always uses fixed arena target sets: Arena 1 is low, Arena 2 is mid, and Arena 3 is full.
 - Low: cookies and pets max 7, treasures max 5.
 - Mid: cookies and pets max 11, treasures max 9.
 - Full: cookies and pets max 15, treasures max 12.

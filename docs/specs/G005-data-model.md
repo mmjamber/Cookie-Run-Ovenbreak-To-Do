@@ -18,7 +18,7 @@ Users organize those items into saved to-do lists. A list uses one of five forma
 - Champions League.
 - None.
 
-Each list contains the sections and add-item slots needed for its format. Those sections may represent combis, groups, arenas, individual items, or flexible None-format entries.
+Each list contains the sections and add-item slots needed for its format. Those sections may represent combis, groups, arenas, individual items, or flexible None-format entries. Arena entries follow the arena definition in `G002-rules.md`: each visible arena is a numbered list item block containing one combi type 1.
 
 ## Catalog Items
 

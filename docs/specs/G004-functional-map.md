@@ -20,7 +20,7 @@
 6. Format selection does not overwrite a name the user already typed.
 7. If the format requires setup choices, such as Trophy Race arena count, Breakout group size, or Guild Run arena target sets, the website asks for them. Guild Run cap choices are shown as `7/7/5`, `11/11/9`, and `15/15/12`. Champions League does not ask for arena target sets because its three arenas are always low, mid, and full in order.
 8. After the list has a valid name, selected format, and required setup choices, the website creates the empty saved list with the correct structure and opens its list detail page.
-9. From the list detail page, the user adds cookies, pets, treasures, combis, groups, or arenas as allowed by the selected format, and deletes allowed sections or arenas where the format permits it.
+9. From the list detail page, the user adds cookies, pets, treasures, combis, groups, or arena blocks as allowed by the selected format, and deletes allowed sections or arena blocks where the format permits it.
 
 ### Use Preset List
 

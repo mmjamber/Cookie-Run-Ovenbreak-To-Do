@@ -26,6 +26,7 @@ This project uses Next.js 16.2.6. APIs, conventions, and file structure may diff
 - Keep changes scoped to the requested task.
 - Preserve user edits and do not revert unrelated changes.
 - If a requested change would overwrite or substantially rewrite a section the user appears to have manually edited, ask for permission before changing that section.
+- Never change the way the homepage looks without explicit confirmation. If a prompt implies or requires changes to the Homepage UI, stop and ask: "This request requires changes to the Homepage UI. Do you still want to proceed?" Do not edit Homepage UI files, styling, layout, or visual specs until the user confirms.
 - Prefer existing Next.js, React, Tailwind, and TypeScript patterns already in the website.
 - Keep HTML/component structure and CSS styling in separate files; avoid inline `<style>` blocks and style-heavy markup unless a file is explicitly a throwaway preview.
 - Update `docs/specs/` before large implementation work when requirements are unclear.

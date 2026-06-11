@@ -15,16 +15,17 @@ For product goals, audience, MVP scope, and success criteria, see `G003-global-s
 - Combi type 1: a combi with 1 pet, 1 main cookie, 1 relay cookie, and 3 treasures.
 - Combi type 2: a combi with 1 pet, 1 main cookie, and 3 treasures; no relay cookie.
 - Relay cookie: secondary cookie in modes that support one.
-- Arena: a labeled mode slot or section used by Trophy Race, Guild Run, or Champions League.
-- Arena-format list: a Guild Run or Champions League list whose fixed arena sections each have a low, mid, or full target set.
-- Trophy Race arena: a Trophy Race mode arena using the combi type 1 layout. Trophy Race arenas always use full max targets and do not have low, mid, or full arena target-set controls. When creating a user generated Trophy Race list, the only required setup choice is how many arenas to start with, up to 10.
-- Group: numbered collection of Breakout combis.
+- Arena: a list item block containing one combi type 1, with the label `Arena` followed by a number shown above the block, such as `Arena 1`. Arena numbers follow chronological list order, starting at 1 and increasing by 1. The maximum number of arenas in a list is defined by that list format's rules.
+- Arena-format list: a Trophy Race, Guild Run, or Champions League list that contains arena list item blocks.
+- Trophy Race arena: a Trophy Race arena list item block. Trophy Race arenas always use full max targets and do not have low, mid, or full arena target-set controls. When creating a user generated Trophy Race list, the only required setup choice is how many arenas to start with, up to 10.
+- Breakout combi block: a list item block containing one combi type 2. Breakout uses only combi type 2 blocks inside groups.
+- Group: numbered collection of Breakout combi blocks.
 - Target level: desired level the user wants the item to reach.
 - Add item: the action of placing a catalog cookie, pet, or treasure into a saved list. This is separate from Add list, which creates a new saved list.
 - Add-item slot: an empty slot in a list detail view that can receive a catalog item. Add-item slots are shown with add-option artwork such as `add cookie`, `relay`, `add pet`, or `add treasure`. Each add-item slot type is linked to its matching PNG file in `assets/ovenbreak images/add cookies/`.
 - Compatible placement slot: an empty or filled list slot whose type accepts the selected item. Cookies can go only in `add cookie` or `relay` slots, pets can go only in `add pet` slots, and treasures can go only in `add treasure` slots.
 - Compatible-slot picker: the list-detail placement state used after an ordinary catalog add-to-list dialog. It lets the user choose any compatible empty slot, or explicitly replace a compatible filled slot through the `Switch?` affordance, across all available combis, groups, arenas, or None-format entries.
-- List item block: one visible block inside a list detail view that contains add-item slots or filled catalog items. Combi blocks contain combi slots; free item blocks contain standalone None-format cookie, pet, or treasure entries.
+- List item block: one visible block inside a list detail view that contains add-item slots or filled catalog items. Arena blocks contain one combi type 1, Breakout combi blocks contain one combi type 2, and free item blocks contain standalone None-format cookie, pet, or treasure entries.
 - Options toggle: a top-right control on every list item block. Opening it shows item-management actions for that block, including deleting any filled catalog item in the block.
 
 ## Global Level Caps

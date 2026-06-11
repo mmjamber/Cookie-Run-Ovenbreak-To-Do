@@ -15,7 +15,7 @@ An item is complete when its current level reaches its target level. Users can a
 Arena structure:
 
 - A Trophy Race list contains arenas.
-- Each Trophy Race arena uses the combi type 1 layout.
+- Each Trophy Race arena follows the shared arena definition in `../G002-rules.md`: a list item block labeled `Arena N` in chronological order, containing one combi type 1.
 - Trophy Race arenas do not have low, mid, or full arena target-set controls.
 - Newly added Trophy Race items use full max targets for their item type.
 
@@ -49,8 +49,9 @@ Rules:
 Group structure:
 
 - A list contains groups.
-- Each group contains numbered combis.
-- A Breakout combi is combi type 2.
+- Each group contains numbered Breakout combi blocks.
+- A Breakout combi block is always combi type 2.
+- Breakout does not use combi type 1 blocks, arena blocks, relay slots, or standalone item blocks.
 
 Starting levels and targets:
 
@@ -61,9 +62,9 @@ Starting levels and targets:
 Rules:
 
 - Breakout always uses full max targets and does not have per-group or per-combi target-set controls.
-- User chooses group size from 3 to 15 combis.
-- Each combi is assigned a number from 1 to the chosen group size.
-- A list can contain up to 6 groups.
+- User chooses group size from 3 to 15 combi type 2 blocks.
+- Each combi type 2 block is assigned a number from 1 to the chosen group size.
+- A list can contain up to 5 groups.
 - Users do not directly edit individual target levels in Breakout.
 
 ## Guild Run Format
@@ -72,7 +73,7 @@ Arena structure:
 
 - Exactly 12 arenas.
 - Users cannot add or delete arenas.
-- Each arena uses combi type 1.
+- Each arena follows the shared arena definition in `../G002-rules.md`: a list item block labeled `Arena N` in chronological order, containing one combi type 1.
 
 Arena maximum limits:
 
@@ -98,7 +99,7 @@ Arena structure:
 
 - Exactly 3 arenas.
 - Users cannot add or delete arenas.
-- Each arena uses combi type 1.
+- Each arena follows the shared arena definition in `../G002-rules.md`: a list item block labeled `Arena N` in chronological order, containing one combi type 1.
 
 Arena maximum limits:
 

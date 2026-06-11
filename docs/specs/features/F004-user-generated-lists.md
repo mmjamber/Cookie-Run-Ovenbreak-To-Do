@@ -33,7 +33,7 @@ Trophy Race:
 
 - User chooses the starting arena count from 1 to 10.
 - This arena count is the only required Trophy Race setup choice.
-- Trophy Race creates arenas using the combi type 1 layout, but it does not ask for arena target sets during setup.
+- Trophy Race creates arena blocks using the shared arena definition in `../G002-rules.md`, but it does not ask for arena target sets during setup.
 
 Breakout:
 
@@ -41,14 +41,14 @@ Breakout:
 
 Guild Run:
 
-- Creates 12 arenas.
+- Creates 12 arena blocks.
 - User chooses the maximum target set for each arena during setup.
 - The website labels those setup choices as `7/7/5`, `11/11/9`, and `15/15/12`, while the saved target set still maps to low, mid, or full.
 - Arena maximum target sets can be changed later only to low, mid, or full unless a future spec defines fixed arena limits.
 
 Champions League:
 
-- Creates 3 arenas.
+- Creates 3 arena blocks.
 - Arena 1 uses low targets, Arena 2 uses mid targets, and Arena 3 uses full targets.
 - Champions League does not ask the user to choose arena target sets.
 

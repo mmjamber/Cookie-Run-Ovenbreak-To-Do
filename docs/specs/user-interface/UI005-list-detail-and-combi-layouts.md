@@ -21,6 +21,8 @@ Direct per-item target level controls appear only in None-format lists. Guild Ru
 
 Empty list and empty add-item slot visuals are specified in `../features/F006-empty-list-layouts.md`. That spec is the source of truth for the add-option artwork, empty combi layouts, group/arena grids, and replacement behavior when a user chooses an item.
 
+Arena visuals follow the shared arena definition in `../G002-rules.md`: each arena is a list item block with `Arena N` shown above one combi type 1, numbered by chronological list order.
+
 When a user clicks add-option artwork from a list detail view, open the matching catalog page in list-selection mode. The catalog page should visibly indicate that the user is selecting for a specific add-item slot, provide a cancel/back action, and return the selected item to the originating list detail view.
 
 When the list detail page is opened from an ordinary catalog add-to-list dialog, it enters pending placement mode and acts as the compatible-slot picker. In this mode, the selected catalog item is already known and every compatible empty slot in the chosen list becomes a placement target, including slots across multiple combis, groups, arenas, or None-format entries. Compatibility follows slot type: cookies can go only in `add cookie` or `relay` slots, pets can go only in `add pet` slots, and treasures can go only in `add treasure` slots. Selecting a compatible empty slot fills that slot with the pending item.

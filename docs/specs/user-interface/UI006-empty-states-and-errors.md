@@ -11,7 +11,7 @@
 
 - Invalid current or target level: show the allowed range.
 - Incompatible add-item slot: explain which item type is allowed, such as cookie-only `add cookie` or `relay` slots, pet-only `add pet` slots, or treasure-only `add treasure` slots.
-- Format limit reached: explain the limit, such as 10 Trophy Race arenas or 6 Breakout groups.
+- Format limit reached: explain the limit, such as 10 Trophy Race arenas or 5 Breakout groups.
 
 ## Related Specs
 

@@ -30,7 +30,7 @@ When a user chooses a preset:
 - If that preset-derived list was deleted or otherwise does not exist after profile initialization, choosing the preset must not recreate it.
 - If a deleted preset-derived list is unavailable, the user can create a new user generated list with the same format through Add list.
 - The generated list receives a default name based on the mode.
-- The list contains the required default sections, combis, groups, or arenas.
+- The list contains the required default sections, combis, groups, or arena blocks.
 - The list's item slots are empty until the user fills them with catalog items.
 
 When a new local user or guest profile is initialized:
@@ -44,10 +44,10 @@ When a new local user or guest profile is initialized:
 
 | Mode | Format | Default structure | Default target behavior |
 | --- | --- | --- | --- |
-| Trophy Race | Trophy Race | 4 empty arenas using combi type 1 slots | All item targets use full max levels |
-| Breakout | Breakout | 2 editable groups of empty combi type 2 slots: Group 1 has 3 combis, Group 2 has 10 combis | All item targets use full max levels |
-| Champions League | Champions League | 3 empty arenas using combi type 1 slots | Arena 1 uses low, Arena 2 uses mid, Arena 3 uses full |
-| Guild Run | Guild Run | 12 empty arenas using combi type 1 slots | Each arena target set must be chosen by the user |
+| Trophy Race | Trophy Race | 4 empty arena blocks, each labeled `Arena N` above one combi type 1 | All item targets use full max levels |
+| Breakout | Breakout | 2 editable groups of empty combi type 2 blocks: Group 1 has 3 blocks, Group 2 has 10 blocks | All item targets use full max levels |
+| Champions League | Champions League | 3 empty arena blocks, each labeled `Arena N` above one combi type 1 | Arena 1 uses low, Arena 2 uses mid, Arena 3 uses full |
+| Guild Run | Guild Run | 12 empty arena blocks, each labeled `Arena N` above one combi type 1 | Each arena target set must be chosen by the user |
 
 ## Requirements
 
@@ -57,6 +57,7 @@ When a new local user or guest profile is initialized:
 - Users must be able to name or rename preset-derived lists.
 - Users must be able to delete and reorder generated default preset-derived lists with the same controls as user generated saved lists.
 - Users can manually change Breakout preset groups and group sizes after creation, within Breakout format limits.
+- Breakout preset groups contain only combi type 2 blocks.
 - Users must choose target sets for Guild Run arenas before adding items to those arenas. The user-facing choices are labeled `7/7/5`, `11/11/9`, and `15/15/12`.
 - Preset-derived lists should persist like user generated lists.
 
@@ -67,6 +68,7 @@ When a new local user or guest profile is initialized:
 - [ ] Selecting a preset-derived list opens the existing saved preset-derived list.
 - [ ] Deleted preset-derived lists are not recreated by preset selection.
 - [ ] Each preset initializes the correct format.
+- [ ] Arena presets use the shared arena block format from `../G002-rules.md`.
 - [ ] Each preset initializes empty add-item slots without preselected catalog items or premade combis.
 - [ ] Trophy Race and Breakout preset-derived lists use full max targets.
 - [ ] Champions League preset-derived lists initialize Arena 1 as low, Arena 2 as mid, and Arena 3 as full.

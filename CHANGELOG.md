@@ -10,6 +10,7 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 ### Added
 
 - Added this changelog to track notable project changes.
+- Added prototype-only Trophy Race progress preview work in `public/trophy-race-progress-preview.html`, including arena block sizing/layout experiments, modal-based level editing, mixed filled and empty catalog slots, hover-revealed edit/delete action buttons, homepage-style shell/banner treatment, and lined-paper panel background exploration.
 
 ## [0.1.0] - 2026-06-11
 

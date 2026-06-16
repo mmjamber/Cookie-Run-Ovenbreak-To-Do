@@ -7,6 +7,7 @@ This folder tracks project changes at two levels:
 
 ## Files
 
+- `INDEX.md` - map of every changelog file and subsection.
 - `CHANGELOG.md` - simple project-wide timeline.
 - `FEATURES.md` - feature behavior, feature specs, user stories, list behavior, catalog behavior, and presets.
 - `TECHNICAL.md` - architecture, storage, routing, data imports, build/lint config, package scripts, and technical specs.
@@ -39,5 +40,7 @@ Zone entries should live under the subsection that best matches the change:
 ## Working Rule
 
 All agents working in this project must add one short entry to `CHANGELOG.md` for every completed project change. Then add detailed entries under the most relevant subsection in each affected zone file, whether the change affects one zone or multiple zones.
+
+Do not remove earlier changelog entries when a feature, preview, spec, or implementation is later removed. Add a new removal entry instead so the changelog keeps the full project history.
 
 If a change does not fit an existing subsection, add a clear new subsection instead of placing it in a miscellaneous bucket.

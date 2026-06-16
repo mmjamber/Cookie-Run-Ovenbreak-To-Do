@@ -6,6 +6,10 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Documentation Process
 
+- Bolded the summary text at the top of each `docs/changelogs/CHANGELOG.md` list item to improve scan readability.
+- Improved `docs/changelogs/INDEX.md` spacing by separating each changelog file into its own subsection block.
+- Added `docs/changelogs/INDEX.md` to map every changelog file and subsection.
+- Added a changelog retention rule requiring agents to keep earlier changelog entries when features, previews, specs, or implementations are removed, and to add new removal entries instead.
 - Removed the unused root `CLAUDE.md` file because this project is not intended to use Claude-specific agent instructions.
 - Added an all-agents rule in `AGENTS.md` and `docs/plans/README.md` requiring a `docs/plans/active/` task plan before adding or changing files under `app/`, with an exception for explicitly requested test or preview files under `public/`.
 - Consolidated the root `CHANGELOG.md` into `docs/changelogs/` and removed the duplicate root changelog file.

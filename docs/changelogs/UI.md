@@ -10,6 +10,16 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### Layout
 
+- Added Timekeeper Cookie as a filled legendary relay slot in Arena 2 of the Trophy Race preview.
+- Removed all relay number `2` badges from the Trophy Race preview, including filled relay slots, empty relay slots, and newly generated arenas.
+- Moved filled Trophy Race preview relay badges farther right to match the provided relay frame placement reference.
+- Moved filled Trophy Race preview relay badges slightly to the right while keeping empty relay badge placement unchanged.
+- Moved filled Trophy Race preview relay badges outside the clipped relay frame wrapper so they can appear above selected relay frames, while leaving empty relay slot badges unchanged.
+- Restored the Trophy Race preview relay `2` badge to its prior top-left position after a layering-only correction.
+- Moved the Trophy Race preview relay `2` badge from the bottom-right to the top-left of relay slots.
+- Centered the Trophy Race preview list title after removing the helper note below it.
+- Replaced per-arena move arrow buttons in the Trophy Race preview with drag-and-drop arena movement that snaps back into the grid when dropped.
+- Added a Trophy Race preview toolbar with move and add controls, plus per-arena move controls that appear in move mode.
 - Added prototype-only Trophy Race progress preview layout experiments in `public/trophy-race-progress-preview.html`, including arena block sizing, mixed filled and empty catalog slots, and homepage-style shell/banner treatment.
 
 ### Responsive Behavior
@@ -22,8 +32,33 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### Styling
 
+- Refined selected Trophy Race preview relay cookie frames so the border and fill both follow cookie rarity colors, and reduced the relay cookie artwork scale inside the frame.
+- Updated selected Trophy Race preview relay cookie frames to keep the gray relay border while using catalog-style rarity fills and cropped relay cookie artwork.
+- Changed selected Trophy Race preview relay cookie frames from catalog-style framing to an add-relay-style black fill with gray rounded border.
+- Added catalog-style frames around selected Trophy Race preview relay cookies, using a black border and 50% black frame background.
+- Fixed empty treasure slot text in the Trophy Race preview level editor so it no longer appears lighter than other empty slot text.
+- Replaced the Trophy Race preview page panel's horizontal ruled notebook background with a white dotted notebook grid using the previous horizontal line color.
+- Changed Trophy Race preview move and add toolbar hover/active states from yellow to the same purple-tinted color used by the arena action buttons.
+- Added slightly rounded arena block corners and replaced the yellow move-mode drop highlight with a subtle gray outline in `public/trophy-race-progress-preview.html`.
 - Added prototype-only Trophy Race progress preview styling experiments in `public/trophy-race-progress-preview.html`, including hover-revealed action buttons and lined-paper panel background exploration.
 
 ### User-Facing Polish
 
-- No changes recorded yet.
+- Filled Arena 2's relay slot in the Trophy Race preview so the preview shows another selected relay example with legendary frame styling.
+- Removed relay badge visuals from the Trophy Race preview after deciding the relay frame no longer needs a numbered marker.
+- Matched the filled relay `2` badge placement in the Trophy Race preview to the provided visual reference.
+- Nudged the filled relay `2` badge rightward in the Trophy Race preview after the layering fix.
+- Fixed selected relay badge layering in the Trophy Race preview without changing empty relay badge placement.
+- Kept the Trophy Race preview relay `2` badge layered above the selected relay frame and cookie art without moving it farther outward.
+- Raised the Trophy Race preview relay `2` badge above the selected relay frame and moved it outward from the frame corner.
+- Placed Trophy Race preview relay `2` badges above the selected relay frame treatment while the relay cookie art is cropped inside the frame.
+- Updated selected relay cookies in the Trophy Race preview to use frame dimensions and colors based on `add relay.png` instead of catalog item frames.
+- Framed selected relay cookies in the Trophy Race preview so they visually match catalog cookie presentation while keeping relay-specific black styling.
+- Refreshed the Trophy Race preview relay add-option image reference after another `add relay.png` artwork update.
+- Updated Trophy Race preview relay badge placement to fit the revised `add relay.png` artwork.
+- Normalized empty treasure slot text visibility with the other empty slot labels in the Trophy Race preview level editor.
+- Removed the Trophy Race preview helper note text beneath the list title.
+- Matched the Trophy Race preview move and add toolbar button feedback with the page's existing edit/delete action button feedback.
+- Added a black three-line move handle to the top-right corner of each arena while Trophy Race preview move mode is active.
+- Updated the Trophy Race preview move toolbar to use `move.png` from free assets and exit move mode when the user clicks outside arena blocks and toolbar controls.
+- Added a Trophy Race preview delete-choice modal so users can choose between clearing arena slots and removing the full arena block.

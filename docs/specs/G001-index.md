@@ -51,6 +51,14 @@ This folder is the source of truth for the project. The website helps Cookie Run
 - `technical/T003-list-selection-routing.md` - catalog selection mode context, compatibility checks, and return behavior
 - `technical/T004-runtime-assets-and-ui-implementation.md` - runtime asset handling, CSS ownership, and stable artwork sizing
 
+## Changelogs
+
+- `../changelogs/CHANGELOG.md` - simple project-wide timeline with links to detailed zone changelogs.
+- `../changelogs/FEATURES.md` - feature behavior, feature specs, user stories, list behavior, catalog behavior, and presets.
+- `../changelogs/TECHNICAL.md` - architecture, storage, routing, data imports, build/lint config, package scripts, and technical specs.
+- `../changelogs/UI.md` - visual/interface changes, UI specs, responsive behavior, layout, accessibility, styling, and user-facing polish.
+- `../changelogs/PREVIEWS.md` - preview-only files, throwaway mockups, temporary visual experiments, screenshots, and inspection artifacts.
+
 ## Naming Rule
 
 Use these prefixes for spec files:

@@ -27,6 +27,7 @@ This project uses Next.js 16.2.6. APIs, conventions, and file structure may diff
 - Preserve user edits and do not revert unrelated changes.
 - If a requested change would overwrite or substantially rewrite a section the user appears to have manually edited, ask for permission before changing that section.
 - Never change the way the homepage looks without explicit confirmation. If a prompt implies or requires changes to the Homepage UI, stop and ask: "This request requires changes to the Homepage UI. Do you still want to proceed?" Do not edit Homepage UI files, styling, layout, or visual specs until the user confirms.
+- Before adding or changing files under `app/`, create a task plan in `docs/plans/active/` based on the relevant specs. Implement only after the plan exists. This planning step is not required for explicitly requested test or preview files, which usually belong under `public/`.
 - Prefer existing Next.js, React, Tailwind, and TypeScript patterns already in the website.
 - Keep HTML/component structure and CSS styling in separate files; avoid inline `<style>` blocks and style-heavy markup unless a file is explicitly a throwaway preview.
 - Update `docs/specs/` before large implementation work when requirements are unclear.
@@ -35,6 +36,7 @@ This project uses Next.js 16.2.6. APIs, conventions, and file structure may diff
 - Name new UI specs in `docs/specs/user-interface/` with the next `UI`-prefixed zero-padded numeric prefix, such as `UI001-global-visual-style.md`.
 - Name new technical specs in `docs/specs/technical/` with the next `T`-prefixed zero-padded numeric prefix, such as `T001-storage-architecture.md`.
 - Name new user-story specs in `docs/specs/user-stories/` with the next `US`-prefixed zero-padded numeric prefix, such as `US001-create-custom-list.md`.
+- Record every completed project change in `docs/changelogs/CHANGELOG.md`, even when it only affects one zone. Add related detail entries under the most relevant subsection in each affected zone changelog: `FEATURES.md`, `TECHNICAL.md`, `UI.md`, or `PREVIEWS.md`.
 - Keep generated folders such as `.next/`, `node_modules/`, and build output out of source changes.
 
 ## Product Direction

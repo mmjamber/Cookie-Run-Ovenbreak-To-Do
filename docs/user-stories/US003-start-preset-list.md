@@ -6,8 +6,8 @@ As a player, I want to open generated preset mode lists so I do not have to set 
 
 ## Source Specs
 
-- `../features/F003-preset-lists.md`
-- `../features/F002-list-formats.md`
+- `../specs/features/F003-preset-lists.md`
+- `../specs/features/F002-list-formats.md`
 
 ## Scenario
 

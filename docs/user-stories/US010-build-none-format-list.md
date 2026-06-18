@@ -6,8 +6,8 @@ As a player, I want to add flexible entries to a None-format list so I can track
 
 ## Source Specs
 
-- `../features/F002-list-formats.md`
-- `../features/F006-empty-list-layouts.md`
+- `../specs/features/F002-list-formats.md`
+- `../specs/features/F006-empty-list-layouts.md`
 
 ## Scenario
 

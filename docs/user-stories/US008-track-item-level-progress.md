@@ -6,10 +6,10 @@ As a player, I want to edit current levels, adjust allowed target settings, and 
 
 ## Source Specs
 
-- `../features/F002-list-formats.md`
-- `../G002-rules.md`
-- `../user-interface/UI005-list-detail-and-combi-layouts.md`
-- `../user-interface/UI007-accessibility.md`
+- `../specs/features/F002-list-formats.md`
+- `../specs/G002-rules.md`
+- `../specs/user-interface/UI005-list-detail-and-combi-layouts.md`
+- `../specs/user-interface/UI007-accessibility.md`
 
 ## Scenario
 

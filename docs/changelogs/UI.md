@@ -10,6 +10,9 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### Layout
 
+- Nudged Trophy Race preview block delete buttons downward so their outline rings have more clearance from the edit buttons.
+- Moved Trophy Race preview block option buttons slightly inward so their outline rings are not clipped by the arena block.
+- Spaced out Trophy Race preview treasure level labels by widening the treasure tracks while shifting the treasure row left of the edit/delete action area.
 - Added Timekeeper Cookie as a filled legendary relay slot in Arena 2 of the Trophy Race preview.
 - Removed all relay number `2` badges from the Trophy Race preview, including filled relay slots, empty relay slots, and newly generated arenas.
 - Moved filled Trophy Race preview relay badges farther right to match the provided relay frame placement reference.
@@ -32,6 +35,9 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### Styling
 
+- Changed Trophy Race preview block option button outlines from external shadows to transparent borders inside the button box.
+- Increased the spacing between Trophy Race preview block option buttons and made their hover reveal instant to avoid pixelated fading icons.
+- Removed the offset shadow layer from Trophy Race preview page and block action buttons while keeping their circular outline rings.
 - Refined selected Trophy Race preview relay cookie frames so the border and fill both follow cookie rarity colors, and reduced the relay cookie artwork scale inside the frame.
 - Updated selected Trophy Race preview relay cookie frames to keep the gray relay border while using catalog-style rarity fills and cropped relay cookie artwork.
 - Changed selected Trophy Race preview relay cookie frames from catalog-style framing to an add-relay-style black fill with gray rounded border.
@@ -44,6 +50,12 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### User-Facing Polish
 
+- Kept Trophy Race preview block button outlines transparent while preventing the arena block from clipping them.
+- Added a little vertical clearance around the Trophy Race preview delete button outline.
+- Gave the Trophy Race preview edit button outline more room inside the arena block.
+- Prevented the Trophy Race preview edit icon from fading through a pixelated partial-opacity state.
+- Removed the clipped-looking lower offset shadow from Trophy Race preview block buttons while keeping the outline.
+- Kept Trophy Race preview treasure level text at its existing size while preventing label overlap.
 - Filled Arena 2's relay slot in the Trophy Race preview so the preview shows another selected relay example with legendary frame styling.
 - Removed relay badge visuals from the Trophy Race preview after deciding the relay frame no longer needs a numbered marker.
 - Matched the filled relay `2` badge placement in the Trophy Race preview to the provided visual reference.

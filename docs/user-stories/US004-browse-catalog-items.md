@@ -6,7 +6,7 @@ As a player, I want to browse cookies, pets, and treasures with search, sorting,
 
 ## Source Specs
 
-- `../features/F001-catalog-pages.md`
+- `../specs/features/F001-catalog-pages.md`
 
 ## Scenario
 

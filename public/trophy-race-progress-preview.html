@@ -172,7 +172,7 @@
         border: 3px solid #ffffff;
         border-radius: 50%;
         background: #ffffff;
-        box-shadow: 0 3px 0 rgba(33, 24, 38, 0.24), 0 0 0 2px rgba(75, 40, 113, 0.18);
+        box-shadow: 0 0 0 2px rgba(75, 40, 113, 0.18);
         cursor: pointer;
       }
 
@@ -248,7 +248,7 @@
         border: 3px solid #ffffff;
         border-radius: 50%;
         background: #ffffff;
-        box-shadow: 0 2px 0 rgba(33, 24, 38, 0.24), 0 0 0 2px rgba(75, 40, 113, 0.18);
+        box-shadow: 0 0 0 2px rgba(75, 40, 113, 0.18);
         pointer-events: none;
       }
 
@@ -279,6 +279,7 @@
 
       .combi {
         --treasure-size: 20cqw;
+        --treasure-track-size: 24.1cqw;
         --pet-size: 21.3cqw;
         --cookie-size: 54.63cqw;
         --relay-size: 21.91cqw;
@@ -304,32 +305,33 @@
 
       .arena-actions {
         position: absolute;
-        top: 8px;
-        right: 8px;
+        top: 11px;
+        right: 11px;
         z-index: 6;
         display: grid;
-        gap: 7px;
+        gap: 12px;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 140ms ease;
+        visibility: hidden;
       }
 
       .combi:hover .arena-actions,
       .combi:focus-within .arena-actions {
         opacity: 1;
         pointer-events: auto;
+        visibility: visible;
       }
 
       .arena-action {
         display: grid;
         place-items: center;
-        width: 34px;
-        height: 34px;
+        width: 38px;
+        height: 38px;
         padding: 0;
-        border: 3px solid #ffffff;
+        border: 2px solid rgba(75, 40, 113, 0.18);
         border-radius: 50%;
         background: #ffffff;
-        box-shadow: 0 2px 0 rgba(33, 24, 38, 0.24), 0 0 0 2px rgba(75, 40, 113, 0.18);
+        box-shadow: inset 0 0 0 3px #ffffff;
         cursor: pointer;
       }
 
@@ -362,11 +364,11 @@
       .treasures {
         grid-area: treasures;
         display: grid;
-        grid-template-columns: repeat(3, var(--treasure-size));
+        grid-template-columns: repeat(3, var(--treasure-track-size));
         justify-content: center;
         align-items: start;
-        gap: 3.2%;
-        transform: translateY(14px);
+        gap: 4px;
+        transform: translate(-13px, 14px);
       }
 
       .slot {
@@ -814,6 +816,7 @@
         :root {
           --arena-width: 324px;
           --treasure-size: 52px;
+          --treasure-track-size: 78px;
           --pet-size: 69px;
           --cookie-size: 177px;
           --relay-size: 71px;

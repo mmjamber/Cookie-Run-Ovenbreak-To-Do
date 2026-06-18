@@ -6,8 +6,8 @@ As a player, I want the app to offer a cookie's paired pet when I add a cookie s
 
 ## Source Specs
 
-- `../features/F001-catalog-pages.md`
-- `../features/F006-empty-list-layouts.md`
+- `../specs/features/F001-catalog-pages.md`
+- `../specs/features/F006-empty-list-layouts.md`
 
 ## Scenario
 

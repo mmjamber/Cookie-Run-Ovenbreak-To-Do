@@ -6,8 +6,8 @@ As a player, I want to create a named list with a chosen format so I can track a
 
 ## Source Specs
 
-- `../features/F004-user-generated-lists.md`
-- `../features/F002-list-formats.md`
+- `../specs/features/F004-user-generated-lists.md`
+- `../specs/features/F002-list-formats.md`
 
 ## Scenario
 

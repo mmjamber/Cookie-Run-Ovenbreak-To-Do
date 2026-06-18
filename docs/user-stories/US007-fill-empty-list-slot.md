@@ -6,8 +6,8 @@ As a player, I want to click an empty add-item slot and choose an item from the 
 
 ## Source Specs
 
-- `../features/F006-empty-list-layouts.md`
-- `../features/F001-catalog-pages.md`
+- `../specs/features/F006-empty-list-layouts.md`
+- `../specs/features/F001-catalog-pages.md`
 
 ## Scenario
 

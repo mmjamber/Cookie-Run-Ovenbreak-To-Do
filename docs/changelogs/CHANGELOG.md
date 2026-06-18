@@ -4,6 +4,20 @@ This file gives a simple overview of every recorded project change. For details,
 
 ## Unreleased
 
+- **Changed Trophy Race preview block button outlines to transparent borders.**
+  Details: [UI > Styling](UI.md#styling), [UI > User-Facing Polish](UI.md#user-facing-polish), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Nudged Trophy Race preview delete block buttons downward.**
+  Details: [UI > Layout](UI.md#layout), [UI > User-Facing Polish](UI.md#user-facing-polish), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Moved Trophy Race preview block option buttons slightly inward.**
+  Details: [UI > Layout](UI.md#layout), [UI > User-Facing Polish](UI.md#user-facing-polish), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Spaced Trophy Race preview block option buttons and removed their fade.**
+  Details: [UI > Styling](UI.md#styling), [UI > User-Facing Polish](UI.md#user-facing-polish), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Removed Trophy Race preview button offset shadows while keeping outline rings.**
+  Details: [UI > Styling](UI.md#styling), [UI > User-Facing Polish](UI.md#user-facing-polish), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Spaced out Trophy Race preview treasure levels without pushing them into arena actions.**
+  Details: [UI > Layout](UI.md#layout), [UI > User-Facing Polish](UI.md#user-facing-polish), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Moved user stories out of the specs folder and into `docs/user-stories/`.**
+  Details: [Features > User Stories](FEATURES.md#user-stories), [Technical > Documentation Process](TECHNICAL.md#documentation-process).
 - **Added a legendary relay cookie to Arena 2 in the Trophy Race preview.**
   Details: [UI > Layout](UI.md#layout), [UI > User-Facing Polish](UI.md#user-facing-polish), [Previews > Preview Files](PREVIEWS.md#preview-files), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
 - **Removed relay number badges from the Trophy Race preview.**

@@ -14,7 +14,8 @@ Tracks feature behavior, feature specs, user stories, list behavior, catalog beh
 
 ### User Stories
 
-- Added project user-story specifications.
+- Moved user-story documents from `docs/specs/user-stories/` to `docs/user-stories/` so they remain in docs without living inside the specs tree.
+- Added project user-story documents.
 
 ### List Behavior
 

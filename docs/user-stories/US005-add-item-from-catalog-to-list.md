@@ -6,8 +6,8 @@ As a player, I want to add catalog items to compatible lists and slots so my lis
 
 ## Source Specs
 
-- `../features/F001-catalog-pages.md`
-- `../features/F002-list-formats.md`
+- `../specs/features/F001-catalog-pages.md`
+- `../specs/features/F002-list-formats.md`
 
 ## Scenario
 

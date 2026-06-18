@@ -11,6 +11,7 @@ This project uses Next.js 16.2.6. APIs, conventions, and file structure may diff
 - App directory: `app/`
 - Static assets: `public/`
 - Project specifications: `docs/specs/`
+- User stories: `docs/user-stories/`
 - Package manager: npm, using `package-lock.json`
 
 
@@ -31,11 +32,11 @@ This project uses Next.js 16.2.6. APIs, conventions, and file structure may diff
 - Prefer existing Next.js, React, Tailwind, and TypeScript patterns already in the website.
 - Keep HTML/component structure and CSS styling in separate files; avoid inline `<style>` blocks and style-heavy markup unless a file is explicitly a throwaway preview.
 - Update `docs/specs/` before large implementation work when requirements are unclear.
-- Spec file names use `G` for general specs, `F` for feature specs, `UI` for UI specs, `T` for technical specs, and `US` for user-story specs.
+- Spec file names use `G` for general specs, `F` for feature specs, `UI` for UI specs, and `T` for technical specs. User-story files use `US`.
 - Name new feature specs in `docs/specs/features/` with the next `F`-prefixed zero-padded numeric prefix, such as `F005-new-feature.md`.
 - Name new UI specs in `docs/specs/user-interface/` with the next `UI`-prefixed zero-padded numeric prefix, such as `UI001-global-visual-style.md`.
 - Name new technical specs in `docs/specs/technical/` with the next `T`-prefixed zero-padded numeric prefix, such as `T001-storage-architecture.md`.
-- Name new user-story specs in `docs/specs/user-stories/` with the next `US`-prefixed zero-padded numeric prefix, such as `US001-create-custom-list.md`.
+- Name new user stories in `docs/user-stories/` with the next `US`-prefixed zero-padded numeric prefix, such as `US001-create-custom-list.md`.
 - Record every completed project change in `docs/changelogs/CHANGELOG.md`, even when it only affects one zone. Add related detail entries under the most relevant subsection in each affected zone changelog: `FEATURES.md`, `TECHNICAL.md`, `UI.md`, or `PREVIEWS.md`. Do not remove earlier changelog entries when a feature, preview, spec, or implementation is later removed; add a new removal entry instead so the project history stays intact.
 - Keep generated folders such as `.next/`, `node_modules/`, and build output out of source changes.
 

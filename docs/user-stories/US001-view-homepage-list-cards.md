@@ -6,8 +6,8 @@ As a player, I want the homepage `My Lists` section to mirror the first cards fr
 
 ## Source Specs
 
-- `../features/F005-homepage-list-cards.md`
-- `../features/F003-preset-lists.md`
+- `../specs/features/F005-homepage-list-cards.md`
+- `../specs/features/F003-preset-lists.md`
 
 ## Scenario
 

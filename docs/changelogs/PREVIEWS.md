@@ -18,6 +18,12 @@ Tracks preview-only files, throwaway mockups, temporary visual experiments, scre
 
 ### Visual Experiments
 
+- Changed Trophy Race preview block option button outlines to transparent borders that sit inside the button box.
+- Nudged Trophy Race preview block delete buttons downward to restore outline clearance below the edit buttons.
+- Moved Trophy Race preview block option buttons slightly inward so their outline rings clear the clipped arena edge.
+- Increased Trophy Race preview block option button spacing and removed their fade transition to keep the edit icon crisp.
+- Removed the Trophy Race preview action button offset shadows that made block controls look clipped at the bottom while keeping the outline rings.
+- Spaced out the Trophy Race preview treasure tracks and shifted the row left so level labels no longer collide or drift toward edit/delete controls.
 - Added a filled legendary Timekeeper Cookie relay example to Arena 2 in `public/trophy-race-progress-preview.html`.
 - Removed relay number badges from the Trophy Race preview. Removed badge CSS kept for reference:
 

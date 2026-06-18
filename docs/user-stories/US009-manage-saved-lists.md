@@ -6,8 +6,8 @@ As a player, I want to rename, reorder, and delete lists so my saved list area s
 
 ## Source Specs
 
-- `../features/F004-user-generated-lists.md`
-- `../features/F005-homepage-list-cards.md`
+- `../specs/features/F004-user-generated-lists.md`
+- `../specs/features/F005-homepage-list-cards.md`
 
 ## Scenario
 

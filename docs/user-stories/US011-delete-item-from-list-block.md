@@ -6,9 +6,9 @@ As a player, I want to delete a catalog item from a combi or free item block so 
 
 ## Source Specs
 
-- `../features/F006-empty-list-layouts.md`
-- `../user-interface/UI005-list-detail-and-combi-layouts.md`
-- `../technical/T002-local-storage-and-data-architecture.md`
+- `../specs/features/F006-empty-list-layouts.md`
+- `../specs/user-interface/UI005-list-detail-and-combi-layouts.md`
+- `../specs/technical/T002-local-storage-and-data-architecture.md`
 
 ## Scenario
 

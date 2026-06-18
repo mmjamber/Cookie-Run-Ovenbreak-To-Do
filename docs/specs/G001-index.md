@@ -30,19 +30,19 @@ This folder is the source of truth for the project. The website helps Cookie Run
 - `user-interface/UI006-empty-states-and-errors.md` - empty states, invalid inputs, incompatible add-item slots, and format-limit feedback
 - `user-interface/UI007-accessibility.md` - keyboard reachability, alt text, non-color state cues, and prompt/dialog accessibility
 
-## User Story Specs
+## Related User Stories
 
-- `user-stories/US001-view-homepage-list-cards.md` - homepage ordered-list and default-card behavior
-- `user-stories/US002-create-user-generated-list.md` - creating named user generated lists
-- `user-stories/US003-start-preset-list.md` - opening generated preset-derived lists
-- `user-stories/US004-browse-catalog-items.md` - browsing, searching, sorting, and filtering catalogs
-- `user-stories/US005-add-item-from-catalog-to-list.md` - adding catalog items to compatible add-item slots
-- `user-stories/US006-add-cookie-with-paired-pet.md` - paired-pet prompts when adding cookies
-- `user-stories/US007-fill-empty-list-slot.md` - filling empty add-item slots through catalog selection
-- `user-stories/US008-track-item-level-progress.md` - editing item levels and completion state
-- `user-stories/US009-manage-saved-lists.md` - renaming and deleting saved lists
-- `user-stories/US010-build-none-format-list.md` - building flexible None-format lists
-- `user-stories/US011-delete-item-from-list-block.md` - deleting filled catalog items from combi or free item blocks
+- `../user-stories/US001-view-homepage-list-cards.md` - homepage ordered-list and default-card behavior
+- `../user-stories/US002-create-user-generated-list.md` - creating named user generated lists
+- `../user-stories/US003-start-preset-list.md` - opening generated preset-derived lists
+- `../user-stories/US004-browse-catalog-items.md` - browsing, searching, sorting, and filtering catalogs
+- `../user-stories/US005-add-item-from-catalog-to-list.md` - adding catalog items to compatible add-item slots
+- `../user-stories/US006-add-cookie-with-paired-pet.md` - paired-pet prompts when adding cookies
+- `../user-stories/US007-fill-empty-list-slot.md` - filling empty add-item slots through catalog selection
+- `../user-stories/US008-track-item-level-progress.md` - editing item levels and completion state
+- `../user-stories/US009-manage-saved-lists.md` - renaming and deleting saved lists
+- `../user-stories/US010-build-none-format-list.md` - building flexible None-format lists
+- `../user-stories/US011-delete-item-from-list-block.md` - deleting filled catalog items from combi or free item blocks
 
 ## Technical Specs
 
@@ -61,15 +61,15 @@ This folder is the source of truth for the project. The website helps Cookie Run
 
 ## Naming Rule
 
-Use these prefixes for spec files:
+Use these prefixes for spec files and related user-story files:
 
 - `G` for general specs, such as `G001-index.md`.
 - `F` for feature specs, such as `features/F006-empty-list-layouts.md`.
 - `UI` for user interface specs under `user-interface/`, such as `user-interface/UI001-global-visual-style.md`.
 - `T` for technical specs under `technical/`, such as `technical/T002-local-storage-and-data-architecture.md`.
-- `US` for user-story specs under `user-stories/`, such as `user-stories/US002-create-user-generated-list.md`.
+- `US` for user stories under `../user-stories/`, such as `../user-stories/US002-create-user-generated-list.md`.
 
-When creating a new spec, use the next zero-padded numeric prefix for that spec type so each list stays ordered.
+When creating a new spec or user story, use the next zero-padded numeric prefix for that document type so each list stays ordered.
 
 ## Working Rule
 

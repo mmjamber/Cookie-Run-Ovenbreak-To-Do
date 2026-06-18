@@ -35,6 +35,7 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### Styling
 
+- Tightened Trophy Race preview block option button spacing and clipped the white fill so transparent borders show the arena background.
 - Changed Trophy Race preview block option button outlines from external shadows to transparent borders inside the button box.
 - Increased the spacing between Trophy Race preview block option buttons and made their hover reveal instant to avoid pixelated fading icons.
 - Removed the offset shadow layer from Trophy Race preview page and block action buttons while keeping their circular outline rings.
@@ -50,6 +51,7 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### User-Facing Polish
 
+- Restored the transparent look of Trophy Race preview block button outlines after converting them from shadows to borders.
 - Kept Trophy Race preview block button outlines transparent while preventing the arena block from clipping them.
 - Added a little vertical clearance around the Trophy Race preview delete button outline.
 - Gave the Trophy Race preview edit button outline more room inside the arena block.

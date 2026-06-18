@@ -4,6 +4,10 @@ This file gives a simple overview of every recorded project change. For details,
 
 ## Unreleased
 
+- **Added an active plan for turning the Trophy Race preview into specs.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Tightened Trophy Race preview block button spacing and restored outline transparency.**
+  Details: [UI > Styling](UI.md#styling), [UI > User-Facing Polish](UI.md#user-facing-polish), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
 - **Changed Trophy Race preview block button outlines to transparent borders.**
   Details: [UI > Styling](UI.md#styling), [UI > User-Facing Polish](UI.md#user-facing-polish), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
 - **Nudged Trophy Race preview delete block buttons downward.**

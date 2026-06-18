@@ -18,6 +18,7 @@ Tracks preview-only files, throwaway mockups, temporary visual experiments, scre
 
 ### Visual Experiments
 
+- Tightened Trophy Race preview block option button spacing and restored transparent outlines with padding-box background clipping.
 - Changed Trophy Race preview block option button outlines to transparent borders that sit inside the button box.
 - Nudged Trophy Race preview block delete buttons downward to restore outline clearance below the edit buttons.
 - Moved Trophy Race preview block option buttons slightly inward so their outline rings clear the clipped arena edge.

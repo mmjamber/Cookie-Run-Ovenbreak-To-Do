@@ -6,6 +6,7 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Documentation Process
 
+- Added `docs/plans/active/trophy-race-preview-to-specs.md` to plan how Trophy Race preview decisions should become durable specs before implementation.
 - Updated documentation structure and agent guidance so new user stories belong in `docs/user-stories/` instead of `docs/specs/user-stories/`.
 - Bolded the summary text at the top of each `docs/changelogs/CHANGELOG.md` list item to improve scan readability.
 - Improved `docs/changelogs/INDEX.md` spacing by separating each changelog file into its own subsection block.

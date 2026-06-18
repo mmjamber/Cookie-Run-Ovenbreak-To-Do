@@ -26,23 +26,23 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 - Automatic game-data updates.
 - Public sharing.
 - List export or shareable list files.
-- Automated asset ingestion from `assets/ovenbreak images` into runtime-safe `public/` paths before a dedicated implementation task.
+- Automatic asset updates before a dedicated implementation task.
 
 ## MVP Scope
 
-- Homepage with preset mode entry points.
-- Custom list creation with all five formats.
+- Homepage `My Lists` section that mirrors the first four cards from the To-do page order, including generated default preset-derived lists for new local user and guest profiles.
+- User generated list creation with all five formats.
 - List detail views with valid slots, current levels, and target levels.
 - Static catalog data structure with cookie, pet, and treasure pages.
-- Catalog search, rarity filters, and alphabetical or release-date ordering within rarity groups.
+- Catalog search, a `Hide rarity` button, and alphabetical or release-date ordering within rarity groups.
 - Local persistence for user lists.
 - Aesthetic-only sign-in and log-in controls.
 
 ## Success Criteria
 
-- A player can create a Trophy Race list with 4 default combis and add more up to 10.
+- A player can create a Trophy Race list by choosing how many arenas to start with, up to 10.
 - A player can create a Breakout list with groups of 3 to 15 combis and up to 5 groups.
-- A player can create Guild Run and Champions League arena lists with maximum target set rules.
+- A player can create Guild Run arena lists with user-selected maximum target sets and Champions League arena lists with fixed low, mid, and full arena targets.
 - A player can create a None list with individually targeted cookies, pets, and treasures.
 - Catalog sorting behaves consistently with file-name-derived rules.
 
@@ -51,3 +51,5 @@ Players may need different cookies, pets, and treasures leveled for Trophy Race,
 - `G002-rules.md` for universal rules and terminology.
 - `G004-functional-map.md` for navigation and user flows.
 - `features/F002-list-formats.md` for detailed format constraints.
+- `technical/T001-catalog-import-and-derived-data.md` for catalog data derivation.
+- `technical/T002-local-storage-and-data-architecture.md` for local data persistence.

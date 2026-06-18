@@ -9,6 +9,12 @@ description: Project-specific guidance for building the Cookie Run OvenBreak to-
 
 Read `AGENTS.md` first, then use `docs/specs/G001-index.md` to find the relevant spec before changing behavior. Treat the specs in `docs/specs/` as the source of truth.
 
+## Homepage UI Protection
+
+- Never change the way the homepage looks without explicit confirmation.
+- If a prompt implies or requires changes to the Homepage UI, stop and ask: "This request requires changes to the Homepage UI. Do you still want to proceed?"
+- Do not edit Homepage UI files, styling, layout, or visual specs until the user confirms.
+
 ## Technical Rules
 
 - Use the app directory in `app/`, static assets in `public/`, and project specs in `docs/specs/`.

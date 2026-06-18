@@ -1,0 +1,1662 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trophy Race Progress Preview</title>
+    <style>
+      @font-face {
+        font-family: "CookieRun";
+        src: url("fonts/CookieRun-Black.otf") format("opentype");
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      :root {
+        --arena-a: #eae2f1;
+        --arena-b: #c5a7dc;
+        --arena-border: #ffffff;
+        --ink: #211826;
+        --level-fill: #ffffff;
+        --level-target: #ff64e9;
+        --modal-bg: #f4edfa;
+        --modal-line: #c5a7dc;
+        --modal-title: #4b1681;
+        --modal-muted: #6b4a80;
+        --page-pink: #f7bfdc;
+        --panel-blue: #cff5ff;
+        --arena-gap: 18px;
+        --arena-width: min(287px, calc((100vw - 32px - 36px) / 3));
+        --treasure-size: 52px;
+        --pet-size: 69px;
+        --cookie-size: 177px;
+        --relay-size: 71px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+      }
+
+      body {
+        padding: 0;
+        background-color: var(--page-pink);
+        background-image:
+          radial-gradient(circle, #ffffff 5px, transparent 5.5px),
+          radial-gradient(circle, #ffffff 5px, transparent 5.5px);
+        background-position:
+          0 0,
+          22px 22px;
+        background-size: 44px 44px;
+        color: var(--ink);
+        font-family: "CookieRun", Arial, sans-serif;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        width: min(930px, 100%);
+        min-height: 100vh;
+        margin: 0 auto;
+        padding: 0 0 64px;
+        background-color: #ffffff;
+        background-image: radial-gradient(circle, #e8e2eb 2px, transparent 2.5px);
+        background-position: 7px 7px;
+        background-size: 38px 38px;
+        border: 0;
+      }
+
+      .hero {
+        position: relative;
+        height: 330px;
+        overflow: hidden;
+        background: #bdeefa;
+      }
+
+      .hero-background {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .hero-title {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 1;
+        width: min(460px, 72%);
+        height: auto;
+        transform: translate(-50%, -50%);
+        object-fit: contain;
+      }
+
+      .hero-nav {
+        position: absolute;
+        right: 10px;
+        bottom: 8px;
+        z-index: 2;
+        display: flex;
+        gap: 10px;
+      }
+
+      .hero-nav button {
+        min-width: 92px;
+        height: 28px;
+        border: 2px dashed rgb(255 255 255 / 0.86);
+        border-radius: 999px;
+        color: #ffffff;
+        font-family: "CookieRun", Arial, sans-serif;
+        font-weight: 400;
+        text-shadow: 0 1px 0 rgb(58 73 141 / 0.4);
+        cursor: default;
+      }
+
+      .hero-nav button:nth-child(1) {
+        background: #e95dac;
+        text-shadow: 0 1px 0 #a83f7f;
+      }
+
+      .hero-nav button:nth-child(2) {
+        background: #89d5e9;
+        text-shadow: 0 1px 0 rgb(58 73 141 / 0.4);
+      }
+
+      .hero-nav button:nth-child(3) {
+        background: #ffc233;
+        text-shadow: 0 1px 0 #c7831e;
+      }
+
+      .page-header {
+        margin: 0 0 24px;
+        padding: 24px 16px 0;
+        text-align: center;
+      }
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        color: #ffffff;
+        font-size: clamp(34px, 6vw, 58px);
+        letter-spacing: 0;
+        -webkit-text-stroke: 8px #4b2871;
+        paint-order: stroke fill;
+      }
+
+      .page-tools {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 0 16px 18px;
+      }
+
+      .page-tool {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        border: 3px solid #ffffff;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 0 0 2px rgba(75, 40, 113, 0.18);
+        cursor: pointer;
+      }
+
+      .page-tool:hover:not(:disabled),
+      .page-tool:focus-visible:not(:disabled),
+      .page-tool.is-active {
+        background: #eadcf5;
+      }
+
+      .page-tool:disabled {
+        cursor: default;
+        opacity: 0.45;
+      }
+
+      .page-tool-icon {
+        display: block;
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+        pointer-events: none;
+      }
+
+      .arena-stack {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, var(--arena-width)));
+        justify-content: center;
+        align-items: start;
+        gap: var(--arena-gap);
+        padding: 0 16px;
+      }
+
+      .arena {
+        min-width: 0;
+        padding: 0;
+      }
+
+      .arena-title {
+        display: inline-block;
+        margin: 0 0 -2px 14px;
+        color: #4b1681;
+        font-size: 44px;
+        line-height: 1;
+        transform: rotate(-2deg);
+      }
+
+      .arena-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .is-move-mode .arena {
+        cursor: grab;
+      }
+
+      .is-move-mode .arena:active {
+        cursor: grabbing;
+      }
+
+      .is-move-mode .arena-actions {
+        display: none;
+      }
+
+      .arena-move-handle {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 7;
+        display: none;
+        width: 34px;
+        height: 34px;
+        border: 3px solid #ffffff;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 0 0 2px rgba(75, 40, 113, 0.18);
+        pointer-events: none;
+      }
+
+      .arena-move-handle::before {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 9px;
+        width: 12px;
+        height: 2px;
+        background: #211826;
+        box-shadow:
+          0 5px 0 #211826,
+          0 10px 0 #211826;
+      }
+
+      .is-move-mode .arena-move-handle {
+        display: block;
+      }
+
+      .arena.is-dragging {
+        opacity: 0.45;
+      }
+
+      .arena.is-drop-target .combi {
+        box-shadow: 0 0 0 3px rgba(33, 24, 38, 0.24);
+      }
+
+      .combi {
+        --treasure-size: 20cqw;
+        --treasure-track-size: 24.1cqw;
+        --pet-size: 21.3cqw;
+        --cookie-size: 54.63cqw;
+        --relay-size: 21.91cqw;
+        position: relative;
+        container-type: inline-size;
+        display: grid;
+        grid-template-areas:
+          "treasures treasures treasures"
+          "pet cookie relay";
+        grid-template-columns: 23.85% 52.3% 23.85%;
+        grid-template-rows: 29.66% 70.34%;
+        justify-content: center;
+        align-items: center;
+        gap: 2.47% 0;
+        width: var(--arena-width);
+        aspect-ratio: 324 / 308;
+        padding: 4.63% 2.78% 6.79%;
+        border: 3px solid var(--arena-border);
+        border-radius: 8px;
+        background: var(--arena-a);
+        overflow: hidden;
+      }
+
+      .arena-actions {
+        position: absolute;
+        top: 11px;
+        right: 11px;
+        z-index: 6;
+        display: grid;
+        gap: 8px;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+      }
+
+      .combi:hover .arena-actions,
+      .combi:focus-within .arena-actions {
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+      }
+
+      .arena-action {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        padding: 0;
+        border: 2px solid rgba(75, 40, 113, 0.18);
+        border-radius: 50%;
+        background: #ffffff;
+        background-clip: padding-box;
+        box-shadow: inset 0 0 0 3px #ffffff;
+        cursor: pointer;
+      }
+
+      .arena-action:hover,
+      .arena-action:focus-visible {
+        background: #eadcf5;
+      }
+
+      .arena-action-icon {
+        display: block;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        pointer-events: none;
+      }
+
+      .edit-arena-icon {
+        transform: rotate(-12deg);
+      }
+
+      .delete-arena-icon {
+        width: 19px;
+        height: 19px;
+      }
+
+      .arena:nth-child(even) .combi {
+        background: var(--arena-b);
+      }
+
+      .treasures {
+        grid-area: treasures;
+        display: grid;
+        grid-template-columns: repeat(3, var(--treasure-track-size));
+        justify-content: center;
+        align-items: start;
+        gap: 4px;
+        transform: translate(-13px, 14px);
+      }
+
+      .slot {
+        position: relative;
+        display: grid;
+        justify-items: center;
+        align-content: center;
+        min-width: 0;
+      }
+
+      .slot.pet {
+        grid-area: pet;
+        align-self: center;
+        justify-self: center;
+      }
+
+      .slot.cookie {
+        grid-area: cookie;
+        align-self: end;
+        justify-self: center;
+      }
+
+      .slot.relay {
+        grid-area: relay;
+        align-self: end;
+        justify-self: center;
+      }
+
+      .slot.treasure {
+        width: var(--treasure-size);
+      }
+
+      .art-wrap {
+        position: relative;
+        display: grid;
+        place-items: center;
+        width: var(--slot-size);
+        height: var(--slot-size);
+      }
+
+      .pet .art-wrap {
+        --slot-size: var(--pet-size);
+      }
+
+      .cookie .art-wrap {
+        --slot-size: var(--cookie-size);
+      }
+
+      .relay .art-wrap {
+        --slot-size: var(--relay-size);
+      }
+
+      .relay.filled .art-wrap {
+        --relay-frame-border: #862894;
+        --relay-frame-fill: #be74c9;
+        border: 3px solid var(--relay-frame-border);
+        border-radius: 9px;
+        background: var(--relay-frame-border);
+        overflow: hidden;
+      }
+
+      .relay.filled .art-wrap::before {
+        content: "";
+        position: absolute;
+        inset: 3px;
+        z-index: 0;
+        border-radius: 5px;
+        background: var(--relay-frame-fill);
+        transform: scale(1.35);
+        pointer-events: none;
+      }
+
+      .relay.filled[data-rarity="legendary"] .art-wrap {
+        --relay-frame-border: #16cbbb;
+        --relay-frame-fill: linear-gradient(
+          135deg,
+          hsl(55deg 90% 67%),
+          hsl(173deg 87% 59%),
+          hsl(286deg 100% 61%)
+        );
+      }
+
+      .relay.filled[data-rarity="epic"] .art-wrap {
+        --relay-frame-border: #862894;
+        --relay-frame-fill: #be74c9;
+      }
+
+      .relay.filled[data-rarity="rare"] .art-wrap {
+        --relay-frame-border: #28719e;
+        --relay-frame-fill: #72b9df;
+      }
+
+      .relay.filled[data-rarity="common"] .art-wrap {
+        --relay-frame-border: #9a633d;
+        --relay-frame-fill: #d39b73;
+      }
+
+      .treasure .art-wrap {
+        --slot-size: var(--treasure-size);
+      }
+
+      .item-art {
+        display: block;
+        width: var(--slot-size);
+        height: var(--slot-size);
+        object-fit: contain;
+      }
+
+      .empty-art {
+        display: block;
+        width: var(--slot-size);
+        height: var(--slot-size);
+        object-fit: contain;
+      }
+
+      .cookie .item-art {
+        width: var(--slot-size);
+        height: var(--slot-size);
+      }
+
+      .relay .item-art {
+        position: absolute;
+        left: 50%;
+        bottom: -32%;
+        z-index: 1;
+        width: auto;
+        height: calc(var(--slot-size) * 1.28);
+        max-width: none;
+        object-fit: contain;
+        transform: translateX(-50%);
+      }
+
+      .treasure .item-art {
+        width: var(--slot-size);
+        height: var(--slot-size);
+        transform: translateX(-8%) scale(1.18);
+      }
+
+      .level-control {
+        display: block;
+        width: var(--level-width, 78px);
+        justify-content: center;
+        margin-top: -8px;
+        z-index: 3;
+      }
+
+      .treasure .level-control {
+        margin-top: -7px;
+      }
+
+      .cookie .level-control {
+        margin-top: -25px;
+      }
+
+      .relay .level-control {
+        margin-top: -10px;
+      }
+
+      .pet .level-control,
+      .relay .level-control,
+      .treasure .level-control {
+        justify-self: center;
+      }
+
+      .pet .level-control {
+        transform: translateX(12px);
+      }
+
+      .level-text {
+        display: inline-block;
+        width: var(--level-width, 78px);
+        color: var(--level-fill);
+        font-size: 15px;
+        line-height: 0.9;
+        white-space: nowrap;
+        text-align: left;
+        -webkit-text-stroke: 3px #171017;
+        paint-order: stroke fill;
+      }
+
+      .cookie .level-text {
+        font-size: 26px;
+        -webkit-text-stroke-width: 3.5px;
+      }
+
+      .pet .level-text,
+      .relay .level-text {
+        font-size: 18px;
+        -webkit-text-stroke-width: 3px;
+      }
+
+      .treasure .level-text {
+        --level-width: 78px;
+        font-size: 16px;
+        -webkit-text-stroke-width: 3px;
+      }
+
+      .treasure .level-control {
+        --level-width: 78px;
+      }
+
+      .pet .level-control,
+      .relay .level-control {
+        --level-width: 92px;
+      }
+
+      .cookie .level-control {
+        --level-width: 128px;
+      }
+
+      .level-target {
+        color: var(--level-target);
+      }
+
+      .empty-slot {
+        opacity: 0.96;
+      }
+
+      .empty-slot .level-control {
+        visibility: hidden;
+      }
+
+      .level-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: none;
+        place-items: center;
+        padding: 14px;
+        background: rgba(43, 26, 58, 0.46);
+      }
+
+      .level-modal.is-open {
+        display: grid;
+      }
+
+      .choice-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        display: none;
+        place-items: center;
+        padding: 14px;
+        background: rgba(43, 26, 58, 0.46);
+      }
+
+      .choice-modal.is-open {
+        display: grid;
+      }
+
+      .level-dialog {
+        width: min(352px, 100%);
+        max-height: calc(100vh - 28px);
+        overflow: auto;
+        border: 3px solid #4b2871;
+        border-radius: 14px;
+        background: var(--modal-bg);
+        color: var(--ink);
+        box-shadow: 0 20px 50px rgba(75, 40, 113, 0.28);
+      }
+
+      .choice-dialog {
+        width: min(380px, 100%);
+      }
+
+      .level-dialog-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 12px 8px;
+        border-bottom: 1px solid var(--modal-line);
+      }
+
+      .choice-dialog-body {
+        display: grid;
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .choice-dialog-text {
+        color: var(--modal-muted);
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.35;
+        text-align: center;
+      }
+
+      .choice-actions {
+        display: grid;
+        gap: 8px;
+      }
+
+      .choice-action {
+        min-height: 36px;
+        border: 2px solid #8f6bb2;
+        border-radius: 9px;
+        background: #ffffff;
+        color: #4b1681;
+        cursor: pointer;
+      }
+
+      .choice-action:hover,
+      .choice-action:focus-visible {
+        background: #fff4c8;
+      }
+
+      .choice-action.is-danger {
+        color: #9f2358;
+      }
+
+      .level-dialog-title {
+        color: var(--modal-title);
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      .level-close {
+        width: 26px;
+        height: 26px;
+        border: 2px solid #4b2871;
+        border-radius: 50%;
+        background: #ffffff;
+        color: #4b1681;
+        font-size: 16px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .level-editor-list {
+        display: grid;
+      }
+
+      .level-editor-row {
+        padding: 8px 10px 10px;
+        border-bottom: 1px solid var(--modal-line);
+        text-align: center;
+      }
+
+      .level-editor-row:last-child {
+        border-bottom: 0;
+      }
+
+      .level-editor-row.is-empty,
+      .level-treasure-item.is-empty {
+        opacity: 0.45;
+      }
+
+      .level-editor-row.is-empty .level-treasure-item.is-empty {
+        opacity: 1;
+      }
+
+      .level-editor-name {
+        margin-bottom: 6px;
+        color: var(--modal-title);
+        font-size: 18px;
+        line-height: 1.1;
+      }
+
+      .level-editor-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .level-treasure-group {
+        display: grid;
+        gap: 7px;
+      }
+
+      .level-treasure-item {
+        display: grid;
+        gap: 4px;
+      }
+
+      .level-editor-label {
+        display: block;
+        margin-bottom: 3px;
+        color: var(--modal-muted);
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .level-stepper {
+        display: grid;
+        grid-template-columns: 28px 42px 28px;
+        justify-content: center;
+        gap: 3px;
+      }
+
+      .level-step,
+      .level-value {
+        display: grid;
+        place-items: center;
+        min-height: 28px;
+        border: 2px solid #8f6bb2;
+        border-radius: 7px;
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      .level-step {
+        background: #ffffff;
+        color: #4b1681;
+        cursor: pointer;
+      }
+
+      .level-step:hover:not(:disabled),
+      .level-step:focus-visible:not(:disabled) {
+        background: #fff4c8;
+      }
+
+      .level-step:disabled {
+        cursor: default;
+        opacity: 0.35;
+      }
+
+      .level-value {
+        background: #ffffff;
+        color: #211826;
+      }
+
+      .level-empty-note {
+        color: var(--modal-muted);
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      @media (max-width: 900px) {
+        :root {
+          --arena-width: min(324px, calc((100vw - 32px - 18px) / 2));
+        }
+
+        .arena-stack {
+          grid-template-columns: repeat(2, var(--arena-width));
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 640px) {
+        :root {
+          --arena-width: 324px;
+          --treasure-size: 52px;
+          --treasure-track-size: 78px;
+          --pet-size: 69px;
+          --cookie-size: 177px;
+          --relay-size: 71px;
+        }
+
+        body {
+          padding: 0;
+        }
+
+        .page {
+          padding-bottom: 48px;
+        }
+
+        .hero {
+          height: 250px;
+        }
+
+        .hero-title {
+          width: min(420px, 78%);
+        }
+
+        .hero-nav {
+          left: 12px;
+          right: 12px;
+          justify-content: center;
+        }
+
+        .hero-nav button {
+          min-width: 78px;
+        }
+
+        .page-header {
+          padding: 18px 10px 0;
+        }
+
+        .page-tools {
+          padding: 10px 10px 16px;
+        }
+
+        .arena-stack {
+          grid-template-columns: 1fr;
+          padding: 0 10px;
+        }
+
+        .combi {
+          grid-template-columns: 73px 160px 73px;
+          grid-template-rows: 78px 192px;
+          gap: 8px 0;
+          padding: 15px 9px 22px;
+        }
+
+        .slot.pet,
+        .slot.relay,
+        .slot.cookie {
+          justify-self: center;
+        }
+
+        .level-text {
+          font-size: 18px;
+          -webkit-text-stroke-width: 3px;
+        }
+
+        .cookie .level-text {
+          font-size: 26px;
+          -webkit-text-stroke-width: 3.5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page" aria-label="Trophy Race progress tracking preview">
+      <section class="hero" aria-label="CookieRun OvenBreak">
+        <img class="hero-background" src="images/homepage-banner-current.png" alt="" />
+        <img class="hero-title" src="images/title.png" alt="CookieRun OvenBreak" />
+        <nav class="hero-nav" aria-label="Main navigation">
+          <button type="button">home</button>
+          <button type="button">to-do</button>
+          <button type="button">cookies</button>
+        </nav>
+      </section>
+
+      <header class="page-header">
+        <h1>Trophy Race</h1>
+      </header>
+
+      <div class="page-tools" aria-label="List actions">
+        <button class="page-tool move-list" type="button" aria-label="Move arenas" aria-pressed="false">
+          <img class="page-tool-icon move-tool-icon" src="../assets/ovenbreak images/free assets/move.png" alt="" aria-hidden="true" />
+        </button>
+        <button class="page-tool add-arena" type="button" aria-label="Add arena">
+          <img class="page-tool-icon" src="../assets/ovenbreak images/free assets/plus.png" alt="" aria-hidden="true" />
+        </button>
+      </div>
+
+      <div class="arena-stack" id="arena-stack">
+        <section class="arena" aria-labelledby="arena-1-title">
+          <div class="arena-heading">
+            <h2 class="arena-title" id="arena-1-title">Arena 1</h2>
+          </div>
+          <div class="combi">
+            <div class="treasures">
+              <div class="slot treasure filled" data-current="8" data-target="12" data-kind="treasure">
+                <div class="art-wrap">
+                  <img class="item-art" src="images/treasures/legendary/8-dread-grasp-of-darkness.png" alt="Dread Grasp of Darkness" />
+                </div>
+              </div>
+              <div class="slot treasure filled" data-current="12" data-target="12" data-kind="treasure">
+                <div class="art-wrap">
+                  <img class="item-art" src="images/treasures/epic/112-doughy-rolling-pin.png" alt="Doughy Rolling Pin" />
+                </div>
+              </div>
+              <div class="slot treasure filled" data-current="4" data-target="12" data-kind="treasure">
+                <div class="art-wrap">
+                  <img class="item-art" src="images/treasures/epic/111-twirling-timepiece.png" alt="Twirling Timepiece" />
+                </div>
+              </div>
+            </div>
+
+            <div class="slot pet filled" data-current="10" data-target="15" data-kind="pet">
+              <div class="art-wrap">
+                <img class="item-art" src="images/cookies/epic/195-chonky-cake-wolf.png" alt="Chonky Cake Wolf" />
+              </div>
+            </div>
+
+            <div class="slot cookie filled" data-current="13" data-target="15" data-kind="cookie">
+              <div class="art-wrap">
+                <img class="item-art" src="images/cookies/epic/195-red-velvet.png" alt="Red Velvet Cookie" />
+              </div>
+            </div>
+
+            <div class="slot relay filled" data-current="5" data-target="15" data-kind="relay cookie" data-rarity="epic">
+              <div class="art-wrap">
+                <img class="item-art" src="images/cookies/epic/194-agar-agar-cookie.webp" alt="Agar Agar Cookie" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="arena" aria-labelledby="arena-2-title">
+          <div class="arena-heading">
+            <h2 class="arena-title" id="arena-2-title">Arena 2</h2>
+          </div>
+          <div class="combi">
+            <div class="treasures">
+              <div class="slot treasure empty-slot">
+                <div class="art-wrap">
+                  <img class="empty-art" src="../assets/ovenbreak images/add cookies/add treasure.png" alt="Add treasure" />
+                </div>
+              </div>
+              <div class="slot treasure empty-slot">
+                <div class="art-wrap">
+                  <img class="empty-art" src="../assets/ovenbreak images/add cookies/add treasure.png" alt="Add treasure" />
+                </div>
+              </div>
+              <div class="slot treasure empty-slot">
+                <div class="art-wrap">
+                  <img class="empty-art" src="../assets/ovenbreak images/add cookies/add treasure.png" alt="Add treasure" />
+                </div>
+              </div>
+            </div>
+
+            <div class="slot pet filled" data-current="7" data-target="15" data-kind="pet">
+              <div class="art-wrap">
+                <img class="item-art" src="images/cookies/epic/193-meowsuring-cup.webp" alt="Meowsuring Cup" />
+              </div>
+            </div>
+
+            <div class="slot cookie empty-slot">
+              <div class="art-wrap">
+                <img class="empty-art" src="../assets/ovenbreak images/add cookies/add cookie.png" alt="Add main cookie" />
+              </div>
+            </div>
+
+            <div class="slot relay filled" data-current="15" data-target="15" data-kind="relay cookie" data-rarity="legendary">
+              <div class="art-wrap">
+                <img class="item-art" src="images/cookies/legendary/8-timekeeper-cookie.webp" alt="Timekeeper Cookie" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="arena" aria-labelledby="arena-3-title">
+          <div class="arena-heading">
+            <h2 class="arena-title" id="arena-3-title">Arena 3</h2>
+          </div>
+          <div class="combi">
+            <div class="treasures">
+              <div class="slot treasure filled" data-current="6" data-target="12" data-kind="treasure">
+                <div class="art-wrap">
+                  <img class="item-art" src="images/treasures/legendary/8-dread-grasp-of-darkness.png" alt="Dread Grasp of Darkness" />
+                </div>
+              </div>
+              <div class="slot treasure empty-slot">
+                <div class="art-wrap">
+                  <img class="empty-art" src="../assets/ovenbreak images/add cookies/add treasure.png" alt="Add treasure" />
+                </div>
+              </div>
+              <div class="slot treasure empty-slot">
+                <div class="art-wrap">
+                  <img class="empty-art" src="../assets/ovenbreak images/add cookies/add treasure.png" alt="Add treasure" />
+                </div>
+              </div>
+            </div>
+
+            <div class="slot pet empty-slot">
+              <div class="art-wrap">
+                <img class="empty-art" src="../assets/ovenbreak images/add cookies/add pet.png" alt="Add pet" />
+              </div>
+            </div>
+
+            <div class="slot cookie empty-slot">
+              <div class="art-wrap">
+                <img class="empty-art" src="../assets/ovenbreak images/add cookies/add cookie.png" alt="Add main cookie" />
+              </div>
+            </div>
+
+            <div class="slot relay filled" data-current="9" data-target="15" data-kind="relay cookie" data-rarity="epic">
+              <div class="art-wrap">
+                <img class="item-art" src="images/cookies/epic/190-dark-fondue-cookie.webp" alt="Dark Fondue Cookie" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="arena" aria-labelledby="arena-4-title">
+          <div class="arena-heading">
+            <h2 class="arena-title" id="arena-4-title">Arena 4</h2>
+          </div>
+          <div class="combi">
+            <div class="treasures">
+              <div class="slot treasure empty-slot">
+                <div class="art-wrap">
+                  <img class="empty-art" src="../assets/ovenbreak images/add cookies/add treasure.png" alt="Add treasure" />
+                </div>
+              </div>
+              <div class="slot treasure empty-slot">
+                <div class="art-wrap">
+                  <img class="empty-art" src="../assets/ovenbreak images/add cookies/add treasure.png" alt="Add treasure" />
+                </div>
+              </div>
+              <div class="slot treasure empty-slot">
+                <div class="art-wrap">
+                  <img class="empty-art" src="../assets/ovenbreak images/add cookies/add treasure.png" alt="Add treasure" />
+                </div>
+              </div>
+            </div>
+
+            <div class="slot pet empty-slot">
+              <div class="art-wrap">
+                <img class="empty-art" src="../assets/ovenbreak images/add cookies/add pet.png" alt="Add pet" />
+              </div>
+            </div>
+
+            <div class="slot cookie filled" data-current="11" data-target="15" data-kind="cookie">
+              <div class="art-wrap">
+                <img class="item-art" src="images/cookies/epic/193-entremet-cookie.webp" alt="Entremet Cookie" />
+              </div>
+            </div>
+
+            <div class="slot relay empty-slot">
+              <div class="art-wrap">
+                <img class="empty-art" src="../assets/ovenbreak images/add cookies/add relay.png?v=2026-06-16-relay-2" alt="Add relay cookie" />
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="level-modal" id="level-modal" aria-hidden="true">
+      <section class="level-dialog" role="dialog" aria-modal="true" aria-labelledby="level-dialog-title">
+        <div class="level-dialog-header">
+          <h2 class="level-dialog-title" id="level-dialog-title">Edit Levels</h2>
+          <button class="level-close" type="button" aria-label="Close level editor">x</button>
+        </div>
+        <div class="level-editor-list" id="level-editor-list"></div>
+      </section>
+    </div>
+
+    <div class="choice-modal" id="delete-modal" aria-hidden="true">
+      <section class="level-dialog choice-dialog" role="dialog" aria-modal="true" aria-labelledby="delete-dialog-title">
+        <div class="level-dialog-header">
+          <h2 class="level-dialog-title" id="delete-dialog-title">Delete Arena</h2>
+          <button class="level-close delete-close" type="button" aria-label="Close delete options">x</button>
+        </div>
+        <div class="choice-dialog-body">
+          <p class="choice-dialog-text" id="delete-dialog-text">Choose what to remove from this arena.</p>
+          <div class="choice-actions">
+            <button class="choice-action clear-arena-items" type="button">Remove items only</button>
+            <button class="choice-action is-danger remove-arena-block" type="button">Remove full arena</button>
+            <button class="choice-action cancel-delete" type="button">Cancel</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const filledSlots = document.querySelectorAll(".slot.filled");
+
+      function renderSlot(slot) {
+        const current = Number(slot.dataset.current);
+        const target = Number(slot.dataset.target);
+        const control = slot.querySelector(".level-control") || document.createElement("div");
+
+        control.className = "level-control";
+        control.innerHTML = `
+          <span class="level-buttons" aria-hidden="true">
+            <button class="level-arrow up" type="button" aria-label="Increase ${slot.dataset.kind} level">▲</button>
+            <button class="level-arrow down" type="button" aria-label="Decrease ${slot.dataset.kind} level">▼</button>
+          </span>
+          <span class="level-text">Lv.${current}/<span class="level-target">${target}</span></span>
+        `;
+
+        if (!control.parentElement) {
+          slot.append(control);
+        }
+
+        const up = control.querySelector(".up");
+        const down = control.querySelector(".down");
+
+        up.disabled = current >= target;
+        down.disabled = current <= 1;
+
+        up.addEventListener("click", () => {
+          slot.dataset.current = Math.min(target, current + 1);
+          renderSlot(slot);
+        });
+
+        down.addEventListener("click", () => {
+          slot.dataset.current = Math.max(1, current - 1);
+          renderSlot(slot);
+        });
+      }
+
+      // Legacy per-slot arrows are disabled; the modal script below renders levels.
+    </script>
+
+    <script>
+      const arenaLimit = 10;
+      const arenaStack = document.querySelector("#arena-stack");
+      const moveListButton = document.querySelector(".move-list");
+      const addArenaButton = document.querySelector(".add-arena");
+      const modal = document.querySelector("#level-modal");
+      const modalTitle = document.querySelector("#level-dialog-title");
+      const modalList = document.querySelector("#level-editor-list");
+      const modalClose = document.querySelector(".level-close");
+      const deleteModal = document.querySelector("#delete-modal");
+      const deleteTitle = document.querySelector("#delete-dialog-title");
+      const deleteText = document.querySelector("#delete-dialog-text");
+      const deleteClose = document.querySelector(".delete-close");
+      const clearArenaItemsButton = document.querySelector(".clear-arena-items");
+      const removeArenaBlockButton = document.querySelector(".remove-arena-block");
+      const cancelDeleteButton = document.querySelector(".cancel-delete");
+      let activeArena = null;
+      let pendingDeleteArena = null;
+      let isMoveMode = false;
+
+      const emptyArt = {
+        treasure: "../assets/ovenbreak images/add cookies/add treasure.png",
+        pet: "../assets/ovenbreak images/add cookies/add pet.png",
+        cookie: "../assets/ovenbreak images/add cookies/add cookie.png",
+        relay: "../assets/ovenbreak images/add cookies/add relay.png?v=2026-06-16-relay-2",
+      };
+
+      const editorSlots = [
+        { selector: ".treasure:nth-child(1)", kind: "treasure", max: 12 },
+        { selector: ".treasure:nth-child(2)", kind: "treasure", max: 12 },
+        { selector: ".treasure:nth-child(3)", kind: "treasure", max: 12 },
+        { selector: ".pet", kind: "pet", label: "Pet", max: 15 },
+        { selector: ".cookie", kind: "cookie", label: "Main Cookie", max: 15 },
+        { selector: ".relay", kind: "relay", label: "Relay", max: 15 },
+      ];
+
+      function arenaBlocks() {
+        return Array.from(arenaStack.querySelectorAll(".arena"));
+      }
+
+      function emptySlotMarkup(kind) {
+        const alt = {
+          treasure: "Add treasure",
+          pet: "Add pet",
+          cookie: "Add main cookie",
+          relay: "Add relay cookie",
+        }[kind];
+
+        return `
+          <div class="art-wrap">
+            <img class="empty-art" src="${emptyArt[kind]}" alt="${alt}" />
+          </div>
+        `;
+      }
+
+      function emptyArenaMarkup() {
+        return `
+          <section class="arena">
+            <div class="arena-heading">
+              <h2 class="arena-title">Arena</h2>
+            </div>
+            <div class="combi">
+              <div class="treasures">
+                <div class="slot treasure empty-slot">${emptySlotMarkup("treasure")}</div>
+                <div class="slot treasure empty-slot">${emptySlotMarkup("treasure")}</div>
+                <div class="slot treasure empty-slot">${emptySlotMarkup("treasure")}</div>
+              </div>
+              <div class="slot pet empty-slot">${emptySlotMarkup("pet")}</div>
+              <div class="slot cookie empty-slot">${emptySlotMarkup("cookie")}</div>
+              <div class="slot relay empty-slot">${emptySlotMarkup("relay")}</div>
+            </div>
+          </section>
+        `;
+      }
+
+      function slotKind(slot) {
+        if (slot.classList.contains("treasure")) return "treasure";
+        if (slot.classList.contains("pet")) return "pet";
+        if (slot.classList.contains("relay")) return "relay";
+        return "cookie";
+      }
+
+      function clearSlot(slot) {
+        const kind = slotKind(slot);
+
+        slot.classList.remove("filled");
+        slot.classList.add("empty-slot");
+        delete slot.dataset.current;
+        delete slot.dataset.target;
+        delete slot.dataset.kind;
+        slot.innerHTML = emptySlotMarkup(kind);
+      }
+
+      function clearArenaItems(arena) {
+        arena.querySelectorAll(".slot.filled").forEach(clearSlot);
+      }
+
+      function renderPassiveLevel(slot) {
+        const current = Number(slot.dataset.current);
+        const target = Number(slot.dataset.target);
+        const control = slot.querySelector(".level-control") || document.createElement("div");
+
+        control.className = "level-control";
+        control.innerHTML = `<span class="level-text">Lv.${current}/<span class="level-target">${target}</span></span>`;
+
+        if (!control.parentElement) {
+          slot.append(control);
+        }
+      }
+
+      function setSlotLevel(slot, field, direction, max) {
+        const current = Number(slot.dataset.current);
+        const target = Number(slot.dataset.target);
+
+        if (field === "current") {
+          slot.dataset.current = Math.max(1, Math.min(target, current + direction));
+        } else {
+          const nextTarget = Math.max(1, Math.min(max, target + direction));
+          slot.dataset.target = nextTarget;
+          slot.dataset.current = Math.min(current, nextTarget);
+        }
+
+        renderPassiveLevel(slot);
+        renderEditor(activeArena);
+      }
+
+      function levelStepper(slot, field, label, max) {
+        const value = Number(slot.dataset[field]);
+        const target = Number(slot.dataset.target);
+        const upper = field === "current" ? target : max;
+        const minusDisabled = value <= 1 ? "disabled" : "";
+        const plusDisabled = value >= upper ? "disabled" : "";
+
+        return `
+          <div>
+            <span class="level-editor-label">${label}</span>
+            <div class="level-stepper">
+              <button class="level-step" type="button" data-field="${field}" data-direction="-1" ${minusDisabled}>-</button>
+              <span class="level-value">${value}</span>
+              <button class="level-step" type="button" data-field="${field}" data-direction="1" ${plusDisabled}>+</button>
+            </div>
+          </div>
+        `;
+      }
+
+      function renderTreasureEditor(arena) {
+        const treasureSlots = editorSlots.slice(0, 3);
+        const hasTreasure = treasureSlots.some((item) => {
+          const slot = arena.querySelector(item.selector);
+
+          return slot && slot.classList.contains("filled");
+        });
+        const rows = treasureSlots.map((item, index) => {
+          const slot = arena.querySelector(item.selector);
+
+          if (!slot || !slot.classList.contains("filled")) {
+            return `
+              <div class="level-treasure-item is-empty">
+                <span class="level-empty-note">Empty slot</span>
+              </div>
+            `;
+          }
+
+          return `
+            <div class="level-treasure-item" data-editor-index="${index}">
+              <div class="level-editor-pair">
+                ${levelStepper(slot, "current", "Current", item.max)}
+                ${levelStepper(slot, "target", "Target", item.max)}
+              </div>
+            </div>
+          `;
+        });
+
+        return `
+          <section class="level-editor-row ${hasTreasure ? "" : "is-empty"}">
+            <h3 class="level-editor-name">Treasures</h3>
+            <div class="level-treasure-group">
+              ${rows.join("")}
+            </div>
+          </section>
+        `;
+      }
+
+      function renderEditor(arena) {
+        if (!arena) {
+          return;
+        }
+
+        const arenaName = arena.querySelector(".arena-title").textContent.trim();
+        modalTitle.textContent = `${arenaName} Levels`;
+
+        modalList.innerHTML = renderTreasureEditor(arena) + editorSlots
+          .slice(3)
+          .map((item, index) => {
+            const slot = arena.querySelector(item.selector);
+            const editorIndex = index + 3;
+
+            if (!slot || !slot.classList.contains("filled")) {
+              return `
+                <section class="level-editor-row is-empty">
+                  <h3 class="level-editor-name">${item.label}</h3>
+                  <p class="level-empty-note">Empty slot</p>
+                </section>
+              `;
+            }
+
+            return `
+              <section class="level-editor-row" data-editor-index="${editorIndex}">
+                <h3 class="level-editor-name">${item.label}</h3>
+                <div class="level-editor-pair">
+                  ${levelStepper(slot, "current", "Current", item.max)}
+                  ${levelStepper(slot, "target", "Target", item.max)}
+                </div>
+              </section>
+            `;
+          })
+          .join("");
+      }
+
+      function openEditor(arena) {
+        activeArena = arena;
+        renderEditor(arena);
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        modalClose.focus();
+      }
+
+      function closeEditor() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        activeArena = null;
+      }
+
+      function openDeleteOptions(arena) {
+        pendingDeleteArena = arena;
+        const title = arena.querySelector(".arena-title").textContent.trim();
+
+        deleteTitle.textContent = `Delete ${title}`;
+        deleteText.textContent = `Do you want to remove all items from ${title}, or remove the full arena block?`;
+        removeArenaBlockButton.disabled = arenaBlocks().length <= 1;
+        deleteModal.classList.add("is-open");
+        deleteModal.setAttribute("aria-hidden", "false");
+        clearArenaItemsButton.focus();
+      }
+
+      function closeDeleteOptions() {
+        deleteModal.classList.remove("is-open");
+        deleteModal.setAttribute("aria-hidden", "true");
+        pendingDeleteArena = null;
+      }
+
+      function ensureArenaHeading(arena) {
+        let heading = arena.querySelector(".arena-heading");
+
+        if (!heading) {
+          const title = arena.querySelector(".arena-title");
+          heading = document.createElement("div");
+          heading.className = "arena-heading";
+          title.before(heading);
+          heading.append(title);
+        }
+      }
+
+      function ensureArenaActions(arena) {
+        const combi = arena.querySelector(".combi");
+        let actions = arena.querySelector(".arena-actions");
+
+        if (!actions) {
+          actions = document.createElement("div");
+          actions.className = "arena-actions";
+          actions.innerHTML = `
+            <button class="arena-action edit-arena" type="button">
+              <img class="arena-action-icon edit-arena-icon" src="../assets/ovenbreak images/free assets/pen.png" alt="" aria-hidden="true" />
+            </button>
+            <button class="arena-action delete-arena" type="button">
+              <img class="arena-action-icon delete-arena-icon" src="../assets/ovenbreak images/free assets/bin.png" alt="" aria-hidden="true" />
+            </button>
+          `;
+          combi.append(actions);
+        }
+
+        if (!arena.querySelector(".arena-move-handle")) {
+          const moveHandle = document.createElement("span");
+
+          moveHandle.className = "arena-move-handle";
+          moveHandle.setAttribute("aria-hidden", "true");
+          combi.append(moveHandle);
+        }
+      }
+
+      function refreshArenaControls() {
+        const arenas = arenaBlocks();
+
+        arenas.forEach((arena, index) => {
+          ensureArenaHeading(arena);
+          ensureArenaActions(arena);
+
+          const number = index + 1;
+          const title = arena.querySelector(".arena-title");
+          const editButton = arena.querySelector(".edit-arena");
+          const deleteButton = arena.querySelector(".delete-arena");
+
+          title.textContent = `Arena ${number}`;
+          title.id = `arena-${number}-title`;
+          arena.setAttribute("aria-labelledby", title.id);
+          arena.draggable = isMoveMode;
+          editButton.setAttribute("aria-label", `Edit levels for Arena ${number}`);
+          deleteButton.setAttribute("aria-label", `Delete Arena ${number}`);
+        });
+
+        addArenaButton.disabled = arenas.length >= arenaLimit;
+        addArenaButton.setAttribute(
+          "aria-label",
+          arenas.length >= arenaLimit ? "Arena limit reached" : "Add arena",
+        );
+      }
+
+      function addArena() {
+        if (arenaBlocks().length >= arenaLimit) {
+          return;
+        }
+
+        arenaStack.insertAdjacentHTML("beforeend", emptyArenaMarkup());
+        refreshArenaControls();
+      }
+
+      function setMoveMode(nextValue) {
+        isMoveMode = nextValue;
+        arenaStack.classList.toggle("is-move-mode", isMoveMode);
+        moveListButton.classList.toggle("is-active", isMoveMode);
+        moveListButton.setAttribute("aria-pressed", String(isMoveMode));
+        refreshArenaControls();
+      }
+
+      function clearDropTargets() {
+        arenaBlocks().forEach((arena) => arena.classList.remove("is-drop-target"));
+      }
+
+      function moveDraggedArena(event, targetArena) {
+        const draggingArena = arenaStack.querySelector(".arena.is-dragging");
+
+        if (!draggingArena || !targetArena || draggingArena === targetArena) {
+          return;
+        }
+
+        const rect = targetArena.getBoundingClientRect();
+        const midpointX = rect.left + rect.width / 2;
+        const midpointY = rect.top + rect.height / 2;
+        const sameRow = Math.abs(event.clientY - midpointY) < rect.height * 0.45;
+        const insertBeforeTarget = sameRow ? event.clientX < midpointX : event.clientY < midpointY;
+
+        if (insertBeforeTarget) {
+          arenaStack.insertBefore(draggingArena, targetArena);
+        } else {
+          arenaStack.insertBefore(draggingArena, targetArena.nextElementSibling);
+        }
+      }
+
+      moveListButton.addEventListener("click", () => {
+        setMoveMode(!isMoveMode);
+      });
+
+      addArenaButton.addEventListener("click", addArena);
+
+      arenaStack.addEventListener("click", (event) => {
+        const arena = event.target.closest(".arena");
+
+        if (!arena) {
+          return;
+        }
+
+        if (event.target.closest(".edit-arena")) {
+          openEditor(arena);
+          return;
+        }
+
+        if (event.target.closest(".delete-arena")) {
+          openDeleteOptions(arena);
+          return;
+        }
+
+        event.stopPropagation();
+      });
+
+      arenaStack.addEventListener("dragstart", (event) => {
+        const arena = event.target.closest(".arena");
+
+        if (!isMoveMode || !arena) {
+          event.preventDefault();
+          return;
+        }
+
+        arena.classList.add("is-dragging");
+        event.dataTransfer.effectAllowed = "move";
+        event.dataTransfer.setData("text/plain", arena.querySelector(".arena-title").textContent.trim());
+      });
+
+      arenaStack.addEventListener("dragover", (event) => {
+        const targetArena = event.target.closest(".arena:not(.is-dragging)");
+
+        if (!isMoveMode || !targetArena) {
+          return;
+        }
+
+        event.preventDefault();
+        clearDropTargets();
+        targetArena.classList.add("is-drop-target");
+        moveDraggedArena(event, targetArena);
+      });
+
+      arenaStack.addEventListener("drop", (event) => {
+        if (!isMoveMode) {
+          return;
+        }
+
+        event.preventDefault();
+        clearDropTargets();
+        refreshArenaControls();
+      });
+
+      arenaStack.addEventListener("dragend", () => {
+        arenaBlocks().forEach((arena) => arena.classList.remove("is-dragging"));
+        clearDropTargets();
+        refreshArenaControls();
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!isMoveMode) {
+          return;
+        }
+
+        if (event.target.closest(".arena") || event.target.closest(".page-tools")) {
+          return;
+        }
+
+        setMoveMode(false);
+      });
+
+      clearArenaItemsButton.addEventListener("click", () => {
+        if (pendingDeleteArena) {
+          clearArenaItems(pendingDeleteArena);
+        }
+
+        closeDeleteOptions();
+      });
+
+      removeArenaBlockButton.addEventListener("click", () => {
+        if (pendingDeleteArena && arenaBlocks().length > 1) {
+          pendingDeleteArena.remove();
+          refreshArenaControls();
+        }
+
+        closeDeleteOptions();
+      });
+
+      [deleteClose, cancelDeleteButton].forEach((button) => {
+        button.addEventListener("click", closeDeleteOptions);
+      });
+
+      modalList.addEventListener("click", (event) => {
+        const button = event.target.closest(".level-step");
+
+        if (!button || !activeArena) {
+          return;
+        }
+
+        const editorItem = button.closest("[data-editor-index]");
+        const editor = editorSlots[Number(editorItem.dataset.editorIndex)];
+        const slot = activeArena.querySelector(editor.selector);
+
+        setSlotLevel(slot, button.dataset.field, Number(button.dataset.direction), editor.max);
+      });
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeEditor();
+        }
+      });
+
+      deleteModal.addEventListener("click", (event) => {
+        if (event.target === deleteModal) {
+          closeDeleteOptions();
+        }
+      });
+
+      modalClose.addEventListener("click", closeEditor);
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("is-open")) {
+          closeEditor();
+        }
+
+        if (event.key === "Escape" && deleteModal.classList.contains("is-open")) {
+          closeDeleteOptions();
+        }
+      });
+
+      document.querySelectorAll(".slot.filled").forEach(renderPassiveLevel);
+      document.querySelectorAll("img").forEach((image) => {
+        image.draggable = false;
+      });
+      refreshArenaControls();
+    </script>
+  </body>
+</html>

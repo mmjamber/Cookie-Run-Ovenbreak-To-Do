@@ -1,0 +1,133 @@
+# UI Spec: Catalog Item Cards
+
+## Shared Item Cards
+
+Use the homepage item-card sizing whenever cookies, pets, or treasures are shown as standalone visual items.
+
+- Item card wrapper: display grid, centered content, top aligned, gap `8px`.
+- Framed cookie or pet card width: `114px`.
+- Treasure card width: `132px`.
+- Treasure names may use a top margin of `4px` when displayed under the treasure image.
+- Item grids should center their items and avoid horizontal overflow on mobile.
+
+## Framed Cookie And Pet Images
+
+- Use rarity frames for cookies and pets.
+- Standard item frame size: `114px` by `114px`.
+- Standard item frame border: `5px`.
+- Standard item frame radius: `18px`.
+- Framed items must use a real outer frame color with an oversized inner fill layer clipped by the rounded frame.
+- The inner fill layer must use `inset: 5px`, `border-radius: 13px`, and `transform: scale(1.35)` for standard item frames.
+- Legendary frame border color: `#16cbbb`.
+- Legendary frame fill: diagonal gradient, `135deg`, from `hsl(55deg 90% 67%)` to `hsl(173deg 87% 59%)` to `hsl(286deg 100% 61%)`.
+- Epic frame border color: `#862894`; Epic frame fill color: `#be74c9`.
+- Rare frame border color: `#28719e`; Rare frame fill color: `#72b9df`.
+- Common frame border color: `#9a633d`; Common frame fill color: `#d39b73`.
+- Frame content is centered with CSS grid.
+- Frame overflow is hidden.
+- Cookie images inside standard frames: `height: 102px`, `width: auto`, `max-width: none`, `max-height: none`, `object-fit: contain`, transform `translateY(4px)`.
+- Pet images inside standard frames: centered, `width: auto`, `height: auto`, `max-width: 96px`, `max-height: 86px`, `object-fit: contain`, `object-position: center`, no transform.
+- Compact pet fit: `max-width: 84px`, `max-height: 76px`.
+
+## Treasure Images
+
+- Treasures do not use visual rarity frames.
+- Treasure image display: `height: 110px`, `width: auto`, `max-width: none`, `max-height: none`, `object-fit: contain`.
+- Treasure rarity may still be used for sorting and filtering, but should not change the displayed frame style.
+
+## Homepage Item Grid Patterns
+
+- New section desktop: yellow panel `#ffc433`, `min-height: 210px`, grid with heading beside items, `grid-template-columns: max-content max-content`, centered, gap `24px`, padding `24px 72px`.
+- New item grid desktop: `repeat(2, 114px) 132px`, gap `18px`.
+- New section mobile at `max-width: 760px`: heading stacks above items, `grid-template-columns: 1fr`, centered, gap `18px`, padding `24px 16px 30px`.
+- New item grid mobile at `max-width: 760px`: width `min(100%, 404px)`, three columns, gap `14px`.
+- New item grid small mobile at `max-width: 430px`: width `min(100%, 278px)`, two columns, gap `16px 12px`; the treasure spans both columns.
+
+## Recent And Catalog Board Pattern
+
+- Desktop catalog section padding: `48px 28px 140px`, background `#cff5ff`.
+- Desktop board: `min-height: 285px`, padding `36px 52px`, border `2px solid #8bd4e8`, background `#dffbff`, white grid pattern with 5px lines and `34px 34px` background size.
+- Desktop catalog grid: five `132px` columns, gap `24px 26px`, centered items.
+- Wide mobile/tablet catalog grid at `801px` to `930px` on coarse-pointer/touch screens: keep five `132px` columns, center the column group with `width: max-content`, `max-width: 100%`, and `margin-inline: auto`; use board side padding `18px` and gap `24px 10px` so the row fits cleanly.
+- Mobile catalog section at `max-width: 760px`: side padding removed so the grid-pattern board reaches both screen edges.
+- Mobile board: padding `28px 18px`, no left or right border; keep only top and bottom border.
+- Mobile catalog grid at `max-width: 760px`: four equal columns with gap `24px 12px`.
+- Mobile catalog grid under `500px`: three equal columns with gap `24px 12px`.
+- Small mobile under `400px`: board side padding `14px`; catalog grid becomes two equal columns with gap `24px 12px`.
+
+## Catalog UI
+
+Each catalog page should include:
+
+- Search field.
+- Sort control: alphabetical or release date.
+- A button labeled `Hide rarity` for opening rarity visibility options.
+- Grid or dense list of items.
+- Item image, name, add action, and rarity frame where applicable.
+
+Catalog ordering:
+
+- Always show visible items by rarity order first: Legendary, Epic, Rare, Common.
+- The sort control changes item order inside the visible rarity groups.
+- The search field filters visible items by name.
+- The `Hide rarity` button opens a panel directly under the button.
+- The panel spans across the catalog page's main panel.
+- The panel shows `Hide:` on the far left.
+- The rarity checkbox options appear on the same horizontal line as `Hide:`, not as a vertical list.
+- Cookie and pet catalogs show `Legendary`, `Epic`, `Rare`, and `Common` checkbox options.
+- Treasure catalogs show `Legendary`, `Epic`, and `Rare` checkbox options and omit `Common`.
+- Checked rarity options are hidden from the visible catalog groups.
+
+Rarity display:
+
+- Show cookie and pet rarity through a CSS frame around the item image.
+- Do not show treasure rarity visually.
+- Do not use a separate rarity text badge by default.
+- Use the shared item-card frame construction and rarity colors for cookie and pet artwork.
+- Use Common brown, Rare blue, Epic purple, and Legendary teal/gradient according to this spec.
+- Treasures should still use rarity data for ordering and filtering, with Legendary before Epic before Rare before Common.
+
+Ordinary catalog add flow:
+
+- Clicking a catalog item opens an add-to-list dialog.
+- The dialog shows destination lists from the current local profile.
+- The dialog has an Add button that opens the chosen list detail view in pending placement mode.
+- The dialog does not choose the final add-item slot.
+- For clicked cookies with 1 paired pet, the dialog offers Add cookie only, Add cookie and pet, and Cancel choices. Add cookie and pet is checked by default unless the destination is already known to be `relay`.
+- For clicked cookies with 2 paired pets, the dialog lets the user choose Add cookie only, Add cookie with one selected pet, or Cancel. Add cookie with one selected pet is checked by default unless the destination is already known to be `relay`.
+- In pending placement mode, the list detail page acts as the compatible-slot picker.
+- The compatible-slot picker shows compatible empty slots and compatible filled slots across the chosen list, including multiple combis, groups, arenas, or None-format entries.
+- Slot compatibility follows add-item slot type: cookies use `add cookie` or `relay`, pets use `add pet`, and treasures use `add treasure`.
+- Incompatible slots should be disabled, hidden, or explained.
+- Compatible filled slots expose replacement only through the `Switch?` affordance: desktop hover grays out the filled item and overlays `Switch?`; mobile tap/click reveals the same state.
+
+List-origin cookie selection mode:
+
+- Users select one cookie at a time.
+- `add cookie` and `relay` slots are filled through separate slot actions.
+- Selected cookie cards do not need numbered selection icons because cookie multi-selection is not supported.
+- Relay-cookie selection must not trigger the paired-pet prompt and should default to cookie only.
+
+List-origin treasure selection mode:
+
+- Treasure selection is the only catalog flow that supports multiple selected items.
+- Users can select up to 3 treasures at once only when adding treasures to a combi-format destination with enough compatible empty or explicitly switched treasure slots.
+- Show numbered selection icons on selected treasure cards: `1`, `2`, and `3`.
+- The numbered icons should stay visible while the treasures are selected and disappear when the selection is cleared.
+- If a selected treasure is deselected before confirmation, renumber the remaining selected treasures from `1`.
+- Treasure selection order determines the placement order for the destination combi's selected empty or explicitly switched treasure slots.
+
+List-origin selection mode:
+
+- When opened from a list detail add-item slot, the catalog uses Select actions instead of ordinary Add actions.
+- Show the destination in compact UI, such as the list name and slot type, without covering catalog controls.
+- Keep search, sort, and the `Hide rarity` button available while selecting.
+- Provide a cancel/back action that returns to the originating list detail view without changing the list.
+- Disable, hide, or explain items that are incompatible with the selected destination.
+- Detailed selection-mode behavior is defined in `../technical/T003-list-selection-routing.md`.
+
+## Related Specs
+
+- `../features/F001-catalog-pages.md` for catalog feature behavior.
+- `UI001-global-visual-style.md` for typography and color tokens.
+- `../technical/T001-catalog-import-and-derived-data.md` for derived catalog data.

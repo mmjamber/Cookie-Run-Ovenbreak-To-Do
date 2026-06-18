@@ -1,0 +1,45 @@
+# User Story: Add List
+
+## Story
+
+As a player, I want to create a named list with a chosen format so I can track a specific goal.
+
+## Source Specs
+
+- `../specs/features/F004-user-generated-lists.md`
+- `../specs/features/F002-list-formats.md`
+
+## Scenario
+
+1. The user opens Add list.
+2. The user enters a list name or leaves the name field blank.
+3. The user chooses Trophy Race, Breakout, Guild Run, Champions League, or None.
+4. If the name field is empty, the website fills the name field with the selected format's default name.
+5. If the user chooses None, the website fills the empty name field with `No mode`.
+6. If the user chooses Trophy Race, Breakout, Guild Run, or Champions League, the website fills the empty name field with the corresponding default name: `Trophy Race`, `Breakout`, `Guild Run`, or `Champions League`.
+7. The user can edit the auto-filled name before saving.
+8. The website asks for any format-specific setup choices.
+9. The website creates the list and opens its detail view only after the list has a valid name.
+
+## Acceptance Criteria
+
+- [ ] A user generated list requires a non-empty name.
+- [ ] The selected name must be unique within the current local profile.
+- [ ] Selecting any format auto-fills an empty name field with that format's default name.
+- [ ] Selecting None auto-fills an empty name field with `No mode`.
+- [ ] Format selection does not overwrite an existing user-entered name.
+- [ ] Auto-filled names remain editable before saving.
+- [ ] A user generated list requires one selected format.
+- [ ] Format-specific setup is captured before creation.
+- [ ] Trophy Race setup captures a starting arena count from 1 to 10.
+- [ ] Guild Run setup captures a maximum target set for each of its 12 arenas.
+- [ ] Guild Run setup displays target-set choices as `7/7/5`, `11/11/9`, and `15/15/12`.
+- [ ] Champions League uses fixed low, mid, and full arena target sets without asking the user to choose them.
+- [ ] Created lists start with empty add-item slots and no preselected catalog items.
+- [ ] The created list opens in the correct detail layout.
+- [ ] The created list persists locally.
+
+## Out Of Scope
+
+- Sharing user generated lists.
+- Importing user generated lists from another profile or account.

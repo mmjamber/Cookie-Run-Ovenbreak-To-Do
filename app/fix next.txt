@@ -1,0 +1,6 @@
+Remove-Item -Recurse -Force .next
+npm run dev
+
+if next does not exist? 
+Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue
+npm run dev

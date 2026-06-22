@@ -35,6 +35,7 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### Styling
 
+- Updated the Trophy Race preview move-mode handle to use the same internal transparent-outline treatment as the block option buttons and reduced its icon to two equal horizontal lines.
 - Tightened Trophy Race preview block option button spacing and clipped the white fill so transparent borders show the arena background.
 - Changed Trophy Race preview block option button outlines from external shadows to transparent borders inside the button box.
 - Increased the spacing between Trophy Race preview block option buttons and made their hover reveal instant to avoid pixelated fading icons.
@@ -51,6 +52,8 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### User-Facing Polish
 
+- Adjusted the Trophy Race preview delete dialog to use player-facing `full arena` wording instead of internal block terminology.
+- Changed completed Trophy Race preview level labels so the current level turns pink when it reaches the target level.
 - Restored the transparent look of Trophy Race preview block button outlines after converting them from shadows to borders.
 - Kept Trophy Race preview block button outlines transparent while preventing the arena block from clipping them.
 - Added a little vertical clearance around the Trophy Race preview delete button outline.

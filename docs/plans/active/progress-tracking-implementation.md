@@ -4,15 +4,13 @@
 
 Turn the prototype decisions from `public/trophy-race-progress-preview.html` into durable project specs so the real list-detail implementation can be built later without depending on preview-only code.
 
-Reuse clean, generalizable logic and structure from the preview where it fits, but adapt it into proper app components, typed data structures, and durable styling instead of copying preview-only DOM scripting wholesale.
-
 Although the preview uses Trophy Race as its example, the reusable list-detail mechanics should apply to every list format where they fit. Shared behavior includes add-item slot layout, filled-slot progress display, level editing, filled-slot replacement through the relevant catalog, block edit/delete options, modal/dialog behavior, item-only clearing, and stable block controls. Format-specific differences such as Trophy Race arena limits, Breakout combi type, Guild Run target-set requirements, Champions League fixed arenas, and None-format flexible entries should stay explicitly scoped to their own formats.
 
 This plan is for spec-writing and implementation planning only. It should not change `app/` behavior until the relevant specs are updated and approved.
 
 ## Relevant Specs
 
-- `docs/specs/features/F006-empty-list-layouts.md` - Trophy Race arena counts, add/delete limits, empty and filled slot replacement behavior.
+- `docs/specs/features/F006-empty-list-layouts.md` - arena counts, add/delete limits, empty and filled slot replacement behavior.
 - `docs/specs/user-interface/UI005-list-detail-and-combi-layouts.md` - list-detail block controls, progress controls, level display, combi layout, and block options.
 - `docs/specs/user-interface/UI007-accessibility.md` - keyboard reachability, focus behavior, hover/touch alternatives, and modal accessibility.
 - `docs/specs/technical/T002-local-storage-and-data-architecture.md` - saved list shape, arena/combi storage, item level persistence, and updated timestamps.
@@ -31,14 +29,11 @@ This plan is for spec-writing and implementation planning only. It should not ch
 - Arena reordering should use drag-and-drop in move mode rather than visible arrow controls.
 - Block-level edit and delete controls appear at the top-right of each arena block and are visually tied to that block.
 - Block option buttons use icon-only circular controls with a white interior and a translucent purple outline that is part of the button box so it cannot be clipped by the arena panel.
-- Move-mode handles should use the same internal translucent-outline treatment as the block option buttons so their outlines are not clipped.
-- Move-mode handle icons should use two equal horizontal lines, not three.
 - Block option buttons should not fade icon PNGs through partial opacity; reveal/hide behavior should keep raster icons crisp.
-- The delete/options flow asks whether to clear the filled catalog items or remove the full format-specific item when the current list format allows full removal. User-facing copy should not expose internal terms such as `block`; for Trophy Race, the destructive full-removal option should say `full arena`.
+- The delete/block options flow asks whether to clear the block's filled catalog items or remove the full block when the current list format allows full block removal.
 - Removing only items clears filled slots, restores add-option artwork, and preserves the surrounding block.
 - Removing a full Trophy Race arena deletes that combi and renumbers remaining arenas, while respecting the one-arena minimum.
 - Filled slots show current and target levels directly over the slot artwork.
-- When a slot reaches its target level, the displayed current level should use the same pink color as the target level.
 - Trophy Race target levels are fixed to full caps: cookies and pets `15`, treasures `12`.
 - Current levels are editable for filled slots and must persist in the eventual saved-list data model.
 - Level edits should update the saved list's `updatedAt` timestamp.
@@ -49,20 +44,18 @@ This plan is for spec-writing and implementation planning only. It should not ch
 
 - [ ] Update `UI005-list-detail-and-combi-layouts.md` to separate shared list-detail block mechanics from Trophy Race-specific arena behavior.
 - [ ] Update `UI005-list-detail-and-combi-layouts.md` with the final block action button behavior, including icon-only controls, translucent outline treatment, crisp reveal behavior, top-right positioning, and modal entry points.
-- [ ] Update `UI005-list-detail-and-combi-layouts.md` with move-mode handle styling, including unclipped internal outlines and two equal horizontal icon lines.
 - [ ] Update `UI005-list-detail-and-combi-layouts.md` so filled slots behave as replacement entry points that open the relevant catalog in replacement mode.
-- [ ] Update `UI005-list-detail-and-combi-layouts.md` with level label placement rules for combi slots across applicable list formats, including treasure label spacing requirements, completed current-level color, and format-specific target display rules.
+- [ ] Update `UI005-list-detail-and-combi-layouts.md` with level label placement rules for combi slots across applicable list formats, including treasure label spacing requirements and format-specific target display rules.
 - [ ] Update `F006-empty-list-layouts.md` to clarify Trophy Race arena add/delete/reorder behavior, arena renumbering, and delete-choice behavior.
 - [ ] Update `T002-local-storage-and-data-architecture.md` to ensure shared level edits, block-wide item clears, filled-slot replacement, block deletion where allowed, format-specific reordering, and `updatedAt` changes are explicitly covered.
 - [ ] Update `T004-runtime-assets-and-ui-implementation.md` with implementation constraints learned from the preview: stable slot dimensions, no clipped external outlines inside clipped panels, and no partial-opacity fade on raster icon assets.
 - [ ] Review `UI007-accessibility.md` and add requirements for keyboard access to edit/delete/move controls, modal focus management, Escape behavior, and touch alternatives to hover-revealed actions.
-- [ ] Add acceptance criteria to the touched specs for shared block controls, filled-slot replacement, level persistence, completed level coloring, treasure label spacing, block-wide item clearing, user-facing delete-choice wording, and each affected format's specific constraints.
+- [ ] Add acceptance criteria to the touched specs for shared block controls, filled-slot replacement, level persistence, treasure label spacing, block-wide item clearing, delete-choice outcomes, and each affected format's specific constraints.
 - [ ] Update `docs/specs/G001-index.md` only if a new spec file is added; prefer updating existing specs unless the spec sections become too large.
 
 ## Later Implementation Tasks
 
 - [ ] Create or update the real list-detail route/components after the specs are updated.
-- [ ] Reuse clean, generalizable preview logic and layout structure where it fits, while converting it into app-owned components, typed state, and durable CSS.
 - [ ] Use the persisted `UserList` / `Combi` / `TodoItem` structures rather than preview-only DOM `data-current` and `data-target` attributes.
 - [ ] Implement reusable list-detail components/functions for add-item slots, filled-slot replacement, filled-slot progress display, level editing, edit/delete options, block-wide item clearing, and block deletion where the list format allows it.
 - [ ] Implement persistence writes for current level edits, add/delete/reorder behavior, filled-slot replacement, block-wide item clearing, and full block deletion according to each list format's rules.

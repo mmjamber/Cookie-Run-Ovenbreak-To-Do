@@ -4,6 +4,16 @@ This file gives a simple overview of every recorded project change. For details,
 
 ## Unreleased
 
+- **Clarified preview code reuse in the progress tracking implementation plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Added preview polish details to the progress tracking implementation plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Adjusted Trophy Race preview delete dialog wording.**
+  Details: [UI > User-Facing Polish](UI.md#user-facing-polish), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Polished Trophy Race preview move handles and completed level colors.**
+  Details: [UI > Styling](UI.md#styling), [UI > User-Facing Polish](UI.md#user-facing-polish), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Removed README files from plans and changelogs documentation.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
 - **Added an active plan for turning the Trophy Race preview into specs.**
   Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
 - **Tightened Trophy Race preview block button spacing and restored outline transparency.**

@@ -38,6 +38,7 @@ This project uses Next.js 16.2.6. APIs, conventions, and file structure may diff
 - Name new technical specs in `docs/specs/technical/` with the next `T`-prefixed zero-padded numeric prefix, such as `T001-storage-architecture.md`.
 - Name new user stories in `docs/user-stories/` with the next `US`-prefixed zero-padded numeric prefix, such as `US001-create-custom-list.md`.
 - Record every completed project change in `docs/changelogs/CHANGELOG.md`, even when it only affects one zone. Add related detail entries under the most relevant subsection in each affected zone changelog: `FEATURES.md`, `TECHNICAL.md`, `UI.md`, or `PREVIEWS.md`. Do not remove earlier changelog entries when a feature, preview, spec, or implementation is later removed; add a new removal entry instead so the project history stays intact.
+- Do not create new `README.md` files unless the user explicitly asks for one. Prefer named index or guide files for durable project documentation.
 - Keep generated folders such as `.next/`, `node_modules/`, and build output out of source changes.
 
 ## Product Direction

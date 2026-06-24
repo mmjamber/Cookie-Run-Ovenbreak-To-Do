@@ -4,6 +4,42 @@ This file gives a simple overview of every recorded project change. For details,
 
 ## Unreleased
 
+- **Added newer list preview details to the progress tracking plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Cleaned obsolete preview CSS and script leftovers.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Straightened No Mode preview section titles and removed helper text.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Simplified No Mode preview item and combi labels.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Replaced yellow preview dialog button feedback with purple states.**
+  Details: [UI > Styling](UI.md#styling), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Made preview heading edit buttons hover-revealed.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Added Breakout group and Guild Run arena edit dialogs to previews.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Expanded the Guild Run preview to all 12 fixed arenas.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Restored the Breakout preview group panel after the page-size false alarm.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Matched Breakout preview block scale to the other preview pages.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Reverted the Breakout preview background panel sizing adjustment.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Restored Breakout preview background panel sizing to match Trophy Race.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Thinned Breakout preview panels and moved group labels outside.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Adjusted Breakout preview panel borders and flag sizing.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Swapped Breakout preview combi markers to the flag asset.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Aligned the Champions League preview arena labels with Trophy Race.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Polished the Breakout progress preview group panel and combi numbering.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Added progress previews for Breakout, Guild Run, Champions League, and No Mode.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Preview Files](PREVIEWS.md#preview-files), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
 - **Clarified preview code reuse in the progress tracking implementation plan.**
   Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
 - **Added preview polish details to the progress tracking implementation plan.**

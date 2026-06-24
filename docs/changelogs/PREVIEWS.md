@@ -6,6 +6,8 @@ Tracks preview-only files, throwaway mockups, temporary visual experiments, scre
 
 ### Preview Files
 
+- Added `public/breakout-progress-preview.html`, `public/guild-run-progress-preview.html`, `public/champions-league-progress-preview.html`, and `public/none-list-progress-preview.html` to visualize progress tracking across the remaining list formats.
+- Added `public/list-progress-preview.css` as a shared stylesheet for the non-Trophy Race progress preview pages.
 - Added `public/images/cookies/legendary/8-timekeeper-cookie.webp` for the Trophy Race preview's Arena 2 relay slot.
 - Refreshed `public/trophy-race-progress-preview.html` relay add-option image references for the updated `add relay.png` artwork.
 - Updated `public/trophy-race-progress-preview.html` so move mode uses the free-assets `move.png` icon and drag-and-drop arena reordering instead of arrow controls.
@@ -18,6 +20,23 @@ Tracks preview-only files, throwaway mockups, temporary visual experiments, scre
 
 ### Visual Experiments
 
+- Removed obsolete shared preview CSS selectors and unused Guild Run dialog script state from earlier preview iterations.
+- Removed the helper sentence under `No Mode` and made No Mode preview section headings straight instead of rotated.
+- Centered No Mode preview individual item slots, removed item-name labels, and changed the combi section heading to `Combis`.
+- Replaced yellow dialog button feedback with purple hover states across the previews and disabled Breakout group count steppers at their bounds.
+- Made the Breakout group and Guild Run arena edit buttons reveal only on hover or focus of their connected group or block.
+- Added edit buttons and Trophy Race-style dialogs to `public/breakout-progress-preview.html` and `public/guild-run-progress-preview.html` for changing Breakout group combi counts and Guild Run arena target sets.
+- Expanded `public/guild-run-progress-preview.html` to all 12 fixed Guild Run arenas and removed the title helper sentence.
+- Restored the Breakout preview group panel to its pre-size-discussion thin lavender border and padding after confirming the apparent scale issue was browser zoom.
+- Matched Breakout preview block and level-text scale to the other preview pages by accounting for group panel padding and borders in the block width.
+- Reverted the Breakout preview background panel sizing adjustment and restored the group panel's real padding and border.
+- Restored the Breakout preview background panel sizing to match Trophy Race by making the group panel stroke visual-only.
+- Thinned the Breakout preview group panel borders and kept each group name outside above its panel.
+- Changed the Breakout preview group panel border to pale lavender and scaled down the `flag.png` combi markers.
+- Swapped the Breakout preview combi number treatment to use `assets/ovenbreak images/add cookies/flag.png` with text numbers overlaid below the pet slot.
+- Updated `public/champions-league-progress-preview.html` to use Trophy Race-sized arena labels and hide the low, mid, and full target-set text.
+- Polished `public/breakout-progress-preview.html` so each Breakout group uses a common white purple-bordered panel and each combi block uses a larger bottom-left numbered badge instead of a title.
+- Added mixed filled and empty slot examples across Breakout groups, Guild Run target sets, Champions League fixed arenas, and No Mode individual/combi entries using varied rarity examples.
 - Adjusted the Trophy Race preview delete dialog to say `full arena` instead of exposing the internal `arena block` wording.
 - Polished the Trophy Race preview move-mode handle so it uses the same internal transparent-outline treatment as the block option buttons, shows two equal horizontal lines, and marks completed current levels pink with their target levels.
 - Tightened Trophy Race preview block option button spacing and restored transparent outlines with padding-box background clipping.

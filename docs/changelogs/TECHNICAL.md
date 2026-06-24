@@ -6,6 +6,8 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Documentation Process
 
+- Added newer Breakout, Guild Run, Champions League, and No Mode preview layout and feature decisions to `docs/plans/active/progress-tracking-implementation.md`.
+- Cleaned obsolete preview CSS selectors and unused Guild Run dialog script values left over from earlier preview iterations.
 - Clarified in `docs/plans/active/progress-tracking-implementation.md` that clean, generalizable preview logic and structure should be reused in the final app implementation where appropriate.
 - Added Trophy Race preview polish decisions to `docs/plans/active/progress-tracking-implementation.md`, covering move-handle styling, completed level color, and user-facing delete dialog wording.
 - Removed `README.md` files from `docs/plans/`, `docs/plans/active/`, `docs/plans/completed/`, and `docs/changelogs/`; moved changelog folder guidance into `docs/changelogs/index.md`; and added an agent rule to avoid creating future `README.md` files unless explicitly requested.

@@ -6,10 +6,13 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### UI Specs
 
+- Added durable list-detail progress UI requirements for modal level editing, block actions, preview visual references, and format-specific controls.
 - Added project specifications for UI behavior.
 
 ### Layout
 
+- Merged progress preview visual-reference requirements into list-detail specs, including block controls, modal level editing, and format-specific edit controls.
+- Removed the relay numbered marker requirement from the empty list spec so relay slots do not use numbered badges, markers, or frame numbers.
 - Removed the No Mode preview helper text below the list name and straightened No Mode section titles.
 - Centered No Mode preview individual items within their blocks, removed individual item names, and simplified the combi section to `Combis`.
 - Made Breakout group and Guild Run arena heading edit buttons appear only while hovering or focusing their connected group or arena block.
@@ -46,7 +49,7 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### Accessibility
 
-- No changes recorded yet.
+- Added accessibility requirements for level-edit modals, hover-revealed controls, touch alternatives, disabled steppers, and block clear/removal dialogs.
 
 ### Styling
 

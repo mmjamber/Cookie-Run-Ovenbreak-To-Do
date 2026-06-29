@@ -4,6 +4,26 @@ This file gives a simple overview of every recorded project change. For details,
 
 ## Unreleased
 
+- **Moved the progress tracking implementation plan to completed.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Merged progress tracking plan decisions into durable specs.**
+  Details: [Features > List Behavior](FEATURES.md#list-behavior), [UI > UI Specs](UI.md#ui-specs), [UI > Layout](UI.md#layout), [UI > Accessibility](UI.md#accessibility), [Technical > Storage](TECHNICAL.md#storage), [Technical > Technical Specs](TECHNICAL.md#technical-specs).
+- **Removed the relay numbered marker requirement from the empty list spec.**
+  Details: [Features > List Behavior](FEATURES.md#list-behavior), [UI > Layout](UI.md#layout), [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Made runtime admin catalog management the standard in planning docs.**
+  Details: [Features > Catalog Behavior](FEATURES.md#catalog-behavior), [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Technical Specs](TECHNICAL.md#technical-specs).
+- **Added an active plan for future admin catalog management specs.**
+  Details: [Features > Catalog Behavior](FEATURES.md#catalog-behavior), [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Resolved the relay cookie numbering question in the progress tracking plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Required universal list-detail controls in the progress tracking plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Pruned repeated spec details from the progress tracking plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Redirected list preview UI details to the preview files in the progress tracking plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Clarified the progress tracking plan covers all list previews except item-frame.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
 - **Added newer list preview details to the progress tracking plan.**
   Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
 - **Cleaned obsolete preview CSS and script leftovers.**

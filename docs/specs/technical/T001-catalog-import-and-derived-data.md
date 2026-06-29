@@ -116,7 +116,7 @@ All other pet files in `Cookies/Legendary` should be treated as Epic unless anot
 
 ## Import Review Report
 
-Items with `needsReview: true` should appear in an admin/import report.
+Items with `needsReview: true` should appear in an import review report.
 
 Import warnings must not appear on public catalog pages. Public catalog pages should show finished catalog data and ordinary empty/filter states only.
 

@@ -11,9 +11,9 @@ This plan is for specification work only. It should not add Supabase packages, e
 - Supabase should store authenticated user/profile ownership and user-owned to-do data.
 - User settings such as theme, compact view, preferred sorting, and hide-rarity preference are out of scope for this database pass.
 - `docs/specs/technical/T002-local-storage-and-data-architecture.md` should be replaced in place with a Supabase persistence and data architecture spec rather than split into a new technical spec.
-- Catalog data should remain static bundled application data for now.
-- Runtime artwork and OvenBreak images should remain in `public/` and should not be stored in Supabase.
-- Database rows should reference catalog item ids instead of duplicating catalog names, images, rarity metadata, or derived catalog data.
+- Base catalog data should remain static bundled application data for this account-storage pass, but the future admin catalog workflow will add runtime catalog records.
+- Runtime artwork and base OvenBreak images should remain in `public/` for this account-storage pass; future admin-uploaded catalog images are a deliberate runtime storage exception.
+- Saved-list database rows should reference catalog item ids instead of duplicating catalog names, images, rarity metadata, or derived catalog data.
 - Guest users should be able to use temporary browser-local persistence, preferably `localStorage` or IndexedDB rather than cookies, because saved lists are nested app data and should not be sent with ordinary page requests.
 - Guest data should be described as device/browser-local data that can be lost when the user clears site browser data, uses private browsing, changes browsers/devices, or browser storage is otherwise removed.
 - The Supabase data model should reserve support for future admin roles or permissions, but admin tools, dashboards, and admin-only workflows are out of scope for this pass.
@@ -46,7 +46,7 @@ This plan is for specification work only. It should not add Supabase packages, e
 
 - User interface preferences and user settings.
 - Catalog item images and runtime artwork.
-- Static catalog metadata that can remain bundled with the application.
+- Base static catalog metadata that can remain bundled with the application before runtime admin catalog management is implemented.
 - Generated import reports or source asset folders.
 - Public sharing, export files, or official game account sync data.
 
@@ -66,7 +66,7 @@ Please log in or make an account to save your progress.
 ## Spec Tasks
 
 - [ ] Update `G003-global-spec.md` to remove Supabase-backed persistence and real auth from non-goals once approved, and add database-backed saved lists to MVP scope.
-- [ ] Update `G003-global-spec.md` to clarify that official game account sync, live game API integration, public sharing, export files, and automatic catalog updates remain out of scope.
+- [ ] Update `G003-global-spec.md` to clarify that official game account sync, live game API integration, public sharing, export files, and automatic external catalog updates remain out of scope.
 - [ ] Update `G004-functional-map.md` with signed-in, signed-out, loading, save-failure, and account-owned list flows where relevant.
 - [ ] Update `G005-data-model.md` to replace local profile ownership with Supabase user/profile ownership and define which data is remote, static, or temporary local fallback.
 - [ ] Replace `T002-local-storage-and-data-architecture.md` in place with a Supabase persistence architecture spec.

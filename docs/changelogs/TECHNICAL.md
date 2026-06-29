@@ -6,6 +6,15 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Documentation Process
 
+- Removed later implementation tasks from the progress tracking plan and moved it from `docs/plans/active/` to `docs/plans/completed/` after merging the planned spec updates.
+- Updated `docs/plans/active/progress-tracking-implementation.md` so the future spec merge keeps mobile Trophy Race reordering open and forbids numbered relay badges, markers, or frame assets.
+- Updated `docs/plans/active/admin-role-and-catalog-management.md` and `docs/plans/active/supabase-spec-migration.md` so runtime admin catalog records and runtime image storage are the standard for future admin-created catalog items.
+- Added `docs/plans/active/admin-role-and-catalog-management.md` to plan future admin role, catalog item creation, asset handling, and spec-update work.
+- Resolved the relay cookie frame open question in `docs/plans/active/progress-tracking-implementation.md` by noting that relay slots and selected relay cookies must not use number badges, markers, or numbered frame assets.
+- Clarified in `docs/plans/active/progress-tracking-implementation.md` that block edit, block delete, list-format add, and move/reorder controls should be available across all list types where meaningful, even when not shown in every preview.
+- Pruned `docs/plans/active/progress-tracking-implementation.md` so it points to existing specs for already-covered list rules and keeps only remaining preview-to-spec gaps.
+- Updated `docs/plans/active/progress-tracking-implementation.md` to direct future agents to the progress preview files for list-detail UI layout and styling instead of duplicating visual descriptions in the plan.
+- Clarified that `docs/plans/active/progress-tracking-implementation.md` should use all current list progress previews except item-frame, not only the Trophy Race preview.
 - Added newer Breakout, Guild Run, Champions League, and No Mode preview layout and feature decisions to `docs/plans/active/progress-tracking-implementation.md`.
 - Cleaned obsolete preview CSS selectors and unused Guild Run dialog script values left over from earlier preview iterations.
 - Clarified in `docs/plans/active/progress-tracking-implementation.md` that clean, generalizable preview logic and structure should be reused in the final app implementation where appropriate.
@@ -31,7 +40,7 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Storage
 
-- No changes recorded yet.
+- Added persistence rules for block clear, full block removal, Trophy Race arena reordering, Breakout group count edits, and Guild Run arena target-set edits.
 
 ### Routing
 
@@ -47,4 +56,6 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Technical Specs
 
+- Merged progress tracking plan storage and runtime UI implementation requirements into `T002`, `T004`, and `UI007`.
+- Clarified `T001` import review wording and `T002` static catalog storage wording so they do not imply a build-time admin upload workflow.
 - Added project specifications for product rules, data architecture, and related technical behavior.

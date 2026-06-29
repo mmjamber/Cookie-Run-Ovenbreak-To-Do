@@ -69,7 +69,7 @@ Combi type 1 should follow the shared combi type 1 visual reference:
 - Three treasure add slots sit across the top.
 - The pet add slot sits to the left of the main cookie.
 - The main cookie add slot is the central, largest slot.
-- The relay cookie add slot sits at the lower right and uses the relay artwork, including the small `2` marker.
+- The relay cookie add slot sits at the lower right and uses the relay artwork without any numbered badge, marker, or frame number.
 
 Combi type 2 should follow the shared combi type 2 visual reference:
 
@@ -89,7 +89,8 @@ Trophy Race:
 - Use the shared Trophy Race and Champions League visual reference for spacing and alternating panel treatment.
 - Users may add more arenas until the Trophy Race maximum is reached.
 - Users may delete arenas as long as at least 1 Trophy Race arena remains.
-- Deleting a Trophy Race arena removes that arena's filled items and progress data.
+- Trophy Race arena delete/options behavior must distinguish clearing an arena from removing the full arena block. Clearing an arena removes that arena's filled items and progress data but keeps the arena block. Removing the full arena deletes that arena block and renumbers the remaining arenas.
+- Trophy Race arenas can be reordered in move mode on desktop, and arena labels renumber after reorder. Mobile/touch reorder behavior remains undecided and should be captured as an open question until approved.
 
 Breakout:
 
@@ -100,6 +101,7 @@ Breakout:
 - Each combi type 2 block in a Breakout group has one pet slot, one main cookie slot, and three treasure slots.
 - The small flag marker at the bottom-right of each Breakout combi should show that combi's number within its group.
 - Breakout combi numbering restarts at `1` inside each group and follows the group's visual/order sequence.
+- Users may edit the combi count for a Breakout group from the list detail page. Group count edits must keep that group between 3 and 15 combi type 2 blocks and renumber the group's flag markers after the change.
 - Breakout must not render relay slots, combi type 1 blocks, arena blocks, or standalone item blocks.
 
 Guild Run:
@@ -108,6 +110,7 @@ Guild Run:
 - Each arena is an arena block labeled `Arena N` above one combi type 1, where `N` follows chronological list order.
 - Each arena must show or collect its user-selected low, mid, or full target set before items can be added to that arena.
 - When collecting a Guild Run arena target set, show the selectable caps as `7/7/5`, `11/11/9`, and `15/15/12` instead of low, mid, and full.
+- Users may edit a Guild Run arena's target set from the list detail page. Changing the target set updates the target levels for existing filled items in that arena.
 - Use the shared Guild Run visual reference for the 12-arena grid, arena labels, and alternating panel backgrounds.
 - Users cannot add or remove Guild Run arenas.
 
@@ -135,12 +138,17 @@ None:
 
 - [ ] Empty Trophy Race lists display the user-selected number of arena blocks using the specified combi type 1 add-option artwork.
 - [ ] Trophy Race arenas can be added or deleted within the 1 to 10 arena count limits.
+- [ ] Trophy Race arena delete/options behavior distinguishes clearing an arena from removing the full arena block.
+- [ ] Trophy Race arena reorder renumbers arenas after reorder.
+- [ ] Trophy Race mobile/touch reorder remains an unresolved product question until approved.
 - [ ] Empty Breakout lists display groups of combi type 2 blocks using the specified add-option artwork.
 - [ ] Trophy Race and Breakout empty slots use full max target defaults when filled.
 - [ ] Breakout combis show numbered flag markers, restarting from `1` in each group.
+- [ ] Breakout group combi-count edits stay between 3 and 15 combis and renumber that group's flags after changes.
 - [ ] Empty Guild Run lists display 12 combi type 1 arenas.
 - [ ] Guild Run arenas require user-selected target sets before items can be added to those arenas.
 - [ ] Guild Run arena target-set controls show numeric cap labels: `7/7/5`, `11/11/9`, and `15/15/12`.
+- [ ] Guild Run arena target-set edits update existing filled item target levels in that arena.
 - [ ] Empty Champions League lists display 3 combi type 1 arenas.
 - [ ] Champions League arenas use fixed low, mid, and full target sets in arena order.
 - [ ] Empty None lists start blank except for the list add action.
@@ -161,3 +169,4 @@ None:
 - [ ] Main cookie paired-pet prompts check the add-cookie-with-pet option by default.
 - [ ] Relay cookie destinations default to cookie only and ignore checked paired-pet choices.
 - [ ] Relay cookie choices do not trigger paired-pet prompts.
+- [ ] Relay slots and selected relay cookies do not use numbered badges, markers, or frame numbers.

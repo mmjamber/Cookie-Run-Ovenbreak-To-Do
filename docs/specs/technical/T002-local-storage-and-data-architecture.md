@@ -38,7 +38,7 @@ Rules:
 - `id` must be stable and unique.
 - `ownerId` identifies the current local profile.
 - `createdAt` and `updatedAt` should be ISO timestamps.
-- `updatedAt` should change after meaningful activity such as creation, rename, item additions, item deletions, item edits, level edits, section or arena additions, section or arena deletions, or manual completion updates.
+- `updatedAt` should change after meaningful activity such as creation, rename, item additions, item deletions, item edits, level edits, block clears, section or arena additions, section or arena deletions, group count edits, arena target-set edits, arena reordering, or manual completion updates.
 - Preset-derived lists should use `source: "preset"`.
 - User generated lists should use `source: "userGenerated"`.
 - `order` stores the user-controlled display order for the To-do page.
@@ -100,11 +100,14 @@ Rules:
 
 - Sections store combis, groups, arenas, or ungrouped items depending on list format.
 - Arena labels are derived from chronological `position` values and rendered as `Arena N`, starting at `Arena 1`.
+- When a format supports reordering, persisted `position` values must be rewritten so visual labels and storage order remain aligned.
 - Trophy Race arenas are real list item blocks in the UI, but they are stored as combis inside a `combis` section rather than `arena` sections because Trophy Race does not use low, mid, or full arena target-set controls.
 - Guild Run arena sections may temporarily store `targetSet: null` until the user chooses the arena's low, mid, or full target set. Each section contains one combi type 1. Items cannot be added to a Guild Run arena while its `targetSet` is `null`.
+- Changing a Guild Run arena section's `targetSet` must update target levels for existing `TodoItem` values in that arena to match the new cap values.
 - Champions League arena sections must store fixed target sets by `position`: Arena 1 `targetSet: "low"`, Arena 2 `targetSet: "mid"`, and Arena 3 `targetSet: "full"`. Each section contains one combi type 1.
 - None-format lists can mix individual items and user-added combi sections.
 - Breakout `group` sections store combi type 2 blocks only; Breakout must not store combi type 1 entries, arena entries, or free item blocks.
+- Breakout group combi-count edits add or remove combi type 2 records in that group only, keep the group within 3 to 15 combis, and rewrite combi `position` values so numbering restarts at `1` inside that group.
 - None-format individual item entries are stored as free item blocks so the block can remain after its item is deleted.
 - None-format individual treasure entries store one free item block each. Multi-treasure selection is represented only by filling treasure slots inside a `Combi`.
 
@@ -193,9 +196,31 @@ Rules:
 - The new item's `targetLevel` defaults to the maximum allowed by the destination add-item slot, list format, combi, or arena target set.
 - Other items in the same combi or free item block remain unchanged unless the user is completing an explicit cookie-with-pet placement that also targets a compatible pet slot.
 
+## Block Clear And Full Block Removal
+
+Block clear removes every `TodoItem` from a single list item block while preserving that block's surrounding structure.
+
+Rules:
+
+- Clearing a combi sets `pet`, `cookie`, `relayCookie`, and every treasure slot to `null`.
+- Clearing a free item block sets `item` to `null`.
+- Clearing a Trophy Race arena clears the stored combi for that arena but keeps the arena block.
+- Block clear discards current level, target level, and completion state for every cleared `TodoItem`.
+- Block clear must update the parent list's `updatedAt` timestamp.
+
+Full block removal deletes the entire block record only where the current format allows it.
+
+Rules:
+
+- Removing a Trophy Race arena deletes that stored combi, must keep the list between 1 and 10 arenas, and rewrites remaining arena positions so labels render as `Arena N` in order.
+- Removing a None-format combi or individual item entry deletes that user-added section or `FreeItemBlock` and rewrites sibling positions where needed.
+- Guild Run and Champions League arenas cannot be fully removed.
+- Breakout combi removal is allowed only through an approved group combi-count edit and must keep the group between 3 and 15 combis.
+- Full block removal must update the parent list's `updatedAt` timestamp.
+
 ## Format Storage Mapping
 
-- Trophy Race: one `combis` section with the user-selected number of Trophy Race arenas, from 1 to 10. Each arena is stored as a combi type 1 entry and rendered as an `Arena N` list item block using its chronological position. Preset-derived Trophy Race lists start with 4 empty arenas. Users can add or delete Trophy Race arenas after creation, but the arena count must stay between 1 and 10. These arenas use full max targets and do not store low, mid, or full arena target sets.
+- Trophy Race: one `combis` section with the user-selected number of Trophy Race arenas, from 1 to 10. Each arena is stored as a combi type 1 entry and rendered as an `Arena N` list item block using its chronological position. Preset-derived Trophy Race lists start with 4 empty arenas. Users can add, clear, remove, and reorder Trophy Race arenas after creation, but the arena count must stay between 1 and 10. These arenas use full max targets and do not store low, mid, or full arena target sets.
 - Breakout: up to 5 `group` sections, each with 3 to 15 numbered combi type 2 blocks. Preset-derived Breakout lists start with 2 editable groups: Group 1 has 3 empty combi type 2 blocks and Group 2 has 10 empty combi type 2 blocks. Breakout always uses full max targets.
 - Guild Run: 12 fixed `arena` sections, each rendered as an `Arena N` list item block with one empty combi type 1 and an arena target set that must be chosen by the user. Generated Guild Run preset-derived lists should initialize arena `targetSet` values as `null` until the user chooses them.
 - Champions League: 3 fixed `arena` sections, each rendered as an `Arena N` list item block with one empty combi type 1. Arena 1 stores `targetSet: "low"`, Arena 2 stores `targetSet: "mid"`, and Arena 3 stores `targetSet: "full"`.
@@ -207,7 +232,7 @@ Initial implementation should use browser local storage.
 
 Rules:
 
-- `catalogItems` can be static bundled data.
+- `catalogItems` can be static bundled data for base imported catalog items before runtime admin catalog management is implemented.
 - `userLists` should persist locally.
 - Profile initialization state should persist locally so generated default preset-derived lists are created once per local user or guest profile, not recreated after deletion.
 - Use a versioned storage key so future migrations are possible.
@@ -235,13 +260,17 @@ Rules:
 - Treasure slots per combi must remain exactly 3 positions, each containing either `null` or one treasure `TodoItem`.
 - Trophy Race arenas cannot exceed 10.
 - Trophy Race arena deletion cannot reduce the list below 1 arena.
-- Deleting a Trophy Race arena removes that stored combi and discards any `TodoItem` values in its slots.
+- Clearing a Trophy Race arena keeps that stored combi and discards any `TodoItem` values in its slots.
+- Removing a Trophy Race arena deletes that stored combi, discards any `TodoItem` values in its slots, and rewrites remaining arena positions.
+- Trophy Race arena reordering rewrites arena positions and cannot change the arena count.
 - Trophy Race user generated list setup must choose a starting arena count from 1 to 10.
 - Breakout groups cannot exceed 5.
 - Breakout group size must be between 3 and 15 combi type 2 blocks.
+- Breakout group combi-count edits must keep the group between 3 and 15 combi type 2 blocks.
 - Breakout groups must contain only combi type 2 blocks.
 - Breakout target levels are fixed to full max targets.
 - Guild Run has exactly 12 arenas.
+- Guild Run arena target-set edits must update target levels for existing filled items in that arena.
 - Champions League has exactly 3 arenas.
 
 ## Related Specs

@@ -6,10 +6,28 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### UI Specs
 
+- Added durable list-detail progress UI requirements for modal level editing, block actions, preview visual references, and format-specific controls.
 - Added project specifications for UI behavior.
 
 ### Layout
 
+- Merged progress preview visual-reference requirements into list-detail specs, including block controls, modal level editing, and format-specific edit controls.
+- Removed the relay numbered marker requirement from the empty list spec so relay slots do not use numbered badges, markers, or frame numbers.
+- Removed the No Mode preview helper text below the list name and straightened No Mode section titles.
+- Centered No Mode preview individual items within their blocks, removed individual item names, and simplified the combi section to `Combis`.
+- Made Breakout group and Guild Run arena heading edit buttons appear only while hovering or focusing their connected group or arena block.
+- Added Trophy Race-style edit dialogs to the Breakout and Guild Run previews so Breakout group controls change combi counts and Guild Run arena controls change max target levels without showing target labels beside arena names.
+- Expanded the Guild Run preview to show all 12 fixed arena blocks and removed the helper sentence below the list name.
+- Restored the Breakout preview group panel to its real thin lavender border and padding after confirming the apparent page-size issue was browser zoom.
+- Matched Breakout preview block and level-text scale to the other preview pages by reducing Breakout's block width to account for its group panel padding and border.
+- Reverted the Breakout preview background panel sizing adjustment, restoring the group panel's real padding and pale lavender border.
+- Restored Breakout preview background panel sizing to match Trophy Race by removing extra layout width from the group panel padding and stroke.
+- Thinned the Breakout preview group panels and moved each group name outside above the bordered panel.
+- Changed the Breakout preview group panel border to a pale lavender swatch color and reduced the flag marker size below each pet slot.
+- Swapped the Breakout preview combi markers to the `flag.png` asset with overlaid numbers and a slightly protruding bottom edge below the pet slot.
+- Matched Champions League preview arena title sizing to the Trophy Race preview and removed the visible low, mid, and full target-set labels.
+- Wrapped Breakout preview group combis in shared white panels with purple borders and replaced visible combi titles with larger bottom-left numbered badges.
+- Added preview layouts for Breakout, Guild Run, Champions League, and No Mode progress tracking, including grouped combis, fixed arena examples, target-set notes, and flexible individual item entries.
 - Nudged Trophy Race preview block delete buttons downward so their outline rings have more clearance from the edit buttons.
 - Moved Trophy Race preview block option buttons slightly inward so their outline rings are not clipped by the arena block.
 - Spaced out Trophy Race preview treasure level labels by widening the treasure tracks while shifting the treasure row left of the edit/delete action area.
@@ -31,10 +49,12 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### Accessibility
 
-- No changes recorded yet.
+- Added accessibility requirements for level-edit modals, hover-revealed controls, touch alternatives, disabled steppers, and block clear/removal dialogs.
 
 ### Styling
 
+- Replaced yellow hover/focus feedback in preview dialogs with the shared purple hover state and disabled Breakout group count stepper buttons at their min and max values.
+- Added a shared stylesheet for the non-Trophy Race progress previews so their combi slots, level labels, empty states, and page shell stay visually aligned.
 - Updated the Trophy Race preview move-mode handle to use the same internal transparent-outline treatment as the block option buttons and reduced its icon to two equal horizontal lines.
 - Tightened Trophy Race preview block option button spacing and clipped the white fill so transparent borders show the arena background.
 - Changed Trophy Race preview block option button outlines from external shadows to transparent borders inside the button box.

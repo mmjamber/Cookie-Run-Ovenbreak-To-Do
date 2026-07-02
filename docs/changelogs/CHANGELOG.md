@@ -4,6 +4,72 @@ This file gives a simple overview of every recorded project change. For details,
 
 ## Unreleased
 
+- **Added Supabase implementation standards to the migration plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Storage](TECHNICAL.md#storage).
+- **Resolved account deletion data removal behavior in the Supabase plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Storage](TECHNICAL.md#storage).
+- **Resolved the first auth provider and display-name behavior in the Supabase plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Resolved guest local-list migration behavior in the Supabase plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Storage](TECHNICAL.md#storage).
+- **Added the Supabase SSR client setup.**
+  Details: [Technical > Architecture](TECHNICAL.md#architecture), [Technical > Routing](TECHNICAL.md#routing), [Technical > Build And Tooling](TECHNICAL.md#build-and-tooling).
+- **Moved the progress tracking implementation plan to completed.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Merged progress tracking plan decisions into durable specs.**
+  Details: [Features > List Behavior](FEATURES.md#list-behavior), [UI > UI Specs](UI.md#ui-specs), [UI > Layout](UI.md#layout), [UI > Accessibility](UI.md#accessibility), [Technical > Storage](TECHNICAL.md#storage), [Technical > Technical Specs](TECHNICAL.md#technical-specs).
+- **Removed the relay numbered marker requirement from the empty list spec.**
+  Details: [Features > List Behavior](FEATURES.md#list-behavior), [UI > Layout](UI.md#layout), [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Made runtime admin catalog management the standard in planning docs.**
+  Details: [Features > Catalog Behavior](FEATURES.md#catalog-behavior), [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Technical Specs](TECHNICAL.md#technical-specs).
+- **Added an active plan for future admin catalog management specs.**
+  Details: [Features > Catalog Behavior](FEATURES.md#catalog-behavior), [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Resolved the relay cookie numbering question in the progress tracking plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Required universal list-detail controls in the progress tracking plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Pruned repeated spec details from the progress tracking plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Redirected list preview UI details to the preview files in the progress tracking plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Clarified the progress tracking plan covers all list previews except item-frame.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Added newer list preview details to the progress tracking plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Cleaned obsolete preview CSS and script leftovers.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Straightened No Mode preview section titles and removed helper text.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Simplified No Mode preview item and combi labels.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Replaced yellow preview dialog button feedback with purple states.**
+  Details: [UI > Styling](UI.md#styling), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Made preview heading edit buttons hover-revealed.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Added Breakout group and Guild Run arena edit dialogs to previews.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Expanded the Guild Run preview to all 12 fixed arenas.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Restored the Breakout preview group panel after the page-size false alarm.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Matched Breakout preview block scale to the other preview pages.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Reverted the Breakout preview background panel sizing adjustment.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Restored Breakout preview background panel sizing to match Trophy Race.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Thinned Breakout preview panels and moved group labels outside.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Adjusted Breakout preview panel borders and flag sizing.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Swapped Breakout preview combi markers to the flag asset.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Aligned the Champions League preview arena labels with Trophy Race.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Polished the Breakout progress preview group panel and combi numbering.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
+- **Added progress previews for Breakout, Guild Run, Champions League, and No Mode.**
+  Details: [UI > Layout](UI.md#layout), [Previews > Preview Files](PREVIEWS.md#preview-files), [Previews > Visual Experiments](PREVIEWS.md#visual-experiments).
 - **Clarified preview code reuse in the progress tracking implementation plan.**
   Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
 - **Added preview polish details to the progress tracking implementation plan.**

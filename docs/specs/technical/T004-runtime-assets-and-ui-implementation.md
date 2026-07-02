@@ -67,6 +67,19 @@ Rules:
 - Ordinary form controls should inherit the site font.
 - Do not use browser-default fonts for item names or section headings unless a page spec explicitly says so.
 
+## List Progress Preview References
+
+List-detail implementation should use these preview files as the visual reference for durable list progress UI:
+
+- `public/trophy-race-progress-preview.html`
+- `public/breakout-progress-preview.html`
+- `public/guild-run-progress-preview.html`
+- `public/champions-league-progress-preview.html`
+- `public/none-list-progress-preview.html`
+- `public/list-progress-preview.css`
+
+The specs should describe durable behavior and constraints, while the preview files carry the detailed visual reference for layout, sizing, spacing, text treatment, artwork placement, colors, borders, dialogs, and control styling. Do not treat `item-frame` preview files as list-detail visual references.
+
 ## Replacement And Restoration Sizing
 
 When a user replaces add-option artwork with a chosen item:
@@ -88,6 +101,19 @@ When a compatible filled slot exposes the `Switch?` replacement affordance:
 - The `Switch?` text should overlay the filled item within the same slot footprint.
 - Showing or hiding `Switch?` must not resize the combi, move neighboring slots, or change the group grid.
 - Incompatible filled slots must not show the `Switch?` overlay.
+
+## Stable Control Implementation
+
+List-detail controls must not resize, shift, or overlap item slots when they appear.
+
+Rules:
+
+- Block edit/delete/move controls should reserve or use stable space so hover, focus, and active states do not push slot artwork or level text.
+- Transparent outlines or rings should be drawn inside the button box when the control sits inside a clipped or bordered panel.
+- Raster icon assets should not fade through partial opacity in a way that makes them visibly pixelated; reveal and state changes should keep icons crisp.
+- Treasure level labels need enough stable horizontal space to avoid overlapping neighboring treasure labels or block action controls.
+- Modal dialogs and steppers should use shared styling across list formats, with disabled step controls at min/max values.
+- Dialog button feedback should follow the shared purple interaction states and should not use yellow feedback unless a later UI spec explicitly changes that.
 
 ## Related Specs
 

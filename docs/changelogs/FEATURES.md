@@ -19,13 +19,16 @@ Tracks feature behavior, feature specs, user stories, list behavior, catalog beh
 
 ### List Behavior
 
+- Merged progress tracking plan behavior into specs, covering Trophy Race arena clear/remove/reorder behavior, Breakout group combi-count edits, Guild Run arena target-set edits, and relay slots without numbered markers.
+- Removed the relay numbered marker requirement from `F006-empty-list-layouts.md`; relay slots and selected relay cookies should not use numbered badges, markers, or frame numbers.
 - Changed Trophy Race preview move mode from arrow controls to drag-and-drop arena reordering with automatic renumbering after drop.
 - Added Trophy Race preview interactions for adding arenas up to the 10-arena limit, choosing whether delete clears arena items or removes the full arena block, and moving arenas while renumbering them in visual order.
 - Added prototype-only Trophy Race progress preview work for list progress display and mixed filled/empty catalog slots in `public/trophy-race-progress-preview.html`.
 
 ### Catalog Behavior
 
-- No changes recorded yet.
+- Made runtime admin catalog management the standard for future admin-created cookies, pets, and treasures, using draft/review/publish behavior instead of repository asset writes.
+- Added an active admin catalog management plan covering future admin-only creation flows for cookies, pets, and treasures.
 
 ### Presets
 

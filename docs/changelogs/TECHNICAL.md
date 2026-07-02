@@ -6,6 +6,10 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Documentation Process
 
+- Added Supabase implementation standards to `docs/plans/active/supabase-spec-migration.md`, covering publishable keys, server-side auth validation, RLS policy shape, cascade deletes, idempotent migration, and database constraints.
+- Updated `docs/plans/active/supabase-spec-migration.md` to decide that account deletion should remove all saved-list data owned by the deleted account.
+- Updated `docs/plans/active/supabase-spec-migration.md` to make email/password the first supported auth provider and require profile display names.
+- Updated `docs/plans/active/supabase-spec-migration.md` to decide that signed-out users can create temporary local lists and that those lists migrate automatically after sign-up or sign-in.
 - Removed later implementation tasks from the progress tracking plan and moved it from `docs/plans/active/` to `docs/plans/completed/` after merging the planned spec updates.
 - Updated `docs/plans/active/progress-tracking-implementation.md` so the future spec merge keeps mobile Trophy Race reordering open and forbids numbered relay badges, markers, or frame assets.
 - Updated `docs/plans/active/admin-role-and-catalog-management.md` and `docs/plans/active/supabase-spec-migration.md` so runtime admin catalog records and runtime image storage are the standard for future admin-created catalog items.
@@ -36,15 +40,19 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Architecture
 
+- Added Supabase browser and server client helpers under `utils/supabase/`.
 - Created the starter Next.js workspace for the OvenBreak to-do/list website.
 
 ### Storage
 
+- Added future Supabase storage standards for account-scoped database constraints, cascade-linked user data, and idempotent guest local-list migration.
+- Clarified the future Supabase deletion path should remove the deleted account's profile, saved lists, sections, combis, free item blocks, todo items, and default-list initialization state.
+- Clarified the future Supabase migration path should keep local guest list data until remote persistence succeeds, then clear or mark the local copy as migrated to avoid duplicate imports.
 - Added persistence rules for block clear, full block removal, Trophy Race arena reordering, Breakout group count edits, and Guild Run arena target-set edits.
 
 ### Routing
 
-- No changes recorded yet.
+- Added a Next.js 16 `proxy.ts` session refresh hook for Supabase SSR cookies.
 
 ### Data Imports
 
@@ -52,6 +60,7 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Build And Tooling
 
+- Installed `@supabase/supabase-js` and `@supabase/ssr`.
 - Created the starter Next.js workspace for the OvenBreak to-do/list website.
 
 ### Technical Specs

@@ -4,6 +4,16 @@ This file gives a simple overview of every recorded project change. For details,
 
 ## Unreleased
 
+- **Added Supabase implementation standards to the migration plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Storage](TECHNICAL.md#storage).
+- **Resolved account deletion data removal behavior in the Supabase plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Storage](TECHNICAL.md#storage).
+- **Resolved the first auth provider and display-name behavior in the Supabase plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
+- **Resolved guest local-list migration behavior in the Supabase plan.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Storage](TECHNICAL.md#storage).
+- **Added the Supabase SSR client setup.**
+  Details: [Technical > Architecture](TECHNICAL.md#architecture), [Technical > Routing](TECHNICAL.md#routing), [Technical > Build And Tooling](TECHNICAL.md#build-and-tooling).
 - **Moved the progress tracking implementation plan to completed.**
   Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process).
 - **Merged progress tracking plan decisions into durable specs.**

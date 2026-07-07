@@ -6,6 +6,9 @@ Tracks visual/interface changes, UI specs, responsive behavior, layout, accessib
 
 ### UI Specs
 
+- Removed the redundant `G006-ui-index.md`; `G001-index.md` remains the single spec index for UI spec links.
+- Updated account, empty/error, and accessibility specs for real auth states, guest migration feedback, admin entry points, admin access denial, and admin upload/dialog accessibility.
+
 - Added durable list-detail progress UI requirements for modal level editing, block actions, preview visual references, and format-specific controls.
 - Added project specifications for UI behavior.
 

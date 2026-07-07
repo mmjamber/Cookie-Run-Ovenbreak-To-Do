@@ -76,7 +76,7 @@ Users should be able to:
 Rules:
 
 - A user generated list requires a non-empty name before it can be saved.
-- List names must be unique within the current local profile.
+- List names must be unique within the current signed-in account or guest profile.
 - Creating or renaming a list must validate that the resulting name is unique.
 - Reordering saved lists updates the To-do page order and the homepage's mirrored first-four list cards.
 - Generated default preset-derived lists participate in the same rename, delete, and reorder behavior as user generated lists.
@@ -97,7 +97,7 @@ Rules:
 - [ ] Guild Run setup shows cap choices as `7/7/5`, `11/11/9`, and `15/15/12`.
 - [ ] Champions League setup uses fixed low, mid, and full arena target sets without asking the user to choose them.
 - [ ] Created lists start with empty add-item slots and no preselected catalog items.
-- [ ] Created lists persist locally.
+- [ ] Created lists persist to the signed-in account or temporary guest storage.
 - [ ] Users can have multiple lists with the same format.
 - [ ] Reused list names are blocked.
 - [ ] Deleting a list asks for confirmation.

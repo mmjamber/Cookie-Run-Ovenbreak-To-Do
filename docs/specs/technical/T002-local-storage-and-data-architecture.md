@@ -1,10 +1,10 @@
-# Technical Spec: Local Storage And Data Architecture
+# Technical Spec: Supabase Persistence And Data Architecture
 
 ## Purpose
 
-This spec defines the local data architecture for saved to-do lists, list sections, combis, selected items, and browser persistence.
+This spec defines the Supabase-backed data architecture for accounts, profiles, saved to-do lists, list sections, combis, selected items, guest migration, admin role extension, and validation rules.
 
-Feature specs describe what users can create and edit. This technical spec owns data shapes, storage mapping, timestamps, local profile scope, and validation storage rules.
+Feature specs describe what users can create and edit. This technical spec owns persistence mapping, ownership, timestamps, database constraints, guest browser-local fallback, and migration behavior.
 
 ## Core Types
 
@@ -12,53 +12,69 @@ Feature specs describe what users can create and edit. This technical spec owns 
 type ItemType = "cookie" | "pet" | "treasure";
 type ListFormat = "trophyRace" | "breakout" | "guildRun" | "championsLeague" | "none";
 type TargetSet = "low" | "mid" | "full";
+type ListSource = "preset" | "userGenerated";
 ```
 
 `TargetSet` values are internal storage values. User-facing cap selection controls must label these values as `7/7/5`, `11/11/9`, and `15/15/12` in pet cap / cookie cap / treasure cap order.
 
-## User List
+## Account And Profile Data
+
+Supabase should store authenticated user/profile ownership and user-owned to-do data.
+
+Required account behavior:
+
+- The first supported auth provider is email/password.
+- Profile records are linked to Supabase Auth users and require a display name.
+- Profile records reference `auth.users.id` by primary key and use `on delete cascade`.
+- Account deletion removes the deleted account's profile, saved lists, sections, combis, free item blocks, todo items, and default-list initialization state.
+- User settings such as theme, compact view, preferred sorting, and hide-rarity preference are out of scope for this database pass.
+
+## Saved List Records
 
 ```ts
-type UserList = {
+type SavedList = {
   id: string;
-  ownerId: string;
+  userId: string;
   name: string;
   format: ListFormat;
-  source: "preset" | "userGenerated";
+  source: ListSource;
   mode: ListFormat | null;
-  order: number;
+  displayOrder: number;
+  localMigrationId?: string;
+  migrationBatchId?: string;
   createdAt: string;
   updatedAt: string;
-  sections: ListSection[];
 };
 ```
 
 Rules:
 
 - `id` must be stable and unique.
-- `ownerId` identifies the current local profile.
+- `userId` identifies the owning authenticated account for remote rows.
 - `createdAt` and `updatedAt` should be ISO timestamps.
 - `updatedAt` should change after meaningful activity such as creation, rename, item additions, item deletions, item edits, level edits, block clears, section or arena additions, section or arena deletions, group count edits, arena target-set edits, arena reordering, or manual completion updates.
-- Preset-derived lists should use `source: "preset"`.
-- User generated lists should use `source: "userGenerated"`.
-- `order` stores the user-controlled display order for the To-do page.
-- Homepage `My Lists` cards use the first four lists by ascending `order`, matching the To-do page.
-- Reordering lists should update `order` without requiring changes to `updatedAt`.
-- New local user and guest profiles should initialize `userLists` with the four default preset-derived lists.
-- Generated default preset-derived lists are stored as `UserList` records and may be edited, renamed, deleted, and reordered with the same controls as user generated lists.
-- Generated default preset-derived lists should store empty add-item slots only; all `TodoItem` slot values should start as `null`.
+- Preset-derived lists use `source: "preset"`.
+- User generated lists use `source: "userGenerated"`.
+- `displayOrder` stores the user-controlled display order for the To-do page.
+- Homepage `My Lists` cards use the first four lists by ascending `displayOrder`, matching the To-do page.
+- Reordering lists should update `displayOrder` without requiring changes to `updatedAt`.
+- New signed-in accounts and guest profiles should initialize with the four default preset-derived lists.
+- Generated default preset-derived lists are stored as saved-list records and may be edited, renamed, deleted, and reordered with the same controls as user generated lists.
+- Generated default preset-derived lists should store empty add-item slots only; all todo item slot values should start as `null`.
 - After a profile is initialized, deleted default preset-derived lists must not be regenerated automatically.
 
-## Preset-Derived And User Generated Lists
+## Default List Initialization State
 
-The distinction between preset-derived lists and user generated lists is origin metadata:
+Each account should have durable default-list initialization state so preset-derived starter lists are generated once and not regenerated after deletion.
 
-- `source: "preset"` means the list was generated during new profile initialization from one of the default modes.
-- `source: "userGenerated"` means the user created the list through Add list.
-- `mode` stores the associated mode for preset-derived lists and is `null` for user generated None-format or personal lists without a preset mode.
-- Both sources use the same `UserList` shape, persistence, list detail screens, card behavior, ordering, rename, delete, and edit rules.
+Rules:
 
-## List Name Defaults
+- Initialization state is account-scoped for signed-in users.
+- Guest initialization state is browser-local until migration.
+- Account deletion removes default-list initialization state for the deleted account.
+- Database constraints should prevent duplicate initialization records for the same account.
+
+## List Name Defaults And Uniqueness
 
 Add list auto-fills the name field only when the field is empty:
 
@@ -68,31 +84,23 @@ Add list auto-fills the name field only when the field is empty:
 - Champions League format defaults to `Champions League`.
 - None format defaults to `No mode`.
 
-These defaults are saved as ordinary `name` values when the user keeps them. The user can edit an auto-filled name before saving or rename the list later. Format selection must not overwrite a name the user has already typed.
-
-## Local Profile Scope
-
-To-do lists belong to the current local profile.
-
 Rules:
 
-- The add-to-list dialog only shows lists owned by the current local profile.
-- Local profile lists remain available in browser storage.
-- Login and sign-in controls are aesthetic-only and must not alter `ownerId`.
-- Do not add backend accounts, remote sync, or server persistence unless a future requirement explicitly asks for it.
-- If a future login system is added, local profile lists should have a clear migration or import path.
+- Saved list names must be non-empty after trimming whitespace.
+- Saved list names must be unique within the current signed-in account or guest profile.
+- Database constraints should enforce per-user list-name uniqueness for signed-in data.
+- Format selection must not overwrite a name the user has already typed.
 
-## List Section
+## List Sections
 
 ```ts
 type ListSection = {
   id: string;
+  listId: string;
   kind: "combis" | "group" | "arena" | "individualItems";
   label: string;
   position: number;
   targetSet: TargetSet | null;
-  combis: Combi[];
-  items: FreeItemBlock[];
 };
 ```
 
@@ -101,122 +109,74 @@ Rules:
 - Sections store combis, groups, arenas, or ungrouped items depending on list format.
 - Arena labels are derived from chronological `position` values and rendered as `Arena N`, starting at `Arena 1`.
 - When a format supports reordering, persisted `position` values must be rewritten so visual labels and storage order remain aligned.
-- Trophy Race arenas are real list item blocks in the UI, but they are stored as combis inside a `combis` section rather than `arena` sections because Trophy Race does not use low, mid, or full arena target-set controls.
-- Guild Run arena sections may temporarily store `targetSet: null` until the user chooses the arena's low, mid, or full target set. Each section contains one combi type 1. Items cannot be added to a Guild Run arena while its `targetSet` is `null`.
-- Changing a Guild Run arena section's `targetSet` must update target levels for existing `TodoItem` values in that arena to match the new cap values.
-- Champions League arena sections must store fixed target sets by `position`: Arena 1 `targetSet: "low"`, Arena 2 `targetSet: "mid"`, and Arena 3 `targetSet: "full"`. Each section contains one combi type 1.
-- None-format lists can mix individual items and user-added combi sections.
-- Breakout `group` sections store combi type 2 blocks only; Breakout must not store combi type 1 entries, arena entries, or free item blocks.
-- Breakout group combi-count edits add or remove combi type 2 records in that group only, keep the group within 3 to 15 combis, and rewrite combi `position` values so numbering restarts at `1` inside that group.
-- None-format individual item entries are stored as free item blocks so the block can remain after its item is deleted.
-- None-format individual treasure entries store one free item block each. Multi-treasure selection is represented only by filling treasure slots inside a `Combi`.
+- Parent-child ownership integrity must ensure sections belong to a list owned by the same account.
 
-## Free Item Block
+## Free Item Blocks
 
 ```ts
 type FreeItemBlock = {
   id: string;
+  sectionId: string;
   position: number;
   slotType: ItemType;
-  item: TodoItem | null;
 };
 ```
 
 Rules:
 
 - Free item blocks are standalone None-format cookie, pet, or treasure entries.
-- `slotType` determines which add-option artwork appears when `item` is `null`.
-- Adding a catalog item to the block sets `item`.
-- Deleting the catalog item from the block sets `item` back to `null` and keeps the `FreeItemBlock`.
+- `slotType` determines which add-option artwork appears when no item is linked.
+- Adding a catalog item creates or updates the associated todo item.
+- Deleting the catalog item removes the todo item and keeps the free item block.
 
-## Combi
+## Combi Records
 
 ```ts
 type Combi = {
   id: string;
+  sectionId: string;
   position: number;
-  pet: TodoItem | null;
-  cookie: TodoItem | null;
-  relayCookie: TodoItem | null;
-  treasures: (TodoItem | null)[];
 };
 ```
 
 Rules:
 
 - `position` is display order or Breakout number.
-- `relayCookie` is used by Trophy Race, Guild Run, and Champions League.
-- `treasures` stores exactly 3 slot positions for combi treasure add-item slots.
-- A `null` treasure slot is empty and should show `add treasure` artwork.
-- Filled treasure slots store a `TodoItem`.
+- A combi has stable slot positions for pet, cookie, optional relay cookie, and three treasure slots.
+- Relay cookie slots are used by Trophy Race, Guild Run, and Champions League.
+- Treasure slots store exactly 3 slot positions for combi treasure add-item slots.
+- Empty slots should render matching add-option artwork.
 
-## Todo Item
+## Todo Item Records
 
 ```ts
 type TodoItem = {
   id: string;
+  listId: string;
+  sectionId: string;
+  combiId: string | null;
+  freeItemBlockId: string | null;
+  slotKey: "pet" | "cookie" | "relayCookie" | "treasure1" | "treasure2" | "treasure3" | "freeItem";
   catalogItemId: string;
   type: ItemType;
   currentLevel: number;
   targetLevel: number;
   completed: boolean;
+  position: number | null;
 };
 ```
 
 Rules:
 
-- `catalogItemId` references a catalog item.
+- `catalogItemId` references a base static or approved runtime catalog item.
+- Saved-list rows reference catalog item ids instead of duplicating catalog names, images, rarity metadata, or derived catalog data.
 - `currentLevel` starts at 1 for newly added items.
 - `targetLevel` defaults to the maximum allowed by the destination add-item slot, list format, combi, or arena target set.
 - `targetLevel` is directly user-editable only for None-format lists.
 - In Trophy Race, Breakout, Champions League, and Guild Run, `targetLevel` follows the list format or arena target set.
 - `completed` is true when `currentLevel >= targetLevel`.
 - Manually marking an item complete sets `currentLevel` to `targetLevel`.
-
-## Item Deletion
-
-Deleting a catalog item from a list item block removes only the `TodoItem` from that slot:
-
-- Combi `cookie`, `pet`, and `relayCookie` slots are set to `null`.
-- Combi treasure slots are set to `null` at their preserved treasure slot position.
-- Free item block `item` values are set to `null`.
-- The surrounding combi or free item block remains stored.
-- Other items in the same block remain unchanged.
-- The deleted item's current level, target level, and completion state are discarded with that `TodoItem`.
-
-## Item Replacement
-
-Replacing a filled catalog item through an explicit `Switch?` action removes only the `TodoItem` in that slot and writes a new `TodoItem` for the selected catalog item.
-
-Rules:
-
-- Replacement is allowed only for compatible filled slots.
-- The replaced item's current level, target level, and completion state are discarded.
-- The new item starts with `currentLevel: 1`.
-- The new item's `targetLevel` defaults to the maximum allowed by the destination add-item slot, list format, combi, or arena target set.
-- Other items in the same combi or free item block remain unchanged unless the user is completing an explicit cookie-with-pet placement that also targets a compatible pet slot.
-
-## Block Clear And Full Block Removal
-
-Block clear removes every `TodoItem` from a single list item block while preserving that block's surrounding structure.
-
-Rules:
-
-- Clearing a combi sets `pet`, `cookie`, `relayCookie`, and every treasure slot to `null`.
-- Clearing a free item block sets `item` to `null`.
-- Clearing a Trophy Race arena clears the stored combi for that arena but keeps the arena block.
-- Block clear discards current level, target level, and completion state for every cleared `TodoItem`.
-- Block clear must update the parent list's `updatedAt` timestamp.
-
-Full block removal deletes the entire block record only where the current format allows it.
-
-Rules:
-
-- Removing a Trophy Race arena deletes that stored combi, must keep the list between 1 and 10 arenas, and rewrites remaining arena positions so labels render as `Arena N` in order.
-- Removing a None-format combi or individual item entry deletes that user-added section or `FreeItemBlock` and rewrites sibling positions where needed.
-- Guild Run and Champions League arenas cannot be fully removed.
-- Breakout combi removal is allowed only through an approved group combi-count edit and must keep the group between 3 and 15 combis.
-- Full block removal must update the parent list's `updatedAt` timestamp.
+- Parent-child ownership integrity must ensure todo items belong to a list owned by the same account.
 
 ## Format Storage Mapping
 
@@ -226,23 +186,88 @@ Rules:
 - Champions League: 3 fixed `arena` sections, each rendered as an `Arena N` list item block with one empty combi type 1. Arena 1 stores `targetSet: "low"`, Arena 2 stores `targetSet: "mid"`, and Arena 3 stores `targetSet: "full"`.
 - None: one or more flexible sections that can store individual cookies, pets, treasures, combi type 1 entries, and combi type 2 entries.
 
-## Persistence
+## Item Deletion, Replacement, And Block Removal
 
-Initial implementation should use browser local storage.
+Deleting a catalog item from a list item block removes only the todo item from that slot:
+
+- The surrounding combi or free item block remains stored.
+- Other items in the same block remain unchanged.
+- The deleted item's current level, target level, and completion state are discarded with that todo item.
+
+Replacing a filled catalog item through an explicit `Switch?` action removes only the todo item in that slot and writes a new todo item for the selected catalog item.
+
+Block clear removes every todo item from a single list item block while preserving that block's surrounding structure.
+
+Full block removal deletes the entire block record only where the current format allows it:
+
+- Removing a Trophy Race arena deletes that stored combi, must keep the list between 1 and 10 arenas, and rewrites remaining arena positions.
+- Removing a None-format combi or individual item entry deletes that user-added section or free item block and rewrites sibling positions where needed.
+- Guild Run and Champions League arenas cannot be fully removed.
+- Breakout combi removal is allowed only through an approved group combi-count edit and must keep the group between 3 and 15 combis.
+
+## Guest Browser-Local Persistence
+
+Guest users may create and edit lists without signing in.
 
 Rules:
 
-- `catalogItems` can be static bundled data for base imported catalog items before runtime admin catalog management is implemented.
-- `userLists` should persist locally.
-- Profile initialization state should persist locally so generated default preset-derived lists are created once per local user or guest profile, not recreated after deletion.
-- Use a versioned storage key so future migrations are possible.
-- Saving user to-do lists in browser local storage is the primary way to test the website locally.
-- Do not require a backend service for persistence.
+- Guest list data is saved only in browser-local storage on the current device/browser, preferably `localStorage` or IndexedDB rather than cookies.
+- Guest data should not be represented as durable cloud-saved progress.
+- Guest data can be lost when the user clears site browser data, uses private browsing, changes browsers/devices, or browser storage is otherwise removed.
+- The To-do page should warn signed-out users that guest progress is saved only on the current device and may be deleted if site browser data is cleared.
+
+Recommended warning text:
+
+```text
+Reminder: You are currently using a guest account. Your progress is saved only on this device and may be deleted if you clear this site's browser data.
+Please log in or make an account to save your progress.
+```
+
+## Guest-To-Account Migration
+
+After sign-up or sign-in, guest list data should migrate automatically into the signed-in user's Supabase account.
+
+Rules:
+
+- Keep the local guest copy until Supabase migration succeeds.
+- After a confirmed successful migration, clear or mark the local copy as migrated so the same lists are not imported twice.
+- Migration should be idempotent. Migrated local lists should include a durable `localMigrationId`, `migrationBatchId`, or equivalent marker so retries, refreshes, duplicate sign-in callbacks, or partial failures do not create duplicate account lists.
+- Migration should be all-or-nothing where practical.
+- If partial migration can occur, it must be safely resumable and must not clear or mark the local copy as migrated until every intended remote record has been persisted.
+
+## Supabase Security And Constraints
+
+Rules:
+
+- Environment documentation should use current Supabase publishable key terminology, such as `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+- Server-side auth checks for protected pages, Server Actions, Route Handlers, and user-owned data access should validate authenticated claims with Supabase's server-side auth APIs.
+- Server code must not treat cookie-only session data as trusted authorization.
+- Every user-owned table in an exposed schema should have Row Level Security enabled.
+- RLS policies for user-owned rows should explicitly require an authenticated user and owner match, such as `auth.uid() IS NOT NULL AND auth.uid() = user_id`.
+- User-owned child records should be connected by foreign keys with cascade behavior.
+- Database constraints should enforce account-scoped integrity for list names, default-list initialization, ordering, and parent-child ownership.
+
+## Account Roles Extension Point
+
+Reserve a protected `account_roles`-style table for future roles and permissions.
+
+Rules:
+
+- The protected account role table is the canonical future source for admin authorization.
+- Account role rows link to authenticated profile/user ids.
+- Ordinary users cannot grant, update, or revoke their own roles.
+- Admin role changes require a privileged server/database path in the later admin implementation.
+- Server-managed JWT/app metadata may later mirror role state for fast checks, but user-editable metadata must not be used for authorization.
+- Admin behavior is defined in `../features/F007-admin-catalog-management.md`.
+
+## Runtime Catalog Data
+
+Base static catalog metadata can remain bundled application data before runtime admin catalog management is implemented.
+
+Runtime admin-created catalog records are stored in the approved database. Runtime artwork for admin-created catalog items uses the hybrid Supabase Storage policy defined in `T004-runtime-assets-and-ui-implementation.md`.
 
 ## Validation Rules
 
-- Saved list names must be non-empty after trimming whitespace.
-- Saved list names must be unique within the current local profile.
 - Cookie target cannot exceed 15.
 - Pet target cannot exceed 15.
 - Treasure target cannot exceed 12.
@@ -257,18 +282,15 @@ Rules:
 - In Guild Run arena formats, the selected `targetSet` defines the target levels for that arena. Users edit Guild Run targets only by changing the arena `targetSet` to low, mid, or full.
 - In Champions League, fixed arena target sets define the target levels for each arena: Arena 1 low, Arena 2 mid, and Arena 3 full.
 - Items cannot be added to a Guild Run arena while `targetSet` is `null`.
-- Treasure slots per combi must remain exactly 3 positions, each containing either `null` or one treasure `TodoItem`.
+- Treasure slots per combi must remain exactly 3 positions, each containing either no item or one treasure todo item.
 - Trophy Race arenas cannot exceed 10.
 - Trophy Race arena deletion cannot reduce the list below 1 arena.
-- Clearing a Trophy Race arena keeps that stored combi and discards any `TodoItem` values in its slots.
-- Removing a Trophy Race arena deletes that stored combi, discards any `TodoItem` values in its slots, and rewrites remaining arena positions.
 - Trophy Race arena reordering rewrites arena positions and cannot change the arena count.
 - Trophy Race user generated list setup must choose a starting arena count from 1 to 10.
 - Breakout groups cannot exceed 5.
 - Breakout group size must be between 3 and 15 combi type 2 blocks.
 - Breakout group combi-count edits must keep the group between 3 and 15 combi type 2 blocks.
 - Breakout groups must contain only combi type 2 blocks.
-- Breakout target levels are fixed to full max targets.
 - Guild Run has exactly 12 arenas.
 - Guild Run arena target-set edits must update target levels for existing filled items in that arena.
 - Champions League has exactly 3 arenas.
@@ -280,3 +302,5 @@ Rules:
 - `../features/F003-preset-lists.md` for preset behavior.
 - `../features/F004-user-generated-lists.md` for user generated list behavior.
 - `../features/F005-homepage-list-cards.md` for homepage list-card selection behavior.
+- `../features/F007-admin-catalog-management.md` for admin catalog behavior.
+- `T004-runtime-assets-and-ui-implementation.md` for runtime admin upload storage.

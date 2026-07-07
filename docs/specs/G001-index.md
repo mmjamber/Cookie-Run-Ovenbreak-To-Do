@@ -9,7 +9,6 @@ This folder is the source of truth for the project. The website helps Cookie Run
 - `G003-global-spec.md` - product goals, audience, MVP scope, and success criteria
 - `G004-functional-map.md` - pages, user flows, and feature areas
 - `G005-data-model.md` - high-level entities and relationships
-- `G006-ui-index.md` - index of user interface specs and boundaries
 
 ## Feature Specs
 
@@ -19,6 +18,7 @@ This folder is the source of truth for the project. The website helps Cookie Run
 - `features/F004-user-generated-lists.md` - user generated named lists
 - `features/F005-homepage-list-cards.md` - homepage to-do list cards, To-do order mirroring, and default card behavior
 - `features/F006-empty-list-layouts.md` - empty list, combi, group, arena, and add-item slot visuals
+- `features/F007-admin-catalog-management.md` - admin-only runtime catalog item creation, editing, deletion, roles, and uploads
 
 ## User Interface Specs
 
@@ -43,11 +43,14 @@ This folder is the source of truth for the project. The website helps Cookie Run
 - `../user-stories/US009-manage-saved-lists.md` - renaming and deleting saved lists
 - `../user-stories/US010-build-none-format-list.md` - building flexible None-format lists
 - `../user-stories/US011-delete-item-from-list-block.md` - deleting filled catalog items from combi or free item blocks
+- `../user-stories/US012-sign-up-sign-in-and-migrate-guest-lists.md` - account auth, display names, guest warning, and guest migration
+- `../user-stories/US013-load-account-lists-across-devices.md` - loading signed-in saved lists on another device
+- `../user-stories/US014-admin-manage-catalog-items.md` - admin-only catalog item add, edit, delete, upload, and authorization
 
 ## Technical Specs
 
 - `technical/T001-catalog-import-and-derived-data.md` - catalog asset parsing, derived names, rarity inference, pairing, and import reports
-- `technical/T002-local-storage-and-data-architecture.md` - local profile data, saved list shapes, validation, and browser storage
+- `technical/T002-local-storage-and-data-architecture.md` - Supabase account persistence, guest migration, account roles, saved list shapes, and validation
 - `technical/T003-list-selection-routing.md` - catalog selection mode context, compatibility checks, and return behavior
 - `technical/T004-runtime-assets-and-ui-implementation.md` - runtime asset handling, CSS ownership, and stable artwork sizing
 

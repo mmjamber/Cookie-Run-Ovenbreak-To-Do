@@ -11,7 +11,7 @@ The website provides preset to-do lists for four game modes:
 
 Presets give users a correctly structured starting point without requiring them to manually choose a format.
 
-For every new local user or guest profile, the website generates one preset-derived list for each default mode. These generated defaults are real saved list cards in the To-do page order, not separate homepage shortcuts.
+For every new signed-in account or guest profile, the website generates one preset-derived list for each default mode. These generated defaults are real saved list cards in the To-do page order, not separate homepage shortcuts.
 
 Default preset-derived lists always start with empty add-item slots. They must never contain preselected cookies, pets, treasures, premade combis, or recommended game data.
 
@@ -33,7 +33,7 @@ When a user chooses a preset:
 - The list contains the required default sections, combis, groups, or arena blocks.
 - The list's item slots are empty until the user fills them with catalog items.
 
-When a new local user or guest profile is initialized:
+When a new signed-in account or guest profile is initialized:
 
 - The website creates the Trophy Race, Guild Run, Champions League, and Breakout preset-derived lists automatically.
 - The generated lists appear as saved list cards in the To-do page list order.
@@ -59,11 +59,11 @@ When a new local user or guest profile is initialized:
 - Users can manually change Breakout preset groups and group sizes after creation, within Breakout format limits.
 - Breakout preset groups contain only combi type 2 blocks.
 - Users must choose target sets for Guild Run arenas before adding items to those arenas. The user-facing choices are labeled `7/7/5`, `11/11/9`, and `15/15/12`.
-- Preset-derived lists should persist like user generated lists.
+- Preset-derived lists should persist like user generated lists in the signed-in account or temporary guest storage.
 
 ## Acceptance Criteria
 
-- [ ] Every new local user or guest profile starts with generated preset-derived lists for all four default modes.
+- [ ] Every new signed-in account or guest profile starts with generated preset-derived lists for all four default modes.
 - [ ] Homepage `My Lists` shows preset-derived lists only by mirroring the first four cards in To-do page order.
 - [ ] Selecting a preset-derived list opens the existing saved preset-derived list.
 - [ ] Deleted preset-derived lists are not recreated by preset selection.

@@ -24,7 +24,7 @@ As a player, I want to add catalog items to compatible lists and slots so my lis
 ## Acceptance Criteria
 
 - [ ] Clicking an ordinary catalog item opens the add-to-list dialog.
-- [ ] The add-to-list dialog shows lists linked to the current local profile.
+- [ ] The add-to-list dialog shows lists linked to the current signed-in account or guest profile.
 - [ ] The add-to-list dialog lets the user choose the destination list, but not the final slot.
 - [ ] The dialog Add button opens the chosen list detail view in pending placement mode.
 - [ ] Pending placement mode shows compatible empty slots and compatible filled slots across the chosen list, including multiple combis, groups, arenas, or None-format entries.

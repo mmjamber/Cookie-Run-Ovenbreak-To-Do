@@ -127,4 +127,6 @@ Please log in or make an account to save your progress.
 
 ## Completion Notes
 
-Keep this plan in `docs/plans/active/` until the database-related specs and user stories have been updated. When complete, move it to `docs/plans/completed/` and summarize which specs changed.
+Completed after merging the Supabase account, profile, saved-list persistence, guest migration, account role extension, auth UI state, and account-backed user-story requirements into durable specs and user stories.
+
+Updated durable docs include `G002`, `G003`, `G004`, `G005`, `F003`, `F004`, `F005`, `T002`, `UI002`, `UI006`, `UI007`, `US001`, `US002`, `US003`, `US005`, `US009`, `US012`, and `US013`.

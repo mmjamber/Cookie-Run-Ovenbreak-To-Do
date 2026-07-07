@@ -10,10 +10,13 @@ Tracks feature behavior, feature specs, user stories, list behavior, catalog beh
 
 ### Feature Specs
 
+- Added `F007-admin-catalog-management.md` and updated catalog/list feature specs so Supabase accounts, guest migration, account-backed list ownership, and admin-created runtime catalog items are durable spec requirements.
 - Added project specifications for product rules, list formats, catalog behavior, and related feature behavior.
 
 ### User Stories
 
+- Added account and admin user stories for sign-up/sign-in with guest migration, cross-device account list loading, and admin catalog item management.
+- Updated existing list and catalog user stories from local-profile ownership to signed-in account or guest-profile ownership.
 - Moved user-story documents from `docs/specs/user-stories/` to `docs/user-stories/` so they remain in docs without living inside the specs tree.
 - Added project user-story documents.
 
@@ -27,6 +30,7 @@ Tracks feature behavior, feature specs, user stories, list behavior, catalog beh
 
 ### Catalog Behavior
 
+- Merged admin catalog management into durable specs, covering shared-auth admin access, protected role authorization, add/edit/delete item scope, runtime records, and hybrid Supabase Storage image handling.
 - Selected hybrid Supabase Storage for future admin-uploaded catalog images, with private originals and public approved `.webp` display derivatives.
 - Resolved admin catalog planning decisions so admin-created items support add, edit, and delete without archive behavior for now, and use auto-incremented release/order numbers.
 - Clarified that future admin catalog management should authorize admins through the protected account role table reserved by the Supabase account plan.

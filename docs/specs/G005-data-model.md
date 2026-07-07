@@ -36,6 +36,8 @@ Catalog items need enough data to support:
 
 Catalog import and derived catalog data rules are defined in `technical/T001-catalog-import-and-derived-data.md`.
 
+Base imported catalog records may be bundled static application data. Admin-created catalog records are runtime database records and may reference runtime storage URLs for approved display images.
+
 ## Saved Lists
 
 Saved lists represent the user's leveling goals. A saved list has:
@@ -43,14 +45,14 @@ Saved lists represent the user's leveling goals. A saved list has:
 - A user-visible name.
 - A selected list format.
 - Preset or user generated origin.
-- Local profile ownership.
+- Account or guest ownership.
 - User-controlled display order on the To-do page.
 - Format-specific sections.
 - Saved item selections and progress.
 
-Saved list field shapes, section shapes, combi shapes, and browser persistence rules are defined in `technical/T002-local-storage-and-data-architecture.md`.
+Saved list field shapes, section shapes, combi shapes, account ownership, guest migration, and persistence rules are defined in `technical/T002-local-storage-and-data-architecture.md`.
 
-Every new local user or guest profile starts with four generated default preset-derived saved lists. Preset-derived lists and user generated lists use the same saved-list model, To-do page order, and management behavior; the distinction is only how the list was created.
+Every new signed-in account or guest profile starts with four generated default preset-derived saved lists. Preset-derived lists and user generated lists use the same saved-list model, To-do page order, and management behavior; the distinction is only how the list was created.
 
 User generated lists may start with an auto-filled default name based on the selected format, including `No mode` for None-format lists, but the saved `name` remains user-editable and is the name shown on list cards.
 
@@ -76,11 +78,22 @@ When a user fills an empty add-item slot from a list detail page, the catalog ne
 
 Selection-mode routing and compatibility rules are defined in `technical/T003-list-selection-routing.md`.
 
+## Accounts And Roles
+
+Signed-in users have Supabase Auth identities and profile records with required display names. Saved-list data belongs to the signed-in user account. Signed-out guest data is temporary browser-local data and can migrate into a signed-in account after sign-up or sign-in.
+
+Admin authorization is stored in a protected account role table. The role table is the canonical source for admin access; server-managed auth metadata may mirror role state only as an optimization.
+
+## Runtime Admin Catalog Data
+
+Admin-created catalog items are stored as runtime catalog records with item type, name, rarity, release/order number, pairing links, status, and audit metadata. Approved display images use public `.webp` derivatives; preserved original uploads remain private.
+
 ## Related Specs
 
 - `G002-rules.md` for universal terminology and product rules.
 - `features/F001-catalog-pages.md` for catalog behavior.
 - `features/F002-list-formats.md` for list format behavior.
 - `technical/T001-catalog-import-and-derived-data.md` for catalog data derivation.
-- `technical/T002-local-storage-and-data-architecture.md` for local storage and data shapes.
+- `features/F007-admin-catalog-management.md` for runtime admin catalog data.
+- `technical/T002-local-storage-and-data-architecture.md` for Supabase persistence and data shapes.
 - `technical/T003-list-selection-routing.md` for selection-mode routing.

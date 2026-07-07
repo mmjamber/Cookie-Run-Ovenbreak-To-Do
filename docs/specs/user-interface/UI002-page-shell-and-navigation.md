@@ -7,7 +7,7 @@
 - The first screen should expose homepage `My Lists`, which mirrors the first four cards from the To-do page order.
 - List detail pages should prioritize the user's upgrade targets over decorative content.
 - Mobile layouts should keep add/edit actions reachable and avoid wide tables.
-- Login and sign-in buttons should be shown for aesthetics, but clicking them should do nothing for now.
+- Account controls should support sign-up, sign-in, sign-out, current account display, and admin entry visibility for authorized accounts.
 
 ## Shared Page Shell
 
@@ -47,12 +47,15 @@ The hero navigation buttons must keep the same position, size, typography, and c
   - second button: background `#89d5e9`, text-shadow `0 1px 0 rgb(58 73 141 / 0.4)`
   - third button: background `#ffc233`, text-shadow `0 1px 0 #c7831e`
 
-## Aesthetic Account Buttons
+## Account Controls
 
-Every page should include two aesthetic-only account buttons in the right corner of the screen:
+Every page should include account controls in the right corner of the screen:
 
-- Button order: `sign in`, then `log in` to its right.
-- Button behavior: both buttons are non-functional for now and must not start authentication, call a backend, or change the local profile.
+- Signed-out users should have sign-up/sign-in entry points.
+- Signed-in users should see current account display and sign-out access.
+- New account setup requires a display name.
+- Signed-out users may continue as guests with temporary browser-local lists.
+- Admin-only entry points should appear only after a signed-in account is authorized as admin.
 - Button style: both buttons use the same size, border, border radius, typography, and white text treatment as the shared hero navigation buttons.
 - `sign in` uses the same pink background and text shadow as the `home` button.
 - `log in` uses the same blue background and text shadow as the `to-do` button.

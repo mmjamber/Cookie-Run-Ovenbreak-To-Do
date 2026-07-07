@@ -90,11 +90,11 @@ Users can create user generated named lists. During creation, the user chooses o
 
 When a user chooses a format while the list name field is empty, the website should auto-fill the name with that format's default name. The None format uses `No mode` as its default auto-filled name. Auto-filled names remain editable before saving.
 
-Lists belong to a local guest profile unless a future requirement explicitly adds accounts. When adding catalog items to a list, users should only see lists linked to the current local profile.
+Lists belong either to the signed-in Supabase account or to the current unsigned-in guest browser profile. When adding catalog items to a list, users should only see lists available to the current account or guest profile.
 
 A cookie, pet, or treasure can be added to multiple to-do lists at the same time.
 
-Login and sign-in controls should appear in the website UI for visual planning, but they should be non-functional for now. Clicking Log in, or Sign in should not start authentication, call a backend, or change the current local profile. For exact placement and visual styling, see `user-interface/UI002-page-shell-and-navigation.md`.
+Account controls should support real email/password sign-up, sign-in, sign-out, required display-name setup, and current-account display. Guest users may create temporary browser-local lists before signing in; after sign-up or sign-in, guest lists should migrate into the signed-in account.
 
 ## Catalog Rules
 
@@ -142,15 +142,15 @@ Cookie and pet rarity should be visible through a CSS frame around the item imag
 
 The frame should wrap the item image with a real outer frame color and an oversized inner fill layer clipped by the rounded frame. Treasures should not use these frames.
 
-## Constraints
+## Account, Persistence, And Scope Constraints
 
-- Keep the project local and front-end based unless a future request explicitly changes this.
-- Do not add a backend, remote database, hosted account system, or network sync for now.
-- Keep Log in, and Sign in controls aesthetic-only for now.
-- Do not assume live game data, accounts, cloud sync, or official API access.
-- Store user data locally in the browser according to `technical/T002-local-storage-and-data-architecture.md` unless a future persistence spec says otherwise.
+- User accounts, account-backed saved lists, and guest-to-account migration are in scope through Supabase.
+- Store authenticated account data according to `technical/T002-local-storage-and-data-architecture.md`.
+- Guest lists may use browser-local storage as temporary device/browser-local data until sign-up or sign-in migration succeeds.
+- Admin catalog management is in scope according to `features/F007-admin-catalog-management.md`, but admin tools must build on the shared account/auth system and protected account roles.
+- Do not assume live game data, official game account sync, or official Cookie Run API access.
 - Do not add list export, list sharing, public links, or shareable files.
 - Item current and target levels must never exceed their item type's absolute cap.
 - Item current levels must never exceed the current user-selected list or arena limit.
 - Item target levels must follow the active format rule: fixed full targets for Trophy Race and Breakout, fixed arena targets for Champions League, user-selected arena target sets for Guild Run, or directly editable per-item targets for None-format lists.
-- Do not generate images under any circumstance; use available assets and the runtime asset rules in `technical/T004-runtime-assets-and-ui-implementation.md`.
+- Do not generate decorative or base project images. Admin-uploaded catalog images may produce approved `.webp` display derivatives according to `technical/T004-runtime-assets-and-ui-implementation.md`.

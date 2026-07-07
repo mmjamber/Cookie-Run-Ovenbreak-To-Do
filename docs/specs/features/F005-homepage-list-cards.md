@@ -4,7 +4,7 @@
 
 The homepage `My Lists` section mirrors the To-do page list cards. It is not a separate card collection: it renders the first four cards from the same ordered list data used by the To-do page.
 
-For every new local user or guest profile, the website generates four default preset-derived lists in the To-do page:
+For every new signed-in account or guest profile, the website generates four default preset-derived lists in the To-do page:
 
 - Trophy Race
 - Guild Run
@@ -26,7 +26,7 @@ For every new local user or guest profile, the website generates four default pr
 - Users may reorganize the saved-list order on the To-do page; the homepage must update to mirror the first four lists in that order.
 - If the user deletes a saved list, remove its card from the homepage and do not create a default card to fill the empty space.
 - If the user deletes every saved list, show one add-list card under `My Lists` instead of recreating default cards or leaving the area empty.
-- The default Trophy Race, Guild Run, Champions League, and Breakout cards are generated list records for new local users and guests, not homepage-only placeholders.
+- The default Trophy Race, Guild Run, Champions League, and Breakout cards are generated list records for new signed-in accounts and guests, not homepage-only placeholders.
 - Once generated, default preset-derived lists share the same saved-list behavior as user generated lists: users can edit, rename, delete, and reorder them.
 - Selecting a default preset-derived list card opens that list.
 - When a saved list card is selected, it should open that saved list's detail view.
@@ -35,7 +35,7 @@ For every new local user or guest profile, the website generates four default pr
 
 ## Default List Behavior
 
-The four default cards are generated as real preset-derived lists for every new local user or guest profile. They appear on the To-do page first, and homepage `My Lists` shows them only because they are the first four cards in the shared To-do order.
+The four default cards are generated as real preset-derived lists for every new signed-in account or guest profile. They appear on the To-do page first, and homepage `My Lists` shows them only because they are the first four cards in the shared To-do order.
 
 Default preset-derived lists use the same list-card behavior as user generated lists after creation. Users can edit their contents, rename them, delete them, and rearrange them during To-do card order reorganization.
 
@@ -60,7 +60,7 @@ When deletion leaves the user with no saved lists at all, the shared list-card a
 
 - [ ] The homepage card area contains no more than four cards.
 - [ ] The `See more` button opens the To-do page and does not show more than four list cards on the homepage.
-- [ ] For every new local user or guest profile, the website generates the four default preset-derived lists in the To-do page.
+- [ ] For every new signed-in account or guest profile, the website generates the four default preset-derived lists in the To-do page.
 - [ ] Homepage `My Lists` renders the first four cards from the same ordered list data used by the To-do page.
 - [ ] With saved lists, the homepage shows the first lists from the To-do page's current user-controlled order.
 - [ ] With one to three saved lists, the homepage shows only those saved lists in To-do page order.

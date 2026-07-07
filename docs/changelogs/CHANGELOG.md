@@ -4,6 +4,10 @@ This file gives a simple overview of every recorded project change. For details,
 
 ## Unreleased
 
+- **Removed the redundant UI index spec after the plan merge.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process), [UI > UI Specs](UI.md#ui-specs).
+- **Merged the Supabase and admin catalog active plans into durable specs and user stories.**
+  Details: [Features > Feature Specs](FEATURES.md#feature-specs), [Features > User Stories](FEATURES.md#user-stories), [Features > Catalog Behavior](FEATURES.md#catalog-behavior), [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Storage](TECHNICAL.md#storage), [Technical > Technical Specs](TECHNICAL.md#technical-specs), [UI > UI Specs](UI.md#ui-specs), [UI > Accessibility](UI.md#accessibility).
 - **Selected the hybrid Supabase Storage bucket policy for admin uploads.**
   Details: [Features > Catalog Behavior](FEATURES.md#catalog-behavior), [Technical > Storage](TECHNICAL.md#storage).
 - **Resolved admin catalog planning decisions for images, ordering, role grants, and archive scope.**

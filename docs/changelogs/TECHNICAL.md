@@ -6,6 +6,8 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Documentation Process
 
+- Removed the restored `G006-ui-index.md` because `G001-index.md` already carries the UI spec index.
+- Moved the Supabase spec migration and admin catalog management plans from active to completed after merging their requirements into durable specs and user stories.
 - Clarified the shared authorization extension point between `docs/plans/active/supabase-spec-migration.md` and `docs/plans/active/admin-role-and-catalog-management.md`.
 - Updated `docs/plans/active/admin-role-and-catalog-management.md` so admin access uses the shared account auth flow plus trusted role or permission authorization instead of a separate admin login system.
 - Updated the OvenBreak project skill to include reusable prompt-following rules and to remove frontend-only product boundaries that would block Supabase/auth/database work.
@@ -48,6 +50,7 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Storage
 
+- Replaced `T002` with Supabase persistence architecture covering account profiles, saved-list ownership, guest browser-local persistence, guest migration, RLS, cascade deletes, constraints, account roles, and runtime catalog data.
 - Selected the hybrid Supabase Storage bucket policy for admin uploads: private original uploads, public approved `.webp` display derivatives, and protected admin/server write paths.
 - Resolved admin upload planning decisions to preserve original image uploads, generate `.webp` display derivatives where needed, reserve admin role grants for the database owner, and document storage bucket options.
 - Reserved a protected `account_roles`-style table as the canonical future source for admin authorization, with optional server-managed JWT/app metadata mirroring only as a later fast-check optimization.
@@ -73,6 +76,7 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Technical Specs
 
+- Updated `T001`, `T002`, and `T004` for imported-plus-runtime catalog data, Supabase account persistence, account role authorization, and runtime admin upload storage.
 - Merged progress tracking plan storage and runtime UI implementation requirements into `T002`, `T004`, and `UI007`.
 - Clarified `T001` import review wording and `T002` static catalog storage wording so they do not imply a build-time admin upload workflow.
 - Added project specifications for product rules, data architecture, and related technical behavior.

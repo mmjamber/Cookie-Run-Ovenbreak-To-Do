@@ -188,4 +188,6 @@ Out-of-scope options for now:
 
 ## Completion Notes
 
-Keep this plan in `docs/plans/active/` until the related admin specs and user stories have been written. When complete, move it to `docs/plans/completed/` and summarize which specs changed.
+Completed after merging the admin shared-auth authorization model, protected account role source, runtime catalog management behavior, add/edit/delete scope, auto-incremented order numbers, hybrid Supabase Storage upload policy, admin UI/error/accessibility expectations, and admin user story into durable specs.
+
+Updated durable docs include `G001`, `G002`, `G003`, `G004`, `G005`, `F001`, `F007`, `T001`, `T002`, `T004`, `UI002`, `UI004`, `UI006`, `UI007`, and `US014`.

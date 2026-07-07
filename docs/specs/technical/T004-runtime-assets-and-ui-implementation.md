@@ -18,6 +18,23 @@ Rules:
 - Use existing repository assets. Do not generate images.
 - Automated asset ingestion from `assets/ovenbreak images` into runtime-safe `public/` paths is out of scope until a dedicated implementation task defines it.
 
+Admin-uploaded runtime catalog images are a deliberate exception to static repository asset handling. Admin uploads use Supabase Storage according to the hybrid bucket policy below.
+
+## Runtime Admin Upload Storage
+
+Runtime admin-uploaded catalog images use Supabase Storage.
+
+Rules:
+
+- Preserve original uploads in a private bucket.
+- Store approved `.webp` display derivatives in a public bucket.
+- Public catalog pages must reference only approved public display derivative URLs.
+- Private original upload URLs must be available only through protected admin/server paths.
+- Admin upload, derivative generation, replacement, and delete writes must be protected by server-side admin authorization and storage policies.
+- Display derivatives must keep a database reference back to the preserved original upload.
+- Runtime storage object keys should follow the existing naming pattern as closely as runtime storage allows: item type, rarity, release/order number, normalized item name with words separated by underscores, and the approved image extension.
+- Admin-created item release/order numbers auto-increment within the relevant item type and rarity group.
+
 ## Empty List Runtime Assets
 
 Source add-option artwork lives under `assets/ovenbreak images/add cookies/`. Every add-item slot must use the matching PNG from this folder for its empty-slot artwork.
@@ -117,7 +134,8 @@ Rules:
 
 ## Related Specs
 
-- `../G006-ui-index.md` for the UI index.
+- `../G001-index.md` for the project spec index.
 - `../user-interface/UI001-global-visual-style.md` for visual design rules.
 - `../features/F005-homepage-list-cards.md` for card behavior.
 - `../features/F006-empty-list-layouts.md` for empty list behavior.
+- `../features/F007-admin-catalog-management.md` for admin-uploaded catalog image behavior.

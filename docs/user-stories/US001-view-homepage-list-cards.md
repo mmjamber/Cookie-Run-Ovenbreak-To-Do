@@ -12,7 +12,7 @@ As a player, I want the homepage `My Lists` section to mirror the first cards fr
 ## Scenario
 
 1. The user opens the homepage.
-2. If the current local user or guest is new, the website has generated the four default preset-derived lists in the To-do page order.
+2. If the current signed-in account or guest profile is new, the website has generated the four default preset-derived lists in the To-do page order.
 3. The homepage `My Lists` section shows up to the first four cards from the To-do page's current list order.
 4. If the user has one to three saved lists, the homepage shows only those saved lists in To-do page order.
 5. If the user currently has no lists, such as after deleting the generated default lists, the homepage shows an add-list card instead of a saved list card.
@@ -25,7 +25,7 @@ As a player, I want the homepage `My Lists` section to mirror the first cards fr
 - [ ] The homepage card area never shows more than four cards.
 - [ ] The `See more` button navigates to the To-do page and does not reveal additional list cards directly on the homepage.
 - [ ] The homepage `My Lists` section and To-do page use the same ordered list data and shared card behavior instead of separate card collections.
-- [ ] Every new local user or guest profile starts with four generated default preset-derived lists.
+- [ ] Every new signed-in account or guest profile starts with four generated default preset-derived lists.
 - [ ] Generated default preset-derived list cards use the same card behavior as user generated list cards and can be edited, renamed, deleted, and reordered.
 - [ ] When saved lists exist, the homepage card area mirrors the first four lists in the To-do page's current user-controlled order.
 - [ ] Users can reorganize the To-do page list order, and the homepage updates to match the first four lists in that order.
@@ -37,4 +37,4 @@ As a player, I want the homepage `My Lists` section to mirror the first cards fr
 ## Out Of Scope
 
 - Progress summaries beyond a compact future indicator.
-- Account-based list sync.
+- Public sharing or export.

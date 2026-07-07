@@ -21,7 +21,7 @@ As a player, I want to open generated preset mode lists so I do not have to set 
 ## Acceptance Criteria
 
 - [ ] Preset entry points are visible from the homepage or To-do flow.
-- [ ] Every new local user or guest profile starts with generated preset-derived lists for the four default modes.
+- [ ] Every new signed-in account or guest profile starts with generated preset-derived lists for the four default modes.
 - [ ] Selecting an existing preset-derived list opens the saved preset-derived list.
 - [ ] Deleted preset-derived lists are not recreated by preset selection.
 - [ ] Each preset initializes the correct format and default structure.

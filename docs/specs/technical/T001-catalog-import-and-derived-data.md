@@ -6,6 +6,8 @@ This spec defines how local Cookie Run: OvenBreak asset files become catalog rec
 
 Feature specs describe catalog behavior from the user's perspective. This technical spec owns file-name parsing, rarity inference, pairing inference, review flags, and import reporting.
 
+Runtime admin-created catalog records are defined in `../features/F007-admin-catalog-management.md`. Imported base records and approved runtime records should coexist in public catalog pages.
+
 ## Source Asset Rules
 
 Catalog data comes from local asset files. Runtime code must not expose source folder paths as public URLs unless the files have been copied into a browser-served location.
@@ -48,6 +50,8 @@ Rules:
 - `pairedPetIds` is used for cookies only and may contain up to 2 pets.
 - `pairedCookieId` is used for pets only and should reference at most 1 cookie.
 - `maxLevel` is 15 for cookies and pets, and 12 for treasures.
+
+Runtime admin-created catalog records should expose an equivalent public catalog shape after approval, even if their storage source and audit fields differ from imported base records.
 
 ## Name Normalization
 
@@ -119,6 +123,8 @@ All other pet files in `Cookies/Legendary` should be treated as Epic unless anot
 Items with `needsReview: true` should appear in an import review report.
 
 Import warnings must not appear on public catalog pages. Public catalog pages should show finished catalog data and ordinary empty/filter states only.
+
+Admin-created records with `needsReview` or draft status must also stay out of public catalog pages until approved.
 
 ## Related Specs
 

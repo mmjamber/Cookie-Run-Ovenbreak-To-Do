@@ -90,7 +90,7 @@ Rarity display:
 Ordinary catalog add flow:
 
 - Clicking a catalog item opens an add-to-list dialog.
-- The dialog shows destination lists from the current local profile.
+- The dialog shows destination lists from the current signed-in account or guest profile.
 - The dialog has an Add button that opens the chosen list detail view in pending placement mode.
 - The dialog does not choose the final add-item slot.
 - For clicked cookies with 1 paired pet, the dialog offers Add cookie only, Add cookie and pet, and Cancel choices. Add cookie and pet is checked by default unless the destination is already known to be `relay`.

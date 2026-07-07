@@ -24,7 +24,7 @@ As a player, I want to create a named list with a chosen format so I can track a
 ## Acceptance Criteria
 
 - [ ] A user generated list requires a non-empty name.
-- [ ] The selected name must be unique within the current local profile.
+- [ ] The selected name must be unique within the current signed-in account or guest profile.
 - [ ] Selecting any format auto-fills an empty name field with that format's default name.
 - [ ] Selecting None auto-fills an empty name field with `No mode`.
 - [ ] Format selection does not overwrite an existing user-entered name.
@@ -37,9 +37,9 @@ As a player, I want to create a named list with a chosen format so I can track a
 - [ ] Champions League uses fixed low, mid, and full arena target sets without asking the user to choose them.
 - [ ] Created lists start with empty add-item slots and no preselected catalog items.
 - [ ] The created list opens in the correct detail layout.
-- [ ] The created list persists locally.
+- [ ] The created list persists to the signed-in account or temporary guest storage.
 
 ## Out Of Scope
 
 - Sharing user generated lists.
-- Importing user generated lists from another profile or account.
+- Public sharing or export.

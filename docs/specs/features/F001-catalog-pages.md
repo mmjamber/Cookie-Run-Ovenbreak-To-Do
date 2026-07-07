@@ -51,6 +51,7 @@ Rules:
 - Checked rarity options are hidden from the visible catalog results.
 - Treasure rarity is still used for ordering and filtering, so legendary treasures appear first by default even though treasure rarity is not shown visually.
 - Detailed catalog data rules are defined in `../technical/T001-catalog-import-and-derived-data.md`.
+- Runtime admin-created catalog items that are approved should appear alongside base imported catalog records using the same search, sorting, filtering, rarity, and card rules. Draft or needs-review admin records must not appear on public catalog pages.
 
 ## Cookie-Pet Pairing
 
@@ -73,7 +74,7 @@ When a user clicks a cookie, pet, or treasure from an ordinary catalog page, an 
 
 The dialog should:
 
-- Show the available to-do lists linked to the current local profile.
+- Show the available to-do lists linked to the current signed-in account or guest profile.
 - Let the user choose which list to add the clicked item to.
 - For clicked cookies with paired pets, let the user choose cookie only or cookie with one selected paired pet.
 - Check the cookie-with-pet option by default unless the destination is already known to be `relay`; known `relay` destinations default to cookie only.
@@ -163,7 +164,9 @@ Treasure selection is the only list-selection mode that can select multiple cata
 - [ ] The paired-pet prompt is not shown for relay-cookie selection.
 - [ ] Users can select up to 3 treasures at once only when adding treasures to a combi-format destination with enough compatible empty or explicitly switched treasure slots.
 - [ ] Selected treasure cards show numbered icons `1`, `2`, and `3` for selection and placement order.
-- [ ] Clicking any ordinary catalog item opens an add-to-list dialog with current local profile lists.
+- [ ] Clicking any ordinary catalog item opens an add-to-list dialog with current account or guest lists.
+- [ ] Approved admin-created catalog items render like imported catalog items.
+- [ ] Draft or needs-review admin-created catalog items do not appear in public catalogs.
 - [ ] The add-to-list dialog captures the destination list and optional paired-pet choice for cookies, but not the final slot.
 - [ ] Clicking Add in the dialog opens the chosen list detail view in pending placement mode.
 - [ ] Clicking an add-item slot from a list detail view opens the correct catalog page in list-selection mode.

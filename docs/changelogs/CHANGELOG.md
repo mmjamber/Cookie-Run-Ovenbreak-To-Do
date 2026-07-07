@@ -4,6 +4,16 @@ This file gives a simple overview of every recorded project change. For details,
 
 ## Unreleased
 
+- **Selected the hybrid Supabase Storage bucket policy for admin uploads.**
+  Details: [Features > Catalog Behavior](FEATURES.md#catalog-behavior), [Technical > Storage](TECHNICAL.md#storage).
+- **Resolved admin catalog planning decisions for images, ordering, role grants, and archive scope.**
+  Details: [Features > Catalog Behavior](FEATURES.md#catalog-behavior), [Technical > Storage](TECHNICAL.md#storage).
+- **Clarified the account-role extension point shared by the Supabase and admin plans.**
+  Details: [Features > Catalog Behavior](FEATURES.md#catalog-behavior), [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Storage](TECHNICAL.md#storage).
+- **Aligned the admin access plan with the standard shared-auth plus role authorization model.**
+  Details: [Features > Catalog Behavior](FEATURES.md#catalog-behavior), [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Storage](TECHNICAL.md#storage).
+- **Updated project skill guidance for prompt following and backend-capable work.**
+  Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Storage](TECHNICAL.md#storage).
 - **Added Supabase implementation standards to the migration plan.**
   Details: [Technical > Documentation Process](TECHNICAL.md#documentation-process), [Technical > Storage](TECHNICAL.md#storage).
 - **Resolved account deletion data removal behavior in the Supabase plan.**

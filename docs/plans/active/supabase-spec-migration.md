@@ -21,7 +21,8 @@ This plan is for specification work only. It should not add Supabase packages, e
 - Guest data should be described as device/browser-local data that can be lost when the user clears site browser data, uses private browsing, changes browsers/devices, or browser storage is otherwise removed.
 - Guest lists should migrate automatically after sign-up or sign-in, so users can start making lists immediately and save them to an account later without manual import steps.
 - Local guest data should be kept until the Supabase migration succeeds. After a confirmed successful migration, the local copy should be cleared or marked as migrated so the same lists are not imported twice.
-- The Supabase data model should reserve support for future admin roles or permissions, but admin tools, dashboards, and admin-only workflows are out of scope for this pass.
+- The Supabase data model should reserve a future account authorization extension point, but admin tools, dashboards, and admin-only workflows are out of scope for this pass.
+- The reserved authorization extension point should be a protected account role table, such as `account_roles`, linked to authenticated profile/user ids. The role table should be the canonical future source for admin authorization; server-managed JWT/app metadata may later mirror role state for fast checks, but user-editable metadata must not be used for authorization.
 
 ## Relevant Specs
 
@@ -81,6 +82,7 @@ Please log in or make an account to save your progress.
 - Guest local-list migration should be idempotent. Migrated local lists should include a durable `localMigrationId`, `migrationBatchId`, or equivalent marker so retries, refreshes, duplicate sign-in callbacks, or partial failures do not create duplicate account lists.
 - Guest local-list migration should be all-or-nothing where practical. If a partial migration can occur, it must be safely resumable and must not clear or mark the local copy as migrated until every intended remote record has been persisted.
 - Database constraints should enforce account-scoped integrity for list names, default-list initialization, ordering, and parent-child ownership.
+- The future account role table should be protected so ordinary users cannot grant, update, or revoke their own roles. Admin role changes should require a privileged server/database path in the later admin implementation.
 
 ## Spec Tasks
 
@@ -95,7 +97,7 @@ Please log in or make an account to save your progress.
 - [ ] In the replaced `T002`, require Row Level Security policies with explicit authenticated owner checks so users can read and write only their own profile and list data.
 - [ ] In the replaced `T002`, define database constraints for per-user list-name uniqueness, per-user default-list initialization, account-scoped ordering, and parent-child ownership integrity.
 - [ ] In the replaced `T002`, define idempotent and safely resumable guest local-list migration using a durable migration marker.
-- [ ] In the replaced `T002`, reserve a clear extension point for future account roles or permissions without implementing admin behavior in this pass.
+- [ ] In the replaced `T002`, reserve a protected `account_roles`-style extension point for future account roles or permissions without implementing admin behavior in this pass.
 - [ ] In the replaced `T002`, define how default preset-derived lists are generated for a new authenticated user and how deletion prevents automatic regeneration.
 - [ ] In the replaced `T002`, define guest browser-local persistence before sign-in and how migration/import into a Supabase account should work.
 - [ ] Update `F004-user-generated-lists.md` so created, renamed, reordered, edited, and deleted lists persist to the signed-in user's Supabase data.

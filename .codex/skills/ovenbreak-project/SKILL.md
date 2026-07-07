@@ -1,6 +1,6 @@
 ---
 name: ovenbreak-project
-description: Project-specific guidance for building the Cookie Run OvenBreak to-do/list website. Use when Codex works in this repository on Next.js app code, UI, catalog/list behavior, local persistence, static assets, specs, or project documentation for the OvenBreak to-do app.
+description: Project-specific guidance for building the Cookie Run OvenBreak to-do/list website. Use when Codex works in this repository on Next.js app code, UI, catalog/list behavior, Supabase/auth/database work, persistence, static assets, specs, or project documentation for the OvenBreak to-do app.
 ---
 
 # OvenBreak Project
@@ -15,6 +15,14 @@ Read `AGENTS.md` first, then use `docs/specs/G001-index.md` to find the relevant
 - If a prompt implies or requires changes to the Homepage UI, stop and ask: "This request requires changes to the Homepage UI. Do you still want to proceed?"
 - Do not edit Homepage UI files, styling, layout, or visual specs until the user confirms.
 
+## Prompt Following And Scope
+
+- Keep changes scoped to the requested task and the relevant specs.
+- Preserve user edits and do not revert unrelated changes.
+- If a requested change would overwrite or substantially rewrite a section the user appears to have manually edited, ask before changing that section.
+- Before adding or changing files under `app/`, create a task plan in `docs/plans/active/` based on the relevant specs. This does not apply to explicitly requested test or preview files that belong under `public/`.
+- Record completed project changes in `docs/changelogs/CHANGELOG.md` and the most relevant zone changelog.
+
 ## Technical Rules
 
 - Use the app directory in `app/`, static assets in `public/`, and project specs in `docs/specs/`.
@@ -24,12 +32,9 @@ Read `AGENTS.md` first, then use `docs/specs/G001-index.md` to find the relevant
 - Run `npm run lint` after code changes when feasible.
 - Do not touch generated folders such as `.next/`, `node_modules/`, or build output.
 
-## Product Boundaries
+## Product Direction
 
-- Keep the app local and frontend-only unless a future task explicitly changes that.
-- Do not add a backend, remote database, hosted accounts, cloud sync, official API access, export/share links, or shareable list files.
-- Treat login/sign-in controls as aesthetic-only for now.
-- Store user lists in browser local storage with a versioned key when persistence is implemented.
+- Do not add official Cookie Run API access unless a future spec or explicit request covers it.
 - Use existing repository assets and CSS. Do not generate images for this project.
 - Keep source/raw OvenBreak artwork in `assets/ovenbreak images`; copy runtime dependencies into `public/` before referencing them from the app.
 

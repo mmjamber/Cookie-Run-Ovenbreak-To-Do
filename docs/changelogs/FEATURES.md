@@ -27,6 +27,10 @@ Tracks feature behavior, feature specs, user stories, list behavior, catalog beh
 
 ### Catalog Behavior
 
+- Selected hybrid Supabase Storage for future admin-uploaded catalog images, with private originals and public approved `.webp` display derivatives.
+- Resolved admin catalog planning decisions so admin-created items support add, edit, and delete without archive behavior for now, and use auto-incremented release/order numbers.
+- Clarified that future admin catalog management should authorize admins through the protected account role table reserved by the Supabase account plan.
+- Aligned the future admin catalog-management plan with the normal account sign-in flow plus trusted admin role authorization, rather than a separate admin login system.
 - Made runtime admin catalog management the standard for future admin-created cookies, pets, and treasures, using draft/review/publish behavior instead of repository asset writes.
 - Added an active admin catalog management plan covering future admin-only creation flows for cookies, pets, and treasures.
 

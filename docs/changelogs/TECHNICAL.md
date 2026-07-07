@@ -6,6 +6,9 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Documentation Process
 
+- Clarified the shared authorization extension point between `docs/plans/active/supabase-spec-migration.md` and `docs/plans/active/admin-role-and-catalog-management.md`.
+- Updated `docs/plans/active/admin-role-and-catalog-management.md` so admin access uses the shared account auth flow plus trusted role or permission authorization instead of a separate admin login system.
+- Updated the OvenBreak project skill to include reusable prompt-following rules and to remove frontend-only product boundaries that would block Supabase/auth/database work.
 - Added Supabase implementation standards to `docs/plans/active/supabase-spec-migration.md`, covering publishable keys, server-side auth validation, RLS policy shape, cascade deletes, idempotent migration, and database constraints.
 - Updated `docs/plans/active/supabase-spec-migration.md` to decide that account deletion should remove all saved-list data owned by the deleted account.
 - Updated `docs/plans/active/supabase-spec-migration.md` to make email/password the first supported auth provider and require profile display names.
@@ -45,6 +48,11 @@ Tracks architecture, storage, routing, data imports, build/lint config, package 
 
 ### Storage
 
+- Selected the hybrid Supabase Storage bucket policy for admin uploads: private original uploads, public approved `.webp` display derivatives, and protected admin/server write paths.
+- Resolved admin upload planning decisions to preserve original image uploads, generate `.webp` display derivatives where needed, reserve admin role grants for the database owner, and document storage bucket options.
+- Reserved a protected `account_roles`-style table as the canonical future source for admin authorization, with optional server-managed JWT/app metadata mirroring only as a later fast-check optimization.
+- Added admin authorization planning guidance for protected role tables, optional server-managed role metadata mirroring, server-side auth validation, RLS-backed mutation checks, stale JWT caution, and optional higher assurance for sensitive admin actions.
+- Updated the OvenBreak project skill to recognize Supabase-backed persistence, guest local-list migration, account-scoped server validation, and account deletion data removal as allowed project directions.
 - Added future Supabase storage standards for account-scoped database constraints, cascade-linked user data, and idempotent guest local-list migration.
 - Clarified the future Supabase deletion path should remove the deleted account's profile, saved lists, sections, combis, free item blocks, todo items, and default-list initialization state.
 - Clarified the future Supabase migration path should keep local guest list data until remote persistence succeeds, then clear or mark the local copy as migrated to avoid duplicate imports.
